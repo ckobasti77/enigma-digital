@@ -7,12 +7,22 @@ import localFont from "next/font/local";
 const deltha = localFont({
   src: [
     {
-      path: "../public/assets/fonts/Deltha.otf",
+      path: "../public/assets/fonts/deltha/Deltha.otf",
       weight: "400",
       style: "normal",
     },
   ],
-  variable: "--font-deltha", // CSS var da ga koristiš gde hoćeš
+  variable: "--font-deltha",
+});
+const terminal = localFont({
+  src: [
+    {
+      path: "../public/assets/fonts/terminal-grotesque/terminal-grotesque.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-terminal",
 });
 
 export const metadata: Metadata = {
@@ -28,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${deltha.variable} antialiased`}
+        className={`${deltha.variable} ${terminal.variable} antialiased`}
       >
         <div className="bg-[url(/./assets/background.avif)] bg-cover bg-repeat w-full h-full">
           <div className="w-full h-full -z-[9999] bg-blur">

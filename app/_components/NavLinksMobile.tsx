@@ -2,7 +2,7 @@
 
 import { navLinks } from "@/constants/navLinks";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -30,17 +30,18 @@ const NavLinks = ({
   //     });
   //   }, []);
 
+  const secondaryLinkRef = useRef<HTMLAnchorElement>(null)
+
   return (
     <div
-      className={`bg-black flex lg:hidden flex-col w-full -translate-y-[1000px] opacity-0 transition-all duration-500 gap-y-3 absolute top-20 px-6 ${
+      className={`z-9999 bg-black flex lg:hidden flex-col w-full -translate-y-[1000px] opacity-0 transition-all duration-500 gap-y-3 absolute top-20 px-6 ${
         navOpen && "translate-y-0 opacity-100"
       }`}
     >
       {navLinks.map((link: any, i: number) => (
-        <>
+        <div key={i}>
           <Link
             href={link.dropdownLinks ? "/" : link.to}
-            key={i}
             className={`text-white/90 hover:text-white text-start text-xl group cursor-pointer primary-link transition-all duration-500 
             ${
               navOpen
@@ -67,16 +68,18 @@ const NavLinks = ({
               ""
             )}
           </Link>
-          {currentDropdown === link.id && (
-            <div className={`flex lg:hidden flex-col w-full gap-y-3 px-6`}>
+          {/* {currentDropdown === link.id && ( */}
+          {link.dropdownLinks && (
+            <div className={`flex lg:hidden flex-col w-full gap-y-3 px-6 transition-all opacity-0 h-0 ${currentDropdown === link.id && `h-[${38 * link.dropdownLinks.length}px] opacity-100`}`}>
               {link.dropdownLinks.map((dropdownLink: any, i: number) => {
                 const Icon = dropdownLink.icon; // 👈 izvučeš komponentu ikone
                 return (
                   <Link
+                    ref={secondaryLinkRef}
                     href={`${link.to}/${dropdownLink.to}`}
                     key={i}
-                    className={`flex items-center gap-2 text-white/90 hover:text-white text-start text-xl group cursor-pointer transition-all ${
-                      currentDropdown === link.id ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+                    className={`flex items-center gap-2 text-white/90 hover:text-white text-start text-xl group cursor-pointer transition-all 
+                    
                     }`}
                     style={{ transitionDelay: `${i * 100 + 250}ms` }}
                   >
@@ -88,7 +91,8 @@ const NavLinks = ({
               })}
             </div>
           )}
-        </>
+          {/* )} */}
+        </div>
       ))}
     </div>
   );
