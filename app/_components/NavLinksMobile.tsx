@@ -7,6 +7,24 @@ import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
+import { LucideIcon } from "lucide-react";
+
+export type DropdownLink = {
+  id: number;
+  to: string;
+  headline: string;
+  subheadline: string;
+  icon: LucideIcon;
+};
+
+export type NavLink = {
+  id: number;
+  to: string;
+  text: string;
+  cta?: boolean;
+  dropdownLinks?: DropdownLink[];
+};
+
 type NavLinksMobileProps = {
   toggleNav: () => void;
   navOpen: boolean;
@@ -39,7 +57,7 @@ const NavLinks = ({
       }`}
     >
       <div className="bg-black p-6 rounded-b-xl flex lg:hidden flex-col gap-y-3">
-        {navLinks.map((link: any, i: number) => (
+        {navLinks.map((link: NavLink, i: number) => (
           <div key={i}>
             <Link
               href={link.dropdownLinks ? "/" : link.to}
@@ -77,7 +95,7 @@ const NavLinks = ({
                   `h-[${38 * link.dropdownLinks.length}px] opacity-100 py-3`
                 }`}
               >
-                {link.dropdownLinks.map((dropdownLink: any, i: number) => {
+                {link.dropdownLinks.map((dropdownLink: DropdownLink, i: number) => {
                   const Icon = dropdownLink.icon; // 👈 izvučeš komponentu ikone
                   return (
                     <Link

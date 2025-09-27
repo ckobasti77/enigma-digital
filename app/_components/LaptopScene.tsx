@@ -7,17 +7,15 @@ import * as THREE from "three";
 function Laptop() {
   const { scene } = useGLTF("/assets/models/laptop/laptop.glb");
 
-  // Load any texture (e.g. screenshot of cluttered desktop with unread emails)
   const screenTex = useTexture("/assets/images/screen-saver.png");
 
   scene.traverse((child) => {
     if ((child as THREE.Mesh).isMesh) {
       const mesh = child as THREE.Mesh;
-      // Check mesh name (depends on your model, might be "Screen", "display", etc.)
       if (mesh.name.toLowerCase().includes("screen")) {
         mesh.material = new THREE.MeshBasicMaterial({
           map: screenTex,
-          toneMapped: true, // keeps colors vibrant
+          toneMapped: true, 
         });
       }
     }

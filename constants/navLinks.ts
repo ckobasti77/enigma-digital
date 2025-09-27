@@ -1,13 +1,3 @@
-import {
-  Boxes,
-  Brush,
-  Megaphone,
-  Monitor,
-  Search,
-  Smartphone,
-  WandSparkles,
-} from "lucide-react";
-
 export const navLinks = [
   {
     id: 1,

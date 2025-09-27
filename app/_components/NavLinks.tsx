@@ -7,6 +7,24 @@ import React, { useEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
+import { LucideIcon } from "lucide-react";
+
+export type DropdownLink = {
+  id: number;
+  to: string;
+  headline: string;
+  subheadline: string;
+  icon: LucideIcon;
+};
+
+export type NavLink = {
+  id: number;
+  to: string;
+  text: string;
+  cta?: boolean;
+  dropdownLinks?: DropdownLink[];
+};
+
 type NavLinksProps = {
   currentDropdown: number;
   setCurrentDropdown: React.Dispatch<React.SetStateAction<number>>;
@@ -56,7 +74,7 @@ const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
 
   return (
     <div className="hidden xl:flex items-center gap-x-6 relative">
-      {navLinks.map((link: any, i: number) => (
+      {navLinks.map((link: NavLink, i: number) => (
         <div
           key={i}
           className="relative"
@@ -88,7 +106,7 @@ const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
             >
               <div className="bg-black rounded-b-xl">
                 <div className="grid grid-cols-2 gap-x-4 gap-y-2 p-4 w-full">
-                  {link.dropdownLinks.map((dropdownLink: any, j: number) => {
+                  {link.dropdownLinks.map((dropdownLink: DropdownLink, j: number) => {
                     const Icon = dropdownLink.icon;
                     return (
                       <Link
