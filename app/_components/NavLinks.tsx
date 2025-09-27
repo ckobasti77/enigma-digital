@@ -31,7 +31,7 @@ type NavLinksProps = {
 };
 
 const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
-  const dropdownRefs = useRef<Record<number, HTMLDivElement | null | undefined>>({});
+  const dropdownRefs = useRef<Record<number, HTMLDivElement | null>>({});
 
   useGSAP(() => {
     gsap.fromTo(
@@ -100,6 +100,7 @@ const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
 
           {link.dropdownLinks && (
             <div
+              //@ts-expect-error
               ref={(el) => (dropdownRefs.current[link.id] = el)}
               className="z-50 absolute bg-gradient-to-bl from-pink-400 via-teal-400 to-blue-400 pb-0.5 top-full right-0 mt-2 w-[750px] bg-black/90 rounded-b-xl shadow-lg overflow-hidden hidden"
             >
