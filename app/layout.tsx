@@ -7,7 +7,7 @@ import localFont from "next/font/local";
 const deltha = localFont({
   src: [
     {
-      path: "../public/assets/fonts/deltha/Deltha.otf",
+      path: "../public/assets/fonts/Deltha/Deltha.otf",
       weight: "400",
       style: "normal",
     },
