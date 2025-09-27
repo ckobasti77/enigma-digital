@@ -44,7 +44,7 @@ export const navLinks = [
         id: 4,
         to: "seo-geo",
         headline: "SEO & GEO",
-        subheadline: "Appear at top on Google & get recommended by AI",
+        subheadline: "Appear at top on Google & Chatbots",
         icon: Search,
       },
       {
@@ -72,5 +72,11 @@ export const navLinks = [
     id: 4,
     to: "about",
     text: 'About'
+  },
+  {
+    id: 5,
+    to: "contact",
+    text: 'Contact Us',
+    cta: true,
   },
 ];

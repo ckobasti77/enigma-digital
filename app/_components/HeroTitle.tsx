@@ -53,7 +53,7 @@ export default function HeroTitle() {
       style={{ fontFamily: "var(--font-terminal)" }}
       className="
         relative font-deltha text-white leading-tight
-        text-2xl sm:text-3xl md:text-5xl xl:text-6xl
+        text-5xl xl:text-6xl
         whitespace -normal
       "
     >

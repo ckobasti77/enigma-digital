@@ -30,70 +30,77 @@ const NavLinks = ({
   //     });
   //   }, []);
 
-  const secondaryLinkRef = useRef<HTMLAnchorElement>(null)
+  const secondaryLinkRef = useRef<HTMLAnchorElement>(null);
 
   return (
     <div
-      className={`z-9999 bg-black flex lg:hidden flex-col w-full -translate-y-[1000px] opacity-0 transition-all duration-500 gap-y-3 absolute top-20 px-6 ${
+      className={`z-9999 bg-black w-full -translate-y-[1000px] opacity-0 transition-all duration-500 gap-y-3 absolute top-20 bg-gradient-to-bl from-pink-400 via-teal-400 to-blue-400 pb-0.5 rounded-b-xl ${
         navOpen && "translate-y-0 opacity-100"
       }`}
     >
-      {navLinks.map((link: any, i: number) => (
-        <div key={i}>
-          <Link
-            href={link.dropdownLinks ? "/" : link.to}
-            className={`text-white/90 hover:text-white text-start text-xl group cursor-pointer primary-link transition-all duration-500 
+      <div className="bg-black p-6 rounded-b-xl flex lg:hidden flex-col gap-y-3">
+        {navLinks.map((link: any, i: number) => (
+          <div key={i}>
+            <Link
+              href={link.dropdownLinks ? "/" : link.to}
+              className={`text-white/90 hover:text-white text-start text-xl group cursor-pointer primary-link transition-all duration-500 
             ${
               navOpen
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 -translate-x-96"
             }`}
-            style={{ transitionDelay: `${i * 200 + 500}ms` }}
-          >
-            {link.text}
-            {link.dropdownLinks ? (
-              <ChevronUp
-                onClick={() => {
-                  if (currentDropdown === link.id) {
-                    setCurrentDropdown(0);
-                  } else {
-                    setCurrentDropdown(link.id);
-                  }
-                }}
-                className={`ml-1 mb-1 group-hover:rotate-180 transition-all h-5 w-5 inline ${
-                  currentDropdown === link.id && "rotate-180"
+              style={{ transitionDelay: `${i * 200 + 500}ms` }}
+            >
+              {link.text}
+              {link.dropdownLinks ? (
+                <ChevronUp
+                  onClick={() => {
+                    if (currentDropdown === link.id) {
+                      setCurrentDropdown(0);
+                    } else {
+                      setCurrentDropdown(link.id);
+                    }
+                  }}
+                  className={`ml-1 mb-1 group-hover:rotate-180 transition-all h-5 w-5 inline ${
+                    currentDropdown === link.id && "rotate-180"
+                  }`}
+                />
+              ) : (
+                ""
+              )}
+            </Link>
+            {/* {currentDropdown === link.id && ( */}
+            {link.dropdownLinks && (
+              <div
+                className={`flex lg:hidden flex-col w-full gap-y-3 px-6 transition-all opacity-0 h-0 ${
+                  currentDropdown === link.id &&
+                  `h-[${38 * link.dropdownLinks.length}px] opacity-100 py-3`
                 }`}
-              />
-            ) : (
-              ""
-            )}
-          </Link>
-          {/* {currentDropdown === link.id && ( */}
-          {link.dropdownLinks && (
-            <div className={`flex lg:hidden flex-col w-full gap-y-3 px-6 transition-all opacity-0 h-0 ${currentDropdown === link.id && `h-[${38 * link.dropdownLinks.length}px] opacity-100`}`}>
-              {link.dropdownLinks.map((dropdownLink: any, i: number) => {
-                const Icon = dropdownLink.icon; // 👈 izvučeš komponentu ikone
-                return (
-                  <Link
-                    ref={secondaryLinkRef}
-                    href={`${link.to}/${dropdownLink.to}`}
-                    key={i}
-                    className={`flex items-center gap-2 text-white/90 hover:text-white text-start text-xl group cursor-pointer transition-all 
+              >
+                {link.dropdownLinks.map((dropdownLink: any, i: number) => {
+                  const Icon = dropdownLink.icon; // 👈 izvučeš komponentu ikone
+                  return (
+                    <Link
+                      ref={secondaryLinkRef}
+                      href={`${link.to}/${dropdownLink.to}`}
+                      key={i}
+                      className={`flex items-center gap-2 text-white/90 hover:text-white text-start text-xl group cursor-pointer transition-all 
                     
                     }`}
-                    style={{ transitionDelay: `${i * 100 + 250}ms` }}
-                  >
-                    <Icon className="w-5 h-5 mt-[4px]" />{" "}
-                    {/* 👈 renderuješ ikonicu */}
-                    {dropdownLink.headline}
-                  </Link>
-                );
-              })}
-            </div>
-          )}
-          {/* )} */}
-        </div>
-      ))}
+                      style={{ transitionDelay: `${i * 100 + 250}ms` }}
+                    >
+                      <Icon className="w-5 h-5 mt-[4px]" />{" "}
+                      {/* 👈 renderuješ ikonicu */}
+                      {dropdownLink.headline}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+            {/* )} */}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

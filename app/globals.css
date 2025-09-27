@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@config "../tailwind.config.js";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -122,6 +123,6 @@
 }
 
 .bg-blur {
-  background-color:rgba(13, 13, 13, 0.25);
-  backdrop-filter: blur(3px);
+  background-color:rgba(0, 0, 0, .4);
+  backdrop-filter: blur(1px);
 }

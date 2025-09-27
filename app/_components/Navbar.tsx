@@ -18,12 +18,30 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="w-full py-4 px-6 xl:px-20 flex items-center justify-between bg-transparent">
+      <div
+        className={`w-full py-4 px-6 xl:px-20 flex items-center justify-between relative transition-all ${
+          navOpen ? "bg-black" : "bg-transparent"
+        } fixed top-0`}
+      >
         {/* <img src="/./assets/logo.png" alt="logo" height={0} width={200} /> */}
-        <h1 style={{ fontFamily: "var(--font-deltha)" }} className="text-3xl font-deltha relative font-bold bg-gradient-to-r from-blue-500 to-pink-400  bg-clip-text text-transparent inline-block">ENIGMA <span style={{ fontFamily: "var(--font-deltha)" }} className="absolute -bottom-1 text-sm -right-3 font-deltha font-black text-white">digital</span></h1>
-        
+        <h1
+          style={{ fontFamily: "var(--font-deltha)" }}
+          className="text-3xl font-deltha relative font-bold bg-gradient-to-r from-blue-500 to-pink-400  bg-clip-text text-transparent inline-block"
+        >
+          ENIGMA{" "}
+          <span
+            style={{ fontFamily: "var(--font-deltha)" }}
+            className="absolute -bottom-1 text-sm -right-3 font-deltha font-black text-white"
+          >
+            digital
+          </span>
+        </h1>
+
         <Burger toggleNav={toggleNav} navOpen={navOpen} />
-        <NavLinks />
+        <NavLinks
+          setCurrentDropdown={setCurrentDropdown}
+          currentDropdown={currentDropdown}
+        />
       </div>
       <NavLinksMobile
         setCurrentDropdown={setCurrentDropdown}
