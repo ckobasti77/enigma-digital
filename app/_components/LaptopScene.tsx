@@ -23,11 +23,10 @@ function Laptop() {
 
   const ref = useRef<THREE.Group>(null);
 
-  // rotacija po kretanju misa
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!ref.current) return;
-      const x = (e.clientX / window.innerWidth - 0.5) * 0.6; // intensity
+      const x = (e.clientX / window.innerWidth - 0.5) * 0.6;
       const y = (e.clientY / window.innerHeight - 0.5) * 0.6;
       ref.current.rotation.y = x;
       ref.current.rotation.x = -y;
@@ -42,7 +41,6 @@ function Laptop() {
 function Floor() {
   return (
     <mesh rotation-x={-Math.PI / 2} position={[0, -1.5, 0]}>
-      {/* manji radius i vise segmenata da bude smooth */}
       <circleGeometry args={[3, 64]} />
       <meshStandardMaterial transparent opacity={0.6} side={THREE.DoubleSide}>
         <canvasTexture
@@ -55,7 +53,6 @@ function Floor() {
   );
 }
 
-// manji gradient (samo ispod laptopa)
 function generateRadialGradient(size = 512) {
   const canvas = document.createElement("canvas");
   canvas.width = canvas.height = size;
@@ -68,8 +65,8 @@ function generateRadialGradient(size = 512) {
     size / 2,
     size / 2
   );
-  gradient.addColorStop(0, "rgba(0, 255, 255, 0.4)"); // cyan centar
-  gradient.addColorStop(1, "rgba(0, 0, 0, 0)"); // fade u providno
+  gradient.addColorStop(0, "rgba(0, 255, 255, 0.4)");
+  gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, size, size);
   return canvas;

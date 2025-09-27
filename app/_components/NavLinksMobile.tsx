@@ -38,15 +38,6 @@ const NavLinks = ({
   currentDropdown,
   setCurrentDropdown,
 }: NavLinksMobileProps) => {
-  // useGSAP(() => {
-  //     gsap.to(".primary-link", {
-  //       opacity: 1,
-  //       x: 0,
-  //       fontWeight: 600,
-  //       duration: 1,
-  //       stagger: 0.25,
-  //     });
-  //   }, []);
 
   const secondaryLinkRef = useRef<HTMLAnchorElement>(null);
 
@@ -87,7 +78,6 @@ const NavLinks = ({
                 ""
               )}
             </Link>
-            {/* {currentDropdown === link.id && ( */}
             {link.dropdownLinks && (
               <div
                 className={`flex lg:hidden flex-col w-full gap-y-3 px-6 transition-all opacity-0 h-0 ${
@@ -96,7 +86,7 @@ const NavLinks = ({
                 }`}
               >
                 {link.dropdownLinks.map((dropdownLink: DropdownLink, i: number) => {
-                  const Icon = dropdownLink.icon; // 👈 izvučeš komponentu ikone
+                  const Icon = dropdownLink.icon; 
                   return (
                     <Link
                       ref={secondaryLinkRef}
@@ -108,14 +98,12 @@ const NavLinks = ({
                       style={{ transitionDelay: `${i * 100 + 250}ms` }}
                     >
                       <Icon className="w-5 h-5 mt-[4px]" />{" "}
-                      {/* 👈 renderuješ ikonicu */}
                       {dropdownLink.headline}
                     </Link>
                   );
                 })}
               </div>
             )}
-            {/* )} */}
           </div>
         ))}
       </div>

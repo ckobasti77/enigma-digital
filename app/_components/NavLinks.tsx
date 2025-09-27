@@ -48,7 +48,6 @@ const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
     );
   }, []);
 
-  // Animate dropdown open/close
   useEffect(() => {
     Object.entries(dropdownRefs.current).forEach(([id, el]) => {
       if (!el) return;
