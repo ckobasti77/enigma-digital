@@ -1,7 +1,6 @@
 "use client";
 
-import { Menu } from "lucide-react";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Burger from "./Burger";
 import NavLinks from "./NavLinks";
 import NavLinksMobile from "./NavLinksMobile";
@@ -12,9 +11,11 @@ const Navbar = () => {
 
   const toggleNav = useCallback(() => {
     setNavOpen((prev) => !prev);
+  }, [navOpen]);
 
-    if (navOpen && currentDropdown !== 0) setCurrentDropdown(0);
-  }, []);
+  useEffect(() => {
+    setCurrentDropdown(0)
+  }, [navOpen])
 
   return (
     <>
@@ -23,7 +24,6 @@ const Navbar = () => {
           navOpen ? "bg-black" : "bg-transparent"
         } fixed top-0`}
       >
-        {/* <img src="/./assets/logo.png" alt="logo" height={0} width={200} /> */}
         <h1
           style={{ fontFamily: "var(--font-deltha)" }}
           className="text-3xl font-deltha relative font-bold bg-gradient-to-r from-blue-500 to-pink-400  bg-clip-text text-transparent inline-block"

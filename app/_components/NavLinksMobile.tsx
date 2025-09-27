@@ -92,7 +92,7 @@ const NavLinks = ({
               <div
                 className={`flex lg:hidden flex-col w-full gap-y-3 px-6 transition-all opacity-0 h-0 ${
                   currentDropdown === link.id &&
-                  `h-[${38 * link.dropdownLinks.length}px] opacity-100 py-3`
+                  `h-[240px] opacity-100 py-3`
                 }`}
               >
                 {link.dropdownLinks.map((dropdownLink: DropdownLink, i: number) => {

@@ -83,15 +83,17 @@ const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
         >
           <Link
             href={link.to}
-            className={`primary-link text-white/90 hover:text-white text-center text-xl group cursor-pointer ${
+            className={`primary-link flex items-center text-white/90 hover:text-white text-center text-xl group cursor-pointer ${
               link.cta &&
-              "rounded-full border-2 border-white/90 hover:border-white px-4 py-1"
+              "rounded-full bg-gradient-to-bl from-pink-400 via-teal-400 to-blue-400 p-0.5"
             }`}
           >
-            {link.text}
+            <div className={`${link.cta && 'bg-black rounded-full px-4 py-1 grid place-items-center'}`}>
+              {link.text}
+            </div>
             {link.dropdownLinks && (
               <ChevronDown
-                className={`ml-1 mb-1 inline h-5 w-5 transition-transform ${
+                className={`ml-1 mt-1 inline h-5 w-5 transition-transform ${
                   currentDropdown === link.id ? "rotate-180" : ""
                 }`}
               />
@@ -100,7 +102,7 @@ const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
 
           {link.dropdownLinks && (
             <div
-              //@ts-expect-error/some-bullshit
+              //@ts-expect-error/some-bs
               ref={(el) => (dropdownRefs.current[link.id] = el)}
               className="z-50 absolute bg-gradient-to-bl from-pink-400 via-teal-400 to-blue-400 pb-0.5 top-full right-0 mt-2 w-[750px] bg-black/90 rounded-b-xl shadow-lg overflow-hidden hidden"
             >
