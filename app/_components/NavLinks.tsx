@@ -30,6 +30,11 @@ type NavLinksProps = {
   setCurrentDropdown: React.Dispatch<React.SetStateAction<number>>;
 };
 
+const normalize = (s: string) => s.replace(/^\/+|\/+$/g, "");
+const absPath = (s: string) => (s.startsWith("/") ? s : `/${s}`);
+const joinPath = (...parts: string[]) =>
+  "/" + parts.filter(Boolean).map(normalize).join("/");
+
 const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
   const dropdownRefs = useRef<Record<number, HTMLDivElement | null>>({});
 
@@ -40,7 +45,6 @@ const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
       {
         opacity: 1,
         y: 0,
-        fontWeight: 600,
         duration: 1,
         stagger: 0.25,
         ease: "power3.out",
@@ -53,7 +57,8 @@ const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
       if (!el) return;
       if (Number(id) === currentDropdown) {
         gsap.to(el, {
-          height: "auto",
+          height: 'auto',
+          y: -10,
           opacity: 1,
           duration: 0.4,
           ease: "power2.out",
@@ -61,7 +66,7 @@ const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
         });
       } else {
         gsap.to(el, {
-          height: 0,
+          y: 0,
           opacity: 0,
           duration: 0.3,
           ease: "power2.in",
@@ -81,13 +86,19 @@ const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
           onMouseLeave={() => setCurrentDropdown(0)}
         >
           <Link
-            href={link.to}
-            className={`primary-link flex items-center text-white/90 hover:text-white text-center text-xl group cursor-pointer ${
+            style={{ fontFamily: "var(--font-aeonik)" }}
+            href={absPath(link.to)}
+            className={`primary-link tracking-widest font-extralight flex items-center text-white/90 hover:text-white text-center text-lg group cursor-pointer ${
               link.cta &&
-              "rounded-full bg-gradient-to-bl from-pink-400 via-teal-400 to-blue-400 p-0.5"
+              "rounded-lg bg-gradient-to-r from-pink-400 via-teal-400 to-blue-400 p-0.5 bg-[length:200%_200%] bg-left transition-all duration-500 ease-out hover:bg-right"
             }`}
           >
-            <div className={`${link.cta && 'bg-black rounded-full px-4 py-1 grid place-items-center'}`}>
+            <div
+              className={`${
+                link.cta &&
+                "bg-black rounded-md px-4 py-1 grid place-items-center group-hover:bg-transparent transition-all"
+              }`}
+            >
               {link.text}
             </div>
             {link.dropdownLinks && (
@@ -103,30 +114,37 @@ const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
             <div
               //@ts-expect-error/some-bs
               ref={(el) => (dropdownRefs.current[link.id] = el)}
-              className="z-50 absolute bg-gradient-to-bl from-pink-400 via-teal-400 to-blue-400 pb-0.5 top-full right-0 mt-2 w-[750px] bg-black/90 rounded-b-xl shadow-lg overflow-hidden hidden"
+              className="z-50 absolute bg-gradient-to-bl from-pink-400 via-teal-400 to-blue-400 pb-0.5 top-full right-0 mt-2 w-[750px] bg-black/90 rounded-xl shadow-lg overflow-hidden hidden"
             >
               <div className="bg-black rounded-b-xl">
                 <div className="grid grid-cols-2 gap-x-4 gap-y-2 p-4 w-full">
-                  {link.dropdownLinks.map((dropdownLink: DropdownLink, j: number) => {
-                    const Icon = dropdownLink.icon;
-                    return (
-                      <Link
-                        key={j}
-                        href={`${link.to}/${dropdownLink.to}`}
-                        className="flex items-center gap-3 p-2 hover:bg-white/10 rounded-md transition"
-                      >
-                        <Icon className="w-6 h-6 mt-1 text-cyan-300" />
-                        <div>
-                          <h2 className="text-base font-semibold text-white">
-                            {dropdownLink.headline}
-                          </h2>
-                          <h3 className="text-sm text-white/70">
-                            {dropdownLink.subheadline}
-                          </h3>
-                        </div>
-                      </Link>
-                    );
-                  })}
+                  {link.dropdownLinks.map(
+                    (dropdownLink: DropdownLink, j: number) => {
+                      const Icon = dropdownLink.icon;
+                      const href =
+                        "/" +
+                        joinPath(link.to, dropdownLink.to).replace(/^\/+/, "");
+
+                      return (
+                        <Link
+                          key={j}
+                          href={href}
+                          style={{ fontFamily: "var(--font-aeonik)" }}
+                          className="flex items-center gap-3 p-2 hover:bg-white/10 rounded-md transition tracking-wider"
+                        >
+                          <Icon className="w-6 h-6 mt-1 text-cyan-300" />
+                          <div>
+                            <h2 className="text-[18px] text-white">
+                              {dropdownLink.headline}
+                            </h2>
+                            <h3 className="text-sm text-white/70 font-extralight">
+                              {dropdownLink.subheadline}
+                            </h3>
+                          </div>
+                        </Link>
+                      );
+                    }
+                  )}
                 </div>
               </div>
             </div>

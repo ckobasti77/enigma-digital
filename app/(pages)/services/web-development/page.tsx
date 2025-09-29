@@ -1,11 +1,12 @@
-import React from 'react'
+import AutoTypingConsole from "@/components/ui/auto-typing-console";
+import React from "react";
 
 const WebDevelopment = () => {
   return (
-    <div>
-      
+    <div className="min-h-screen text-white w-full grid place-items-center">
+      <AutoTypingConsole text={"Web Development"} />
     </div>
-  )
-}
+  );
+};
 
-export default WebDevelopment
+export default WebDevelopment;

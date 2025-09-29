@@ -82,7 +82,7 @@ export default function LaptopScene() {
         <Laptop />
       </Bounds>
 
-      <Floor />
+      {/* <Floor /> */}
     </Canvas>
   );
 }

@@ -16,7 +16,7 @@ export const navLinks = [
   },
   {
     id: 2,
-    to: "services",
+    to: "/services",
     text: "Services",
     dropdownLinks: [
       {
@@ -37,7 +37,7 @@ export const navLinks = [
         id: 3,
         to: "mobile-app-development",
         headline: "Mobile App Development",
-        subheadline: "From idea to app store.",
+        subheadline: "From idea to App store.",
         icon: Smartphone,
       },
       {
@@ -65,17 +65,17 @@ export const navLinks = [
   },
   {
     id: 3,
-    to: "projects",
+    to: "/projects",
     text: 'Projects'
   },
   {
     id: 4,
-    to: "about",
+    to: "/about",
     text: 'About'
   },
   {
     id: 5,
-    to: "contact",
+    to: "/contact",
     text: 'Contact Us',
     cta: true,
   },

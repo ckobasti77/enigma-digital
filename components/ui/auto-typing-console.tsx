@@ -3,7 +3,12 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-export default function HeroTitle() {
+type AutoTypingConsoleType = {
+    text: string;
+    className?: string;
+}
+
+export default function AutoTypingConsole({ text, className } : AutoTypingConsoleType) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const cursorRef = useRef<HTMLSpanElement>(null);
 
@@ -41,17 +46,15 @@ export default function HeroTitle() {
     tl.to(cursorRef.current, { opacity: 0, duration: 0.1 });
   }, []);
 
-  const text = "Obsess Customers With Your Brand";
-
   return (
     <h1
       ref={titleRef}
-      style={{ fontFamily: "var(--font-terminal)" }}
-      className="
-        relative font-deltha text-white leading-tight
-        text-5xl xl:text-6xl
-        whitespace -normal
-      "
+      className={`
+        relative  text-white leading-tight
+        text-5xl
+        whitespace -normal font-broken-console
+        ${className}
+      `}
     >
       {text.split("").map((ch, i) => (
         <span key={i} className="letter inline">
@@ -59,7 +62,7 @@ export default function HeroTitle() {
         </span>
       ))}
 
-      <span ref={cursorRef} className="absolute top-0 -left-[0.65em] w-[0.65em] h-[1em] bg-white" />
+      <span ref={cursorRef} className="absolute -top-2.5 -left-[0.65em] w-[0.65em] h-[1em] bg-white" />
     </h1>
   );
 }
