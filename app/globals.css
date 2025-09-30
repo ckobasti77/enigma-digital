@@ -124,17 +124,17 @@
 
 .bg-blur {
   background-color:rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 }
 
 .btn-blur {
   background-color:rgba(255, 255, 255, .4);
   backdrop-filter: blur(4px);
 }
-
+/* app/globals.css */
 .timeline-card .glass-panel {
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .timeline-card .timeline-shine {
@@ -150,7 +150,7 @@
     rgba(255,255,255,0) 100%
   );
   pointer-events: none;
-  transform: translate3d(-180%, 0, 0) rotate(18deg);
+  transform: translate3d(-220%, 0, 0) rotate(18deg);
   opacity: 0;
   filter: blur(1px);
   mix-blend-mode: screen;

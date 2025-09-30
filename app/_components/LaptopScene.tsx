@@ -1,75 +1,165 @@
 "use client";
 
 import { Bounds, useGLTF, useTexture } from "@react-three/drei";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
-import { useRef, useEffect } from "react";
+import { useEffect, useMemo, useRef } from "react";
+
+type AxisKey = "x" | "y" | "z";
 
 function Laptop() {
   const { scene } = useGLTF("/assets/models/laptop/laptop.glb");
-  const screenTex = useTexture("/assets/images/screen-saver.png");
+  const tiltRef = useRef<THREE.Group>(null);
 
-  scene.traverse((child) => {
-    if ((child as THREE.Mesh).isMesh) {
-      const mesh = child as THREE.Mesh;
-      if (mesh.name.toLowerCase().includes("screen")) {
-        mesh.material = new THREE.MeshBasicMaterial({
-          map: screenTex,
-          toneMapped: true,
-        });
-      }
-    }
-  });
+  const screenTexture = useTexture("/assets/images/screen-saver.png");
+  useEffect(() => {
+    if (!screenTexture) return;
+    screenTexture.flipY = false;
+    screenTexture.colorSpace = THREE.SRGBColorSpace;
+    screenTexture.wrapS = screenTexture.wrapT = THREE.ClampToEdgeWrapping;
+    screenTexture.minFilter = THREE.LinearFilter;
+    screenTexture.magFilter = THREE.LinearFilter;
+    screenTexture.center.set(0.5, 0.5);    // rotate around the center
+    screenTexture.rotation = Math.PI;      // flip upside down
+    screenTexture.anisotropy = Math.min(8, screenTexture.anisotropy ?? 0);
+    screenTexture.needsUpdate = true;
+  }, [screenTexture]);
 
-  const ref = useRef<THREE.Group>(null);
+  const screenMaterial = useMemo(
+    () =>
+      new THREE.MeshBasicMaterial({
+        map: screenTexture,
+        toneMapped: false,
+        transparent: false,
+        side: THREE.FrontSide,
+      }),
+    [screenTexture]
+  );
+
+  const frameMaterial = useMemo(
+    () =>
+      new THREE.MeshBasicMaterial({
+        color: 0x000000,
+        transparent: false,
+        toneMapped: false,
+        side: THREE.FrontSide,
+      }),
+    []
+  );
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!ref.current) return;
-      const x = (e.clientX / window.innerWidth - 0.5) * 0.6;
-      const y = (e.clientY / window.innerHeight - 0.5) * 0.6;
-      ref.current.rotation.y = x;
-      ref.current.rotation.x = -y;
+    if (!scene) return;
+
+    type Candidate = { mesh: THREE.Mesh; bbox: THREE.Box3; size: THREE.Vector3 };
+    const candidates: Candidate[] = [];
+
+    scene.traverse((child) => {
+      if (!(child instanceof THREE.Mesh)) return;
+      if (!child.name.toLowerCase().includes("screen")) return;
+
+      const geometry = child.geometry as THREE.BufferGeometry;
+      geometry.computeBoundingBox();
+      const bbox = geometry.boundingBox?.clone();
+      if (!bbox) return;
+
+      const size = new THREE.Vector3();
+      bbox.getSize(size);
+
+      candidates.push({ mesh: child, bbox, size });
+    });
+
+    if (!candidates.length) return;
+
+    const faceArea = (size: THREE.Vector3) => {
+      const dims = [size.x, size.y, size.z].sort((a, b) => b - a);
+      return dims[0] * dims[1];
     };
+
+    const primary = candidates.reduce((smallest, candidate) =>
+      faceArea(candidate.size) < faceArea(smallest.size) ? candidate : smallest
+    );
+
+    const originalMaterials: Array<{
+      mesh: THREE.Mesh;
+      material: THREE.Material | THREE.Material[];
+    }> = [];
+
+    candidates.forEach(({ mesh, bbox, size }) => {
+      originalMaterials.push({ mesh, material: mesh.material });
+
+      if (mesh === primary.mesh) {
+        const axes = [
+          { key: "x" as AxisKey, size: size.x, min: bbox.min.x, max: bbox.max.x },
+          { key: "y" as AxisKey, size: size.y, min: bbox.min.y, max: bbox.max.y },
+          { key: "z" as AxisKey, size: size.z, min: bbox.min.z, max: bbox.max.z },
+        ].sort((a, b) => b.size - a.size);
+
+        const widthAxis = axes[0];
+        const heightAxis = axes[1];
+
+        const geometry = mesh.geometry as THREE.BufferGeometry;
+        const positionAttr = geometry.getAttribute("position") as THREE.BufferAttribute;
+
+        let uvAttr = geometry.getAttribute("uv") as THREE.BufferAttribute | undefined;
+        if (!uvAttr) {
+          uvAttr = new THREE.Float32BufferAttribute(positionAttr.count * 2, 2);
+          geometry.setAttribute("uv", uvAttr);
+        }
+
+        const widthRange = Math.max(widthAxis.size, 1e-6);
+        const heightRange = Math.max(heightAxis.size, 1e-6);
+
+        const getComponent = (index: number, axis: AxisKey) => {
+          switch (axis) {
+            case "x":
+              return positionAttr.getX(index);
+            case "y":
+              return positionAttr.getY(index);
+            default:
+              return positionAttr.getZ(index);
+          }
+        };
+
+        for (let i = 0; i < positionAttr.count; i++) {
+          const widthVal = getComponent(i, widthAxis.key);
+          const heightVal = getComponent(i, heightAxis.key);
+
+          const u = (widthVal - widthAxis.min) / widthRange;
+          const v = (heightVal - heightAxis.min) / heightRange;
+
+          uvAttr.setXY(i, u, v);
+        }
+
+        uvAttr.needsUpdate = true;
+        mesh.material = screenMaterial;
+      } else {
+        mesh.material = frameMaterial;
+      }
+    });
+
+    return () => {
+      originalMaterials.forEach(({ mesh, material }) => {
+        mesh.material = material;
+      });
+      screenMaterial.dispose();
+      frameMaterial.dispose();
+    };
+  }, [scene, screenMaterial, frameMaterial]);
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      if (!tiltRef.current) return;
+      const x = (event.clientX / window.innerWidth - 0.5) * 0.6;
+      const y = (event.clientY / window.innerHeight - 0.5) * 0.6;
+      tiltRef.current.rotation.y = x;
+      tiltRef.current.rotation.x = -y;
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  return <primitive ref={ref} object={scene} scale={4} />;
-}
-
-function Floor() {
-  return (
-    <mesh rotation-x={-Math.PI / 2} position={[0, -1.5, 0]}>
-      <circleGeometry args={[3, 64]} />
-      <meshStandardMaterial transparent opacity={0.6} side={THREE.DoubleSide}>
-        <canvasTexture
-          attach="map"
-          image={generateRadialGradient()}
-          needsUpdate
-        />
-      </meshStandardMaterial>
-    </mesh>
-  );
-}
-
-function generateRadialGradient(size = 512) {
-  const canvas = document.createElement("canvas");
-  canvas.width = canvas.height = size;
-  const ctx = canvas.getContext("2d")!;
-  const gradient = ctx.createRadialGradient(
-    size / 2,
-    size / 2,
-    0,
-    size / 2,
-    size / 2,
-    size / 2
-  );
-  gradient.addColorStop(0, "rgba(0, 255, 255, 0.4)");
-  gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, size, size);
-  return canvas;
+  return <primitive ref={tiltRef} object={scene} scale={4} />;
 }
 
 export default function LaptopScene() {
@@ -77,12 +167,9 @@ export default function LaptopScene() {
     <Canvas camera={{ position: [0, 1, 3], fov: 45 }}>
       <ambientLight intensity={0.5} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
-
       <Bounds fit clip observe margin={1.2}>
         <Laptop />
       </Bounds>
-
-      {/* <Floor /> */}
     </Canvas>
   );
 }

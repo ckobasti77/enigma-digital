@@ -1,3 +1,4 @@
+// app/_components/Timeline.tsx
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -15,14 +16,29 @@ type Step = {
   text: string;
 };
 
-const SHINE_START = { opacity: 0, xPercent: -180, rotate: 18 };
-const SHINE_END = { xPercent: 240 };
+const SHINE_START = { opacity: 0, xPercent: -220, rotate: 18 };
+const SHINE_END = { xPercent: 1500 };
 
 const Timeline = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
+
+    const hoverCleanups: Array<() => void> = [];
+
+    const animateShine = (target: HTMLElement) => {
+      gsap.killTweensOf(target);
+      return gsap.fromTo(target, SHINE_START, {
+        ...SHINE_END,
+        opacity: 0.95,
+        duration: 0.45,
+        ease: "power4.out",
+        onComplete: () => {
+          gsap.set(target, SHINE_START);
+        },
+      });
+    };
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -52,28 +68,23 @@ const Timeline = () => {
           gsap.set(dot, { scale: 0, opacity: 0 });
           if (shine) gsap.set(shine, SHINE_START);
 
+          if (shine) {
+            const handleHover = () => animateShine(shine);
+            card.addEventListener("mouseenter", handleHover);
+            card.addEventListener("focusin", handleHover);
+            hoverCleanups.push(() => {
+              card.removeEventListener("mouseenter", handleHover);
+              card.removeEventListener("focusin", handleHover);
+            });
+          }
+
           ScrollTrigger.create({
             trigger: item,
             start: "center center",
             end: "bottom center",
             onEnter: () => {
               card.classList.add("timeline-card--active");
-
-              if (shine) {
-                gsap.killTweensOf(shine);
-                gsap.fromTo(shine, SHINE_START, {
-                  ...SHINE_END,
-                  opacity: 0.95,
-                  duration: 0.45, // faster sweep
-                  ease: "power4.out",
-                  onStart: () => {
-                    gsap.set(shine, SHINE_START);
-                  },
-                  onComplete: () => {
-                    gsap.set(shine, SHINE_START);
-                  },
-                });
-              }
+              if (shine) animateShine(shine);
 
               gsap.to(line, {
                 background:
@@ -95,33 +106,28 @@ const Timeline = () => {
             },
             onLeaveBack: () => {
               card.classList.remove("timeline-card--active");
-
               if (shine) {
                 gsap.killTweensOf(shine);
                 gsap.set(shine, SHINE_START);
               }
 
-              gsap.to(line, {
-                background: "#333",
-                duration: 0.4,
-              });
+              gsap.to(line, { background: "#333", duration: 0.4 });
               gsap.to(card, {
                 background: "black",
                 borderColor: "#333",
                 duration: 0.6,
               });
-              gsap.to(dot, {
-                scale: 0,
-                opacity: 0,
-                duration: 0.3,
-              });
+              gsap.to(dot, { scale: 0, opacity: 0, duration: 0.3 });
             },
           });
         }
       });
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      hoverCleanups.forEach((fn) => fn());
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -160,8 +166,8 @@ const Timeline = () => {
                   }`}
                 />
 
-                <div className="timeline-card relative z-10 group p-0.5 w-full max-w-md rounded-xl border overflow-hidden">
-                  <div className="bg-blur glass-panel rounded-xl p-6 h-full transition-transform duration-300 -translate-y-5 group-hover:-translate-y-0 z-50">
+                <div className="timeline-card relative z-10 group p-0.5 w/full max-w-md rounded-xl border">
+                  <div className="bg-blur glass-panel rounded-xl p-6 h-full transition-transform duration-300 -translate-y-10 group-hover:-translate-y-0">
                     <span className="timeline-shine" aria-hidden />
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-cyan-300 font-bold text-xl">
@@ -169,10 +175,10 @@ const Timeline = () => {
                       </span>
                       <CheckCircle2 className="text-pink-400 w-5 h-5 opacity-70 group-hover:opacity-100 transition" />
                     </div>
-                    <h4 className="text-white font-semibold mb-2">
+                    <h4 className="text-white text-xl nt-semibold mb-2">
                       {step.title}
                     </h4>
-                    <p className="text-white/70 text-sm leading-relaxed tracking-wide">
+                    <p className="text-white/70 text-base font-extralight leading-relaxed tracking-wide">
                       {step.text}
                     </p>
                   </div>
