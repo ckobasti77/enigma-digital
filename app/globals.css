@@ -131,3 +131,27 @@
   background-color:rgba(255, 255, 255, .4);
   backdrop-filter: blur(4px);
 }
+
+.timeline-card .glass-panel {
+  position: relative;
+  overflow: visible;
+}
+
+.timeline-card .timeline-shine {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 10%;
+  height: 220%;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.85) 45%,
+    rgba(255,255,255,0) 100%
+  );
+  pointer-events: none;
+  transform: translate3d(-180%, 0, 0) rotate(18deg);
+  opacity: 0;
+  filter: blur(1px);
+  mix-blend-mode: screen;
+}

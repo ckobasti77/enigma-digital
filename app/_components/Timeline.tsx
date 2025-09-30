@@ -15,6 +15,9 @@ type Step = {
   text: string;
 };
 
+const SHINE_START = { opacity: 0, xPercent: -180, rotate: 18 };
+const SHINE_END = { xPercent: 240 };
+
 const Timeline = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -39,19 +42,39 @@ const Timeline = () => {
 
       document.querySelectorAll(".timeline-item").forEach((item) => {
         const line = item.querySelector(".connector-line");
-        const card = item.querySelector(".timeline-card");
+        const card = item.querySelector<HTMLDivElement>(".timeline-card");
         const dot = item.querySelector(".timeline-dot");
+        const shine = card?.querySelector<HTMLElement>(".timeline-shine");
 
         if (line && card && dot) {
           gsap.set(line, { background: "#333" });
           gsap.set(card, { borderColor: "#333" });
           gsap.set(dot, { scale: 0, opacity: 0 });
+          if (shine) gsap.set(shine, SHINE_START);
 
           ScrollTrigger.create({
             trigger: item,
             start: "center center",
             end: "bottom center",
             onEnter: () => {
+              card.classList.add("timeline-card--active");
+
+              if (shine) {
+                gsap.killTweensOf(shine);
+                gsap.fromTo(shine, SHINE_START, {
+                  ...SHINE_END,
+                  opacity: 0.95,
+                  duration: 0.45, // faster sweep
+                  ease: "power4.out",
+                  onStart: () => {
+                    gsap.set(shine, SHINE_START);
+                  },
+                  onComplete: () => {
+                    gsap.set(shine, SHINE_START);
+                  },
+                });
+              }
+
               gsap.to(line, {
                 background:
                   "linear-gradient(to right, #ec4899, #22d3ee, #3b82f6)",
@@ -71,6 +94,13 @@ const Timeline = () => {
               });
             },
             onLeaveBack: () => {
+              card.classList.remove("timeline-card--active");
+
+              if (shine) {
+                gsap.killTweensOf(shine);
+                gsap.set(shine, SHINE_START);
+              }
+
               gsap.to(line, {
                 background: "#333",
                 duration: 0.4,
@@ -95,50 +125,64 @@ const Timeline = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative py-20 px-6 xl:px-32 bg-black">
-      <AutoTypingConsole text="Get To Know How We Do it" className="mb-12 text-center" />
+    <section
+      id="timeline-spine"
+      ref={containerRef}
+      className="relative bg-[url(/./assets/background4.avif)] bg-repeat bg-cover"
+    >
+      <div className="bg-gradient-to-t w-full h-full from-black via-transparent to-black">
+        <div className="backdrop-blur-[30px] bg-[rgba(0,0,0,0.5)] py-20 px-6 xl:px-32">
+          <AutoTypingConsole
+            text="Get To Know How We Do it"
+            className="mb-12 text-center"
+          />
 
-      <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-pink-400 via-cyan-400 to-blue-400 rounded-full timeline-spine origin-top"></div>
+          <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-pink-400 via-cyan-400 to-blue-400 rounded-full timeline-spine origin-top" />
 
-      <div className="space-y-24 relative">
-        {steps.map((step: Step, i: number) => (
-          <div
-            key={step.number}
-            className={`timeline-item relative flex items-center w-full ${
-              i % 2 === 0 ? "justify-start" : "justify-end"
-            }`}
-          >
-            <div
-              className={`connector-line absolute top-1/2 w-1/2 h-[2px] ${
-                i % 2 === 0
-                  ? "right-1/2"
-                  : "left-1/2"
-              }`}
-            ></div>
-            <div
-              className={`timeline-dot absolute top-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-pink-400 via-cyan-400 to-blue-400 transform -translate-y-1/2 ${
-                i % 2 === 0
-                  ? "right-1/2 translate-x-1/2"
-                  : "left-1/2 -translate-x-1/2"
-              }`}
-            ></div>
+          <div className="space-y-24 relative">
+            {steps.map((step: Step, i: number) => (
+              <div
+                key={step.number}
+                className={`timeline-item relative flex items-center w-full ${
+                  i % 2 === 0 ? "justify-start" : "justify-end"
+                }`}
+              >
+                <div
+                  className={`connector-line absolute top-1/2 w-1/2 h-[2px] ${
+                    i % 2 === 0 ? "right-1/2" : "left-1/2"
+                  }`}
+                />
+                <div
+                  className={`timeline-dot absolute top-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-pink-400 via-cyan-400 to-blue-400 transform -translate-y-1/2 ${
+                    i % 2 === 0
+                      ? "right-1/2 translate-x-1/2"
+                      : "left-1/2 -translate-x-1/2"
+                  }`}
+                />
 
-            <div className="timeline-card relative z-10 group p-0.5 w-full max-w-md rounded-xl border">
-              <div className="bg-blur rounded-xl p-6 h-full transition-transform duration-300 -translate-y-5 group-hover:-translate-y-0">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-cyan-300 font-bold text-xl">
-                    {step.number}
-                  </span>
-                  <CheckCircle2 className="text-pink-400 w-5 h-5 opacity-70 group-hover:opacity-100 transition" />
+                <div className="timeline-card relative z-10 group p-0.5 w-full max-w-md rounded-xl border overflow-hidden">
+                  <div className="bg-blur glass-panel rounded-xl p-6 h-full transition-transform duration-300 -translate-y-5 group-hover:-translate-y-0 z-50">
+                    <span className="timeline-shine" aria-hidden />
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-cyan-300 font-bold text-xl">
+                        {step.number}
+                      </span>
+                      <CheckCircle2 className="text-pink-400 w-5 h-5 opacity-70 group-hover:opacity-100 transition" />
+                    </div>
+                    <h4 className="text-white font-semibold mb-2">
+                      {step.title}
+                    </h4>
+                    <p className="text-white/70 text-sm leading-relaxed tracking-wide">
+                      {step.text}
+                    </p>
+                  </div>
                 </div>
-                <h4 className="text-white font-semibold mb-2">{step.title}</h4>
-                <p className="text-white/70 text-sm leading-relaxed tracking-wide">
-                  {step.text}
-                </p>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
+
+          <div id="timeline-end-sentinel" className="h-1 w-px bg-transparent" />
+        </div>
       </div>
     </section>
   );
