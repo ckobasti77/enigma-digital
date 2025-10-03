@@ -38,8 +38,8 @@ export default function AutoTypingConsole({ text, className } : AutoTypingConsol
       const y = rect.top - parentRect.top;
 
       tl.to(cursorRef.current, { x, y, duration: 0, ease: "none" })
-        .to(cursorRef.current, { opacity: 0, duration: 0.07 })
-        .to(cursorRef.current, { opacity: 1, duration: 0.07 })
+      .to(cursorRef.current, { opacity: 1, duration: 0.03 })
+      .to(cursorRef.current, { opacity: 0, duration: 0.03 })
         .to(el, { opacity: 1, duration: 0.01 }, "<");
     });
 

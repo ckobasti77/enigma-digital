@@ -92,9 +92,9 @@ export default function RootLayout({
       <body
         className={`${deltha.variable} ${terminal.variable} ${aeonik.variable} ${brokenConsole.variable} font-aeonik antialiased`}
       >
-        <div className="bw-full h-full bg-[url(/./assets/background.avif)] bg-cover bg-repeat">
+        <div className="w-full h-full bg-[url(/./assets/background.avif)] bg-cover bg-repeat">
           <Navbar />
-          <div className="w-full h-full -z-[9999]">{children}</div>
+          <div className="w-full h-full">{children}</div>
         </div>
       </body>
     </html>
