@@ -1,5 +1,4 @@
 import {
-  Boxes,
   Brush,
   Megaphone,
   Monitor,
@@ -44,7 +43,7 @@ export const navLinks = [
         id: 4,
         to: "seo-geo",
         headline: "SEO & GEO",
-        subheadline: "Appear at top on Google & Chatbots",
+        subheadline: "Appear at top on Google & Chatbots.",
         icon: Search,
       },
       {
@@ -58,7 +57,7 @@ export const navLinks = [
         id: 6,
         to: "social-media",
         headline: "Social Media",
-        subheadline: "Turning followers into fans",
+        subheadline: "Turning followers into fans.",
         icon: Megaphone,
       },
     ],

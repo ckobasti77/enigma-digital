@@ -14,6 +14,15 @@ module.exports = {
         aeonik: ['var(--font-aeonik)', ...defaultTheme.fontFamily.sans],
         brokenConsole: ['var(--font-broken-console)', ...defaultTheme.fontFamily.sans],
       },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        marquee: 'marquee 36s linear infinite',
+      },
     },
   },
   plugins: [],

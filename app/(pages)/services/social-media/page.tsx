@@ -1,12 +1,13 @@
-import AutoTypingConsole from "@/components/ui/auto-typing-console";
-import React from "react";
+﻿'use client';
+
+import PageHero from "@/app/_components/PageHero";
+import { serviceDetails } from "@/constants/serviceDetails";
+
+const detail = serviceDetails["social-media"];
 
 const SocialMedia = () => {
-  return (
-    <div className="min-h-screen text-white w-full grid place-items-center">
-      <AutoTypingConsole text={"Social Media"} />
-    </div>
-  );
+  return <PageHero {...detail} />;
 };
 
 export default SocialMedia;
+

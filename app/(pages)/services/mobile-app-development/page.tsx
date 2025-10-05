@@ -1,12 +1,13 @@
-import AutoTypingConsole from "@/components/ui/auto-typing-console";
-import React from "react";
+﻿'use client';
+
+import PageHero from "@/app/_components/PageHero";
+import { serviceDetails } from "@/constants/serviceDetails";
+
+const detail = serviceDetails["mobile-app-development"];
 
 const MobileAppDevelopment = () => {
-  return (
-    <div className="min-h-screen text-white w-full grid place-items-center">
-      <AutoTypingConsole text={"Mobile App Development"} />
-    </div>
-  );
+  return <PageHero {...detail} />;
 };
 
 export default MobileAppDevelopment;
+

@@ -1,6 +1,7 @@
-"use client";
+﻿"use client";
 
 import React from "react";
+import ThemeSwitcher from "./ThemeSwitcher";
 import Link from "next/link";
 import { ChevronUp } from "lucide-react";
 import { LucideIcon } from "lucide-react";
@@ -47,6 +48,9 @@ const NavLinksMobile = ({
       ${navOpen ? "translate-y-0 opacity-100" : "-translate-y-[1000px] opacity-0"}`}
     >
       <div className="bg-black p-6 rounded-b-xl flex lg:hidden flex-col gap-y-3 w-full">
+        <div className="mb-6 flex w-full justify-end">
+          <ThemeSwitcher variant="ghost" />
+        </div>
         {navLinks.map((link: NavLink, i: number) => {
           const hasDropdown = !!link.dropdownLinks?.length;
 

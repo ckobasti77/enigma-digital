@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+﻿import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./_components/Navbar";
+import ScrollToTopButton from "./_components/ScrollToTopButton";
 import localFont from "next/font/local";
+import { ThemeProvider } from "./_components/ThemeProvider";
 
 const deltha = localFont({
   src: [
@@ -88,14 +89,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${deltha.variable} ${terminal.variable} ${aeonik.variable} ${brokenConsole.variable} font-aeonik antialiased`}
       >
-        <div className="w-full h-full bg-[url(/./assets/background.avif)] bg-cover bg-repeat">
-          <Navbar />
-          <div className="w-full h-full">{children}</div>
-        </div>
+        <ThemeProvider>
+          <div className="w-full h-full bg-[url(/./assets/background.avif)] bg-cover bg-repeat">
+            <Navbar />
+            <div className="w-full h-full">{children}</div>
+            <ScrollToTopButton />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

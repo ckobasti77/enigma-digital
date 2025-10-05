@@ -1,12 +1,13 @@
-import AutoTypingConsole from "@/components/ui/auto-typing-console";
-import React from "react";
+﻿'use client';
+
+import PageHero from "@/app/_components/PageHero";
+import { serviceDetails } from "@/constants/serviceDetails";
+
+const detail = serviceDetails["seo-geo"];
 
 const SeoGeo = () => {
-  return (
-    <div className="min-h-screen text-white w-full grid place-items-center">
-      <AutoTypingConsole text={"SEO & GEO"} />
-    </div>
-  );
+  return <PageHero {...detail} />;
 };
 
 export default SeoGeo;
+

@@ -1,10 +1,12 @@
-"use client";
+﻿"use client";
 
 import React, { useCallback, useEffect, useState } from "react";
+import clsx from "clsx";
 import Burger from "./Burger";
 import NavLinks from "./NavLinks";
 import NavLinksMobile from "./NavLinksMobile";
 import Link from "next/link";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(true);
@@ -38,38 +40,42 @@ const Navbar = () => {
     if (!navOpen) setCurrentDropdown(0);
   }, [navOpen]);
 
-  
-
   return (
     <div
-      className={`fixed top-0 left-0 ${scrollPos <= 0 ? 'bg-transparent' : 'bg-blur'} w-full z-50 transition-transform duration-300 ${
+      className={clsx(
+        "fixed left-0 top-0 z-50 w-full transition-transform duration-300",
+        scrollPos <= 0 ? "bg-transparent" : "bg-blur",
         showNav ? "translate-y-0" : "-translate-y-full"
-      }`}
+      )}
     >
       <div
-        className={`w-full py-4 px-6 xl:px-20 flex items-center justify-between transition-colors ${
-          navOpen ? "bg-black" : "bg-transparent"
-        }`}
+        className={clsx(
+          "mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4 transition-colors",
+          navOpen ? "bg-black/90" : "bg-transparent"
+        )}
       >
         <Link
-          href='/'
+          href="/"
           style={{ fontFamily: "var(--font-deltha)" }}
-          className="text-3xl font-deltha relative font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent inline-block"
+          className="relative inline-block text-3xl font-deltha font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent"
         >
           ENIGMA{" "}
           <span
             style={{ fontFamily: "var(--font-deltha)" }}
-            className="absolute -bottom-1 text-sm -right-3 font-deltha font-black text-white"
+            className="absolute -bottom-1 -right-3 text-sm font-deltha font-black text-white"
           >
             digital
           </span>
         </Link>
 
-        <Burger toggleNav={toggleNav} navOpen={navOpen} />
-        <NavLinks
-          setCurrentDropdown={setCurrentDropdown}
-          currentDropdown={currentDropdown}
-        />
+        <div className="flex items-center gap-6">
+          <NavLinks
+            setCurrentDropdown={setCurrentDropdown}
+            currentDropdown={currentDropdown}
+          />
+          <ThemeSwitcher />
+          <Burger toggleNav={toggleNav} navOpen={navOpen} />
+        </div>
       </div>
 
       <NavLinksMobile
