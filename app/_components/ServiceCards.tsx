@@ -70,7 +70,7 @@ export default function ServiceCards() {
               <Link
                 key={service.id}
                 href={`/services/${service.to}`}
-                className="group relative overflow-hidden rounded-3xl border border-theme theme-card transition-theme px-6 py-5 card-lift transform-gpu translate-y-0 hover:-translate-y-1 hover:shadow-theme"
+                className="group relative overflow-hidden rounded-3xl border border-theme theme-card px-6 py-5 card-lift transform-gpu translate-y-0 hover:-translate-y-1 hover:shadow-theme"
               >
                 <div
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -104,6 +104,7 @@ export default function ServiceCards() {
     </section>
   );
 }
+
 
 
 

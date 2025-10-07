@@ -4,12 +4,11 @@ import PageHero from "@/app/_components/PageHero";
 import { navLinks } from "@/constants/navLinks";
 
 const servicesLink = navLinks.find((link) => link.text === "Services");
-const serviceHighlights =
-  servicesLink?.dropdownLinks.map((service) => ({
-    title: service.headline,
-    body: service.subheadline,
-    icon: service.icon,
-  })) ?? [];
+const serviceHighlights = (servicesLink?.dropdownLinks ?? []).map((service) => ({
+  title: service.headline,
+  body: service.subheadline,
+  icon: service.icon,
+}));
 
 const Services = () => {
   return (
@@ -33,4 +32,3 @@ const Services = () => {
 };
 
 export default Services;
-

@@ -92,8 +92,8 @@ export default function Projects() {
             </div>
             <div className="grid gap-4 md:grid-cols-2">
               {capabilities.map((capability) => (
-                <div key={capability.title} className="rounded-3xl border border-theme theme-card transition-theme p-5">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-theme theme-card transition-theme text-cyan-200">
+                <div key={capability.title} className="rounded-3xl border border-theme theme-card p-5">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-theme theme-card text-cyan-200">
                     <capability.icon className="h-5 w-5" aria-hidden />
                   </span>
                   <h3 className="mt-3 text-base font-semibold text-theme-primary">{capability.title}</h3>
@@ -120,7 +120,7 @@ export default function Projects() {
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             {caseStudies.map((study) => (
-              <article key={study.title} className="group relative overflow-hidden rounded-3xl border border-theme theme-card transition-theme transition-theme card-lift transform-gpu translate-y-0 hover:-translate-y-1 hover:shadow-theme">
+              <article key={study.title} className="group relative overflow-hidden rounded-3xl border border-theme theme-card transition-theme card-lift transform-gpu translate-y-0 hover:-translate-y-1 hover:shadow-theme">
                 <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{
                   background: 'linear-gradient(135deg, rgba(56,189,248,0.18), rgba(168,85,247,0.16))',
                   mixBlendMode: 'screen',
@@ -152,7 +152,7 @@ export default function Projects() {
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             {testimonials.map((testimonial) => (
-              <blockquote key={testimonial.person} className="relative overflow-hidden rounded-3xl border border-theme theme-card transition-theme p-6 text-left">
+              <blockquote key={testimonial.person} className="relative overflow-hidden rounded-3xl border border-theme theme-card p-6 text-left">
                 <div className="space-y-4">
                   <p className="text-base italic leading-relaxed text-slate-200/85">“{testimonial.quote}”</p>
                   <footer className="space-y-1 text-sm">
@@ -167,7 +167,7 @@ export default function Projects() {
       </section>
 
       <section className="px-6 py-24">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 rounded-3xl border border-theme theme-card transition-theme px-8 py-10 text-center shadow-theme">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 rounded-3xl border border-theme theme-card px-8 py-10 text-center shadow-theme">
           <h2 className="text-3xl font-medium text-theme-primary md:text-4xl">Planning a high-stakes release?</h2>
           <p className="mx-auto max-w-2xl text-sm leading-relaxed text-slate-300/80">
             Show us the brief, deck, or KPI you need to move. We’ll map the squad, timeline, and proof points from similar launches so you can make an informed call.
@@ -180,6 +180,7 @@ export default function Projects() {
     </div>
   );
 }
+
 
 
 

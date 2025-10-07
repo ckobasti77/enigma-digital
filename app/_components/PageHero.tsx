@@ -104,7 +104,7 @@ export default function PageHero({
             {highlights?.map(({ title: highlightTitle, body, icon: Icon, badge }) => (
               <article
                 key={highlightTitle}
-                className="group relative overflow-hidden rounded-3xl border border-theme theme-card transition-theme px-6 py-6 card-lift transform-gpu translate-y-0 hover:-translate-y-1 hover:shadow-theme"
+                className="group relative overflow-hidden rounded-3xl border border-theme theme-card px-6 py-6 card-lift transform-gpu translate-y-0 hover:-translate-y-1 hover:shadow-theme"
               >
                 <div
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -115,7 +115,7 @@ export default function PageHero({
                 />
                 <div className="relative flex gap-4">
                   {Icon ? (
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-theme theme-card transition-theme text-cyan-200">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-theme theme-card text-cyan-200">
                       <Icon className="h-6 w-6" aria-hidden />
                     </span>
                   ) : null}
@@ -139,6 +139,7 @@ export default function PageHero({
     </section>
   );
 }
+
 
 
 

@@ -149,7 +149,7 @@ export default function EffectiveSoftware() {
                   itemRefs.current[index] = el;
                 }}
                 className={clsx(
-                  "group relative overflow-hidden rounded-3xl border border-theme theme-card transition-theme px-6 py-5 card-lift transform-gpu hover:-translate-y-1 hover:shadow-theme",
+                  "group relative overflow-hidden rounded-3xl border border-theme theme-card px-6 py-5 card-lift transform-gpu hover:-translate-y-1 hover:shadow-theme",
                   active
                     ? "shadow-theme"
                     : "opacity-80 hover:opacity-100"
@@ -174,7 +174,7 @@ export default function EffectiveSoftware() {
                   style={{ background: "linear-gradient(135deg, rgba(56,189,248,0.22), rgba(168,85,247,0.2))", mixBlendMode: "screen" }}
                 />
                 <div className="relative flex items-center gap-4">
-                  <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-theme theme-card transition-theme text-sm font-semibold text-theme-primary">
+                  <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-theme theme-card text-sm font-semibold text-theme-primary">
                     0{pillar.id}
                   </div>
                   <div className="flex flex-col gap-2">
@@ -223,6 +223,7 @@ function BadgeDot({ color, label }: BadgeProps) {
     </div>
   );
 }
+
 
 
 

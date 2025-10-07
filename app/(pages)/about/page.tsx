@@ -95,7 +95,7 @@ export default function About() {
               {studioMetrics.map((metric) => (
                 <div
                   key={metric.label}
-                  className="rounded-2xl border border-theme theme-card transition-theme px-5 py-6 text-center shadow-theme"
+                  className="rounded-2xl border border-theme theme-card px-5 py-6 text-center shadow-theme"
                 >
                   <div className="text-3xl font-semibold text-theme-primary">{metric.value}</div>
                   <p className="mt-2 text-xs uppercase tracking-[0.28em] text-theme-muted">
@@ -105,7 +105,7 @@ export default function About() {
               ))}
             </div>
           </div>
-          <div className="relative flex-1 overflow-hidden rounded-3xl border border-theme theme-card transition-theme p-6">
+          <div className="relative flex-1 overflow-hidden rounded-3xl border border-theme theme-card p-6">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.32),rgba(15,23,42,0)_65%)] opacity-60" />
             <div className="relative space-y-5">
               <h2 className="text-lg font-semibold text-theme-primary">What working with us feels like</h2>
@@ -146,14 +146,14 @@ export default function About() {
             {principles.map((principle) => (
               <article
                 key={principle.title}
-                className="group relative overflow-hidden rounded-3xl border border-theme theme-card transition-theme transition-theme card-lift transform-gpu translate-y-0 hover:-translate-y-1 hover:shadow-theme"
+                className="group relative overflow-hidden rounded-3xl border border-theme theme-card transition-theme card-lift transform-gpu translate-y-0 hover:-translate-y-1 hover:shadow-theme"
               >
                 <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{
                   background: 'linear-gradient(140deg, rgba(56,189,248,0.16), rgba(168,85,247,0.14))',
                   mixBlendMode: 'screen',
                 }} />
                 <div className="relative space-y-3">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-theme theme-card transition-theme text-cyan-200">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-theme theme-card text-cyan-200">
                     <principle.icon className="h-5 w-5" aria-hidden />
                   </span>
                   <h3 className="text-lg font-semibold text-theme-primary">{principle.title}</h3>
@@ -178,7 +178,7 @@ export default function About() {
           </div>
           <div className="flex-1 space-y-8">
             {studioMilestones.map((milestone) => (
-              <div key={milestone.year} className="grid gap-4 rounded-3xl border border-theme theme-card transition-theme p-6 md:grid-cols-[120px_1fr]">
+              <div key={milestone.year} className="grid gap-4 rounded-3xl border border-theme theme-card p-6 md:grid-cols-[120px_1fr]">
                 <div className="flex items-start">
                   <span className="rounded-full border border-theme px-3 py-1 text-xs uppercase tracking-[0.35em] text-cyan-300">
                     {milestone.year}
@@ -207,7 +207,7 @@ export default function About() {
             {leadership.map((leader) => (
               <article
                 key={leader.name}
-                className="relative overflow-hidden rounded-3xl border border-theme theme-card transition-theme p-6 text-left"
+                className="relative overflow-hidden rounded-3xl border border-theme theme-card p-6 text-left"
               >
                 <div className="flex h-32 items-center justify-center rounded-2xl border border-dashed border-theme theme-card-muted text-xs uppercase tracking-[0.4em] text-theme-muted">
                   Team portrait placeholder
@@ -225,6 +225,7 @@ export default function About() {
     </div>
   );
 }
+
 
 
 
