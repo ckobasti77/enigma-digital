@@ -54,12 +54,10 @@ const clamp = (value: number, min: number, max: number) =>
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<ThemeMode>("dark");
   const [transition, setTransition] = useState<ThemeTransitionState | null>(null);
-  const commitTimeoutRef = useRef<ReturnType<typeof window.setTimeout> | null>(
-    null
-  );
+  const commitTimeoutRef = useRef<number | null>(null);
 
   const clearCommitTimeout = useCallback(() => {
-    if (commitTimeoutRef.current) {
+    if (commitTimeoutRef.current !== null) {
       window.clearTimeout(commitTimeoutRef.current);
       commitTimeoutRef.current = null;
     }
@@ -131,7 +129,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 
   useEffect(() => {
-    if (!transition) return;
+    if (!transition || typeof window === "undefined") return;
 
     clearCommitTimeout();
 
