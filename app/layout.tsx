@@ -94,7 +94,7 @@ export default function RootLayout({
         className={`${deltha.variable} ${terminal.variable} ${aeonik.variable} ${brokenConsole.variable} font-aeonik antialiased`}
       >
         <ThemeProvider>
-          <div className="w-full h-full bg-[url(/./assets/background.avif)] bg-cover bg-repeat">
+          <div className="app-shell bg-[url(/./assets/background.avif)] bg-cover bg-repeat">
             <Navbar />
             <div className="w-full h-full">{children}</div>
             <ScrollToTopButton />

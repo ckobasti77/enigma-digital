@@ -1,26 +1,39 @@
 ﻿"use client";
 
 import { Bounds, useGLTF, useTexture } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { useEffect, useMemo, useRef } from "react";
+import { Suspense, useEffect, useMemo, useRef } from "react";
+import { useTheme } from "./ThemeProvider";
 
 type AxisKey = "x" | "y" | "z";
+type ThemeMode = "light" | "dark";
+
+const SHAPE_PALETTES: Record<ThemeMode, { primary: string; accent: string; contrast: string }> = {
+  light: {
+    primary: "#0f172a",
+    accent: "#2563eb",
+    contrast: "#f97316",
+  },
+  dark: {
+    primary: "#9db4d6",
+    accent: "#60a5fa",
+    contrast: "#fbbf24",
+  },
+};
 
 function Laptop() {
   const { scene } = useGLTF("/assets/models/laptop/laptop.glb");
   const tiltRef = useRef<THREE.Group>(null);
 
-  const screenTexture = useTexture("/assets/images/screen-saver.png");
+  const screenTexture = useTexture("/assets/images/screen-saver2.avif");
   useEffect(() => {
     if (!screenTexture) return;
-    screenTexture.flipY = false;
     screenTexture.colorSpace = THREE.SRGBColorSpace;
     screenTexture.wrapS = screenTexture.wrapT = THREE.ClampToEdgeWrapping;
     screenTexture.minFilter = THREE.LinearFilter;
     screenTexture.magFilter = THREE.LinearFilter;
-    screenTexture.center.set(0.5, 0.5);    // rotate around the center
-    screenTexture.rotation = Math.PI;      // flip upside down
+    screenTexture.center.set(0.5, 0.5);
     screenTexture.anisotropy = Math.min(8, screenTexture.anisotropy ?? 0);
     screenTexture.needsUpdate = true;
   }, [screenTexture]);
@@ -162,14 +175,89 @@ function Laptop() {
   return <primitive ref={tiltRef} object={scene} scale={4} />;
 }
 
+type StaticShapeProps = {
+  position: [number, number, number];
+  color: string;
+  kind: "cube" | "pyramid" | "cone";
+  scale?: number;
+  spinSpeed?: number;
+};
+
+function StaticShape({ position, color, kind, scale = 0.3, spinSpeed = 0.6 }: StaticShapeProps) {
+  const meshRef = useRef<THREE.Mesh>(null);
+
+  useFrame((_, delta) => {
+    if (!meshRef.current) return;
+    meshRef.current.rotation.y += spinSpeed * delta;
+    // meshRef.current.rotation.x += spinSpeed * 0.25 * delta;  
+  });
+
+  return (
+    <mesh ref={meshRef} position={position} castShadow receiveShadow>
+      {kind === "cube" ? (
+        <boxGeometry args={[scale * 1.25, scale * 1.25, scale * 1.25]} />
+      ) : kind === "cone" ? (
+        <coneGeometry args={[scale * 0.8, scale * 1.6, 40]} />
+      ) : (
+        <tetrahedronGeometry args={[scale * 1.1, 0]} />
+      )}
+      <meshStandardMaterial
+        color={color}
+        roughness={0.45}
+        metalness={0.4}
+        emissive={new THREE.Color(color).clone().multiplyScalar(0.2)}
+        emissiveIntensity={0.6}
+        toneMapped={true}
+      />
+    </mesh>
+  );
+}
+
+function AmbientShapes() {
+  const { theme } = useTheme();
+  const palette = useMemo(() => SHAPE_PALETTES[theme ?? "dark"], [theme]);
+
+  return (
+    <group>
+      <StaticShape
+        position={[2, 0.95, -0.25]}
+        color={palette.accent}
+        kind="pyramid"
+        scale={0.3}
+        spinSpeed={0.75}
+      />
+      <StaticShape
+        position={[-1.2, -0.05, 0.8]}
+        color={palette.primary}
+        kind="cube"
+        scale={0.28}
+        spinSpeed={0.5}
+      />
+      <StaticShape
+        position={[2, -0.9, 0.5]}
+        color={palette.contrast}
+        kind="cone"
+        scale={0.34}
+        spinSpeed={0.85}
+      />
+    </group>
+  );
+}
+
 export default function LaptopScene() {
   return (
-    <Canvas camera={{ position: [0, 1, 3], fov: 45 }}>
+    <Canvas camera={{ position: [0, 2, 3], fov: 45 }} className="-translate-x-16 md:translate-x-0">
       <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 5, 5]} intensity={1} />
-      <Bounds fit clip observe margin={1.2}>
-        <Laptop />
-      </Bounds>
+      <directionalLight position={[5, 5, 5]} intensity={1.1} castShadow />
+      <Suspense fallback={null}>
+        <Bounds fit clip observe margin={1.2}>
+          <Laptop />
+        </Bounds>
+        <AmbientShapes />
+      </Suspense>
     </Canvas>
   );
 }
+
+useGLTF.preload("/assets/models/laptop/laptop.glb");
+

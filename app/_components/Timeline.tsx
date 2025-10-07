@@ -1,4 +1,4 @@
-// app/_components/Timeline.tsx
+﻿// app/_components/Timeline.tsx
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -111,9 +111,9 @@ const Timeline = () => {
         const bg = item.querySelector<HTMLElement>(".timeline-bg");
 
         if (line && card && dot && bg) {
-          gsap.set(line, { background: "#374151" });
-          gsap.set(card, { borderColor: "rgba(51,65,85,0.8)" });
-          gsap.set(bg, { backgroundColor: "rgba(7,11,22,0.96)", backgroundImage: "none" });
+          gsap.set(line, { background: "var(--timeline-line-idle)" });
+          gsap.set(card, { borderColor: "var(--border-strong)" });
+          gsap.set(bg, { backgroundColor: "var(--surface-card-muted)", backgroundImage: "none" });
           gsap.set(dot, { scale: 0, opacity: 0 });
 
           attachHoverSpotlight(card, bg);
@@ -139,13 +139,13 @@ const Timeline = () => {
               });
               
               gsap.to(card, {
-                borderColor: "rgba(165,243,252,0.45)",
+                borderColor: "var(--timeline-line-active)",
                 duration: 0.6,
               });
               gsap.to(bg, {
                 backgroundImage:
                   "linear-gradient(135deg, rgba(56,189,248,0.2), rgba(168,85,247,0.2))",
-                backgroundColor: "rgba(7,11,22,0.98)",
+                backgroundColor: "var(--timeline-card-active)",
                 duration: 0.6,
               });
               gsap.to(title, { opacity: 1 });
@@ -165,14 +165,14 @@ const Timeline = () => {
               bg.style.removeProperty("--spot-y");
 
 
-              gsap.to(line, { background: "#374151", duration: 0.4, scaleX: 0 });
+              gsap.to(line, { background: "var(--timeline-line-idle)", duration: 0.4, scaleX: 0 });
               gsap.to(card, {
-                borderColor: "rgba(51,65,85,0.8)",
+                borderColor: "var(--border-strong)",
                 duration: 0.6,
               });
               gsap.to(bg, {
                 backgroundImage: "none",
-                backgroundColor: "rgba(7,11,22,0.96)",
+                backgroundColor: "var(--surface-card-muted)",
                 duration: 0.6,
               });
               gsap.to(title, { opacity: 0 });
@@ -195,10 +195,10 @@ const Timeline = () => {
     <section
       id="timeline-spine"
       ref={containerRef}
-      className="relative flex flex-col items-center overflow-hidden bg-slate-950 px-6 py-24"
+      className="relative flex flex-col items-center overflow-hidden theme-section px-6 py-24"
     >
       <div
-        className="pointer-events-none absolute left-1/2 top-12 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.18)_0%,rgba(124,58,237,0.16)_40%,rgba(15,23,42,0)_78%)] blur-[140px]"
+        className="pointer-events-none absolute left-1/2 top-12 h-[420px] w-[420px] -translate-x-1/2 rounded-full glow-accent blur-[140px]"
         aria-hidden
       />
 
@@ -211,7 +211,7 @@ const Timeline = () => {
             text="Get to know how we do it"
             className="text-left"
           />
-          <p className="text-base leading-relaxed text-slate-300/80">
+          <p className="text-base leading-relaxed text-theme-muted">
             Each milestone blends discovery, design, and delivery so you stay aligned and keep releasing value. Scroll the spine or hover a phase to explore what lights up.
           </p>
         </header>
@@ -243,18 +243,18 @@ const Timeline = () => {
                   )}
                 />
 
-                <div className="timeline-card relative z-10 w-full max-w-lg overflow-hidden rounded-3xl border border-white/10">
-                  <div className="timeline-bg rounded-3xl bg-slate-950 p-6">
+                <div className="timeline-card relative z-10 w-full max-w-lg overflow-hidden rounded-3xl border border-theme">
+                  <div className="timeline-bg rounded-3xl theme-card-muted p-6">
                     <div className="flex items-center justify-between gap-4 pb-4">
-                      <span className="text-sm font-semibold uppercase tracking-[0.4em] text-slate-300/70">
+                      <span className="text-sm font-semibold uppercase tracking-[0.4em] text-theme-muted">
                         Phase {step.number}
                       </span>
                       <CheckCircle2 className="h-5 w-5 text-cyan-200/80" />
                     </div>
-                    <h4 className="timeline-title text-xl font-semibold text-white opacity-0">
+                    <h4 className="timeline-title text-xl font-semibold text-theme-primary opacity-0">
                       {step.title}
                     </h4>
-                    <p className="timeline-subtitle mt-3 text-sm leading-relaxed text-slate-300/85 opacity-0">
+                    <p className="timeline-subtitle mt-3 text-sm leading-relaxed text-theme-muted opacity-0">
                       {step.text}
                     </p>
                     <div className="timeline-step-number sr-only">{step.number}</div>

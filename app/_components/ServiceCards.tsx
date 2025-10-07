@@ -39,7 +39,7 @@ export default function ServiceCards() {
   }, []);
 
   return (
-    <section className="relative flex flex-col items-center overflow-hidden bg-slate-950 px-6 py-24 text-slate-100">
+    <section className="relative flex flex-col items-center overflow-hidden theme-section px-6 py-24 transition-theme">
       <div
         className={clsx(
           "pointer-events-none absolute left-1/2 top-8 h-[480px] w-[480px] -translate-x-1/2 rounded-full blur-[160px] transition-opacity duration-700",
@@ -55,10 +55,10 @@ export default function ServiceCards() {
           <span className="text-xs uppercase tracking-[0.6em] text-cyan-200/70">
             Services tuned for traction
           </span>
-          <h2 className="max-w-3xl font-aeonik text-4xl font-medium text-white md:text-5xl">
+          <h2 className="max-w-3xl font-aeonik text-4xl font-medium text-theme-primary md:text-5xl">
             Pick the discipline, we plug in the squad you need.
           </h2>
-          <p className="max-w-2xl text-base text-slate-300/85 md:text-lg">
+          <p className="max-w-2xl text-base text-theme-muted md:text-lg">
             Each engagement blends strategy, design, and engineering. Hover to preview the focus of every partnership and click to dive deeper.
           </p>
         </header>
@@ -70,7 +70,7 @@ export default function ServiceCards() {
               <Link
                 key={service.id}
                 href={`/services/${service.to}`}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/65 px-6 py-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(8,47,73,0.45)]"
+                className="group relative overflow-hidden rounded-3xl border border-theme theme-card transition-theme px-6 py-5 card-lift transform-gpu translate-y-0 hover:-translate-y-1 hover:shadow-theme"
               >
                 <div
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -82,19 +82,19 @@ export default function ServiceCards() {
                 />
                 <div className="relative w-full h-full flex items-center justify-between">
                   <div className="flex items-center justify-between gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/20 bg-slate-950/70">
-                      <Icon className="h-6 w-6 text-cyan-200/85" />
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-theme theme-card">
+                      <Icon className="h-6 w-6 text-cyan-300" />
                     </div>
                     <div className="text-left">
-                      <h3 className="text-lg font-semibold text-white">
+                      <h3 className="text-lg font-semibold text-theme-primary">
                         {service.headline}
                       </h3>
-                      <p className="text-sm text-slate-300/85">
+                      <p className="text-sm text-theme-muted">
                         {service.subheadline}
                       </p>
                     </div>
                   </div>
-                  <ExternalLink className="h-5 w-5 text-white/80" />
+                  <ExternalLink className="h-5 w-5 text-theme-muted" />
                 </div>
               </Link>
             );
@@ -104,4 +104,17 @@ export default function ServiceCards() {
     </section>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 

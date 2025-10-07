@@ -1,7 +1,7 @@
-/** @type {import('tailwindcss').Config} */
-const defaultTheme = require('tailwindcss/defaultTheme');
+﻿import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
-module.exports = {
+const config: Config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -10,20 +10,25 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        deltha: ['var(--font-deltha)', ...defaultTheme.fontFamily.sans],
-        aeonik: ['var(--font-aeonik)', ...defaultTheme.fontFamily.sans],
-        brokenConsole: ['var(--font-broken-console)', ...defaultTheme.fontFamily.sans],
+        deltha: ["var(--font-deltha)", ...defaultTheme.fontFamily.sans],
+        aeonik: ["var(--font-aeonik)", ...defaultTheme.fontFamily.sans],
+        brokenConsole: [
+          "var(--font-broken-console)",
+          ...defaultTheme.fontFamily.sans,
+        ],
       },
       keyframes: {
         marquee: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-50%)' },
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
       animation: {
-        marquee: 'marquee 36s linear infinite',
+        marquee: "marquee 36s linear infinite",
       },
     },
   },
   plugins: [],
 };
+
+export default config;

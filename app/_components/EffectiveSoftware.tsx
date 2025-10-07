@@ -88,7 +88,7 @@ export default function EffectiveSoftware() {
   }, []);
 
   return (
-    <section className="relative flex flex-col items-center overflow-hidden bg-slate-950 px-6 py-24 text-slate-100">
+    <section className="relative flex flex-col items-center overflow-hidden theme-section px-6 py-24 transition-theme">
       <div
         className="pointer-events-none absolute left-1/2 top-12 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.22)_0%,rgba(124,58,237,0.2)_40%,rgba(15,23,42,0)_80%)] blur-[140px]"
         aria-hidden
@@ -100,15 +100,15 @@ export default function EffectiveSoftware() {
             <span className="text-xs uppercase tracking-[0.6em] text-cyan-200/70">
               Effective software development
             </span>
-            <h2 className="font-aeonik text-4xl font-medium text-white md:text-[2.8rem]">
+            <h2 className="font-aeonik text-4xl font-medium text-theme-primary md:text-[2.8rem]">
               Strategy, design, and engineering working as one gets you further, faster.
             </h2>
-            <p className="max-w-xl text-base leading-relaxed text-slate-300/85">
+            <p className="max-w-xl text-base leading-relaxed text-theme-muted">
               We embed senior, cross-functional teams that own outcomes from discovery to optimisation. Each phase feeds the next, so you reduce rework, stay aligned, and keep value shipping.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-6 border-t border-white/10 pt-6 text-sm text-slate-300/80">
+          <div className="flex flex-wrap items-center gap-6 border-t border-theme pt-6 text-sm text-theme-muted">
             <BadgeDot color="bg-emerald-400" label="Discovery-to-delivery squads" />
             <BadgeDot color="bg-sky-400" label="Outcome-driven playbooks" />
             <BadgeDot color="bg-violet-400" label="Enterprise-ready standards" />
@@ -117,14 +117,14 @@ export default function EffectiveSoftware() {
           <div className="flex flex-wrap gap-3">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-slate-900 transition hover:bg-slate-200"
+              className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-theme hover:opacity-90"
             >
               Book a conversation
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-3 text-sm font-medium text-white transition hover:border-white hover:bg-white/5"
+              className="inline-flex items-center gap-2 rounded-full border border-theme px-5 py-3 text-sm font-medium text-theme-primary transition-theme hover:bg-muted"
             >
               View success stories
             </Link>
@@ -143,15 +143,15 @@ export default function EffectiveSoftware() {
           {pillars.map((pillar, index) => {
             const active = index === activeIndex;
             return (
-              <article
+              <div
                 key={pillar.id}
                 ref={(el) => {
                   itemRefs.current[index] = el;
                 }}
                 className={clsx(
-                  "group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/65 px-6 py-5 transition-all duration-300",
+                  "group relative overflow-hidden rounded-3xl border border-theme theme-card transition-theme px-6 py-5 card-lift transform-gpu hover:-translate-y-1 hover:shadow-theme",
                   active
-                    ? "shadow-[0_35px_70px_rgba(8,47,73,0.45)]"
+                    ? "shadow-theme"
                     : "opacity-80 hover:opacity-100"
                 )}
                 onPointerEnter={() => {
@@ -174,16 +174,16 @@ export default function EffectiveSoftware() {
                   style={{ background: "linear-gradient(135deg, rgba(56,189,248,0.22), rgba(168,85,247,0.2))", mixBlendMode: "screen" }}
                 />
                 <div className="relative flex items-center gap-4">
-                  <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-white/20 bg-slate-950/70 text-sm font-semibold text-white">
+                  <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-theme theme-card transition-theme text-sm font-semibold text-theme-primary">
                     0{pillar.id}
                   </div>
                   <div className="flex flex-col gap-2">
-                    <h3 className="text-lg font-semibold text-white">
+                    <h3 className="text-lg font-semibold text-theme-primary">
                       {pillar.title}
                     </h3>
                     <p
                       className={clsx(
-                        "text-sm leading-relaxed text-slate-300/85 transition-all duration-300",
+                        "text-sm leading-relaxed text-theme-muted transition-theme",
                         active ? "max-h-40 opacity-100" : "max-h-0 overflow-hidden opacity-0"
                       )}
                     >
@@ -201,7 +201,7 @@ export default function EffectiveSoftware() {
                     </Link>
                   </div>
                 </div>
-              </article>
+              </div>
             );
           })}
         </div>
@@ -223,3 +223,12 @@ function BadgeDot({ color, label }: BadgeProps) {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+

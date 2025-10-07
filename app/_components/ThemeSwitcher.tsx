@@ -30,8 +30,8 @@ const ThemeSwitcher = ({ variant = "solid", className }: ThemeSwitcherProps) => 
     "relative group flex h-11 w-11 items-center justify-center rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40 disabled:cursor-not-allowed disabled:opacity-70";
   const variantClasses =
     variant === "ghost"
-      ? "border border-white/20 bg-white/10 text-white hover:bg-white/20"
-      : "border border-slate-900/10 bg-white text-slate-900 shadow-[0_15px_35px_rgba(15,23,42,0.18)] hover:bg-slate-100 dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/25";
+      ? "border border-theme bg-transparent text-theme-primary transition-all duration-600 hover:bg-muted"
+      : "border border-theme bg-card text-theme-primary shadow-theme transition-all duration-600 hover:bg-muted";
 
   const iconClasses = "h-5 w-5 transition-transform duration-300";
 
@@ -51,7 +51,7 @@ const ThemeSwitcher = ({ variant = "solid", className }: ThemeSwitcherProps) => 
         />
       ) : (
         <Moon
-          className={clsx(iconClasses, "text-slate-500 dark:text-white")}
+          className={clsx(iconClasses, "text-theme-muted")}
           aria-hidden="true"
         />
       )}

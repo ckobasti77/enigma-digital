@@ -1,14 +1,7 @@
-"use client";
+﻿"use client";
 
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-    
 const Challenges = () => {
-  return (
-    <div className="h-screen w-full">
-      
-    </div>
-  )
-}
+  return <div className="h-screen w-full transition-theme" />;
+};
 
-export default Challenges
+export default Challenges;

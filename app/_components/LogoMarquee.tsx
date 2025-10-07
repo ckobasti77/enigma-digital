@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 
@@ -24,7 +24,7 @@ export default function LogoMarquee() {
   return (
     <section
       aria-label="Client logos"
-      className="relative isolate w-full  bg-slate-950 py-10"
+      className="relative isolate w-full  theme-section py-10"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6">
         {/* <p className="text-xs font-semibold uppercase tracking-[0.5em] text-slate-400/80">
@@ -33,11 +33,11 @@ export default function LogoMarquee() {
         <div className="relative overflow-hidden">
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent"
+            className="pointer-events-none absolute inset-y-0 left-0 w-16 "
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-slate-950 via-slate-950/70 to-transparent"
+            className="pointer-events-none absolute inset-y-0 right-0 w-16"
           />
           <ul className="flex min-w-max animate-marquee items-center gap-16 py-2">
             {marqueeItems.map((logo, index) => (
@@ -50,7 +50,7 @@ export default function LogoMarquee() {
                   alt={logo.name}
                   width={160}
                   height={56}
-                  className="h-10 w-auto origin-center invert"
+                  className="logo-theme h-10 w-auto origin-center"
                 />
               </li>
             ))}
