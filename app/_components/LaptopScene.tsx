@@ -246,7 +246,7 @@ function AmbientShapes() {
 
 export default function LaptopScene() {
   return (
-    <Canvas camera={{ position: [0, 2, 3], fov: 45 }} className="-translate-x-16 md:translate-x-0">
+    <Canvas camera={{ position: [0, 1, 3], fov: 45 }} className="-translate-x-16 md:translate-x-0">
       <ambientLight intensity={0.5} />
       <directionalLight position={[5, 5, 5]} intensity={1.1} castShadow />
       <Suspense fallback={null}>
