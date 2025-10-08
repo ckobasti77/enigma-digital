@@ -46,7 +46,7 @@ export default function Hero() {
               <HeroMetric value="24" label="Markets launched" />
               <HeroMetric value="98%" label="Client retention" />
             </div>
-            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.6em] text-cyan-500/70">
+            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.6em] text-cyan-400">
               Enigma Digital
             </span>
             <AutoTypingConsole text="Obsess clients with your brand" className="text-left text-theme-primary" />

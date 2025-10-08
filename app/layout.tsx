@@ -2,6 +2,7 @@
 import "./globals.css";
 import Navbar from "./_components/Navbar";
 import ScrollToTopButton from "./_components/ScrollToTopButton";
+import Footer from "./_components/Footer";
 import localFont from "next/font/local";
 import { ThemeProvider } from "./_components/ThemeProvider";
 
@@ -97,6 +98,7 @@ export default function RootLayout({
           <div className="app-shell bg-[url(/./assets/background.avif)] bg-cover bg-repeat">
             <Navbar />
             <div className="w-full h-full">{children}</div>
+            <Footer />
             <ScrollToTopButton />
           </div>
         </ThemeProvider>
@@ -104,3 +106,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+

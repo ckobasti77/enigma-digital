@@ -131,7 +131,7 @@ const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
                           style={{ fontFamily: "var(--font-aeonik)" }}
                           className="flex items-center gap-3 rounded-lg p-3 transition hover:bg-muted"
                         >
-                          <Icon className="mt-1 h-6 w-6 text-cyan-300" />
+                          <Icon className="mt-1 h-6 w-6 text-cyan-400" />
                           <div>
                             <h2 className="text-[18px] text-theme-primary">
                               {dropdownLink.headline}

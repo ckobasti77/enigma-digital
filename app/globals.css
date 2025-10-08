@@ -320,7 +320,7 @@
 }
 
 .transition-theme {
-  transition-property: background-color, color, border-color, box-shadow;
+  transition-property: background-color, color, border-color, box-shadow, transform, translate;
   transition-duration: 0.45s;
   transition-timing-function: ease;
 }
@@ -403,18 +403,13 @@ html[data-theme="dark"] .logo-theme {
   opacity: 0.9;
 }
 
-\r\n
 .card-lift {
-  transform: translate3d(0, 0, 0);
-  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+  transition: translate 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1) !important;
   transition-delay: 0s !important;
-  will-change: transform, box-shadow;
+  will-change: translate, transform, box-shadow;
 }
-
-
-
-
 
 
 

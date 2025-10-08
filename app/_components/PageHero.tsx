@@ -55,7 +55,7 @@ export default function PageHero({
       <div className="relative mx-auto grid w-full max-w-6xl gap-14 lg:grid-cols-[minmax(0,0.58fr)_minmax(0,1fr)]">
         <div className="space-y-8">
           {eyebrow ? (
-            <span className="inline-flex items-center text-xs uppercase tracking-[0.6em] text-cyan-300">
+            <span className="inline-flex items-center text-xs uppercase tracking-[0.6em] text-cyan-400">
               {eyebrow}
             </span>
           ) : null}
@@ -115,7 +115,7 @@ export default function PageHero({
                 />
                 <div className="relative flex gap-4">
                   {Icon ? (
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-theme theme-card text-cyan-200">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-theme theme-card text-cyan-400">
                       <Icon className="h-6 w-6" aria-hidden />
                     </span>
                   ) : null}
@@ -123,7 +123,7 @@ export default function PageHero({
                     <div className="flex flex-wrap items-center gap-2">
                       <h3 className="text-lg font-semibold text-theme-primary">{highlightTitle}</h3>
                       {badge ? (
-                        <span className="rounded-full border border-theme px-3 py-1 text-xs uppercase tracking-[0.3em] text-cyan-300">
+                        <span className="rounded-full border border-theme px-3 py-1 text-xs uppercase tracking-[0.3em] text-cyan-400">
                           {badge}
                         </span>
                       ) : null}

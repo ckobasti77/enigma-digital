@@ -97,7 +97,7 @@ export default function EffectiveSoftware() {
       <div className="relative grid w-full max-w-6xl gap-14 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1fr)]">
         <aside className="flex flex-col justify-between gap-10">
           <div className="space-y-6">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-200/70">
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">
               Effective software development
             </span>
             <h2 className="font-aeonik text-4xl font-medium text-theme-primary md:text-[2.8rem]">
@@ -192,7 +192,7 @@ export default function EffectiveSoftware() {
                     <Link
                       href={pillar.href}
                       className={clsx(
-                        "inline-flex items-center gap-2 text-sm font-medium text-cyan-200 transition-transform duration-300",
+                        "inline-flex items-center gap-2 text-sm font-medium text-cyan-400 transition-transform duration-300",
                         active ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
                       )}
                     >

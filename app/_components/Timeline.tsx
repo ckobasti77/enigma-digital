@@ -204,7 +204,7 @@ const Timeline = () => {
 
       <div className="relative w-full max-w-6xl">
         <header className="mb-16 max-w-3xl space-y-6">
-          <span className="text-xs uppercase tracking-[0.6em] text-cyan-200/70">
+          <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">
             How we build momentum
           </span>
           <AutoTypingConsole
@@ -249,7 +249,7 @@ const Timeline = () => {
                       <span className="text-sm font-semibold uppercase tracking-[0.4em] text-theme-muted">
                         Phase {step.number}
                       </span>
-                      <CheckCircle2 className="h-5 w-5 text-cyan-200/80" />
+                      <CheckCircle2 className="h-5 w-5 text-cyan-400" />
                     </div>
                     <h4 className="timeline-title text-xl font-semibold text-theme-primary opacity-0">
                       {step.title}

@@ -52,7 +52,7 @@ export default function ServiceCards() {
 
       <div className="relative w-full max-w-6xl space-y-16">
         <header className="flex flex-col items-center gap-4 text-center">
-          <span className="text-xs uppercase tracking-[0.6em] text-cyan-200/70">
+          <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">
             Services tuned for traction
           </span>
           <h2 className="max-w-3xl font-aeonik text-4xl font-medium text-theme-primary md:text-5xl">
@@ -83,7 +83,7 @@ export default function ServiceCards() {
                 <div className="relative w-full h-full flex items-center justify-between">
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-theme theme-card">
-                      <Icon className="h-6 w-6 text-cyan-300" />
+                      <Icon className="h-6 w-6 text-cyan-400" />
                     </div>
                     <div className="text-left">
                       <h3 className="text-lg font-semibold text-theme-primary">
