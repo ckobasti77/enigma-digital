@@ -78,7 +78,7 @@ const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
   }, [currentDropdown]);
 
   return (
-    <div className="relative hidden items-center gap-8 xl:flex">
+    <div className="relative hidden items-center gap-8 lg:flex">
       {navLinks.map((link: NavLink) => {
         const isCTA = Boolean(link.cta);
         const linkClasses = clsx(

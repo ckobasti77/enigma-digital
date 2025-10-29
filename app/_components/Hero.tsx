@@ -32,7 +32,7 @@ const featureHighlights: FeatureHighlight[] = [
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen flex-col items-center overflow-hidden theme-section px-6 py-24 transition-theme">
+    <section className="relative flex min-h-screen flex-col items-center overflow-hidden theme-section px-4 py-24 transition-theme sm:px-6">
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full glow-accent blur-[160px]"
         aria-hidden
@@ -41,7 +41,7 @@ export default function Hero() {
       <div className="relative grid w-full max-w-6xl gap-16 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1fr)]">
         <div className="flex flex-col gap-8 transition-theme">
           <div className="space-y-6 transition-theme">
-            <div className="flex gap-4 border-b border-theme pb-6 text-sm text-theme-muted transition-theme">
+            <div className="flex flex-wrap lg:flex-nowrap items-center gap-x-6 gap-y-4 border-b border-theme pb-6 text-sm text-theme-muted transition-theme">
               <HeroMetric value="+140%" label="Average traffic growth" />
               <HeroMetric value="24" label="Markets launched" />
               <HeroMetric value="98%" label="Client retention" />
@@ -73,8 +73,8 @@ export default function Hero() {
 
         <div className="relative flex items-center justify-center">
           <div className="pointer-events-none absolute inset-0 rounded-[36px] glow-accent blur-[120px]" aria-hidden />
-          <div className="relative w-full max-w-xl">
-            <div className="aspect-[4/3] w-full">
+          <div className="relative w-full max-w-2xl">
+            <div className="aspect-[4/3] w-full translate-x-16 md:translate-x-0">
               <LaptopScene />
             </div>
           </div>
