@@ -2,7 +2,7 @@ import React from "react";
 
 type BurgerProps = {
   navOpen: boolean;
-  toggleNav: () => void; // funkcija koja ne prima argumente i ne vraća ništa
+  toggleNav: () => void; // funkcija koja ne prima argumente i ne vra�a ni�ta
 };
 
 const Burger = ({

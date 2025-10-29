@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import PageHero from "@/app/_components/PageHero";
 import { navLinks } from "@/constants/navLinks";
@@ -27,8 +27,10 @@ const Services = () => {
       ]}
       highlights={serviceHighlights}
       footnote="Need something bespoke? We mix and match pods around your roadmap, then hand over with documentation and enablement built in."
+      floatingServiceKey="default"
     />
   );
 };
 
 export default Services;
+

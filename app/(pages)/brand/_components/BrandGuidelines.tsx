@@ -11,7 +11,7 @@ export default function BrandGuidelines() {
               Brand Guidelines
             </span>
             <h1 className="font-aeonik text-4xl.font-medium leading-tight md:text-5xl">
-              Keeping Enigma Digital’s story consistent across every touchpoint
+              Keeping Enigma Digital�?Ts story consistent across every touchpoint
             </h1>
             <p className="max-w-2xl text-base leading-relaxed text-theme-muted">
               These guidelines help teammates, partners, and collaborators communicate the Enigma Digital brand with clarity and confidence. Use them as a guardrail anytime you create copy, visuals, or experiences on our behalf.
@@ -51,7 +51,7 @@ export default function BrandGuidelines() {
               >
                 hello@enigma.digital
               </a>{' '}
-              and we’ll share the latest toolkit or help audit your content for consistency.
+              and we�?Tll share the latest toolkit or help audit your content for consistency.
             </p>
           </footer>
         </div>

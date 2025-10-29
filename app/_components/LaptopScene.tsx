@@ -22,9 +22,24 @@ const SHAPE_PALETTES: Record<ThemeMode, { primary: string; accent: string; contr
   },
 };
 
+const LAPTOP_COLOR_PRESETS: Record<ThemeMode, { chassis: string; bezel: string; glow: string }> = {
+  light: {
+    chassis: "#dbe6f8",
+    bezel: "#1f2c3d",
+    glow: "#58c4ff",
+  },
+  dark: {
+    chassis: "#132238",
+    bezel: "#58c4ff",
+    glow: "#58c4ff",
+  },
+};
+
 function Laptop() {
   const { scene } = useGLTF("/assets/models/laptop/laptop.glb");
   const tiltRef = useRef<THREE.Group>(null);
+  const { theme } = useTheme();
+  const palette = useMemo(() => LAPTOP_COLOR_PRESETS[theme], [theme]);
 
   const screenTexture = useTexture("/assets/images/screen-saver2.avif");
   useEffect(() => {
@@ -49,16 +64,83 @@ function Laptop() {
     [screenTexture]
   );
 
-  const frameMaterial = useMemo(
-    () =>
-      new THREE.MeshBasicMaterial({
-        color: 0x000000,
-        transparent: false,
-        toneMapped: false,
-        side: THREE.FrontSide,
-      }),
-    []
-  );
+  useEffect(() => {
+    return () => {
+      screenMaterial.dispose();
+    };
+  }, [screenMaterial]);
+
+  const frameMaterial = useMemo(() => {
+    const base = new THREE.Color(palette.bezel);
+    const highlight = new THREE.Color(palette.glow);
+    const emissive = highlight.clone().lerp(base, 0.55).multiplyScalar(theme === "light" ? 0.22 : 0.42);
+
+    return new THREE.MeshStandardMaterial({
+      color: base,
+      metalness: 0.35,
+      roughness: 0.32,
+      envMapIntensity: 0.6,
+      emissive,
+      emissiveIntensity: 0.75,
+      toneMapped: true,
+      side: THREE.FrontSide,
+    });
+  }, [palette, theme]);
+
+  useEffect(() => {
+    return () => {
+      frameMaterial.dispose();
+    };
+  }, [frameMaterial]);
+
+  const chassisMaterial = useMemo(() => {
+    const color = new THREE.Color(palette.chassis);
+    const glow = new THREE.Color(palette.glow);
+    const emissive = glow.clone().lerp(color, 0.7).multiplyScalar(theme === "light" ? 0.12 : 0.28);
+
+    const material = new THREE.MeshStandardMaterial({
+      color,
+      metalness: 0.25,
+      roughness: 0.68,
+      envMapIntensity: 0.55,
+      emissive,
+      emissiveIntensity: 0.65,
+      toneMapped: true,
+    });
+
+    return material;
+  }, [palette, theme]);
+
+  useEffect(() => {
+    return () => {
+      chassisMaterial.dispose();
+    };
+  }, [chassisMaterial]);
+
+  useEffect(() => {
+    if (!scene) return;
+
+    const originalMaterials = new Map<THREE.Mesh, THREE.Material | THREE.Material[]>();
+
+    scene.traverse((child) => {
+      if (!(child instanceof THREE.Mesh)) return;
+
+      const meshName = child.name.toLowerCase();
+      if (!meshName.includes("keyboard")) return;
+
+      if (!originalMaterials.has(child)) {
+        originalMaterials.set(child, child.material);
+      }
+
+      child.material = chassisMaterial;
+    });
+
+    return () => {
+      originalMaterials.forEach((material, mesh) => {
+        mesh.material = material;
+      });
+    };
+  }, [scene, chassisMaterial]);
 
   useEffect(() => {
     if (!scene) return;
@@ -154,8 +236,6 @@ function Laptop() {
       originalMaterials.forEach(({ mesh, material }) => {
         mesh.material = material;
       });
-      screenMaterial.dispose();
-      frameMaterial.dispose();
     };
   }, [scene, screenMaterial, frameMaterial]);
 
@@ -213,6 +293,86 @@ function StaticShape({ position, color, kind, scale = 0.3, spinSpeed = 0.6 }: St
   );
 }
 
+type WhatsAppIconProps = {
+  position: [number, number, number];
+  spinSpeed?: number;
+  targetSize?: number;
+};
+
+const WHATSAPP_MODEL_PATH = "/assets/models/3d-icons/whatsapp.gltf";
+
+function WhatsAppIcon({ position, spinSpeed = 0.5, targetSize = 0.5 }: WhatsAppIconProps) {
+  const groupRef = useRef<THREE.Group>(null);
+  const { scene } = useGLTF(WHATSAPP_MODEL_PATH);
+
+  const icon = useMemo(() => {
+    if (!scene) return null;
+
+    const root = scene.clone(true);
+    const materialCache = new Map<THREE.Material, THREE.Material>();
+
+    const cloneMaterial = (material: THREE.Material | null | undefined) => {
+      if (!material) return material ?? null;
+      if (materialCache.has(material)) return materialCache.get(material)!;
+      const cloned = material.clone() as THREE.Material & { toneMapped?: boolean };
+      if ("toneMapped" in cloned) {
+        cloned.toneMapped = true;
+      }
+      materialCache.set(material, cloned);
+      return cloned;
+    };
+
+    const stack: THREE.Object3D[] = [root];
+    while (stack.length) {
+      const current = stack.pop();
+      if (!current) continue;
+
+      if (current instanceof THREE.Light || current instanceof THREE.Camera) {
+        current.parent?.remove(current);
+        continue;
+      }
+
+      if (current instanceof THREE.Mesh) {
+        if (Array.isArray(current.material)) {
+          current.material = current.material.map((material) => cloneMaterial(material) ?? material);
+        } else {
+          current.material = cloneMaterial(current.material) ?? current.material;
+        }
+
+        current.castShadow = true;
+        current.receiveShadow = true;
+      }
+
+      if (current.children && current.children.length) {
+        stack.push(...current.children);
+      }
+    }
+
+    root.updateMatrixWorld(true);
+
+    const boundingBox = new THREE.Box3().setFromObject(root);
+    const size = boundingBox.getSize(new THREE.Vector3());
+    const center = boundingBox.getCenter(new THREE.Vector3());
+
+    root.position.sub(center);
+
+    const maxDimension = Math.max(size.x, size.y, size.z) || 1;
+    const scaleFactor = targetSize / maxDimension;
+    root.scale.setScalar(scaleFactor);
+
+    return root;
+  }, [scene, targetSize]);
+
+  useFrame((_, delta) => {
+    if (!groupRef.current) return;
+    groupRef.current.rotation.y += spinSpeed * delta;
+  });
+
+  if (!icon) return null;
+
+  return <primitive ref={groupRef} object={icon} position={position} />;
+}
+
 function AmbientShapes() {
   const { theme } = useTheme();
   const palette = useMemo(() => SHAPE_PALETTES[theme ?? "dark"], [theme]);
@@ -226,11 +386,8 @@ function AmbientShapes() {
         scale={0.3}
         spinSpeed={0.75}
       />
-      <StaticShape
+      <WhatsAppIcon
         position={[-1.2, -0.05, 0.8]}
-        color={palette.primary}
-        kind="cube"
-        scale={0.28}
         spinSpeed={0.5}
       />
       <StaticShape
@@ -260,4 +417,4 @@ export default function LaptopScene() {
 }
 
 useGLTF.preload("/assets/models/laptop/laptop.glb");
-
+useGLTF.preload(WHATSAPP_MODEL_PATH);

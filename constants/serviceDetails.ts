@@ -1,4 +1,5 @@
 ﻿import type { PageHeroProps } from "@/app/_components/PageHero";
+import type { ServiceFloatingKey } from "@/constants/serviceFloatingObjects";
 import {
   BadgeCheck,
   Code2,
@@ -27,10 +28,12 @@ type ServiceDetail = {
   highlights: NonNullable<PageHeroProps["highlights"]>;
   ctas: NonNullable<PageHeroProps["ctas"]>;
   footnote?: string;
+  floatingServiceKey: ServiceFloatingKey;
 };
 
 export const serviceDetails: Record<string, ServiceDetail> = {
   "web-development": {
+    floatingServiceKey: "web-development",
     eyebrow: "Engineering excellence",
     title: "Web platforms engineered for growth and resilience",
     description:
@@ -64,6 +67,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     footnote: "Tech we reach for: Next.js, Remix, Astro, Playwright, GraphQL, Edge functions, and the platforms that best meet your goals.",
   },
   "ui-ux-design": {
+    floatingServiceKey: "ui-ux-design",
     eyebrow: "Design systems",
     title: "Interfaces that feel effortless everywhere",
     description:
@@ -97,6 +101,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     footnote: "Deliverables include research readouts, service blueprints, annotated flows, and developer-ready documentation.",
   },
   "mobile-app-development": {
+    floatingServiceKey: "mobile-app-development",
     eyebrow: "Mobile product",
     title: "Native experiences engineered for retention",
     description:
@@ -130,6 +135,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     footnote: "We cover release management, store optimisation, analytics wiring, and the rituals your in-house team needs to keep shipping.",
   },
   "seo-geo": {
+    floatingServiceKey: "seo-geo",
     eyebrow: "Visibility",
     title: "Be discoverable where your audience is searching",
     description:
@@ -163,6 +169,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     footnote: "We integrate with your content and performance teams, keeping experiments, learnings, and playbooks in one shared workspace.",
   },
   branding: {
+    floatingServiceKey: "branding",
     eyebrow: "Brand identity",
     title: "Brands that feel cohesive from pixels to packaging",
     description:
@@ -196,6 +203,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     footnote: "Expect collaborative workshops, moodboards, and layered files ready for designers, developers, and marketing alike.",
   },
   "social-media": {
+    floatingServiceKey: "social-media",
     eyebrow: "Community & content",
     title: "Make every touchpoint earn attention",
     description:
@@ -229,6 +237,10 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     footnote: "We plug into your analytics stack, handle community moderation guidelines, and hand over repeatable playbooks.",
   },
 };
+
+
+
+
 
 
 

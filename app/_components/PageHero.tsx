@@ -4,6 +4,8 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 import AutoTypingConsole from "@/components/ui/auto-typing-console";
+import FloatingServiceObjects from "@/app/(pages)/services/_components/FloatingServiceObjects";
+import type { ServiceFloatingKey } from "@/constants/serviceFloatingObjects";
 import type { LucideIcon } from "lucide-react";
 
 type PageHeroMetric = {
@@ -34,6 +36,7 @@ export type PageHeroProps = {
   ctas?: PageHeroCta[];
   children?: ReactNode;
   footnote?: string;
+  floatingServiceKey?: ServiceFloatingKey;
 };
 
 export default function PageHero({
@@ -45,14 +48,18 @@ export default function PageHero({
   ctas,
   children,
   footnote,
+  floatingServiceKey,
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden theme-section px-6 py-24 transition-theme">
+    <section className="relative overflow-visible theme-section px-6 py-24 transition-theme">
       <div
-        className="pointer-events-none absolute left-1/2 top-10 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.22)_0%,rgba(168,85,247,0.18)_45%,rgba(15,23,42,0)_78%)] blur-[160px]"
+        className="pointer-events-none absolute left-1/2 top-10 z-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.22)_0%,rgba(168,85,247,0.18)_45%,rgba(15,23,42,0)_78%)] blur-[160px]"
         aria-hidden
       />
-      <div className="relative mx-auto grid w-full max-w-6xl gap-14 lg:grid-cols-[minmax(0,0.58fr)_minmax(0,1fr)]">
+      {floatingServiceKey ? (
+        <FloatingServiceObjects serviceKey={floatingServiceKey} className="z-10" />
+      ) : null}
+      <div className="relative z-20 mx-auto grid w-full max-w-6xl gap-14 lg:grid-cols-[minmax(0,0.58fr)_minmax(0,1fr)]">
         <div className="space-y-8">
           {eyebrow ? (
             <span className="inline-flex items-center text-xs uppercase tracking-[0.6em] text-cyan-400">

@@ -7,12 +7,16 @@ import NavLinks from "./NavLinks";
 import NavLinksMobile from "./NavLinksMobile";
 import Link from "next/link";
 import ThemeSwitcher from "./ThemeSwitcher";
+import { useTheme } from "./ThemeProvider";
+import Image from "next/image";
+import LogoMark3D from "./LogoMark3D";
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(true);
   const [navOpen, setNavOpen] = useState(false);
   const [scrollPos, setScrollPos] = useState(0);
   const [currentDropdown, setCurrentDropdown] = useState(0);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => {
@@ -57,15 +61,29 @@ const Navbar = () => {
         <Link
           href="/"
           style={{ fontFamily: "var(--font-deltha)" }}
-          className="relative inline-block text-3xl font-deltha font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent"
+          className="relative inline-flex items-center gap-3 text-3xl font-deltha font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent"
         >
-          ENIGMA{" "}
+          {/* ENIGMA{" "}
           <span
             style={{ fontFamily: "var(--font-deltha)" }}
             className="absolute -bottom-1 -right-3 text-sm font-deltha font-black text-white"
           >
             digital
-          </span>
+          </span> */}
+
+          {/* <EnigmaLogo /> */}
+          <LogoMark3D />
+          <Image
+            src={
+              theme === "dark"
+                ? "/assets/logo-text-dark.png"
+                : "/assets/logo-text-light.png"
+            }
+            alt="Enigma Digital logotype"
+            width={100}
+            height={100}
+            className="h-8 w-auto"
+          />
         </Link>
 
         <div className="flex items-center gap-6">
