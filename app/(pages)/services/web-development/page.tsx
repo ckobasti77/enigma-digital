@@ -7,7 +7,6 @@ import PageHero from "@/app/_components/PageHero";
 import { serviceDetails } from "@/constants/serviceDetails";
 import {
   BadgeCheck,
-  BarChart3,
   Code2,
   GaugeCircle,
   LayoutDashboard,
@@ -524,10 +523,10 @@ const WebDevelopment = () => {
       <section className="theme-section border-t border-theme/60 px-6 py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 text-center md:text-left">
           <h2 className="text-3xl font-semibold text-theme-muted md:text-4xl">
-            Let's define your roadmap and ship a scalable web platform
+            Let&rsquo;s define your roadmap and ship a scalable web platform
           </h2>
           <p className="max-w-3xl text-base leading-relaxed text-theme-muted">
-            Share where you are today, the KPIs you need to move, and we'll assemble a remote web development squad that
+            Share where you are today, the KPIs you need to move, and we&rsquo;ll assemble a remote web development squad that
             embeds with your team, complete with performance targets and observability from the very first sprint.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
@@ -536,7 +535,7 @@ const WebDevelopment = () => {
               className="inline-flex items-center gap-2 rounded-full bg-theme-primary px-7 py-3 text-sm font-semibold text-theme-primary transition hover:opacity-90"
             >
               <Sparkles className="h-4 w-4" aria-hidden />
-              Let's define your roadmap
+              Let&rsquo;s define your roadmap
             </Link>
             <Link
               href="/projects"
