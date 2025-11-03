@@ -10,6 +10,7 @@ import {
   useState,
 } from "react";
 import type { CSSProperties } from "react";
+import { useCookieConsent } from "./CookieConsentProvider";
 
 type ThemeMode = "light" | "dark";
 type ThemeToggleOrigin = { x: number; y: number };
@@ -37,6 +38,8 @@ type ThemeTransitionState = {
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 const TRANSITION_DURATION_MS = 820;
+const THEME_COOKIE_NAME = "enigma-theme";
+const THEME_COOKIE_MAX_AGE = 60 * 60 * 24 * 180; // 180 days
 
 const isThemeMode = (value: string | null): value is ThemeMode =>
   value === "light" || value === "dark";
@@ -51,10 +54,43 @@ const applyDocumentTheme = (value: ThemeMode) => {
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max);
 
+const getCookieValue = (name: string) => {
+  if (typeof document === "undefined") return null;
+
+  const entry = document.cookie
+    .split(";")
+    .map((part) => part.trim())
+    .find((part) => part.startsWith(`${name}=`));
+
+  if (!entry) return null;
+
+  return decodeURIComponent(entry.split("=")[1] ?? "");
+};
+
+const writeThemeCookie = (value: ThemeMode | null) => {
+  if (typeof document === "undefined") return;
+
+  const secureFlag = typeof window !== "undefined" && window.location?.protocol === "https:" ? "; Secure" : "";
+
+  if (!value) {
+    document.cookie = `${THEME_COOKIE_NAME}=; Path=/; Max-Age=0; SameSite=Lax${secureFlag}`;
+    return;
+  }
+
+  document.cookie = `${THEME_COOKIE_NAME}=${encodeURIComponent(value)}; Path=/; Max-Age=${THEME_COOKIE_MAX_AGE}; SameSite=Lax${secureFlag}`;
+};
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<ThemeMode>("dark");
   const [transition, setTransition] = useState<ThemeTransitionState | null>(null);
   const commitTimeoutRef = useRef<number | null>(null);
+  const { consent, hasResponded } = useCookieConsent();
+  const canUseFunctionalCookies = hasResponded && consent.functional;
+  const themeRef = useRef(theme);
+
+  useEffect(() => {
+    themeRef.current = theme;
+  }, [theme]);
 
   const clearCommitTimeout = useCallback(() => {
     if (commitTimeoutRef.current !== null) {
@@ -70,10 +106,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       applyDocumentTheme(value);
     }
 
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem("theme", value);
+    if (typeof document !== "undefined") {
+      if (canUseFunctionalCookies) {
+        writeThemeCookie(value);
+      } else {
+        writeThemeCookie(null);
+      }
     }
-  }, []);
+  }, [canUseFunctionalCookies]);
 
   const startAnimatedTransition = useCallback(
     (target: ThemeMode, origin?: ThemeToggleOrigin) => {
@@ -147,19 +187,49 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const stored = window.localStorage.getItem("theme");
+    const currentTheme = themeRef.current;
 
-    if (isThemeMode(stored)) {
-      commitTheme(stored);
+    if (!hasResponded) {
+      if (currentTheme !== "dark") {
+        commitTheme("dark");
+      } else {
+        applyDocumentTheme("dark");
+        writeThemeCookie(null);
+      }
       return;
+    }
+
+    if (canUseFunctionalCookies) {
+      const storedTheme = getCookieValue(THEME_COOKIE_NAME);
+
+      if (isThemeMode(storedTheme)) {
+        if (storedTheme !== currentTheme) {
+          commitTheme(storedTheme);
+        } else {
+          applyDocumentTheme(currentTheme);
+        }
+        return;
+      }
     }
 
     const prefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)"
     ).matches;
 
-    commitTheme(prefersDark ? "dark" : "light");
-  }, [commitTheme]);
+    const nextTheme = prefersDark ? "dark" : "light";
+
+    if (nextTheme !== currentTheme) {
+      commitTheme(nextTheme);
+    } else if (!canUseFunctionalCookies) {
+      writeThemeCookie(null);
+    }
+  }, [commitTheme, canUseFunctionalCookies, hasResponded]);
+
+  useEffect(() => {
+    if (!canUseFunctionalCookies) return;
+
+    writeThemeCookie(theme);
+  }, [canUseFunctionalCookies, theme]);
 
   const handleTransitionEnd = useCallback(() => {
     if (!transition) return;

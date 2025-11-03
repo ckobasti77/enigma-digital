@@ -300,8 +300,14 @@
   transition: color 0.6s ease;
 }
 
+
 .text-theme-muted {
   color: var(--text-secondary);
+  transition: color 0.6s ease;
+}
+
+.text-theme-contrast {
+  color: var(--primary-foreground);
   transition: color 0.6s ease;
 }
 

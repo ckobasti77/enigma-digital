@@ -5,6 +5,8 @@ import ScrollToTopButton from "./_components/ScrollToTopButton";
 import Footer from "./_components/Footer";
 import localFont from "next/font/local";
 import { ThemeProvider } from "./_components/ThemeProvider";
+import { CookieConsentProvider } from "./_components/CookieConsentProvider";
+import CookieConsentBanner from "./_components/CookieConsentBanner";
 
 const deltha = localFont({
   src: [
@@ -94,14 +96,17 @@ export default function RootLayout({
       <body
         className={`${deltha.variable} ${terminal.variable} ${aeonik.variable} ${brokenConsole.variable} font-aeonik antialiased`}
       >
-        <ThemeProvider>
-          <div className="app-shell bg-[url(/./assets/background.avif)] bg-cover bg-repeat">
-            <Navbar />
-            <div className="w-full h-full">{children}</div>
-            <Footer />
-            <ScrollToTopButton />
-          </div>
-        </ThemeProvider>
+        <CookieConsentProvider>
+          <ThemeProvider>
+            <div className="app-shell bg-[url(/./assets/background.avif)] bg-cover bg-repeat">
+              <Navbar />
+              <div className="w-full h-full">{children}</div>
+              <Footer />
+              <ScrollToTopButton />
+            </div>
+            <CookieConsentBanner />
+          </ThemeProvider>
+        </CookieConsentProvider>
       </body>
     </html>
   );

@@ -9,19 +9,6 @@ import { useTheme } from "./ThemeProvider";
 type AxisKey = "x" | "y" | "z";
 type ThemeMode = "light" | "dark";
 
-const SHAPE_PALETTES: Record<ThemeMode, { primary: string; accent: string; contrast: string }> = {
-  light: {
-    primary: "#0f172a",
-    accent: "#2563eb",
-    contrast: "#f97316",
-  },
-  dark: {
-    primary: "#9db4d6",
-    accent: "#60a5fa",
-    contrast: "#fbbf24",
-  },
-};
-
 const LAPTOP_COLOR_PRESETS: Record<ThemeMode, { chassis: string; bezel: string; glow: string }> = {
   light: {
     chassis: "#dbe6f8",
@@ -255,55 +242,16 @@ function Laptop() {
   return <primitive ref={tiltRef} object={scene} scale={4} />;
 }
 
-type StaticShapeProps = {
-  position: [number, number, number];
-  color: string;
-  kind: "cube" | "pyramid" | "cone";
-  scale?: number;
-  spinSpeed?: number;
-};
-
-function StaticShape({ position, color, kind, scale = 0.3, spinSpeed = 0.6 }: StaticShapeProps) {
-  const meshRef = useRef<THREE.Mesh>(null);
-
-  useFrame((_, delta) => {
-    if (!meshRef.current) return;
-    meshRef.current.rotation.y += spinSpeed * delta;
-    // meshRef.current.rotation.x += spinSpeed * 0.25 * delta;  
-  });
-
-  return (
-    <mesh ref={meshRef} position={position} castShadow receiveShadow>
-      {kind === "cube" ? (
-        <boxGeometry args={[scale * 1.25, scale * 1.25, scale * 1.25]} />
-      ) : kind === "cone" ? (
-        <coneGeometry args={[scale * 0.8, scale * 1.6, 40]} />
-      ) : (
-        <tetrahedronGeometry args={[scale * 1.1, 0]} />
-      )}
-      <meshStandardMaterial
-        color={color}
-        roughness={0.45}
-        metalness={0.4}
-        emissive={new THREE.Color(color).clone().multiplyScalar(0.2)}
-        emissiveIntensity={0.6}
-        toneMapped={true}
-      />
-    </mesh>
-  );
-}
-
-type WhatsAppIconProps = {
+type SpinningIconProps = {
+  modelPath: string;
   position: [number, number, number];
   spinSpeed?: number;
   targetSize?: number;
 };
 
-const WHATSAPP_MODEL_PATH = "/assets/models/3d-icons/whatsapp.gltf";
-
-function WhatsAppIcon({ position, spinSpeed = 0.5, targetSize = 0.5 }: WhatsAppIconProps) {
+function SpinningIcon({ modelPath, position, spinSpeed = 0.5, targetSize = 0.5 }: SpinningIconProps) {
   const groupRef = useRef<THREE.Group>(null);
-  const { scene } = useGLTF(WHATSAPP_MODEL_PATH);
+  const { scene } = useGLTF(modelPath);
 
   const icon = useMemo(() => {
     if (!scene) return null;
@@ -373,29 +321,43 @@ function WhatsAppIcon({ position, spinSpeed = 0.5, targetSize = 0.5 }: WhatsAppI
   return <primitive ref={groupRef} object={icon} position={position} />;
 }
 
-function AmbientShapes() {
-  const { theme } = useTheme();
-  const palette = useMemo(() => SHAPE_PALETTES[theme ?? "dark"], [theme]);
+type SocialIconProps = Omit<SpinningIconProps, "modelPath">;
 
+const WHATSAPP_MODEL_PATH = "/assets/models/3d-icons/whatsapp.gltf";
+
+function WhatsAppIcon(props: SocialIconProps) {
+  return <SpinningIcon modelPath={WHATSAPP_MODEL_PATH} {...props} />;
+}
+
+const TIKTOK_MODEL_PATH = "/assets/models/3d-icons/tik-tok.gltf";
+
+function TikTokIcon(props: SocialIconProps) {
+  return <SpinningIcon modelPath={TIKTOK_MODEL_PATH} {...props} />;
+}
+
+const INSTAGRAM_MODEL_PATH = "/assets/models/3d-icons/instagram.gltf";
+
+function InstagramIcon(props: SocialIconProps) {
+  return <SpinningIcon modelPath={INSTAGRAM_MODEL_PATH} {...props} />;
+}
+
+function AmbientShapes() {
   return (
     <group>
-      <StaticShape
+      <TikTokIcon
         position={[2, 0.95, -0.25]}
-        color={palette.accent}
-        kind="pyramid"
-        scale={0.3}
         spinSpeed={0.75}
+        targetSize={0.55}
       />
       <WhatsAppIcon
         position={[-1.2, -0.05, 0.8]}
         spinSpeed={0.5}
+        targetSize={0.5}
       />
-      <StaticShape
+      <InstagramIcon
         position={[2, -0.9, 0.5]}
-        color={palette.contrast}
-        kind="cone"
-        scale={0.34}
         spinSpeed={0.85}
+        targetSize={0.55}
       />
     </group>
   );
@@ -418,3 +380,5 @@ export default function LaptopScene() {
 
 useGLTF.preload("/assets/models/laptop/laptop.glb");
 useGLTF.preload(WHATSAPP_MODEL_PATH);
+useGLTF.preload(TIKTOK_MODEL_PATH);
+useGLTF.preload(INSTAGRAM_MODEL_PATH);
