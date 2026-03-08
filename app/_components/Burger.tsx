@@ -1,29 +1,39 @@
 import React from "react";
+import clsx from "clsx";
 
 type BurgerProps = {
   navOpen: boolean;
-  toggleNav: () => void; // funkcija koja ne prima argumente i ne vra�a ni�ta
+  toggleNav: () => void;
 };
 
-const Burger = ({
-  navOpen,
-  toggleNav,
-}: BurgerProps) => {
+const Burger = ({ navOpen, toggleNav }: BurgerProps) => {
   return (
-    <div
+    <button
+      type="button"
       onClick={toggleNav}
-      className={`visible scale-[.6] lg:hidden w-[50px] center cursor-pointer before:content-[''] before:duration-500 before:my-[7px] before:rounded-[3px] before:h-[7px] before:block before:bg-white after:content-[''] after:duration-500 after:my-[7px] after:rounded-[3px] after:h-[7px] after:block after:bg-white transform peer ${
-        navOpen
-          ? "before:translate-y-[14.5px] before:rotate-[135deg] after:-translate-y-[13px] after:-rotate-[135deg]"
-          : "before:translate-y-[0px] before:rotate-[0deg] after:translate-y-[0px] after:rotate-[0deg]"
-      }`}
+      aria-label={navOpen ? "Close menu" : "Open menu"}
+      aria-expanded={navOpen}
+      className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-[6px] cursor-pointer lg:hidden"
     >
-      <div
-        className={`duration-500 my-[7px] rounded-[3px] h-[7px] block bg-white ${
-          navOpen && "transform scale-0"
-        }`}
-      ></div>
-    </div>
+      <span
+        className={clsx(
+          "block h-[2px] w-6 rounded-full bg-white transition-all duration-300 ease-in-out origin-center",
+          navOpen && "translate-y-[8px] rotate-45"
+        )}
+      />
+      <span
+        className={clsx(
+          "block h-[2px] rounded-full bg-white transition-all duration-300 ease-in-out origin-center",
+          navOpen ? "w-0 opacity-0" : "w-4"
+        )}
+      />
+      <span
+        className={clsx(
+          "block h-[2px] w-6 rounded-full bg-white transition-all duration-300 ease-in-out origin-center",
+          navOpen && "-translate-y-[8px] -rotate-45"
+        )}
+      />
+    </button>
   );
 };
 
