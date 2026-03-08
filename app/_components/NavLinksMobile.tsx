@@ -206,11 +206,6 @@ const NavLinksMobile = ({
                     isOpen ? "border-white/10" : "border-white/[0.06]"
                   )}
                 >
-                  {/* Index number */}
-                  <span className="w-8 shrink-0 select-none font-mono text-[10px] tabular-nums text-white/20">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-
                   {hasDropdown ? (
                     <button
                       type="button"
@@ -223,12 +218,11 @@ const NavLinksMobile = ({
                     >
                       <span
                         className={clsx(
-                          "text-[2.5rem] font-bold leading-none tracking-tight transition-all duration-400",
+                          "text-[2rem] font-medium leading-none tracking-wide transition-all duration-400",
                           isOpen
                             ? "bg-gradient-to-r from-blue-400 via-cyan-300 to-pink-400 bg-clip-text text-transparent"
-                            : "text-white/80 group-hover:text-white"
+                            : "text-white/75 group-hover:text-white"
                         )}
-                        style={{ fontFamily: "var(--font-deltha)" }}
                       >
                         {link.text}
                       </span>
@@ -251,8 +245,7 @@ const NavLinksMobile = ({
                       className="group flex flex-1 items-center py-5"
                     >
                       <span
-                        className="text-[2.5rem] font-bold leading-none tracking-tight text-white/80 transition-colors duration-300 group-hover:text-white"
-                        style={{ fontFamily: "var(--font-deltha)" }}
+                        className="text-[2rem] font-medium leading-none tracking-wide text-white/75 transition-colors duration-300 group-hover:text-white"
                       >
                         {link.text}
                       </span>
@@ -269,7 +262,7 @@ const NavLinksMobile = ({
                       isOpen ? "max-h-[420px] opacity-100 py-4" : "max-h-0 opacity-0"
                     )}
                   >
-                    <div className="grid grid-cols-2 gap-2 pl-8">
+                    <div className="grid grid-cols-2 gap-2">
                       {link.dropdownLinks!.map((sub) => {
                         const Icon = sub.icon;
                         const href = joinPath(link.to, sub.to);
