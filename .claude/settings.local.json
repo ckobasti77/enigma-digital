@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -l \"gsap\\\\|useGSAP\\\\|@react-three/fiber\\\\|Canvas\" /c/Users/admin/Desktop/enigma-digital/app/_components/*.tsx)",
+      "Bash(git add:*)"
+    ]
+  }
+}

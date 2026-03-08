@@ -149,7 +149,7 @@ export default function EffectiveSoftware() {
                   itemRefs.current[index] = el;
                 }}
                 className={clsx(
-                  "group relative overflow-hidden rounded-3xl border border-theme theme-card px-6 py-5 card-lift transform-gpu hover:-translate-y-1 hover:shadow-theme",
+                  "group relative overflow-hidden rounded-3xl border border-theme theme-card px-6 py-5 card-lift transform-gpu transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-theme",
                   active
                     ? "shadow-theme"
                     : "opacity-80 hover:opacity-100"

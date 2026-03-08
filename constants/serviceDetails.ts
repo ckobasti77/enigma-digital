@@ -46,17 +46,17 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     highlights: [
       {
         title: "Stacks tailored to your roadmap",
-        body: "TypeScript-first architecture, component libraries, and CI/CD pipelines shaped around your team’s skills and constraints.",
+        body: "TypeScript-first architecture, component libraries, and CI/CD pipelines shaped around your team's skills and constraints. We document decisions, codify patterns, and keep handoffs clean so new engineers ramp fast.",
         icon: Code2,
       },
       {
         title: "Performance tuned from day one",
-        body: "We obsess over Core Web Vitals, caching, and resilient infrastructure so your platform feels instant for every visitor.",
+        body: "We obsess over Core Web Vitals, caching, and resilient infrastructure so your platform feels instant for every visitor. Budgets, alerts, and performance regression checks are baked into every sprint.",
         icon: Gauge,
       },
       {
         title: "Secure, observable foundations",
-        body: "Authentication, logging, and automated QA guardrails are part of the build so you can scale with confidence.",
+        body: "Authentication, logging, and automated QA guardrails are part of the build so you can scale with confidence. We wire tracing, audit trails, and incident playbooks early to keep risk low.",
         icon: Server,
       },
     ],

@@ -51,7 +51,7 @@ export default function PageHero({
   floatingServiceKey,
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-visible theme-section px-6 py-24 transition-theme">
+    <section className="relative overflow-visible overflow-x-hidden theme-section px-6 py-24 transition-theme">
       <div
         className="pointer-events-none absolute left-1/2 top-10 z-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.22)_0%,rgba(168,85,247,0.18)_45%,rgba(15,23,42,0)_78%)] blur-[160px]"
         aria-hidden
@@ -59,7 +59,7 @@ export default function PageHero({
       {floatingServiceKey ? (
         <FloatingServiceObjects serviceKey={floatingServiceKey} className="z-10" />
       ) : null}
-      <div className="relative z-20 mx-auto grid w-full max-w-6xl gap-14 lg:grid-cols-[minmax(0,0.58fr)_minmax(0,1fr)]">
+      <div className="relative z-20 mx-auto grid w-full max-w-6xl gap-14 lg:grid-cols-[minmax(0,0.62fr)_minmax(0,0.85fr)]">
         <div className="space-y-8">
           {eyebrow ? (
             <span className="inline-flex items-center text-xs uppercase tracking-[0.6em] text-cyan-400">
@@ -94,8 +94,12 @@ export default function PageHero({
                   key={label}
                   className="rounded-2xl border border-theme theme-card-muted px-4 py-5 shadow-theme"
                 >
-                  <div className="text-2xl font-semibold text-theme-primary md:text-3xl">{value}</div>
-                  <div className="mt-2 text-xs uppercase tracking-[0.28em] text-theme-muted">{label}</div>
+                  <div className="text-xl font-semibold leading-tight text-theme-primary sm:text-2xl">
+                    {value}
+                  </div>
+                  <div className="mt-2 text-[11px] uppercase tracking-[0.22em] leading-snug text-theme-muted">
+                    {label}
+                  </div>
                 </div>
               ))}
             </div>
@@ -106,12 +110,12 @@ export default function PageHero({
         </div>
 
         {(highlights && highlights.length) || children ? (
-          <div className="grid gap-6">
+          <div className="grid gap-5 lg:justify-self-end lg:max-w-[520px]">
             {children}
             {highlights?.map(({ title: highlightTitle, body, icon: Icon, badge }) => (
               <article
                 key={highlightTitle}
-                className="group relative overflow-hidden rounded-3xl border border-theme theme-card px-6 py-6 card-lift transform-gpu translate-y-0 hover:-translate-y-1 hover:shadow-theme"
+                className="group relative overflow-hidden rounded-3xl border border-theme theme-card px-5 py-4 card-lift transform-gpu translate-y-0 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-theme"
               >
                 <div
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -120,22 +124,22 @@ export default function PageHero({
                     mixBlendMode: "screen",
                   }}
                 />
-                <div className="relative flex gap-4">
+                <div className="relative flex gap-3">
                   {Icon ? (
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-theme theme-card text-cyan-400">
-                      <Icon className="h-6 w-6" aria-hidden />
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-theme theme-card text-cyan-400">
+                      <Icon className="h-5 w-5" aria-hidden />
                     </span>
                   ) : null}
-                  <div className="space-y-2">
+                  <div className="space-y-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="text-lg font-semibold text-theme-primary">{highlightTitle}</h3>
+                      <h3 className="text-xl font-semibold text-theme-primary">{highlightTitle}</h3>
                       {badge ? (
                         <span className="rounded-full border border-theme px-3 py-1 text-xs uppercase tracking-[0.3em] text-cyan-400">
                           {badge}
                         </span>
                       ) : null}
                     </div>
-                    <p className="text-sm leading-relaxed text-theme-muted">{body}</p>
+                    <p className="text-base leading-relaxed text-theme-muted">{body}</p>
                   </div>
                 </div>
               </article>

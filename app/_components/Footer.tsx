@@ -82,14 +82,14 @@ export default function Footer() {
                 Visit & connect
               </h3>
               <div className="grid gap-3 sm:grid-cols-2">
-                <div className="flex items-start gap-3 rounded-2xl border border-theme theme-card p-4 transition-theme hover:-translate-y-1 hover:shadow-theme">
+                <div className="flex items-start gap-3 rounded-2xl border border-theme theme-card p-4 transition-theme transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-theme">
                   <MapPin className="mt-0.5 h-5 w-5 text-cyan-400" aria-hidden="true" />
                   <div className="text-sm text-theme-muted">
                     <p className="font-semibold text-theme-primary">Europe / Remote-first</p>
                     <p>Partnering with teams across EMEA & North America.</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 rounded-2xl border border-theme theme-card p-4 transition-theme hover:-translate-y-1 hover:shadow-theme">
+                <div className="flex items-start gap-3 rounded-2xl border border-theme theme-card p-4 transition-theme transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-theme">
                   <Phone className="mt-0.5 h-5 w-5 text-cyan-400" aria-hidden="true" />
                   <div className="text-sm text-theme-muted">
                     <p className="font-semibold text-theme-primary">Call</p>
@@ -98,7 +98,7 @@ export default function Footer() {
                     </Link>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 rounded-2xl border border-theme theme-card p-4 transition-theme hover:-translate-y-1 hover:shadow-theme">
+                <div className="flex items-start gap-3 rounded-2xl border border-theme theme-card p-4 transition-theme transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-theme">
                   <Mail className="mt-0.5 h-5 w-5 text-cyan-400" aria-hidden="true" />
                   <div className="text-sm text-theme-muted">
                     <p className="font-semibold text-theme-primary">Email</p>

@@ -4,7 +4,7 @@ import { navLinks } from "@/constants/navLinks";
 import { ChevronDown } from "lucide-react";
 import clsx from "clsx";
 import Link from "next/link";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
@@ -35,6 +35,105 @@ const normalize = (s: string) => s.replace(/^\/+|\/+$/g, "");
 const absPath = (s: string) => (s.startsWith("/") ? s : `/${s}`);
 const joinPath = (...parts: string[]) =>
   "/" + parts.filter(Boolean).map(normalize).join("/");
+
+const DropdownItem = ({
+  href,
+  icon: Icon,
+  headline,
+  subheadline,
+}: {
+  href: string;
+  icon: LucideIcon;
+  headline: string;
+  subheadline: string;
+}) => {
+  const itemRef = useRef<HTMLAnchorElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!itemRef.current || !glowRef.current) return;
+    const rect = itemRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    glowRef.current.style.setProperty("--glow-x", `${x}px`);
+    glowRef.current.style.setProperty("--glow-y", `${y}px`);
+  };
+
+  return (
+    <Link
+      ref={itemRef}
+      href={href}
+      style={{ fontFamily: "var(--font-aeonik)" }}
+      className="group relative flex items-center gap-4 rounded-xl p-3.5 transition-all duration-300 overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onMouseMove={handleMouseMove}
+    >
+      {/* Cursor-tracking radial glow */}
+      <div
+        ref={glowRef}
+        className="pointer-events-none absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background:
+            "radial-gradient(180px circle at var(--glow-x, 50%) var(--glow-y, 50%), var(--glow-accent-1), transparent 70%)",
+        }}
+      />
+
+      {/* Hover border glow */}
+      <div
+        className="pointer-events-none absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          boxShadow: "inset 0 0 0 1px rgba(56, 189, 248, 0.15)",
+        }}
+      />
+
+      {/* Icon container */}
+      <div
+        className={clsx(
+          "relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border transition-all duration-300",
+          isHovered
+            ? "border-cyan-400/40 bg-cyan-400/10 shadow-[0_0_15px_rgba(56,189,248,0.15)]"
+            : "border-theme bg-transparent"
+        )}
+      >
+        <Icon
+          className={clsx(
+            "h-5 w-5 transition-all duration-300",
+            isHovered ? "text-cyan-400 scale-110" : "text-theme-muted"
+          )}
+        />
+      </div>
+
+      {/* Text */}
+      <div className="relative z-10">
+        <h2
+          className={clsx(
+            "text-[15px] font-medium transition-colors duration-300",
+            isHovered ? "text-cyan-300" : "text-theme-primary"
+          )}
+        >
+          {headline}
+        </h2>
+        <p className="text-[13px] font-extralight text-theme-muted transition-colors duration-300">
+          {subheadline}
+        </p>
+      </div>
+
+      {/* Arrow indicator */}
+      <div
+        className={clsx(
+          "relative z-10 ml-auto transition-all duration-300",
+          isHovered
+            ? "translate-x-0 opacity-100"
+            : "-translate-x-2 opacity-0"
+        )}
+      >
+        <ChevronDown className="h-4 w-4 -rotate-90 text-cyan-400/70" />
+      </div>
+    </Link>
+  );
+};
 
 const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
   const dropdownRefs = useRef<Record<number, HTMLDivElement | null>>({});
@@ -115,36 +214,35 @@ const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
               <div
                 //@ts-expect-error dynamic refs
                 ref={(el) => (dropdownRefs.current[link.id] = el)}
-                className="absolute top-full right-0 mt-2 hidden w-[720px] overflow-hidden rounded-xl border border-theme theme-card pb-0.5 shadow-theme"
+                className="absolute top-full right-0 mt-2 hidden w-[720px] overflow-hidden rounded-2xl border border-theme theme-card shadow-theme backdrop-blur-xl"
+                style={{
+                  background:
+                    "linear-gradient(135deg, var(--card) 0%, var(--card) 60%, var(--accent) 100%)",
+                }}
               >
-                <div className="rounded-b-xl theme-card">
-                  <div className="grid w-full grid-cols-2 gap-4 p-4">
-                    {link.dropdownLinks.map((dropdownLink: DropdownLink) => {
-                      const Icon = dropdownLink.icon;
-                      const href =
-                        "/" + joinPath(link.to, dropdownLink.to).replace(/^\/+/, "");
+                {/* Top glow bar */}
+                <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
 
-                      return (
-                        <Link
-                          key={dropdownLink.id}
-                          href={href}
-                          style={{ fontFamily: "var(--font-aeonik)" }}
-                          className="flex items-center gap-3 rounded-lg p-3 transition hover:bg-muted"
-                        >
-                          <Icon className="mt-1 h-6 w-6 text-cyan-400" />
-                          <div>
-                            <h2 className="text-[18px] text-theme-primary">
-                              {dropdownLink.headline}
-                            </h2>
-                            <p className="text-sm font-extralight text-theme-muted">
-                              {dropdownLink.subheadline}
-                            </p>
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
+                <div className="grid w-full grid-cols-2 gap-1.5 p-3">
+                  {link.dropdownLinks.map((dropdownLink: DropdownLink) => {
+                    const Icon = dropdownLink.icon;
+                    const href =
+                      "/" + joinPath(link.to, dropdownLink.to).replace(/^\/+/, "");
+
+                    return (
+                      <DropdownItem
+                        key={dropdownLink.id}
+                        href={href}
+                        icon={Icon}
+                        headline={dropdownLink.headline}
+                        subheadline={dropdownLink.subheadline}
+                      />
+                    );
+                  })}
                 </div>
+
+                {/* Bottom glow bar */}
+                <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
               </div>
             )}
           </div>

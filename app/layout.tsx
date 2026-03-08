@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./_components/Navbar";
 import ScrollToTopButton from "./_components/ScrollToTopButton";
 import Footer from "./_components/Footer";
+import WaveBackgroundGlobal from "./_components/WaveBackgroundGlobal";
 import localFont from "next/font/local";
 import { ThemeProvider } from "./_components/ThemeProvider";
 import { CookieConsentProvider } from "./_components/CookieConsentProvider";
@@ -98,11 +99,14 @@ export default function RootLayout({
       >
         <CookieConsentProvider>
           <ThemeProvider>
-            <div className="app-shell bg-[url(/./assets/background.avif)] bg-cover bg-repeat">
-              <Navbar />
-              <div className="w-full h-full">{children}</div>
-              <Footer />
-              <ScrollToTopButton />
+            <div className="app-shell relative isolate min-h-screen">
+              <WaveBackgroundGlobal />
+              <div className="relative z-10">
+                <Navbar />
+                <div className="h-full w-full">{children}</div>
+                <Footer />
+                <ScrollToTopButton />
+              </div>
             </div>
             <CookieConsentBanner />
           </ThemeProvider>

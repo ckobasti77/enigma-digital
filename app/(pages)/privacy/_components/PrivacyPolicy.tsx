@@ -25,7 +25,7 @@ export default function PrivacyPolicy() {
             {privacyPolicy.map((section) => (
               <article
                 key={section.title}
-                className="group relative overflow-hidden rounded-3xl border border-theme theme-card p-6 transition-theme hover:-translate-y-1 hover:shadow-theme"
+                className="group relative overflow-hidden rounded-3xl border border-theme theme-card p-6 transition-theme transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-theme"
               >
                 <div
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"

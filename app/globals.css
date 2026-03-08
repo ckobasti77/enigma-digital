@@ -81,6 +81,7 @@
   --surface-section: #e9f0fb;
   --surface-card-muted: rgba(227, 235, 247, 0.75);
   --surface-overlay: rgba(244, 247, 251, 0.82);
+  --wave-overlay: rgba(244, 247, 251, 0.62);
   --text-primary: #132238;
   --text-secondary: rgba(44, 58, 82, 1);
   --text-inverse: #f4f7fb;
@@ -133,6 +134,7 @@
   --surface-section: #0e1729;
   --surface-card-muted: rgba(24, 37, 58, 0.82);
   --surface-overlay: rgba(9, 16, 30, 0.85);
+  --wave-overlay: rgba(9, 16, 30, 0.56);
   --text-primary: #f3f7ff;
   --text-secondary: rgba(193, 211, 245, 0.75);
   --text-inverse: #091120;
@@ -252,83 +254,79 @@
 }
 
 
-.app-shell {
-  min-height: 100vh;
-  background-color: var(--background);
-  color: var(--text-primary);
-  transition: background-color 0.6s ease, color 0.6s ease;
-}
+@layer components {
+  .app-shell {
+    min-height: 100vh;
+    background-color: transparent;
+    color: var(--text-primary);
+    transition: background-color 0.6s ease, color 0.6s ease;
+  }
 
-.theme-section {
-  background-color: var(--surface-section);
-  color: var(--text-primary);
-  transition: background-color 0.6s ease, color 0.6s ease;
-}
+  .theme-section {
+    background-color: transparent;
+    color: var(--text-primary);
+    transition: background-color 0.6s ease, color 0.6s ease;
+  }
 
-.theme-card {
-  background-color: var(--card);
-  color: var(--card-foreground);
-  transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease;
-  will-change: background-color, color, border-color, box-shadow;
-}
+  .theme-card {
+    background-color: var(--card);
+    color: var(--card-foreground);
+    transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease, transform 0.6s ease, translate 0.6s ease;
+    will-change: background-color, color, border-color, box-shadow, transform, translate;
+  }
 
+  .theme-card-muted {
+    background-color: var(--surface-card-muted);
+    color: var(--text-primary);
+    transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease, transform 0.6s ease, translate 0.6s ease;
+  }
 
-.theme-card-muted {
-  background-color: var(--surface-card-muted);
-  color: var(--text-primary);
-  transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease;
-}
+  .theme-overlay {
+    background-color: var(--surface-overlay);
+    backdrop-filter: blur(30px);
+    transition: background-color 0.6s ease;
+  }
 
-.theme-overlay {
-  background-color: var(--surface-overlay);
-  backdrop-filter: blur(30px);
-  transition: background-color 0.6s ease;
-}
+  .border-theme {
+    border-color: var(--border-soft);
+    transition: border-color 0.6s ease;
+  }
 
-.border-theme {
-  border-color: var(--border-soft);
-  transition: border-color 0.6s ease, 
-}
+  .border-theme-strong {
+    border-color: var(--border-strong);
+    transition: border-color 0.6s ease;
+  }
 
-.border-theme-strong {
-  border-color: var(--border-strong);
-  transition: border-color 0.6s ease;
-}
+  .text-theme-primary {
+    color: var(--text-primary);
+    transition: color 0.6s ease;
+  }
 
-.text-theme-primary {
-  color: var(--text-primary);
-  transition: color 0.6s ease;
-}
+  .text-theme-muted {
+    color: var(--text-secondary);
+    transition: color 0.6s ease;
+  }
 
+  .text-theme-contrast {
+    color: var(--primary-foreground);
+    transition: color 0.6s ease;
+  }
 
-.text-theme-muted {
-  color: var(--text-secondary);
-  transition: color 0.6s ease;
-}
+  .text-theme-inverse {
+    color: var(--text-inverse);
+    transition: color 0.6s ease;
+  }
 
-.text-theme-contrast {
-  color: var(--primary-foreground);
-  transition: color 0.6s ease;
-}
+  .glow-accent {
+    background: radial-gradient(circle at center, var(--glow-accent-1) 0%, var(--glow-accent-2) 45%, transparent 80%);
+  }
 
-.text-theme-inverse {
-  color: var(--text-inverse);
-  transition: color 0.6s ease;
-}
-
-.glow-accent {
-  background: radial-gradient(circle at center, var(--glow-accent-1) 0%, var(--glow-accent-2) 45%, transparent 80%);
-}
-
-.shadow-theme {
-  box-shadow: 0 24px 80px var(--shadow-elevated);
-  transition: box-shadow 0.6s ease;
-}
-
-.transition-theme {
-  transition-property: background-color, color, border-color, box-shadow, transform, translate;
-  transition-duration: 0.45s;
-  transition-timing-function: ease;
+  .transition-theme {
+    transition-property: background-color, color, border-color, box-shadow, transform, translate, filter;
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: background-color, color, border-color, box-shadow, transform, translate, filter;
+  }
 }
 
 
