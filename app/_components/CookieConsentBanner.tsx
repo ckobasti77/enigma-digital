@@ -92,17 +92,15 @@ const CookieConsentBanner = () => {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-theme-primary">
-              Manage your cookie preferences
+              Upravljajte podešavanjima kolačića
             </h2>
             <p>
-              We use essential cookies to keep our site running. Enable
-              functional cookies to remember choices like your theme or language
-              preferences.
+              Koristimo neophodne kolačiće da bi sajt radio. Omogućite funkcionalne kolačiće da zapamtimo izbore kao što su tema ili jezik.
             </p>
             <Toggle
               checked={consent.functional}
               onChange={setFunctionalConsent}
-              label="Functional cookies"
+              label="Funkcionalni kolačići"
             />
           </div>
           <div className="flex flex-col gap-2 sm:w-44">
@@ -111,21 +109,21 @@ const CookieConsentBanner = () => {
               className={clsx(buttonBaseClasses, buttonVariants.primary)}
               onClick={acceptAll}
             >
-              Accept all
+              Prihvati sve
             </button>
             <button
               type="button"
               className={clsx(buttonBaseClasses, buttonVariants.secondary)}
               onClick={savePreferences}
             >
-              Save selection
+              Sačuvaj izbor
             </button>
             <button
               type="button"
               className={clsx(buttonBaseClasses, buttonVariants.ghost)}
               onClick={declineOptional}
             >
-              Essential only
+              Samo neophodni
             </button>
           </div>
         </div>

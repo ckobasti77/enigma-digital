@@ -23,7 +23,7 @@ export default function LogoMarquee() {
 
   return (
     <section
-      aria-label="Client logos"
+      aria-label="Logotipi klijenata"
       className="relative isolate w-full  theme-section py-10"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6">

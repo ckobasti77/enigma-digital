@@ -1,38 +1,39 @@
 export const termsOfService = [
   {
-    title: 'Eligibility',
-    body: `You must be at least 18 years old and authorized to enter into a binding agreement to use our Services. By continuing to work with Enigma Digital you confirm you meet these requirements.`,
+    title: "Podobnost",
+    body: "Morate imati najmanje 18 godina i biti ovlašćeni da zaključite obavezujući ugovor za korišćenje naših Usluga. Nastavkom saradnje sa Enigma Digital potvrđujete da ispunjavate ove uslove.",
   },
   {
-    title: 'Scope of Services',
-    body: `We deliver strategy, design, engineering, and related consulting engagements. Specific deliverables, schedules, and fees are defined in the applicable statement of work or service agreement. If a conflict exists, the project agreement governs.`,
+    title: "Opseg usluga",
+    body: "Isporučujemo strategiju, dizajn, inženjering i povezane konsultantske angažmane. Konkretne isporuke, rokovi i naknade definišu se u odgovarajućem statement of work dokumentu ili ugovoru o uslugama. Ako postoji konflikt, važi projektni ugovor.",
   },
   {
-    title: 'Fees & Payment',
-    body: `Invoices follow the schedule outlined in the project agreement and are payable within the stated terms. Late invoices may incur a 1.5% monthly finance charge (or the maximum permitted by law) and can result in suspension of Services.`,
+    title: "Naknade i plaćanje",
+    body: "Fakture prate raspored naveden u projektnom ugovoru i plaćaju se u dogovorenim rokovima. Kašnjenje u plaćanju može nositi mesečnu finansijsku naknadu od 1,5% ili maksimalno dozvoljenu zakonom, i može dovesti do obustave Usluga.",
   },
   {
-    title: 'Client Responsibilities',
-    body: `Provide timely feedback, approvals, assets, and subject matter expertise. Ensure that any materials you supply do not infringe third-party rights. Delays in reviews or approvals may impact agreed timelines.`,
+    title: "Obaveze klijenta",
+    body: "Obezbedite pravovremene povratne informacije, odobrenja, materijale i stručnost iz domena. Osigurajte da materijali koje dostavite ne krše prava trećih strana. Kašnjenja u pregledima ili odobrenjima mogu uticati na dogovorene rokove.",
   },
   {
-    title: 'Intellectual Property',
-    body: `You retain ownership of materials you provide. Upon full payment you own the specific deliverables created for you, while Enigma Digital retains rights to pre-existing tools, frameworks, and know-how. Non-confidential work may be showcased in our portfolio unless otherwise agreed.`,
+    title: "Intelektualna svojina",
+    body: "Zadržavate vlasništvo nad materijalima koje dostavite. Nakon potpune uplate posedujete konkretne isporuke kreirane za vas, dok Enigma Digital zadržava prava na prethodno postojeće alate, framework-e i know-how. Nepoverljiv rad može biti prikazan u našem portfoliju osim ako nije drugačije dogovoreno.",
   },
   {
-    title: 'Confidentiality & Data',
-    body: `Each party agrees to protect the other’s confidential information and to use it solely for performing the Services. If personal data is involved, it will be handled according to our Privacy Policy and the applicable agreement.`,
+    title: "Poverljivost i podaci",
+    body: "Svaka strana se obavezuje da štiti poverljive informacije druge strane i koristi ih isključivo za izvršenje Usluga. Ako su uključeni lični podaci, obrađuju se prema našoj Politici privatnosti i važećem ugovoru.",
   },
   {
-    title: 'Disclaimers & Liability',
-    body: `Services are provided “as is.” We disclaim all implied warranties to the fullest extent permitted by law and do not guarantee specific outcomes. Our aggregate liability will not exceed the fees paid for the engagement giving rise to the claim.`,
+    title: "Odricanja i odgovornost",
+    body: "Usluge se pružaju u viđenom stanju. Odričemo se svih podrazumevanih garancija u najvećoj meri dozvoljenoj zakonom i ne garantujemo konkretne ishode. Naša ukupna odgovornost neće premašiti naknade plaćene za angažman iz kog proističe zahtev.",
   },
   {
-    title: 'Termination',
-    body: `Either party may terminate for material breach with 14 days’ written notice if the breach is not cured. You remain responsible for fees incurred up to the termination date. Sections relating to confidentiality, IP, fees, and liability survive termination.`,
+    title: "Raskid",
+    body: "Svaka strana može raskinuti ugovor zbog bitnog kršenja uz pisano obaveštenje od 14 dana ako kršenje nije otklonjeno. Ostajete odgovorni za naknade nastale do datuma raskida. Odredbe o poverljivosti, intelektualnoj svojini, naknadama i odgovornosti ostaju na snazi nakon raskida.",
   },
   {
-    title: 'Governing Law',
-    body: `These Terms, and any disputes arising out of the Services, are governed by the laws of England and Wales. The courts of England and Wales have exclusive jurisdiction, after both parties attempt good-faith resolution.`,
+    title: "Merodavno pravo",
+    body: "Ovi Uslovi i svi sporovi koji proisteknu iz Usluga regulisani su zakonima Engleske i Velsa. Sudovi Engleske i Velsa imaju isključivu nadležnost nakon što obe strane pokušaju rešavanje u dobroj veri.",
   },
 ];
+

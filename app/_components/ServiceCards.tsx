@@ -11,15 +11,14 @@ import { ExternalLink } from "lucide-react";
 const TIMELINE_SENTINEL_ID = "timeline-end-sentinel";
 
 const services =
-  navLinks.find((link) => link.text === "Services")?.dropdownLinks ?? [];
+  navLinks.find((link) => link.text === "Usluge")?.dropdownLinks ?? [];
 
 export default function ServiceCards() {
-  const [highlighted, setHighlighted] = useState(false);
+  const [highlighted, setHighlighted] = useState(true);
 
   useEffect(() => {
     const sentinel = document.getElementById(TIMELINE_SENTINEL_ID);
     if (!sentinel) {
-      setHighlighted(true);
       return;
     }
 
@@ -53,13 +52,13 @@ export default function ServiceCards() {
       <div className="relative w-full max-w-6xl space-y-16">
         <header className="flex flex-col items-center gap-4 text-center">
           <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">
-            Services tuned for traction
+            Usluge podešene za rast
           </span>
           <h2 className="max-w-3xl font-aeonik text-4xl font-medium text-theme-primary md:text-5xl">
-            Pick the discipline, we plug in the squad you need.
+            Izaberite disciplinu, mi uključujemo tim koji vam treba.
           </h2>
           <p className="max-w-2xl text-base text-theme-muted md:text-lg">
-            Each engagement blends strategy, design, and engineering. Hover to preview the focus of every partnership and click to dive deeper.
+            Svaki angažman spaja strategiju, dizajn i inženjering. Pređite preko kartice za fokus partnerstva i kliknite za detalje.
           </p>
         </header>
 

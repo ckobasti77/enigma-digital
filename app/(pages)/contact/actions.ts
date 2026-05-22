@@ -27,7 +27,7 @@ function parsePort(value: string | undefined) {
 
 function formatSendError(error: unknown) {
   const isProd = process.env.NODE_ENV === 'production';
-  if (isProd) return 'Unable to send message right now.';
+  if (isProd) return 'Trenutno nije moguće poslati poruku.';
 
   if (error instanceof Error) {
     const code = (error as { code?: unknown }).code;
@@ -37,7 +37,7 @@ function formatSendError(error: unknown) {
     return `Email send failed: ${error.message}`;
   }
 
-  return 'Unable to send message right now.';
+  return 'Trenutno nije moguće poslati poruku.';
 }
 
 export async function submitContact(
@@ -62,14 +62,14 @@ export async function submitContact(
     if (!name || !email || !message) {
       return {
         status: 'error',
-        message: 'Name, email, and message are required.',
+        message: 'Ime, e-pošta i poruka su obavezni.',
       };
     }
 
     if (!email.includes('@')) {
       return {
         status: 'error',
-        message: 'Please use a valid email address.',
+        message: 'Unesite važeću adresu e-pošte.',
       };
     }
 
@@ -77,7 +77,7 @@ export async function submitContact(
     if (!port) {
       return {
         status: 'error',
-        message: 'CONTACT_SMTP_PORT must be a valid number.',
+        message: 'CONTACT_SMTP_PORT mora biti važeći broj.',
       };
     }
 
@@ -98,7 +98,7 @@ export async function submitContact(
     if (process.env.CONTACT_EMAIL_FROM !== process.env.CONTACT_SMTP_USER) {
       return {
         status: 'error',
-        message: 'CONTACT_EMAIL_FROM must match CONTACT_SMTP_USER for Gmail SMTP.',
+        message: 'CONTACT_EMAIL_FROM mora da se poklapa sa CONTACT_SMTP_USER za Gmail SMTP.',
       };
     }
 
@@ -130,7 +130,7 @@ export async function submitContact(
 
     return {
       status: 'success',
-      message: 'Thanks! Your message has been sent.',
+      message: 'Hvala! Vaša poruka je poslata.',
     };
   } catch (error) {
     console.error('Contact form error', error);

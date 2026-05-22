@@ -205,14 +205,14 @@ const Timeline = () => {
       <div className="relative w-full max-w-6xl">
         <header className="mb-16 max-w-3xl space-y-6">
           <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">
-            How we build momentum
+            Kako gradimo zamah
           </span>
           <AutoTypingConsole
-            text="Get to know how we do it"
+            text="Upoznajte naš način rada"
             className="text-left"
           />
           <p className="text-base leading-relaxed text-theme-muted">
-            Each milestone blends discovery, design, and delivery so you stay aligned and keep releasing value. Scroll the spine or hover a phase to explore what lights up.
+            Svaka faza spaja istraživanje, dizajn i isporuku kako biste ostali usklađeni i stalno isporučivali vrednost. Skrolujte kroz tok ili pređite preko faze da vidite šta se aktivira.
           </p>
         </header>
 
@@ -247,7 +247,7 @@ const Timeline = () => {
                   <div className="timeline-bg rounded-3xl theme-card-muted p-6">
                     <div className="flex items-center justify-between gap-4 pb-4">
                       <span className="text-sm font-semibold uppercase tracking-[0.4em] text-theme-muted">
-                        Phase {step.number}
+                        Faza {step.number}
                       </span>
                       <CheckCircle2 className="h-5 w-5 text-cyan-400" />
                     </div>

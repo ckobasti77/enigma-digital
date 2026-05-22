@@ -16,30 +16,30 @@ type Pillar = {
 const pillars: Pillar[] = [
   {
     id: 1,
-    title: "Product discovery & strategy",
+    title: "Product discovery i strategija",
     description:
-      "Kick off with workshops, user research, and rapid validation so every sprint is anchored in customer and business value.",
+      "Počinjemo radionicama, istraživanjem korisnika i brzom validacijom kako bi svaki sprint bio vezan za korisničku i poslovnu vrednost.",
     href: "/services/ui-ux-design",
   },
   {
     id: 2,
-    title: "Experience & interface design",
+    title: "Dizajn iskustva i interfejsa",
     description:
-      "Design intuitive journeys, component systems, and motion patterns that keep your product cohesive across platforms.",
+      "Dizajniramo intuitivna putovanja, komponentne sisteme i motion obrasce koji održavaju proizvod konzistentnim na svim platformama.",
     href: "/services/ui-ux-design",
   },
   {
     id: 3,
-    title: "Engineering & integration",
+    title: "Inženjering i integracije",
     description:
-      "Ship resilient software with modular architecture, modern DevOps, and automation from CI to cloud observability.",
+      "Isporučujemo otporan softver kroz modularnu arhitekturu, moderan DevOps i automatizaciju od CI-ja do cloud observability-ja.",
     href: "/services/web-development",
   },
   {
     id: 4,
-    title: "Scale & continuous improvement",
+    title: "Skaliranje i kontinuirano unapređenje",
     description:
-      "Measure outcomes, surface new opportunities, and iterate fast so your product stays ahead of growth targets.",
+      "Merimo ishode, otkrivamo nove prilike i brzo iteriramo kako bi proizvod ostao ispred ciljeva rasta.",
     href: "/services/seo-geo",
   },
 ];
@@ -98,20 +98,20 @@ export default function EffectiveSoftware() {
         <aside className="flex flex-col justify-between gap-10">
           <div className="space-y-6">
             <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">
-              Effective software development
+              Efikasan razvoj softvera
             </span>
             <h2 className="font-aeonik text-4xl font-medium text-theme-primary md:text-[2.8rem]">
-              Strategy, design, and engineering working as one gets you further, faster.
+              Strategija, dizajn i inženjering kao jedan tim vode vas dalje i brže.
             </h2>
             <p className="max-w-xl text-base leading-relaxed text-theme-muted">
-              We embed senior, cross-functional teams that own outcomes from discovery to optimisation. Each phase feeds the next, so you reduce rework, stay aligned, and keep value shipping.
+              Uključujemo iskusne, višefunkcionalne timove koji preuzimaju odgovornost za ishode od discovery faze do optimizacije. Svaka faza hrani sledeću, smanjuje doradu i održava isporuku vrednosti.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-6 border-t border-theme pt-6 text-sm text-theme-muted">
-            <BadgeDot color="bg-emerald-400" label="Discovery-to-delivery squads" />
-            <BadgeDot color="bg-sky-400" label="Outcome-driven playbooks" />
-            <BadgeDot color="bg-violet-400" label="Enterprise-ready standards" />
+            <BadgeDot color="bg-emerald-400" label="Timovi od discovery faze do isporuke" />
+            <BadgeDot color="bg-sky-400" label="Playbook-ovi vođeni ishodima" />
+            <BadgeDot color="bg-violet-400" label="Standardi spremni za enterprise" />
           </div>
 
           <div className="flex flex-wrap gap-3">
@@ -119,14 +119,14 @@ export default function EffectiveSoftware() {
               href="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-theme hover:opacity-90"
             >
-              Book a conversation
+              Zakažite razgovor
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/projects"
               className="inline-flex items-center gap-2 rounded-full border border-theme px-5 py-3 text-sm font-medium text-theme-primary transition-theme hover:bg-muted"
             >
-              View success stories
+              Pogledajte uspešne priče
             </Link>
           </div>
         </aside>
@@ -196,7 +196,7 @@ export default function EffectiveSoftware() {
                         active ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
                       )}
                     >
-                      Explore this phase
+                      Istražite ovu fazu
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>

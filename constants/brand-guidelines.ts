@@ -1,38 +1,39 @@
 export const brandGuidelines = [
   {
-    title: 'Core Narrative',
-    body: `Enigma Digital exists to help ambitious teams turn complex growth goals into measurable product wins. Our language should signal partnership, momentum, and accountability�?"less agency fluff, more engineered outcomes.`,
+    title: "Osnovni narativ",
+    body: "Enigma Digital postoji da ambicioznim timovima pomogne da složene ciljeve rasta pretvore u merljive product pobede. Naš jezik treba da signalizira partnerstvo, zamah i odgovornost - manje agencijskog ukrasa, više inženjerski oblikovanih ishoda.",
   },
   {
-    title: 'Voice & Tone',
-    body: `Speak with confident warmth. We combine senior product expertise with an embedded, �?oin the trenches�?? mindset. Keep sentences sharp, avoid jargon where plain language works, and back claims with results whenever possible.`,
+    title: "Glas i ton",
+    body: "Govorite sa samouverenom toplinom. Spajamo senior product ekspertizu sa embedded, join-the-trenches mentalitetom. Rečenice neka budu jasne, izbegavajte žargon kada običan jezik radi bolje i tvrdnje potkrepite rezultatima kad god je moguće.",
   },
   {
-    title: 'Logo & Lockup',
-    body: `Use the supplied primary logomark on light or neutral backgrounds. Minimum clear space equals the height of the �?oE�?? in Enigma. For dark surfaces, deploy the reversed version. Never stretch, rotate, or recolor the mark.`,
+    title: "Logo i lockup",
+    body: "Koristite dostavljeni primarni logomark na svetlim ili neutralnim pozadinama. Minimalan clear space jednak je visini slova E u Enigma. Za tamne površine koristite obrnutu verziju. Nikada ne razvlačite, rotirajte ili prebojavajte znak.",
   },
   {
-    title: 'Color System',
-    body: `Lean on the core palette already defined in Tailwind (cyan accents, deep slate backgrounds, white surfaces). Accent tones are strategic, not decorative�?"use them to highlight interaction, metrics, or proof points.`,
+    title: "Sistem boja",
+    body: "Oslonite se na osnovnu paletu već definisanu u Tailwind-u: cijan akcente, duboke slate pozadine i bele površine. Akcentne boje su strateške, ne dekorativne - koristite ih za isticanje interakcija, metrika ili dokaza.",
   },
   {
-    title: 'Typography',
-    body: `Headlines use the custom Aeonik stack (uppercase tracking optional). Supporting copy stays in Aeonik regular/light with generous leading. Limit Deltha or Broken Console treatments to hero moments and motion content.`,
+    title: "Tipografija",
+    body: "Naslovi koriste prilagođeni Aeonik stack, uz opcioni uppercase tracking. Prateći copy ostaje u Aeonik regular ili light varijanti sa prostranim leading-om. Deltha i Broken Console koristite samo za hero momente i motion sadržaj.",
   },
   {
-    title: 'Imagery & Motion',
-    body: `Visuals should reinforce momentum�?"gradient glows, product mockups, 3D laptop rigs, or case-study artefacts. Motion is purposeful: hover lifts, timeline reveals, and subtle parallax that underline conversion moments.`,
+    title: "Vizuali i motion",
+    body: "Vizuali treba da pojačaju zamah: gradient glow efekti, product mockup-i, 3D laptop scene ili case-study artefakti. Motion je svrhovit: hover lift, timeline reveal i suptilan parallax koji naglašavaju trenutke konverzije.",
   },
   {
-    title: 'Case Study Structure',
-    body: `Always frame outcomes first, then walk through challenge �+' approach �+' measurable impact. Include metrics, timelines, and tools to show rigor. Keep artifacts anonymized unless approvals are on file.`,
+    title: "Struktura case study-ja",
+    body: "Uvek prvo postavite ishode, zatim prođite kroz izazov, pristup i merljiv uticaj. Uključite metrike, rokove i alate da pokažete rigoroznost. Artefakte držite anonimizovanim osim ako postoje odobrenja.",
   },
   {
-    title: 'Social & Content',
-    body: `Lead with product impact and �?obuild smarter�?? narratives. Use a question or stat up top, drop a key takeaway, then invite readers to dive deeper or start a conversation. CTA language mirrors the site: �?oStart a project�??, �?oSee how we deliver�??.`,
+    title: "Društvene mreže i sadržaj",
+    body: "Počnite product uticajem i build-smarter narativima. Na vrh stavite pitanje ili statistiku, izdvojte ključni zaključak, zatim pozovite čitaoce da istraže dublje ili započnu razgovor. CTA jezik prati sajt: Pokreni projekat, Pogledajte kako isporučujemo.",
   },
   {
-    title: 'Voice Consistency Checklist',
-    body: `Before publishing, ask: Does it showcase measurable progress? Does it sound like a senior partner, not a vendor? Is there a clear next step? Trim anything that feels like filler or overdrive hype.`,
+    title: "Checklist-a konzistentnosti glasa",
+    body: "Pre objave pitajte: Da li prikazuje merljiv napredak? Da li zvuči kao senior partner, ne kao dobavljač? Postoji li jasan sledeći korak? Skratite sve što deluje kao popunjavanje ili preteran hype.",
   },
 ];
+

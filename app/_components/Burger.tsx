@@ -11,7 +11,7 @@ const Burger = ({ navOpen, toggleNav }: BurgerProps) => {
     <button
       type="button"
       onClick={toggleNav}
-      aria-label={navOpen ? "Close menu" : "Open menu"}
+      aria-label={navOpen ? "Zatvori meni" : "Otvori meni"}
       aria-expanded={navOpen}
       className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-[6px] cursor-pointer lg:hidden"
     >

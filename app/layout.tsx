@@ -8,6 +8,7 @@ import localFont from "next/font/local";
 import { ThemeProvider } from "./_components/ThemeProvider";
 import { CookieConsentProvider } from "./_components/CookieConsentProvider";
 import CookieConsentBanner from "./_components/CookieConsentBanner";
+import { LanguageProvider } from "./_components/LanguageProvider";
 
 const deltha = localFont({
   src: [
@@ -84,7 +85,7 @@ const brokenConsole = localFont({
 
 export const metadata: Metadata = {
   title: "Enigma Digital",
-  description: "Customer Boosters",
+  description: "Digitalni proizvodi koji pretvaraju radoznalost u lojalne klijente.",
 };
 
 export default function RootLayout({
@@ -93,23 +94,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="sr-Latn-RS" suppressHydrationWarning>
       <body
         className={`${deltha.variable} ${terminal.variable} ${aeonik.variable} ${brokenConsole.variable} font-aeonik antialiased`}
       >
         <CookieConsentProvider>
-          <ThemeProvider>
-            <div className="app-shell relative isolate min-h-screen">
-              <WaveBackgroundGlobal />
-              <div className="relative z-10">
-                <Navbar />
-                <div className="h-full w-full">{children}</div>
-                <Footer />
-                <ScrollToTopButton />
+          <LanguageProvider>
+            <ThemeProvider>
+              <div className="app-shell relative isolate min-h-screen">
+                <WaveBackgroundGlobal />
+                <div className="relative z-10">
+                  <Navbar />
+                  <div className="h-full w-full">{children}</div>
+                  <Footer />
+                  <ScrollToTopButton />
+                </div>
               </div>
-            </div>
-            <CookieConsentBanner />
-          </ThemeProvider>
+              <CookieConsentBanner />
+            </ThemeProvider>
+          </LanguageProvider>
         </CookieConsentProvider>
       </body>
     </html>

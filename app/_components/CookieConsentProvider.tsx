@@ -7,6 +7,7 @@ import {
   useEffect,
   useMemo,
   useState,
+  useSyncExternalStore,
 } from "react";
 
 type ConsentState = {
@@ -29,15 +30,31 @@ const CookieConsentContext = createContext<CookieConsentContextValue | null>(
 
 const CONSENT_COOKIE_NAME = "enigma-cookie-consent";
 const CONSENT_COOKIE_MAX_AGE = 60 * 60 * 24 * 180; // 180 days
+const DEFAULT_CONSENT: ConsentState = {
+  necessary: true,
+  functional: false,
+};
 
-const readConsentCookie = (): ConsentState | null => {
+type ConsentSnapshot = {
+  consent: ConsentState;
+  hasResponded: boolean;
+};
+
+const DEFAULT_SNAPSHOT: ConsentSnapshot = {
+  consent: DEFAULT_CONSENT,
+  hasResponded: false,
+};
+
+const readConsentCookieValue = () => {
   if (typeof document === "undefined") return null;
 
-  const cookie = document.cookie
+  return document.cookie
     .split(";")
     .map((part) => part.trim())
-    .find((part) => part.startsWith(`${CONSENT_COOKIE_NAME}=`));
+    .find((part) => part.startsWith(`${CONSENT_COOKIE_NAME}=`)) ?? null;
+};
 
+const parseConsentCookie = (cookie: string | null): ConsentState | null => {
   if (!cookie) return null;
 
   try {
@@ -58,6 +75,37 @@ const readConsentCookie = (): ConsentState | null => {
   }
 };
 
+let cachedCookieValue: string | null | undefined;
+let cachedSnapshot = DEFAULT_SNAPSHOT;
+
+const getConsentSnapshot = () => {
+  const cookie = readConsentCookieValue();
+
+  if (cookie === cachedCookieValue) {
+    return cachedSnapshot;
+  }
+
+  cachedCookieValue = cookie;
+  const stored = parseConsentCookie(cookie);
+  cachedSnapshot = stored
+    ? {
+        consent: stored,
+        hasResponded: true,
+      }
+    : DEFAULT_SNAPSHOT;
+
+  return cachedSnapshot;
+};
+
+const getServerConsentSnapshot = () => DEFAULT_SNAPSHOT;
+
+const subscribeConsentSnapshot = (onStoreChange: () => void) => {
+  if (typeof window === "undefined") return () => {};
+
+  const timeoutId = window.setTimeout(onStoreChange, 0);
+  return () => window.clearTimeout(timeoutId);
+};
+
 const writeConsentCookie = (consent: ConsentState) => {
   if (typeof document === "undefined") return;
 
@@ -72,19 +120,15 @@ export const CookieConsentProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [consent, setConsent] = useState<ConsentState>({
-    necessary: true,
-    functional: false,
-  });
-  const [hasResponded, setHasResponded] = useState(false);
+  const cookieSnapshot = useSyncExternalStore(
+    subscribeConsentSnapshot,
+    getConsentSnapshot,
+    getServerConsentSnapshot
+  );
+  const [manualSnapshot, setManualSnapshot] = useState<ConsentSnapshot | null>(null);
 
-  useEffect(() => {
-    const stored = readConsentCookie();
-    if (!stored) return;
-
-    setConsent(stored);
-    setHasResponded(true);
-  }, []);
+  const snapshot = manualSnapshot ?? cookieSnapshot;
+  const { consent, hasResponded } = snapshot;
 
   useEffect(() => {
     if (!hasResponded) return;
@@ -93,31 +137,45 @@ export const CookieConsentProvider = ({
   }, [consent, hasResponded]);
 
   const setFunctionalConsent = useCallback((enabled: boolean) => {
-    setConsent((prev) => ({
-      ...prev,
-      functional: enabled,
-    }));
-  }, []);
+    setManualSnapshot((prev) => {
+      const current = prev ?? cookieSnapshot;
+
+      return {
+        ...current,
+        consent: {
+          ...current.consent,
+          functional: enabled,
+        },
+      };
+    });
+  }, [cookieSnapshot]);
 
   const acceptAll = useCallback(() => {
-    setConsent({
-      necessary: true,
-      functional: true,
+    setManualSnapshot({
+      consent: {
+        necessary: true,
+        functional: true,
+      },
+      hasResponded: true,
     });
-    setHasResponded(true);
   }, []);
 
   const declineOptional = useCallback(() => {
-    setConsent({
-      necessary: true,
-      functional: false,
+    setManualSnapshot({
+      consent: {
+        necessary: true,
+        functional: false,
+      },
+      hasResponded: true,
     });
-    setHasResponded(true);
   }, []);
 
   const savePreferences = useCallback(() => {
-    setHasResponded(true);
-  }, []);
+    setManualSnapshot((prev) => ({
+      ...(prev ?? cookieSnapshot),
+      hasResponded: true,
+    }));
+  }, [cookieSnapshot]);
 
   const value = useMemo<CookieConsentContextValue>(
     () => ({
@@ -147,4 +205,3 @@ export const useCookieConsent = () => {
 
   return context;
 };
-

@@ -8,16 +8,16 @@ export default function BrandGuidelines() {
         <div className="relative mx-auto flex w-full max-w-5xl flex-col gap-12">
           <header className="space-y-6">
             <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.6em] text-cyan-300">
-              Brand Guidelines
+              Smernice brenda
             </span>
-            <h1 className="font-aeonik text-4xl.font-medium leading-tight md:text-5xl">
-              Keeping Enigma Digital�?Ts story consistent across every touchpoint
+            <h1 className="font-aeonik text-4xl font-medium leading-tight md:text-5xl">
+              Održavanje priče Enigma Digital brenda doslednom na svakoj tački kontakta
             </h1>
             <p className="max-w-2xl text-base leading-relaxed text-theme-muted">
-              These guidelines help teammates, partners, and collaborators communicate the Enigma Digital brand with clarity and confidence. Use them as a guardrail anytime you create copy, visuals, or experiences on our behalf.
+              Ove smernice pomažu članovima tima, partnerima i saradnicima da komuniciraju Enigma Digital brend jasno i samouvereno. Koristite ih kao okvir kada u naše ime kreirate copy, vizuale ili iskustva.
             </p>
             <div className="rounded-3xl border border-theme theme-card px-5 py-4 text-sm text-theme-muted transition-theme">
-              <span className="font-semibold text-theme-primary">Last updated:</span> October 7, 2025
+              <span className="font-semibold text-theme-primary">Poslednje ažuriranje:</span> 7. oktobar 2025.
             </div>
           </header>
 
@@ -30,8 +30,8 @@ export default function BrandGuidelines() {
                 <div
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(56,189,248,0.18), rgba(168,85,247,0.14))',
-                    mixBlendMode: 'screen',
+                    background: "linear-gradient(135deg, rgba(56,189,248,0.18), rgba(168,85,247,0.14))",
+                    mixBlendMode: "screen",
                   }}
                 />
                 <div className="relative space-y-3">
@@ -44,14 +44,14 @@ export default function BrandGuidelines() {
 
           <footer className="rounded-3xl border border-theme theme-card px-6 py-5 text-sm text-theme-muted transition-theme">
             <p>
-              Need assets, templates, or a brand review? Email{' '}
+              Trebaju vam asset-i, template-i ili brand review? Pišite na{" "}
               <a
                 href="mailto:hello@enigma.digital"
                 className="font-medium text-theme-primary transition-theme hover:text-cyan-300"
               >
                 hello@enigma.digital
-              </a>{' '}
-              and we�?Tll share the latest toolkit or help audit your content for consistency.
+              </a>{" "}
+              i podelićemo najnoviji toolkit ili pomoći u proveri konzistentnosti sadržaja.
             </p>
           </footer>
         </div>
@@ -59,3 +59,4 @@ export default function BrandGuidelines() {
     </div>
   );
 }
+

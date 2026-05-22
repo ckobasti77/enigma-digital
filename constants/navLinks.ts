@@ -11,53 +11,53 @@ export const navLinks = [
   {
     id: 1,
     to: "/",
-    text: "Home",
+    text: "Početna",
   },
   {
     id: 2,
     to: "/services",
-    text: "Services",
+    text: "Usluge",
     dropdownLinks: [
       {
         id: 1,
         to: "web-development",
-        headline: "Web development",
-        subheadline: "Develop. Dominate. Scale.",
+        headline: "Izrada web sajtova",
+        subheadline: "Razvijaj. Dominiraj. Skaliraj.",
         icon: Monitor,
       },
       {
         id: 2,
         to: "ui-ux-design",
-        headline: "UI | UX Design",
-        subheadline: "Intuitive experiences, beautiful interfaces.",
+        headline: "UI | UX dizajn",
+        subheadline: "Intuitivna iskustva, lepi interfejsi.",
         icon: Brush,
       },
       {
         id: 3,
         to: "mobile-app-development",
-        headline: "Mobile App Development",
-        subheadline: "From idea to App store.",
+        headline: "Izrada mobilnih aplikacija",
+        subheadline: "Od ideje do App Store-a.",
         icon: Smartphone,
       },
       {
         id: 4,
         to: "seo-geo",
-        headline: "SEO & GEO",
-        subheadline: "Appear at top on Google & Chatbots.",
+        headline: "SEO i GEO",
+        subheadline: "Budite pri vrhu na Google-u i u AI pretragama.",
         icon: Search,
       },
       {
         id: 5,
         to: "branding",
-        headline: "Branding",
-        subheadline: "Instantly recognizable. Effortlessly remembered.",
+        headline: "Brending",
+        subheadline: "Odmah prepoznatljivo. Lako pamtljivo.",
         icon: WandSparkles,
       },
       {
         id: 6,
         to: "social-media",
-        headline: "Social Media",
-        subheadline: "Turning followers into fans.",
+        headline: "Društvene mreže",
+        subheadline: "Pretvaramo pratioce u obožavaoce.",
         icon: Megaphone,
       },
     ],
@@ -65,17 +65,17 @@ export const navLinks = [
   {
     id: 3,
     to: "/projects",
-    text: 'Projects'
+    text: 'Projekti'
   },
   {
     id: 4,
     to: "/about",
-    text: 'About'
+    text: 'O nama'
   },
   {
     id: 5,
     to: "/contact",
-    text: 'Contact Us',
+    text: 'Kontakt',
     cta: true,
   },
 ];

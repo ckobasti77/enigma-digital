@@ -1,10 +1,12 @@
 ﻿"use client";
 
 import { Bounds, useGLTF, useTexture } from "@react-three/drei";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { Suspense, useEffect, useMemo, useRef } from "react";
 import { useTheme } from "./ThemeProvider";
+import { useMood } from "./MoodProvider";
+import { MOOD_CAMERA } from "@/constants/moodConfig";
 
 type AxisKey = "x" | "y" | "z";
 type ThemeMode = "light" | "dark";
@@ -22,22 +24,29 @@ const LAPTOP_COLOR_PRESETS: Record<ThemeMode, { chassis: string; bezel: string; 
   },
 };
 
-function Laptop() {
+function Laptop({ progressRef }: { progressRef?: React.MutableRefObject<number> }) {
   const { scene } = useGLTF("/assets/models/laptop/laptop.glb");
   const tiltRef = useRef<THREE.Group>(null);
   const { theme } = useTheme();
   const palette = useMemo(() => LAPTOP_COLOR_PRESETS[theme], [theme]);
 
-  const screenTexture = useTexture("/assets/images/screen-saver2.avif");
+  const sourceScreenTexture = useTexture("/assets/images/screen-saver2.avif");
+  const screenTexture = useMemo(() => {
+    const texture = sourceScreenTexture.clone();
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.wrapS = texture.wrapT = THREE.ClampToEdgeWrapping;
+    texture.minFilter = THREE.LinearFilter;
+    texture.magFilter = THREE.LinearFilter;
+    texture.center.set(0.5, 0.5);
+    texture.anisotropy = Math.min(8, texture.anisotropy ?? 0);
+    texture.needsUpdate = true;
+    return texture;
+  }, [sourceScreenTexture]);
+
   useEffect(() => {
-    if (!screenTexture) return;
-    screenTexture.colorSpace = THREE.SRGBColorSpace;
-    screenTexture.wrapS = screenTexture.wrapT = THREE.ClampToEdgeWrapping;
-    screenTexture.minFilter = THREE.LinearFilter;
-    screenTexture.magFilter = THREE.LinearFilter;
-    screenTexture.center.set(0.5, 0.5);
-    screenTexture.anisotropy = Math.min(8, screenTexture.anisotropy ?? 0);
-    screenTexture.needsUpdate = true;
+    return () => {
+      screenTexture.dispose();
+    };
   }, [screenTexture]);
 
   const screenMaterial = useMemo(
@@ -229,15 +238,16 @@ function Laptop() {
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       if (!tiltRef.current) return;
-      const x = (event.clientX / window.innerWidth - 0.5) * 0.6;
-      const y = (event.clientY / window.innerHeight - 0.5) * 0.6;
+      const attenuation = 1 - (progressRef?.current ?? 0);
+      const x = (event.clientX / window.innerWidth - 0.5) * 0.6 * attenuation;
+      const y = (event.clientY / window.innerHeight - 0.5) * 0.6 * attenuation;
       tiltRef.current.rotation.y = x;
       tiltRef.current.rotation.x = -y;
     };
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [progressRef]);
 
   return <primitive ref={tiltRef} object={scene} scale={4} />;
 }
@@ -341,9 +351,19 @@ function InstagramIcon(props: SocialIconProps) {
   return <SpinningIcon modelPath={INSTAGRAM_MODEL_PATH} {...props} />;
 }
 
-function AmbientShapes() {
+function AmbientShapes({ progressRef }: { progressRef?: React.MutableRefObject<number> }) {
+  const groupRef = useRef<THREE.Group>(null);
+
+  useFrame(() => {
+    if (!groupRef.current || !progressRef) return;
+    const p = progressRef.current;
+    const fade = 1 - p;
+    groupRef.current.scale.setScalar(fade);
+    groupRef.current.visible = fade > 0.01;
+  });
+
   return (
-    <group>
+    <group ref={groupRef}>
       <TikTokIcon
         position={[2, 0.95, -0.25]}
         spinSpeed={0.75}
@@ -363,18 +383,100 @@ function AmbientShapes() {
   );
 }
 
+function CameraController({ progressRef }: { progressRef: React.MutableRefObject<number> }) {
+  const { camera } = useThree();
+  const startPos = useMemo(() => new THREE.Vector3(...MOOD_CAMERA.start), []);
+  const endPos = useMemo(() => new THREE.Vector3(...MOOD_CAMERA.end), []);
+  const targetPos = useMemo(() => new THREE.Vector3(), []);
+  const screenCenter = useMemo(() => new THREE.Vector3(0, 0.85, 0), []);
+
+  useFrame(() => {
+    const p = progressRef.current;
+    if (p <= 0) return;
+
+    targetPos.lerpVectors(startPos, endPos, p);
+    camera.position.lerp(targetPos, 0.15);
+    camera.lookAt(screenCenter);
+  });
+
+  return null;
+}
+
 export default function LaptopScene() {
+  const { moodActive, progressRef } = useMood();
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const originRect = useRef<DOMRect | null>(null);
+  const rafId = useRef(0);
+
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+
+    if (moodActive) {
+      // Snapshot the in-flow bounding rect before going fixed
+      originRect.current = el.getBoundingClientRect();
+
+      const r = originRect.current;
+      const origCx = r.left + r.width / 2;
+      const origCy = r.top + r.height / 2;
+
+      const tick = () => {
+        const p = progressRef.current;
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+
+        // Lerp center: laptop screen center → viewport center
+        const cx = origCx + (vw / 2 - origCx) * p;
+        const cy = origCy + (vh / 2 - origCy) * p;
+
+        // Lerp size: original → full viewport
+        const w = r.width + (vw - r.width) * p;
+        const h = r.height + (vh - r.height) * p;
+
+        el.style.position = "fixed";
+        el.style.zIndex = "30";
+        el.style.left = `${cx - w / 2}px`;
+        el.style.top = `${cy - h / 2}px`;
+        el.style.width = `${w}px`;
+        el.style.height = `${h}px`;
+        el.style.maxWidth = "none";
+        el.style.aspectRatio = "unset";
+        el.style.transform = "none";
+
+        rafId.current = requestAnimationFrame(tick);
+      };
+
+      rafId.current = requestAnimationFrame(tick);
+      return () => cancelAnimationFrame(rafId.current);
+    } else {
+      cancelAnimationFrame(rafId.current);
+      el.style.position = "";
+      el.style.zIndex = "";
+      el.style.left = "";
+      el.style.top = "";
+      el.style.width = "";
+      el.style.height = "";
+      el.style.maxWidth = "";
+      el.style.aspectRatio = "";
+      el.style.transform = "";
+      originRect.current = null;
+    }
+  }, [moodActive, progressRef]);
+
   return (
-    <Canvas camera={{ position: [0, 1, 3], fov: 45 }} className="-translate-x-16 md:translate-x-0">
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 5, 5]} intensity={1.1} castShadow />
-      <Suspense fallback={null}>
-        <Bounds fit clip observe margin={1.2}>
-          <Laptop />
-        </Bounds>
-        <AmbientShapes />
-      </Suspense>
-    </Canvas>
+    <div ref={wrapperRef} className="aspect-[4/3] w-full translate-x-16 md:translate-x-0">
+      <Canvas camera={{ position: [0, 1, 3], fov: 45 }} style={{ width: "100%", height: "100%" }}>
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[5, 5, 5]} intensity={1.1} castShadow />
+        <Suspense fallback={null}>
+          <Bounds fit={!moodActive} clip observe margin={1.2}>
+            <Laptop progressRef={progressRef} />
+          </Bounds>
+          <AmbientShapes progressRef={progressRef} />
+          {moodActive && <CameraController progressRef={progressRef} />}
+        </Suspense>
+      </Canvas>
+    </div>
   );
 }
 

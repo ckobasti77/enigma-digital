@@ -20,171 +20,171 @@ const detail = serviceDetails["seo-geo"];
 
 const scopeItems = [
   {
-    title: "Technical SEO audit",
-    benefit: "Crawl analysis, index health, and schema checks to uncover hidden gaps.",
+    title: "Tehnički SEO audit",
+    benefit: "Crawl analiza, zdravlje indeksa i schema provere otkrivaju skrivene praznine.",
     icon: Search,
   },
   {
-    title: "Site performance & crawlability",
-    benefit: "Core Web Vitals and site architecture tuned for speed and clarity.",
+    title: "Performanse sajta i crawlability",
+    benefit: "Core Web Vitals i arhitektura sajta podešeni za brzinu i jasnoću.",
     icon: GaugeCircle,
   },
   {
-    title: "Content architecture & intent",
-    benefit: "Topic clusters, internal linking, and page templates built for conversion.",
+    title: "Arhitektura sadržaja i intent",
+    benefit: "Topic cluster-i, interno linkovanje i page template-i građeni za konverziju.",
     icon: LayoutDashboard,
   },
   {
-    title: "Local and geo expansion",
-    benefit: "Location pages, listings, and hreflang setups for new markets.",
+    title: "Lokalno i geo širenje",
+    benefit: "Lokacijske strane, listing-i i hreflang podešavanja za nova tržišta.",
     icon: MapPin,
   },
   {
-    title: "Authority & link strategy",
-    benefit: "Digital PR and backlink planning aligned to your growth goals.",
+    title: "Autoritet i link strategija",
+    benefit: "Digital PR i planiranje backlink-ova usklađeni sa ciljevima rasta.",
     icon: BadgeCheck,
   },
   {
-    title: "Reporting & experimentation",
-    benefit: "Dashboards, rank tracking, and testing loops that prove impact.",
+    title: "Izveštavanje i eksperimentisanje",
+    benefit: "Dashboard-i, rank tracking i test loop-ovi koji dokazuju uticaj.",
     icon: SignalHigh,
   },
 ];
 
 const methodologyPillars = [
   {
-    title: "Technical foundation",
+    title: "Tehnički temelj",
     points: [
-      "Crawl budgets, indexing strategy, and schema markup tuned for scale.",
-      "Performance fixes mapped to conversion and visibility gains.",
+      "Crawl budžeti, strategija indeksiranja i schema markup podešeni za skaliranje.",
+      "Poboljšanja performansi mapirana na konverzije i rast vidljivosti.",
     ],
   },
   {
-    title: "Content and intent mapping",
+    title: "Mapiranje sadržaja i intent-a",
     points: [
-      "Search intent analysis tied to product funnels and conversion goals.",
-      "Cluster strategy that consolidates authority and guides internal links.",
+      "Analiza search intent-a vezana za product funnel-e i ciljeve konverzije.",
+      "Cluster strategija konsoliduje autoritet i vodi interno linkovanje.",
     ],
   },
   {
-    title: "Measurement and iteration",
+    title: "Merenje i iteracija",
     points: [
-      "Dashboards with rankings, traffic, and revenue attribution updates.",
-      "Experiment logs and quarterly reviews to keep momentum compounding.",
+      "Dashboard-i sa pozicijama, saobraćajem i revenue attribution update-ima.",
+      "Logovi eksperimenata i kvartalni pregledi održavaju kumulativni zamah.",
     ],
   },
 ];
 
 const deliveryRail = [
-  { phase: "Audit", caption: "Technical review, crawl data, and baseline metrics" },
-  { phase: "Strategy", caption: "Keyword mapping, content plan, and priority fixes" },
-  { phase: "Implement", caption: "Technical remediation and on-page optimisation" },
-  { phase: "Expand", caption: "Location pages, translations, and market rollouts" },
-  { phase: "Optimize", caption: "Reporting, tests, and ongoing improvements" },
+  { phase: "Audit", caption: "Tehnički pregled, crawl podaci i početne metrike" },
+  { phase: "Strategija", caption: "Mapiranje ključnih reči, content plan i prioritetne popravke" },
+  { phase: "Implementacija", caption: "Tehničke popravke i on-page optimizacija" },
+  { phase: "Širenje", caption: "Lokacijske strane, prevodi i rollout po tržištima" },
+  { phase: "Optimizacija", caption: "Izveštavanje, testovi i stalna unapređenja" },
 ];
 
 const differentiators = [
   {
     title: "Engineering-led SEO",
-    body: "We pair technical fixes with product and analytics teams so changes ship fast and stick.",
+    body: "Tehnička poboljšanja spajamo sa product i analytics timovima kako bi izmene brzo izašle i ostale.",
   },
   {
-    title: "Geo expansion built in",
-    body: "Local pages, listings, and localization plans are part of the roadmap, not an afterthought.",
+    title: "Geo širenje ugrađeno",
+    body: "Lokalne strane, listing-i i planovi lokalizacije deo su roadmap-a, ne naknadna misao.",
   },
   {
-    title: "Content aligned to conversion",
-    body: "Search intent informs landing pages and onboarding so organic traffic converts.",
+    title: "Sadržaj usklađen sa konverzijom",
+    body: "Search intent oblikuje landing strane i onboarding kako bi organski saobraćaj konvertovao.",
   },
   {
-    title: "Transparent reporting",
-    body: "Weekly dashboards and experiment logs show exactly where gains are coming from.",
+    title: "Transparentno izveštavanje",
+    body: "Nedeljni dashboard-i i logovi eksperimenata jasno pokazuju odakle dolazi rast.",
   },
 ];
 
 const trustSignals = [
-  { value: "30%", label: "Traffic lift target" },
-  { value: "90d", label: "Roadmap cadence" },
-  { value: "50+", label: "Pages optimised" },
-  { value: "12", label: "Markets supported" },
+  { value: "30%", label: "Cilj rasta saobraćaja" },
+  { value: "90d", label: "Ritam roadmap-a" },
+  { value: "50+", label: "Optimizovane strane" },
+  { value: "12", label: "Podržana tržišta" },
 ];
 
 const journeyPhases = [
   {
-    label: "1. Audit & baselining",
-    description: "Review crawl data, rankings, and technical health to define priorities.",
-    deliverable: "Technical audit and crawl report",
+    label: "1. Audit i bazno merenje",
+    description: "Pregledamo crawl podatke, pozicije i tehničko zdravlje da definišemo prioritete.",
+    deliverable: "Tehnički audit i crawl izveštaj",
   },
   {
-    label: "2. Strategy & roadmap",
-    description: "Align keyword opportunities with content plans and product goals.",
-    deliverable: "90-day SEO roadmap",
+    label: "2. Strategija i roadmap",
+    description: "Usklađujemo prilike ključnih reči sa content planovima i product ciljevima.",
+    deliverable: "90-dnevni SEO roadmap",
   },
   {
-    label: "3. Implementation & fixes",
-    description: "Ship technical improvements and optimize priority landing pages.",
-    deliverable: "Remediation backlog and implementation checklist",
+    label: "3. Implementacija i popravke",
+    description: "Isporučujemo tehnička unapređenja i optimizujemo prioritetne landing strane.",
+    deliverable: "Backlog popravki i implementation checklist-a",
   },
   {
-    label: "4. Content & geo expansion",
-    description: "Publish new pages, local listings, and translated experiences.",
-    deliverable: "Optimized pages and geo templates",
+    label: "4. Sadržaj i geo širenje",
+    description: "Objavljujemo nove strane, lokalne listing-e i prevedena iskustva.",
+    deliverable: "Optimizovane strane i geo template-i",
   },
   {
-    label: "5. Reporting & iteration",
-    description: "Measure impact, run experiments, and update the roadmap.",
-    deliverable: "Performance dashboards and experiment log",
+    label: "5. Izveštavanje i iteracija",
+    description: "Merimo uticaj, pokrećemo eksperimente i ažuriramo roadmap.",
+    deliverable: "Dashboard-i performansi i log eksperimenata",
   },
 ];
 
 const maintenanceHighlights = [
-  "Monthly rank tracking and visibility reporting.",
-  "Content refresh cycles and internal linking updates.",
-  "Technical health checks for indexing and Core Web Vitals.",
-  "Local listing updates and review response guidance.",
-  "Algorithm update monitoring and rapid response plans.",
+  "Mesečno praćenje pozicija i izveštavanje o vidljivosti.",
+  "Ciklusi osvežavanja sadržaja i ažuriranja internog linkovanja.",
+  "Tehničke health provere za indeksiranje i Core Web Vitals.",
+  "Update-i lokalnih listing-a i smernice za odgovore na recenzije.",
+  "Praćenje algorithm update-a i planovi brzog odgovora.",
 ];
 
 const faqItems = [
   {
-    question: "How soon will we see SEO results?",
+    question: "Koliko brzo ćemo videti SEO rezultate?",
     answer:
-      "Early signals typically appear within 6-12 weeks, with compounding gains as technical and content work mature.",
+      "Rani signali se obično vide za 6-12 nedelja, a rast se kumulira kako tehnički i content rad sazrevaju.",
   },
   {
-    question: "Do you handle technical fixes or just strategy?",
+    question: "Da li radite tehničke popravke ili samo strategiju?",
     answer:
-      "We do both. Our team can implement technical SEO fixes or collaborate with your engineering team to ship them.",
+      "Radimo oba. Naš tim može implementirati tehničke SEO popravke ili sarađivati sa vašim engineering timom na isporuci.",
   },
   {
-    question: "Will you write the content?",
+    question: "Da li pišete sadržaj?",
     answer:
-      "We can provide content briefs, outlines, and writing support, or work alongside your internal content team.",
+      "Možemo obezbediti content brief-ove, outline-e i podršku u pisanju ili raditi uz vaš interni content tim.",
   },
   {
-    question: "Can you support international or multi-language SEO?",
+    question: "Možete li podržati internacionalni ili višejezični SEO?",
     answer:
-      "Yes. We plan hreflang setups, localized content, and market-specific page templates.",
+      "Da. Planiramo hreflang podešavanja, lokalizovan sadržaj i page template-e specifične za tržišta.",
   },
   {
-    question: "Do you manage local listings?",
+    question: "Da li upravljate lokalnim listing-ima?",
     answer:
-      "We handle location pages and listings strategy, and can coordinate review management with your team.",
+      "Radimo lokacijske strane i strategiju listing-a, a možemo koordinisati review management sa vašim timom.",
   },
   {
     question: "How do you measure success?",
     answer:
-      "We track rankings, organic traffic, conversions, and revenue attribution tied to your KPIs.",
+      "Pratimo pozicije, organski saobraćaj, konverzije i revenue attribution vezan za vaše KPI-jeve.",
   },
   {
-    question: "Can you work with our in-house developers?",
+    question: "Možete li raditi sa našim internim developerima?",
     answer:
-      "Absolutely. We slot into your workflow using Jira, Linear, or GitHub for transparent execution.",
+      "Apsolutno. Uklapamo se u vaš workflow kroz Jira-u, Linear ili GitHub radi transparentne egzekucije.",
   },
   {
-    question: "What does engagement look like?",
+    question: "Kako izgleda angažman?",
     answer:
-      "Most engagements run on a quarterly roadmap with monthly reporting and continuous optimisation sprints.",
+      "Većina angažmana radi se kroz kvartalni roadmap, mesečno izveštavanje i kontinuirane optimizacione sprintove.",
   },
 ];
 
@@ -211,13 +211,12 @@ const SeoGeo = () => {
       <section className="theme-section px-6 py-20 sm:py-24 transition-theme">
         <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-10 lg:gap-12">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Scope at a glance</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Opseg ukratko</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              SEO coverage that compounds visibility
+              SEO pokrivenost koja kumulativno gradi vidljivost
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              We align technical fixes, content strategy, and geo expansion so you capture demand at every stage of the
-              funnel.
+              Usklađujemo tehnička poboljšanja, strategiju sadržaja i geo širenje kako biste uhvatili potražnju u svakoj fazi funnel-a.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -243,13 +242,13 @@ const SeoGeo = () => {
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 lg:gap-12">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1fr)] lg:items-start">
             <div className="space-y-5">
-              <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Strategy &amp; methodology</span>
-              <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">How we grow organic visibility</h2>
+              <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Strategija i metodologija</span>
+              <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">Kako gradimo organsku vidljivost</h2>
               <p className="text-base leading-relaxed text-theme-muted">
-                We blend technical SEO, content architecture, and analytics so your growth is measurable and repeatable.
+                Spajamo tehnički SEO, arhitekturu sadržaja i analitiku kako bi rast bio merljiv i ponovljiv.
               </p>
               <div className="flex flex-wrap gap-2">
-                {["Technical SEO", "Schema", "Hreflang", "Local SEO", "Content clusters", "Reporting"].map(
+                {["Tehnički SEO", "Schema", "Hreflang", "Lokalni SEO", "Tematski klasteri", "Izveštavanje"].map(
                   (keyword) => (
                     <span
                       key={keyword}
@@ -286,18 +285,17 @@ const SeoGeo = () => {
           <div className="overflow-hidden rounded-3xl border border-theme theme-card p-6 shadow-theme">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div>
-                <h3 className="text-xl font-semibold text-theme-primary">Download our SEO roadmap template</h3>
+                <h3 className="text-xl font-semibold text-theme-primary">Preuzmite SEO roadmap template</h3>
                 <p className="mt-2 max-w-xl text-sm leading-relaxed text-theme-muted">
-                  Get the audit checklist, keyword mapping framework, and reporting cadence we use to build compounding
-                  growth.
+                  Dobijte audit checklist-u, framework za mapiranje ključnih reči i ritam izveštavanja koji koristimo za kumulativni rast.
                 </p>
               </div>
             </div>
             <div className="mt-10 space-y-6">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <span className="text-xs uppercase tracking-[0.6em] text-theme-muted">Our SEO rail</span>
+                <span className="text-xs uppercase tracking-[0.6em] text-theme-muted">Naš SEO tok</span>
                 <span className="text-xs uppercase tracking-[0.3em] text-theme-muted opacity-80 sm:text-right">
-                  Swipe to explore each delivery phase
+                  Prevucite da istražite svaku fazu isporuke
                 </span>
               </div>
               <div className="relative overflow-hidden rounded-3xl border border-theme/70 theme-card p-6 shadow-[inset_0_1px_0_rgba(148,163,184,0.1)] backdrop-blur-sm transition-theme md:p-8">
@@ -337,13 +335,12 @@ const SeoGeo = () => {
       <section className="theme-section px-6 py-20 sm:py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 lg:gap-12">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Why choose us</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Zašto izabrati nas</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              SEO partners focused on measurable outcomes
+              SEO partneri fokusirani na merljive ishode
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              We align with your product, marketing, and engineering teams to deliver search gains you can trace to
-              revenue.
+              Usklađujemo se sa vašim product, marketing i engineering timovima kako bismo isporučili search rast koji možete povezati sa prihodom.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
@@ -363,8 +360,8 @@ const SeoGeo = () => {
       <section className="theme-section border-y border-theme/60 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-6 py-20 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
           <div className="flex flex-col gap-3">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Proof you can trust</span>
-            <h2 className="text-2xl font-semibold text-theme-primary md:text-3xl">Search performance highlights</h2>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Dokazi kojima možete verovati</span>
+            <h2 className="text-2xl font-semibold text-theme-primary md:text-3xl">Najvažnije search performanse</h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {trustSignals.map(({ value, label }) => (
@@ -380,15 +377,15 @@ const SeoGeo = () => {
           <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] text-theme-muted">
             <span className="inline-flex items-center gap-2 rounded-full border border-theme px-3 py-1">
               <Search className="h-4 w-4 text-cyan-400" aria-hidden />
-              Technical SEO coverage
+              Tehnička SEO pokrivenost
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-theme px-3 py-1">
               <Globe2 className="h-4 w-4 text-cyan-400" aria-hidden />
-              Geo expansion strategy
+              Strategija geo širenja
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-theme px-3 py-1">
               <SignalHigh className="h-4 w-4 text-cyan-400" aria-hidden />
-              Transparent reporting
+              Transparentno izveštavanje
             </span>
           </div>
         </div>
@@ -397,12 +394,12 @@ const SeoGeo = () => {
       <section className="theme-section px-6 py-20 sm:py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 lg:gap-12">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Process / journey</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Proces / putanja</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              The journey from audit to compounding growth
+              Put od audita do kumulativnog rasta
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              Each milestone keeps your team aligned and ensures search gains are documented.
+              Svaka prekretnica drži tim usklađenim i obezbeđuje dokumentovanje search rasta.
             </p>
           </div>
           <ol className="relative grid gap-6 md:gap-8 lg:grid-cols-3 xl:grid-cols-5">
@@ -417,7 +414,7 @@ const SeoGeo = () => {
                 </span>
                 <h3 className="mt-4 text-lg font-semibold text-theme-primary">{label}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-theme-muted">{description}</p>
-                <p className="mt-4 text-xs uppercase tracking-[0.3em] text-cyan-400">Deliverable: {deliverable}</p>
+                <p className="mt-4 text-xs uppercase tracking-[0.3em] text-cyan-400">Isporučujemo: {deliverable}</p>
               </li>
             ))}
           </ol>
@@ -427,22 +424,22 @@ const SeoGeo = () => {
       <section className="theme-section border-y border-theme/60 bg-slate-950/50 px-6 py-20 sm:py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Maintenance &amp; growth</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Održavanje i rast</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              We keep SEO healthy as algorithms evolve
+              Održavamo SEO zdravim dok se algoritmi menjaju
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              Organic performance requires constant attention. We stay on top of updates and keep your roadmap fresh.
+              Organske performanse zahtevaju stalnu pažnju. Pratimo update-e i održavamo roadmap svežim.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)] md:items-start">
             <div className="rounded-3xl border border-theme/70 theme-card p-6 shadow-theme transition-all duration-500 ease-out hover:-translate-y-2 hover:border-cyan-400/60 hover:shadow-[0_28px_80px_-48px_rgba(56,189,248,0.5)] translate-y-0">
               <h3 className="flex items-center gap-2 text-lg font-semibold text-theme-primary">
                 <GaugeCircle className="h-5 w-5 text-cyan-400" aria-hidden />
-                Ongoing engagement snapshot
+                Pregled stalnog angažmana
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-theme-muted">
-                We align monthly reporting and optimization sprints to keep rankings stable and traffic growing.
+                Mesečno izveštavanje i optimizacione sprintove usklađujemo da pozicije ostanu stabilne, a saobraćaj raste.
               </p>
             </div>
             <ul className="space-y-3 rounded-3xl border border-theme/70 theme-card p-6 shadow-theme transition-all duration-500 ease-out hover:border-cyan-400/60">
@@ -466,12 +463,12 @@ const SeoGeo = () => {
       <section className="theme-section px-6 py-20 sm:py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
           <div className="max-w-3xl space-y-5 text-center md:text-left">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">FAQ</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Česta pitanja</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              Frequently asked questions about SEO and geo services
+              Česta pitanja o SEO i geo uslugama
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              Answers to the topics we cover most often with growth and marketing teams exploring search partnerships.
+              Odgovori na teme koje najčešće prolazimo sa growth i marketing timovima koji istražuju search partnerstva.
             </p>
           </div>
           <div className="divide-y divide-theme rounded-3xl border border-theme theme-card">
@@ -518,11 +515,10 @@ const SeoGeo = () => {
       <section className="theme-section border-t border-theme/60 px-6 py-20 sm:py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 text-center md:text-left">
           <h2 className="text-3xl font-semibold text-theme-muted md:text-4xl">
-            Let&apos;s build a search roadmap that scales
+            Izgradimo search roadmap koji se skalira
           </h2>
           <p className="max-w-3xl text-base leading-relaxed text-theme-muted">
-            Share your markets, targets, and priorities, and we will craft an SEO roadmap that aligns every team around
-            measurable growth.
+            Podelite tržišta, ciljeve i prioritete, a mi ćemo napraviti SEO roadmap koji usklađuje svaki tim oko merljivog rasta.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
@@ -530,14 +526,14 @@ const SeoGeo = () => {
               className="inline-flex items-center gap-2 rounded-full bg-theme-primary px-7 py-3 text-sm font-semibold text-theme-primary transition hover:opacity-90"
             >
               <Sparkles className="h-4 w-4" aria-hidden />
-              Request an SEO audit
+              Zatražite SEO audit
             </Link>
             <Link
               href="/projects"
               className="inline-flex items-center gap-2 rounded-full border border-theme px-7 py-3 text-sm font-semibold text-theme-primary transition hover:bg-theme-primary/10"
             >
               <BadgeCheck className="h-4 w-4 text-cyan-400" aria-hidden />
-              View growth stories
+              Pogledajte priče o rastu
             </Link>
           </div>
         </div>

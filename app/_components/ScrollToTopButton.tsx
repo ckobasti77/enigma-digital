@@ -24,7 +24,7 @@ const ScrollToTopButton = () => {
   return (
     <button
       type="button"
-      aria-label="Scroll to top"
+      aria-label="Vrati se na vrh"
       onClick={handleClick}
       className={clsx(
         "btn-blur fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-white/30 text-white shadow-lg transition-all duration-300",

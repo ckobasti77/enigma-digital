@@ -10,16 +10,16 @@ export default function TermsOfService() {
         <div className="relative mx-auto flex w-full max-w-5xl flex-col gap-12">
           <header className="space-y-6">
             <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.6em] text-cyan-300">
-              Terms of Service
+              Uslovi korišćenja
             </span>
             <h1 className="font-aeonik text-4xl font-medium leading-tight md:text-5xl">
-              The rules of engagement for building with Enigma Digital
+              Pravila saradnje za rad sa Enigma Digital timom
             </h1>
             <p className="max-w-2xl text-base leading-relaxed text-theme-muted">
-              These Terms describe how we partner with product teams, how fees are handled, and the rights and responsibilities each party retains. They apply to every engagement unless superseded by a signed agreement.
+              Ovi Uslovi opisuju kako sarađujemo sa product timovima, kako se regulišu naknade i koja prava i obaveze svaka strana zadržava. Važe za svaki angažman osim ako ih ne zameni potpisani ugovor.
             </p>
             <div className="rounded-3xl border border-theme theme-card px-5 py-4 text-sm text-theme-muted transition-theme">
-              <span className="font-semibold text-theme-primary">Last updated:</span> October 7, 2025
+              <span className="font-semibold text-theme-primary">Poslednje ažuriranje:</span> 7. oktobar 2025.
             </div>
           </header>
 
@@ -45,11 +45,11 @@ export default function TermsOfService() {
 
           <footer className="rounded-3xl border border-theme theme-card px-6 py-5 text-sm text-theme-muted transition-theme">
             <p>
-              Questions about these Terms? Reach out to us at{' '}
+              Imate pitanja o ovim Uslovima? Pišite nam na{' '}
               <a href="mailto:hello@enigma.digital" className="font-medium text-theme-primary transition-theme hover:text-cyan-300">
                 hello@enigma.digital
               </a>{' '}
-              or call{' '}
+              ili pozovite{' '}
               <a href="tel:+442045771943" className="font-medium text-theme-primary transition-theme hover:text-cyan-300">
                 +44 20 4577 1943
               </a>.

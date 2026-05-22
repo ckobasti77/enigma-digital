@@ -1,42 +1,43 @@
 export const privacyPolicy = [
   {
-    title: 'Information We Collect',
-    body: `We collect only the information needed to scope, deliver, and support our engagements—typically names, work emails, phone numbers, company details, and project context. When working on live products we may also process limited usage analytics or customer data you provide to us.`,
+    title: "Informacije koje prikupljamo",
+    body: "Prikupljamo samo informacije potrebne za definisanje, isporuku i podršku angažmanima - najčešće imena, poslovne adrese e-pošte, brojeve telefona, podatke o kompaniji i kontekst projekta. Kada radimo na živim proizvodima, možemo obrađivati i ograničenu analitiku korišćenja ili korisničke podatke koje nam dostavite.",
   },
   {
-    title: 'How We Use Your Information',
-    body: `Data is used to communicate about projects, create proposals, deliver services, invoice, improve our offerings, and comply with legal obligations. We never sell your information, and we only process it for the purposes agreed with you.`,
+    title: "Kako koristimo vaše informacije",
+    body: "Podatke koristimo za komunikaciju o projektima, izradu ponuda, isporuku usluga, fakturisanje, unapređenje ponude i ispunjavanje zakonskih obaveza. Nikada ne prodajemo vaše informacije i obrađujemo ih samo za svrhe dogovorene sa vama.",
   },
   {
-    title: 'Legal Bases for Processing',
-    body: `For users in the UK and EU, we rely on the following bases: performance of a contract, legitimate interests (e.g., improving services or preventing fraud), compliance with legal obligations, and consent where required.`,
+    title: "Pravni osnovi obrade",
+    body: "Za korisnike u UK i EU oslanjamo se na sledeće osnove: izvršenje ugovora, legitimni interesi kao što su unapređenje usluga ili sprečavanje zloupotreba, ispunjavanje zakonskih obaveza i pristanak kada je potreban.",
   },
   {
-    title: 'Sharing & Third Parties',
-    body: `We share information with trusted partners who help us deliver services—such as hosting providers, productivity tools, analytics platforms, or subcontractors. All partners are bound by confidentiality and data protection obligations. We may also disclose information when required by law or to protect our legal rights.`,
+    title: "Deljenje i treće strane",
+    body: "Informacije delimo sa pouzdanim partnerima koji nam pomažu u isporuci usluga, kao što su hosting provajderi, alati za produktivnost, analitičke platforme ili podizvođači. Svi partneri su obavezani poverljivošću i zaštitom podataka. Informacije možemo otkriti i kada to zakon zahteva ili radi zaštite naših pravnih interesa.",
   },
   {
-    title: 'Data Retention',
-    body: `Project files, communications, and billing records are retained only for as long as needed to fulfill our obligations and meet legal or tax requirements. When retention is no longer necessary, we securely delete or anonymise the data.`,
+    title: "Zadržavanje podataka",
+    body: "Projektne fajlove, komunikaciju i evidenciju naplate čuvamo samo onoliko dugo koliko je potrebno za ispunjenje obaveza i zakonskih ili poreskih zahteva. Kada čuvanje više nije potrebno, podatke bezbedno brišemo ili anonimizujemo.",
   },
   {
-    title: 'Security',
-    body: `We implement administrative, technical, and physical safeguards appropriate to the sensitivity of the data. This includes access controls, encrypted collaboration tools, and regular reviews of our security practices.`,
+    title: "Bezbednost",
+    body: "Sprovodimo administrativne, tehničke i fizičke zaštitne mere primerene osetljivosti podataka. To uključuje kontrole pristupa, šifrovane alate za saradnju i redovne preglede bezbednosnih praksi.",
   },
   {
-    title: 'International Transfers',
-    body: `Enigma Digital operates remotely and may process data outside your home region. Where data crosses borders, we ensure appropriate safeguards are in place—such as standard contractual clauses or equivalent protections.`,
+    title: "Međunarodni prenosi",
+    body: "Enigma Digital radi na daljinu i može obrađivati podatke izvan vašeg matičnog regiona. Kada podaci prelaze granice, obezbeđujemo odgovarajuće zaštitne mere, poput standardnih ugovornih klauzula ili ekvivalentnih mehanizama.",
   },
   {
-    title: 'Your Rights',
-    body: `Depending on your location, you may have rights to access, correct, delete, or restrict the processing of your data, as well as the right to data portability and to object to certain processing. To exercise these rights, contact us using the details below and we will respond promptly.`,
+    title: "Vaša prava",
+    body: "U zavisnosti od vaše lokacije, možete imati pravo na pristup, ispravku, brisanje ili ograničenje obrade podataka, kao i pravo na prenosivost podataka i prigovor na određenu obradu. Za ostvarivanje prava kontaktirajte nas putem podataka ispod i odgovorićemo brzo.",
   },
   {
-    title: 'Cookies & Analytics',
-    body: `Our website may use cookies, local storage, or similar technologies to remember preferences and understand site usage. You can control cookies through your browser settings. Client projects will have their own analytics configurations defined in the relevant agreements.`,
+    title: "Kolačići i analitika",
+    body: "Naš sajt može koristiti kolačiće, lokalno skladište ili slične tehnologije za pamćenje podešavanja i razumevanje korišćenja sajta. Kolačiće možete kontrolisati kroz podešavanja pregledača. Klijentski projekti imaju sopstvene analitičke konfiguracije definisane relevantnim ugovorima.",
   },
   {
-    title: 'Updates to This Policy',
-    body: `We may revise this Privacy Policy from time to time. The “Last updated” date reflects the most recent changes. Continued use of our services after updates constitutes acceptance of the revised policy.`,
+    title: "Izmene ove politike",
+    body: "Ovu Politiku privatnosti možemo povremeno izmeniti. Datum Poslednje ažuriranje odražava najnovije izmene. Nastavak korišćenja naših usluga nakon izmena predstavlja prihvatanje revidirane politike.",
   },
 ];
+

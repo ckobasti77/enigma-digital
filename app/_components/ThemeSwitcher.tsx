@@ -39,7 +39,7 @@ const ThemeSwitcher = ({ variant = "solid", className }: ThemeSwitcherProps) => 
     <button
       type="button"
       onClick={handleToggle}
-      aria-label="Toggle theme"
+      aria-label="Promeni temu"
       aria-pressed={theme === "dark"}
       className={clsx(baseClasses, variantClasses, className)}
       disabled={isTransitioning}

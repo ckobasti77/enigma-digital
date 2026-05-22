@@ -3,9 +3,15 @@ import { useEffect, useState } from "react";
 const hasBatteryAPI = () =>
   typeof navigator !== "undefined" && "getBattery" in navigator && typeof navigator.getBattery === "function";
 
+type NetworkInformation = {
+  saveData?: boolean;
+  addEventListener?: (event: "change", cb: () => void) => void;
+  removeEventListener?: (event: "change", cb: () => void) => void;
+};
+
 const getConnection = () => {
   if (typeof navigator === "undefined") return null;
-  return (navigator as unknown as { connection?: { saveData?: boolean; addEventListener?: Function; removeEventListener?: Function } }).connection ?? null;
+  return (navigator as unknown as { connection?: NetworkInformation }).connection ?? null;
 };
 
 const computePreference = (mediaMatches: boolean, connectionSaveData: boolean, lowBattery: boolean) =>
@@ -86,4 +92,3 @@ type BatteryManager = {
   addEventListener: (event: "levelchange" | "chargingchange", cb: () => void) => void;
   removeEventListener: (event: "levelchange" | "chargingchange", cb: () => void) => void;
 };
-

@@ -1,14 +1,14 @@
 export default function Head() {
   return (
     <>
-      <title>Remote Web Development Services | Enigma Digital</title>
+      <title>Usluge izrade web sajtova na daljinu | Enigma Digital</title>
       <meta
         name="description"
-        content="Remote-first web development partner for growth-stage teams across EMEA and North America. We build scalable web platforms with Next.js, TypeScript, edge functions, performance, and observability baked in from sprint one."
+        content="Partner za izradu web platformi na daljinu za timove u fazi rasta širom EMEA regiona i Severne Amerike. Gradimo skalabilne web platforme uz Next.js, TypeScript, edge funkcije, performanse i observability od prvog sprinta."
       />
       <meta
         name="keywords"
-        content="web development, scalable web platform, remote engineering squad, Next.js agency, TypeScript first, edge functions, performance optimisation"
+        content="izrada web sajtova, skalabilna web platforma, inženjerski tim na daljinu, Next.js agencija, TypeScript, edge funkcije, optimizacija performansi"
       />
     </>
   );

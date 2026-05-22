@@ -20,171 +20,171 @@ const detail = serviceDetails["social-media"];
 
 const scopeItems = [
   {
-    title: "Channel strategy & tone",
-    benefit: "Platform selection, voice guidelines, and content pillars built around your audience.",
+    title: "Strategija kanala i ton",
+    benefit: "Izbor platformi, smernice glasa i content stubovi građeni oko vaše publike.",
     icon: Target,
   },
   {
-    title: "Content production & motion",
-    benefit: "Short-form video, carousels, and creative assets designed for each platform.",
+    title: "Produkcija sadržaja i motion",
+    benefit: "Kratki video formati, carousel objave i kreativni materijali dizajnirani za svaku platformu.",
     icon: Sparkles,
   },
   {
-    title: "Community management",
-    benefit: "Engagement playbooks, moderation guidelines, and response workflows.",
+    title: "Upravljanje zajednicom",
+    benefit: "Engagement playbook-ovi, smernice moderacije i response workflow-i.",
     icon: MessageSquare,
   },
   {
-    title: "Paid social & amplification",
-    benefit: "Campaign planning, targeting, and optimization to extend reach.",
+    title: "Plaćena promocija i amplifikacija",
+    benefit: "Planiranje kampanja, targeting i optimizacija za širenje dosega.",
     icon: Megaphone,
   },
   {
-    title: "Creator partnerships",
-    benefit: "Influencer briefs, creator outreach, and brand-safe collaborations.",
+    title: "Creator partnerstva",
+    benefit: "Influencer brief-ovi, outreach ka kreatorima i brand-safe saradnje.",
     icon: Users,
   },
   {
-    title: "Reporting & insights",
-    benefit: "Dashboards, trend analysis, and experiment tracking that guide strategy.",
+    title: "Izveštavanje i uvidi",
+    benefit: "Dashboard-i, analiza trendova i praćenje eksperimenata koji vode strategiju.",
     icon: SignalHigh,
   },
 ];
 
 const methodologyPillars = [
   {
-    title: "Platform-native creative",
+    title: "Kreativa prirodna za platformu",
     points: [
-      "Formats, hooks, and storytelling tailored to each channel's algorithm.",
-      "Creative systems that balance brand consistency with trend agility.",
+      "Formati, hook-ovi i storytelling prilagođeni algoritmu svakog kanala.",
+      "Kreativni sistemi koji balansiraju konzistentnost brenda i agilnost prema trendovima.",
     ],
   },
   {
-    title: "Rapid experimentation",
+    title: "Brzo eksperimentisanje",
     points: [
-      "Weekly testing plans for creative, copy, and timing.",
-      "Content performance reviews tied directly to KPIs.",
+      "Nedeljni planovi testiranja kreative, copy-ja i tajminga.",
+      "Pregledi performansi sadržaja direktno povezani sa KPI-jevima.",
     ],
   },
   {
-    title: "Community growth loops",
+    title: "Loop-ovi rasta zajednice",
     points: [
-      "Engagement workflows that build loyalty and turn followers into advocates.",
-      "Paid and organic coordination to maximize reach and retention.",
+      "Engagement workflow-i grade lojalnost i pretvaraju pratioce u zastupnike brenda.",
+      "Koordinacija paid i organic aktivnosti za maksimalan doseg i retenciju.",
     ],
   },
 ];
 
 const deliveryRail = [
-  { phase: "Strategy", caption: "Channel audit, voice guide, and KPI setup" },
-  { phase: "Create", caption: "Content production and asset development" },
-  { phase: "Publish", caption: "Scheduling, distribution, and launch" },
-  { phase: "Optimize", caption: "Performance analysis and testing" },
-  { phase: "Scale", caption: "Evergreen libraries and growth campaigns" },
+  { phase: "Strategija", caption: "Audit kanala, voice guide i KPI podešavanje" },
+  { phase: "Kreiranje", caption: "Produkcija sadržaja i razvoj asset-a" },
+  { phase: "Objava", caption: "Zakazivanje, distribucija i lansiranje" },
+  { phase: "Optimizacija", caption: "Analiza performansi i testiranje" },
+  { phase: "Skaliranje", caption: "Evergreen biblioteke i growth kampanje" },
 ];
 
 const differentiators = [
   {
     title: "Always-on content engine",
-    body: "We keep your channels active with a rolling calendar and fast creative turnaround.",
+    body: "Održavamo kanale aktivnim uz rolling calendar i brzu izradu kreative.",
   },
   {
-    title: "Real-time monitoring",
-    body: "Daily dashboards and comment tracking keep engagement high and risks low.",
+    title: "Monitoring u realnom vremenu",
+    body: "Dnevni dashboard-i i praćenje komentara drže angažovanje visokim, a rizike niskim.",
   },
   {
-    title: "Paid and organic together",
-    body: "Creative direction and media planning are aligned so each campaign compounds results.",
+    title: "Paid i organic zajedno",
+    body: "Kreativni pravac i media planning su usklađeni kako bi svaka kampanja kumulirala rezultate.",
   },
   {
-    title: "Brand-safe community care",
-    body: "Moderation guidelines and escalation paths protect your reputation while you scale.",
+    title: "Brand-safe briga o zajednici",
+    body: "Smernice moderacije i escalation paths štite reputaciju dok se skalirate.",
   },
 ];
 
 const trustSignals = [
-  { value: "5x", label: "Engagement lift" },
-  { value: "24h", label: "Creative turnaround" },
-  { value: "12", label: "Campaigns per quarter" },
-  { value: "2x", label: "Follower growth" },
+  { value: "5x", label: "Rast angažovanja" },
+  { value: "24h", label: "Rok za kreativu" },
+  { value: "12", label: "Kampanje po kvartalu" },
+  { value: "2x", label: "Rast pratilaca" },
 ];
 
 const journeyPhases = [
   {
-    label: "1. Discovery & voice",
-    description: "Audit your channels, define voice, and align on goals.",
-    deliverable: "Voice guide and channel audit",
+    label: "1. Discovery i glas",
+    description: "Auditujemo kanale, definišemo glas i usklađujemo ciljeve.",
+    deliverable: "Voice guide i audit kanala",
   },
   {
-    label: "2. Content planning",
-    description: "Build a content calendar tied to launches, events, and KPIs.",
-    deliverable: "90-day content calendar",
+    label: "2. Planiranje sadržaja",
+    description: "Gradimo content kalendar vezan za lansiranja, događaje i KPI-jeve.",
+    deliverable: "90-dnevni content kalendar",
   },
   {
-    label: "3. Production & scheduling",
-    description: "Create assets, write copy, and schedule posts across channels.",
-    deliverable: "Asset library and publishing plan",
+    label: "3. Produkcija i zakazivanje",
+    description: "Kreiramo asset-e, pišemo copy i zakazujemo objave kroz kanale.",
+    deliverable: "Asset biblioteka i publishing plan",
   },
   {
-    label: "4. Community & paid",
-    description: "Engage your community and launch targeted paid campaigns.",
-    deliverable: "Engagement playbook and paid tests",
+    label: "4. Zajednica i plaćena promocija",
+    description: "Angažujemo zajednicu i lansiramo ciljane paid kampanje.",
+    deliverable: "Engagement playbook i paid testovi",
   },
   {
-    label: "5. Reporting & iteration",
-    description: "Review performance, test new ideas, and refine the calendar.",
-    deliverable: "Performance dashboard and test log",
+    label: "5. Izveštavanje i iteracija",
+    description: "Pregledamo performanse, testiramo nove ideje i doterujemo kalendar.",
+    deliverable: "Performance dashboard i test log",
   },
 ];
 
 const maintenanceHighlights = [
-  "Weekly content planning and trend mapping.",
-  "Daily monitoring with response guidelines and escalation paths.",
-  "Creative refreshes and evergreen library updates.",
-  "Paid budget optimization and targeting adjustments.",
-  "Monthly reporting with growth experiments and learnings.",
+  "Nedeljno planiranje sadržaja i mapiranje trendova.",
+  "Dnevni monitoring sa smernicama odgovora i escalation paths.",
+  "Osvežavanje kreative i update-i evergreen biblioteke.",
+  "Optimizacija paid budžeta i podešavanje targetinga.",
+  "Mesečno izveštavanje sa growth eksperimentima i učenjima.",
 ];
 
 const faqItems = [
   {
-    question: "Which social platforms do you manage?",
+    question: "Kojim društvenim platformama upravljate?",
     answer:
-      "We cover TikTok, Instagram, LinkedIn, YouTube, X, and emerging platforms based on your audience and goals.",
+      "Pokrivamo TikTok, Instagram, LinkedIn, YouTube, X i nove platforme prema vašoj publici i ciljevima.",
   },
   {
-    question: "How many posts can you produce per week?",
+    question: "Koliko objava možete proizvesti nedeljno?",
     answer:
-      "We tailor volume to your strategy, typically 3-7 posts per week with supporting stories or shorts.",
+      "Obim prilagođavamo strategiji, obično 3-7 objava nedeljno uz prateće stories ili shorts.",
   },
   {
-    question: "Do you handle approvals and brand compliance?",
+    question: "Da li rešavate odobrenja i brand compliance?",
     answer:
-      "Yes. We set up review workflows, approval gates, and brand-safe guidelines before publishing.",
+      "Da. Pre objave postavljamo review workflow-e, approval gate-ove i brand-safe smernice.",
   },
   {
-    question: "Can you manage paid social ads too?",
+    question: "Možete li upravljati i paid social oglasima?",
     answer:
-      "Absolutely. We handle creative, targeting, and optimization, and share performance reports weekly.",
+      "Apsolutno. Vodimo kreativu, targeting i optimizaciju, a izveštaje o performansama delimo nedeljno.",
   },
   {
     question: "How do you measure success?",
     answer:
-      "We track engagement, reach, follower growth, click-throughs, and conversion metrics tied to your KPIs.",
+      "Pratimo angažovanje, doseg, rast pratilaca, click-through i konverzione metrike vezane za KPI-jeve.",
   },
   {
-    question: "Will you engage with comments and messages?",
+    question: "Da li odgovarate na komentare i poruke?",
     answer:
-      "Yes. We follow response guidelines, handle moderation, and escalate issues quickly when needed.",
+      "Da. Pratimo smernice odgovora, vodimo moderaciju i brzo eskaliramo probleme kada je potrebno.",
   },
   {
-    question: "How quickly can you launch a campaign?",
+    question: "Koliko brzo možete lansirati kampanju?",
     answer:
-      "We can kick off within a week, with a channel audit and content calendar delivered shortly after.",
+      "Možemo početi u roku od nedelju dana, sa auditom kanala i content kalendarom ubrzo nakon toga.",
   },
   {
-    question: "What does engagement cost?",
+    question: "Koliko košta angažman?",
     answer:
-      "Engagements are scoped monthly based on channel count, content volume, and paid media support.",
+      "Angažmani se definišu mesečno prema broju kanala, obimu sadržaja i podršci za paid media.",
   },
 ];
 
@@ -211,12 +211,12 @@ const SocialMedia = () => {
       <section className="theme-section px-6 py-20 sm:py-24 transition-theme">
         <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-10 lg:gap-12">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Scope at a glance</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Opseg ukratko</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              Social media coverage that builds momentum
+              Društvene mreže koje grade zamah
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              From content calendars to community management, we keep your brand visible, responsive, and growing.
+              Od content kalendara do community management-a, držimo vaš brend vidljivim, responzivnim i u rastu.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -242,13 +242,13 @@ const SocialMedia = () => {
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 lg:gap-12">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1fr)] lg:items-start">
             <div className="space-y-5">
-              <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Strategy &amp; methodology</span>
-              <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">How we grow social communities</h2>
+              <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Strategija i metodologija</span>
+              <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">Kako razvijamo društvene zajednice</h2>
               <p className="text-base leading-relaxed text-theme-muted">
-                We combine platform-native creative with real-time optimization so your content keeps compounding reach.
+                Spajamo platform-native kreativu sa optimizacijom u realnom vremenu kako bi sadržaj nastavio da kumulira doseg.
               </p>
               <div className="flex flex-wrap gap-2">
-                {["Content calendar", "Short-form video", "Paid social", "Creators", "Community", "Reporting"].map(
+                {["Kalendar sadržaja", "Kratki video", "Plaćena promocija", "Kreatori", "Zajednica", "Izveštavanje"].map(
                   (keyword) => (
                     <span
                       key={keyword}
@@ -285,18 +285,17 @@ const SocialMedia = () => {
           <div className="overflow-hidden rounded-3xl border border-theme theme-card p-6 shadow-theme">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div>
-                <h3 className="text-xl font-semibold text-theme-primary">Download our social growth playbook</h3>
+                <h3 className="text-xl font-semibold text-theme-primary">Preuzmite social growth playbook</h3>
                 <p className="mt-2 max-w-xl text-sm leading-relaxed text-theme-muted">
-                  Get the content calendar template, reporting cadence, and creative testing framework we use to scale
-                  social channels.
+                  Dobijte template content kalendara, ritam izveštavanja i framework kreativnog testiranja koji koristimo za skaliranje social kanala.
                 </p>
               </div>
             </div>
             <div className="mt-10 space-y-6">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <span className="text-xs uppercase tracking-[0.6em] text-theme-muted">Our social rail</span>
+                <span className="text-xs uppercase tracking-[0.6em] text-theme-muted">Naš social tok</span>
                 <span className="text-xs uppercase tracking-[0.3em] text-theme-muted opacity-80 sm:text-right">
-                  Swipe to explore each delivery phase
+                  Prevucite da istražite svaku fazu isporuke
                 </span>
               </div>
               <div className="relative overflow-hidden rounded-3xl border border-theme/70 theme-card p-6 shadow-[inset_0_1px_0_rgba(148,163,184,0.1)] backdrop-blur-sm transition-theme md:p-8">
@@ -336,12 +335,12 @@ const SocialMedia = () => {
       <section className="theme-section px-6 py-20 sm:py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 lg:gap-12">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Why choose us</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Zašto izabrati nas</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              Social teams that keep momentum high
+              Social timovi koji održavaju visok zamah
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              We combine strategy, production, and community care so your channels stay active and on-brand.
+              Spajamo strategiju, produkciju i brigu o zajednici kako bi kanali ostali aktivni i u skladu sa brendom.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
@@ -361,8 +360,8 @@ const SocialMedia = () => {
       <section className="theme-section border-y border-theme/60 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-6 py-20 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
           <div className="flex flex-col gap-3">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Proof you can trust</span>
-            <h2 className="text-2xl font-semibold text-theme-primary md:text-3xl">Social growth metrics</h2>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Dokazi kojima možete verovati</span>
+            <h2 className="text-2xl font-semibold text-theme-primary md:text-3xl">Metrike social rasta</h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {trustSignals.map(({ value, label }) => (
@@ -378,15 +377,15 @@ const SocialMedia = () => {
           <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] text-theme-muted">
             <span className="inline-flex items-center gap-2 rounded-full border border-theme px-3 py-1">
               <Megaphone className="h-4 w-4 text-cyan-400" aria-hidden />
-              Paid and organic campaigns
+              Paid i organic kampanje
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-theme px-3 py-1">
               <MessageSquare className="h-4 w-4 text-cyan-400" aria-hidden />
-              Community management
+              Upravljanje zajednicom
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-theme px-3 py-1">
               <Sparkles className="h-4 w-4 text-cyan-400" aria-hidden />
-              Creative testing loops
+              Loop-ovi kreativnog testiranja
             </span>
           </div>
         </div>
@@ -395,12 +394,12 @@ const SocialMedia = () => {
       <section className="theme-section px-6 py-20 sm:py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 lg:gap-12">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Process / journey</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Proces / putanja</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              The journey from strategy to daily engagement
+              Put od strategije do svakodnevnog angažovanja
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              Milestones keep your team aligned and your content calendar full.
+              Prekretnice drže tim usklađenim, a content kalendar punim.
             </p>
           </div>
           <ol className="relative grid gap-6 md:gap-8 lg:grid-cols-3 xl:grid-cols-5">
@@ -415,7 +414,7 @@ const SocialMedia = () => {
                 </span>
                 <h3 className="mt-4 text-lg font-semibold text-theme-primary">{label}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-theme-muted">{description}</p>
-                <p className="mt-4 text-xs uppercase tracking-[0.3em] text-cyan-400">Deliverable: {deliverable}</p>
+                <p className="mt-4 text-xs uppercase tracking-[0.3em] text-cyan-400">Isporučujemo: {deliverable}</p>
               </li>
             ))}
           </ol>
@@ -425,22 +424,22 @@ const SocialMedia = () => {
       <section className="theme-section border-y border-theme/60 bg-slate-950/50 px-6 py-20 sm:py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Maintenance &amp; growth</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Održavanje i rast</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              We stay close as your community scales
+              Ostajemo blizu dok se zajednica skalira
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              Social momentum requires steady iteration. We monitor, refresh, and optimize week after week.
+              Social momentum zahteva stalnu iteraciju. Pratimo, osvežavamo i optimizujemo iz nedelje u nedelju.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)] md:items-start">
             <div className="rounded-3xl border border-theme/70 theme-card p-6 shadow-theme transition-all duration-500 ease-out hover:-translate-y-2 hover:border-cyan-400/60 hover:shadow-[0_28px_80px_-48px_rgba(56,189,248,0.5)] translate-y-0">
               <h3 className="flex items-center gap-2 text-lg font-semibold text-theme-primary">
                 <GaugeCircle className="h-5 w-5 text-cyan-400" aria-hidden />
-                Ongoing engagement snapshot
+                Pregled stalnog angažmana
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-theme-muted">
-                We align reporting, creative refreshes, and channel support to your campaign calendar.
+                Izveštavanje, osvežavanje kreative i podršku kanalima usklađujemo sa kalendarom kampanja.
               </p>
             </div>
             <ul className="space-y-3 rounded-3xl border border-theme/70 theme-card p-6 shadow-theme transition-all duration-500 ease-out hover:border-cyan-400/60">
@@ -464,12 +463,12 @@ const SocialMedia = () => {
       <section className="theme-section px-6 py-20 sm:py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
           <div className="max-w-3xl space-y-5 text-center md:text-left">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">FAQ</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Česta pitanja</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              Frequently asked questions about social media services
+              Česta pitanja o uslugama društvenih mreža
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              Answers to the topics we cover most often with marketing and community teams planning social growth.
+              Odgovori na teme koje najčešće prolazimo sa marketing i community timovima koji planiraju social rast.
             </p>
           </div>
           <div className="divide-y divide-theme rounded-3xl border border-theme theme-card">
@@ -516,11 +515,10 @@ const SocialMedia = () => {
       <section className="theme-section border-t border-theme/60 px-6 py-20 sm:py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 text-center md:text-left">
           <h2 className="text-3xl font-semibold text-theme-muted md:text-4xl">
-            Let&apos;s launch your social engine
+            Lansirajmo vaš social engine
           </h2>
           <p className="max-w-3xl text-base leading-relaxed text-theme-muted">
-            Tell us which channels matter most and we will build a social strategy, content cadence, and reporting plan
-            that keeps your brand present.
+            Recite nam koji kanali su najvažniji i izgradićemo social strategiju, ritam sadržaja i plan izveštavanja koji drži vaš brend prisutnim.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
@@ -528,14 +526,14 @@ const SocialMedia = () => {
               className="inline-flex items-center gap-2 rounded-full bg-theme-primary px-7 py-3 text-sm font-semibold text-theme-primary transition hover:opacity-90"
             >
               <Sparkles className="h-4 w-4" aria-hidden />
-              Launch your campaign
+              Pokrenite kampanju
             </Link>
             <Link
               href="/projects"
               className="inline-flex items-center gap-2 rounded-full border border-theme px-7 py-3 text-sm font-semibold text-theme-primary transition hover:bg-theme-primary/10"
             >
               <BadgeCheck className="h-4 w-4 text-cyan-400" aria-hidden />
-              Review social wins
+              Pogledajte uspehe na mrežama
             </Link>
           </div>
         </div>

@@ -9,7 +9,7 @@ import {
   Accessibility,
   ArrowRight,
   Compass,
-  Figma,
+  Frame,
   Heart,
   Layers,
   MousePointerClick,
@@ -24,71 +24,71 @@ import {
 const detail = serviceDetails["ui-ux-design"];
 
 const designNarrative = [
-  "We design interfaces around people, not screens. Every concept starts with qualitative research, live conversations, and behaviour mapping so we can align the interface with human intent, emotion, and context.",
-  "Empathy, usability, and brand voice converge when we storyboard flows, prototype interactions, and stress-test messages with actual users. The end result is a product that feels natural and purposeful, not just pixel-perfect.",
-  "Our visual systems are crafted to extend your brand. Typography, illustration, and interaction patterns stay cohesive across platforms so teams can ship consistently while users experience a clear, confident identity.",
+  "Interfejse dizajniramo oko ljudi, ne oko ekrana. Svaki koncept počinje kvalitativnim istraživanjem, razgovorima uživo i mapiranjem ponašanja kako bismo interfejs uskladili sa namerom, emocijom i kontekstom korisnika.",
+  "Empatija, upotrebljivost i glas brenda spajaju se dok storyboard-ujemo tokove, prototipujemo interakcije i testiramo poruke sa stvarnim korisnicima. Rezultat je proizvod koji deluje prirodno i svrhovito, ne samo pixel-perfect.",
+  "Naši vizuelni sistemi proširuju vaš brend. Tipografija, ilustracije i obrasci interakcije ostaju kohezivni kroz platforme, pa timovi isporučuju konzistentno dok korisnici osećaju jasan i siguran identitet.",
 ];
 
 const processVisuals = [
   {
-    stage: "Wireframe empathy map",
-    description: "Low-fidelity flows to align stakeholders before we commit to visuals.",
+    stage: "Wireframe mapa empatije",
+    description: "Low-fidelity tokovi usklađuju stakeholder-e pre nego što se obavežemo na vizuale.",
     accent: "from-slate-900 via-slate-800 to-slate-900",
     badge: "Wireframe",
   },
   {
-    stage: "High-fidelity brand design",
-    description: "Componentized UI that blends your palette, typography, and voice.",
+    stage: "High-fidelity dizajn brenda",
+    description: "Komponentizovani UI koji spaja vašu paletu, tipografiju i glas.",
     accent: "from-rose-500/20 via-fuchsia-500/10 to-cyan-400/10",
-    badge: "Visual design",
+    badge: "Vizuelni dizajn",
   },
   {
-    stage: "Prototype & motion study",
-    description: "Interactive prototypes with motion states and micro-interactions documented.",
+    stage: "Prototip i motion studija",
+    description: "Interaktivni prototipovi sa dokumentovanim motion stanjima i mikrointerakcijama.",
     accent: "from-cyan-500/30 via-sky-400/20 to-violet-500/20",
-    badge: "Prototype",
+    badge: "Prototip",
   },
 ];
 
 const journeyPhases = [
   {
-    phase: "Awareness",
-    headline: "Clarify value at first glance",
-    touchpoints: ["Landing hero narratives", "Ad-specific onboarding modals"],
+    phase: "Svest",
+    headline: "Razjasnite vrednost na prvi pogled",
+    touchpoints: ["Hero narativi landing strana", "Onboarding modali za konkretne oglase"],
   },
   {
-    phase: "Consideration",
-    headline: "Guide exploration with clarity",
-    touchpoints: ["Interactive product tours", "Comparison grids & proof points"],
+    phase: "Razmatranje",
+    headline: "Vodite istraživanje jasnoćom",
+    touchpoints: ["Interaktivni product tour-ovi", "Comparison grid-ovi i proof point-i"],
   },
   {
-    phase: "Decision",
-    headline: "Reduce friction at the moment of choice",
-    touchpoints: ["Progressive checkout flows", "Real-time assistance widgets"],
+    phase: "Odluka",
+    headline: "Smanjite trenje u trenutku izbora",
+    touchpoints: ["Progresivni checkout tokovi", "Widget-i pomoći u realnom vremenu"],
   },
   {
-    phase: "Retention",
-    headline: "Sustain momentum post-conversion",
-    touchpoints: ["Lifecycle email templates", "In-app nudges and success dashboards"],
+    phase: "Retencija",
+    headline: "Održite zamah posle konverzije",
+    touchpoints: ["Lifecycle email template-i", "In-app podsticaji i success dashboard-i"],
   },
 ];
 
 const journeyCallouts = [
   {
-    label: "Micro-interactions",
-    copy: "Delightful transitions and tactile feedback reinforce key actions.",
+    label: "Mikrointerakcije",
+    copy: "Prijatne tranzicije i taktilni feedback pojačavaju ključne akcije.",
     desktopPosition: "sm:top-10 sm:left-[12%]",
     mobilePosition: "top-6 left-6",
   },
   {
-    label: "Accessibility check",
-    copy: "WCAG 2.2 AA-ready flows, contrast testing, and keyboard paths validated.",
+    label: "Provera pristupačnosti",
+    copy: "Tokovi spremni za WCAG 2.2 AA, testiranje kontrasta i validirane putanje tastaturom.",
     desktopPosition: "sm:top-[46%] sm:left-[52%]",
     mobilePosition: "top-1/2 left-1/2",
   },
   {
-    label: "Emotionally relevant micro-copy",
-    copy: "Copy engineered with behavioural science to keep momentum high.",
+    label: "Emocionalno relevantan micro-copy",
+    copy: "Copy oblikovan bihejvioralnom naukom da održi visok zamah.",
     desktopPosition: "sm:bottom-12 sm:right-[12%]",
     mobilePosition: "bottom-6 right-6",
   },
@@ -96,128 +96,128 @@ const journeyCallouts = [
 
 const beforeAfterProjects = [
   {
-    title: "Redesigned onboarding flow",
-    metric: "45% drop in abandonment",
-    before: "Dense 8-step form with no progress cues.",
-    after: "Guided progressive profiling using contextual tooltips.",
+    title: "Redizajniran onboarding tok",
+    metric: "45% pad napuštanja",
+    before: "Gusta forma od 8 koraka bez signala napretka.",
+    after: "Vođeno progresivno profilisanje uz kontekstualne tooltip-ove.",
   },
   {
-    title: "E-commerce product detail page",
-    metric: "22% lift in add-to-cart rate",
-    before: "Static spec tables and overwhelming comparison content.",
-    after: "Narrative layout with sticky decision helpers and social proof.",
+    title: "E-commerce product detail strana",
+    metric: "22% rast add-to-cart stope",
+    before: "Statične tabele specifikacija i preopširan sadržaj za poređenje.",
+    after: "Narativni layout sa sticky pomagačima odluke i social proof-om.",
   },
   {
     title: "SaaS analytics dashboard",
-    metric: "30% increase in weekly active users",
-    before: "Complex filtering with inconsistent visual hierarchy.",
-    after: "Modular cards, saved views, and adaptive theming for roles.",
+    metric: "30% rast nedeljno aktivnih korisnika",
+    before: "Kompleksno filtriranje sa nekonzistentnom vizuelnom hijerarhijom.",
+    after: "Modularne kartice, sačuvani prikazi i adaptivno tematizovanje po ulogama.",
   },
   {
-    title: "Mobile banking redesign",
-    metric: "60% boost in task completion",
-    before: "Fragmented navigation and hidden quick actions.",
-    after: "Role-aware shortcuts, biometric entry, and contextual nudges.",
+    title: "Redizajn mobilnog bankarstva",
+    metric: "60% rast završavanja zadataka",
+    before: "Fragmentirana navigacija i skrivene brze akcije.",
+    after: "Prečice po ulogama, biometrijski ulaz i kontekstualni podsticaji.",
   },
 ];
 
 const accessibilityChecklist = [
-  "Colour contrast ratios audited against WCAG 2.2 AA.",
-  "Keyboard-first navigation paths and focus management.",
-  "Screen reader semantics with aria-labels and live regions.",
-  "Responsive typography and spacing for readability across devices.",
-  "Motion preferences respected with reduced motion states.",
+  "Odnosi kontrasta boja provereni prema WCAG 2.2 AA.",
+  "Keyboard-first navigacione putanje i upravljanje fokusom.",
+  "Semantika za screen reader-e sa aria-label-ima i live regions.",
+  "Responzivna tipografija i razmaci za čitljivost na svim uređajima.",
+  "Poštovanje motion preferencija kroz reduced motion stanja.",
 ];
 
 const prototypeSteps = [
   {
-    title: "Sketch & wireframe",
-    description: "Map task flows, storyboard paths, and align on success metrics.",
+    title: "Skica i wireframe",
+    description: "Mapiramo tokove zadataka, storyboard putanje i usklađujemo metrike uspeha.",
     icon: Compass,
   },
   {
-    title: "High-fidelity design",
-    description: "Build component-driven layouts in Figma with system tokens.",
+    title: "High-fidelity dizajn",
+    description: "Gradimo layout-e vođene komponentama u Figmi sa sistemskim tokenima.",
     icon: Palette,
   },
   {
-    title: "Interactive prototype",
-    description: "Animate in Figma & Framer, layer micro-interactions, and prep dev notes.",
+    title: "Interaktivni prototip",
+    description: "Animiramo u Figmi i Framer-u, slojevito dodajemo mikrointerakcije i pripremamo dev beleške.",
     icon: MousePointerClick,
   },
   {
-    title: "Usability testing & iteration",
-    description: "Test with 5-7 users, review heatmaps, and prioritise refinements.",
+    title: "Usability testiranje i iteracija",
+    description: "Testiramo sa 5-7 korisnika, pregledamo heatmap-e i prioritizujemo dorade.",
     icon: Workflow,
   },
 ];
 
 const uxMetrics = [
-  { value: "+30%", label: "Time on task", description: "Users stay engaged through richer, personalised flows." },
-  { value: "-25%", label: "Error rate", description: "Improved validation and feedback loops reduce costly mistakes." },
-  { value: "+18 pts", label: "NPS points", description: "Experience-led redesigns drive measurable brand loyalty." },
+  { value: "+30%", label: "Vreme na zadatku", description: "Korisnici ostaju angažovani kroz bogatije, personalizovane tokove." },
+  { value: "-25%", label: "Stopa grešaka", description: "Poboljšana validacija i feedback loop-ovi smanjuju skupe greške." },
+  { value: "+18 pts", label: "NPS poeni", description: "Redizajni vođeni iskustvom podstiču merljivu lojalnost brendu." },
 ];
 
 const industryInsights = [
   {
-    industry: "SaaS dashboards",
-    challenge: "Reframed complex analytics for non-technical operators.",
-    outcome: "Shipped a modular insight library with role-based quick actions.",
+    industry: "SaaS dashboard-i",
+    challenge: "Preoblikovali smo kompleksnu analitiku za netehničke operatere.",
+    outcome: "Isporučili smo modularnu biblioteku uvida sa brzim akcijama po ulogama.",
   },
   {
     industry: "E-commerce",
-    challenge: "Simplified discovery for 3k+ SKUs across mobile surfaces.",
-    outcome: "Introduced guided wayfinding, bundle builders, and trust visuals.",
+    challenge: "Pojednostavili smo discovery za 3k+ SKU-ova kroz mobilne površine.",
+    outcome: "Uveli smo vođenu orijentaciju, bundle builder-e i trust vizuale.",
   },
   {
     industry: "Fintech",
-    challenge: "Condensed KYC for mobile customers in regulated markets.",
-    outcome: "Implemented document scanning, progress states, and live support escalation.",
+    challenge: "Saželi smo KYC za mobilne korisnike na regulisanim tržištima.",
+    outcome: "Implementirali smo skeniranje dokumenata, progress stanja i live support eskalaciju.",
   },
   {
-    industry: "Enterprise platforms",
-    challenge: "Unified disparate internal tools into a coherent workspace.",
-    outcome: "Delivered a design system with API-driven UI kit and governance model.",
+    industry: "Enterprise platforme",
+    challenge: "Ujedinili smo različite interne alate u koherentan workspace.",
+    outcome: "Isporučili smo dizajn sistem sa API-driven UI kit-om i governance modelom.",
   },
   {
-    industry: "Health & wellness",
-    challenge: "Encouraged habit formation without overwhelming users.",
-    outcome: "Crafted empathetic nudges, daily streak mechanics, and inclusive visuals.",
+    industry: "Zdravlje i wellness",
+    challenge: "Podstakli smo formiranje navika bez preopterećenja korisnika.",
+    outcome: "Kreirali smo empatične podsticaje, daily streak mehanike i inkluzivne vizuale.",
   },
   {
-    industry: "Education platforms",
-    challenge: "Unified curriculum content with adaptive learning paths.",
-    outcome: "Delivered progress-aware dashboards and accessibility-first lesson templates.",
+    industry: "Obrazovne platforme",
+    challenge: "Ujedinili smo sadržaj kurikuluma sa adaptivnim putanjama učenja.",
+    outcome: "Isporučili smo dashboard-e svesne napretka i lesson template-e sa pristupačnošću na prvom mestu.",
   },
 ];
 
 const workshopHighlights = [
-  "2-day remote design sprint to validate north-star journeys.",
-  "Weekly co-creation labs for copy, motion, and component decisions.",
-  "Live whiteboarding with cross-functional teams in FigJam and Miro.",
+  "Dvodnevni remote design sprint za validaciju north-star putanja.",
+  "Nedeljni co-creation lab-ovi za copy, motion i odluke o komponentama.",
+  "Live whiteboarding sa cross-functional timovima u FigJam-u i Miro-u.",
 ];
 
 const testimonial = {
   quote:
-    "\"Enigma didn't just present a new interface--they put our team into the design seat. The workshops made every decision transparent and our stakeholders felt heard throughout.\"",
+    "\"Enigma nije samo predstavila novi interfejs - stavili su naš tim u dizajn proces. Radionice su svaku odluku učinile transparentnom i stakeholder-i su se osećali saslušano sve vreme.\"",
   author: "Leah Morton",
   role: "VP Product, Northwind Ventures",
 };
 
 const microEngagements = [
   {
-    label: "Book a 30-minute design sprint consult",
-    description: "Bring your product lead and we'll workshop one user journey together.",
+    label: "Zakažite 30-minutne konsultacije za design sprint",
+    description: "Dovedite product lead-a i zajedno ćemo razraditi jedno korisničko putovanje.",
     href: "/contact?intent=design-sprint",
   },
   {
-    label: "Request a usability audit snapshot",
-    description: "We'll analyse your current flow and return a heuristic scorecard.",
+    label: "Zatražite snapshot usability audita",
+    description: "Analiziraćemo trenutni tok i vratiti heuristički scorecard.",
     href: "/contact?intent=usability-audit",
   },
   {
-    label: "Download our UI kit starter template",
-    description: "Kick off a design system with ready-to-use tokens and component scaffolds.",
+    label: "Preuzmite starter template za UI kit",
+    description: "Pokrenite dizajn sistem sa tokenima i komponentnim scaffold-ima spremnim za upotrebu.",
     href: "/assets/downloads/uiux-accessibility-checklist.pdf",
   },
 ];
@@ -242,10 +242,10 @@ const UiUxDesign = () => {
             <div className="space-y-6">
               <span className="inline-flex items-center gap-2 rounded-full border border-theme bg-muted/60 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-theme-muted">
                 <Heart className="h-3.5 w-3.5 text-rose-400" aria-hidden />
-                Our design philosophy
+                Naša dizajn filozofija
               </span>
               <h2 className="text-3xl font-semibold tracking-tight text-theme-primary sm:text-4xl">
-                Design philosophy & human-first approach
+                Dizajn filozofija i pristup koji počinje od ljudi
               </h2>
               <div className="space-y-4 text-base text-theme-muted sm:text-lg">
                 {designNarrative.map((paragraph) => (
@@ -284,11 +284,11 @@ const UiUxDesign = () => {
               <div className="max-w-xl space-y-3">
                 <span className="inline-flex items-center gap-2 rounded-full border border-theme bg-muted/60 px-4 py-1 text-xs font-semibold uppercase tracking-[0.32em] text-theme-muted">
                   <Sparkles className="h-3.5 w-3.5 text-cyan-400" aria-hidden />
-                  User journey case map
+                  Mapa korisničkog putovanja
                 </span>
-                <h2 className="text-3xl font-semibold text-theme-primary sm:text-4xl">We choreograph the entire UX journey</h2>
+                <h2 className="text-3xl font-semibold text-theme-primary sm:text-4xl">Koreografišemo celo UX putovanje</h2>
                 <p className="text-base text-theme-muted">
-                  Awareness -&gt; Consideration -&gt; Decision -&gt; Retention is more than a funnel. We design intentional touchpoints at every phase so users feel guided, supported, and confident, translating to higher conversions and long-term loyalty.
+                  Awareness -&gt; Consideration -&gt; Decision -&gt; Retention je više od funnel-a. Dizajniramo namerne touchpoint-e u svakoj fazi kako bi se korisnici osećali vođeno, podržano i sigurno, što vodi ka većim konverzijama i dugoročnoj lojalnosti.
                 </p>
               </div>
             </header>
@@ -332,10 +332,10 @@ const UiUxDesign = () => {
           <div className="flex flex-col gap-6 pb-10">
             <span className="inline-flex items-center gap-2 rounded-full border border-theme bg-muted/60 px-4 py-1 text-xs font-semibold uppercase tracking-[0.32em] text-theme-muted">
               <Layers className="h-4 w-4 text-rose-400" aria-hidden />
-              Before vs after gallery
+              Galerija pre i posle
             </span>
             <h2 className="max-w-3xl text-3xl font-semibold text-theme-primary sm:text-4xl">
-              See the difference: product journeys before and after our UI overhaul
+              Pogledajte razliku: product putovanja pre i posle našeg UI unapređenja
             </h2>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
@@ -352,11 +352,11 @@ const UiUxDesign = () => {
                 </div>
                 <div className="grid gap-4 rounded-3xl border border-theme/30 bg-muted/40 p-4 sm:grid-cols-2">
                   <div className="space-y-3 rounded-2xl border border-theme/30 bg-card/70 p-4 shadow-theme/10 transition-all duration-500 ease-out group-hover:-translate-y-2 translate-y-0">
-                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-theme-muted">Before</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-theme-muted">Pre</p>
                     <p className="text-sm leading-relaxed text-theme-muted">{project.before}</p>
                   </div>
                   <div className="space-y-3 rounded-2xl border border-theme/30 bg-card p-4 shadow-theme/10 transition group-hover:translate-y-1 translate-y-0">
-                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-theme-primary">After</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-theme-primary">Posle</p>
                     <p className="text-sm leading-relaxed text-theme-primary/80">{project.after}</p>
                   </div>
                 </div>
@@ -371,11 +371,11 @@ const UiUxDesign = () => {
               <div className="flex flex-col gap-4">
                 <span className="inline-flex items-center gap-2 rounded-full border border-theme bg-muted/60 px-4 py-1 text-xs font-semibold uppercase tracking-[0.32em] text-theme-muted">
                   <Accessibility className="h-4 w-4 text-cyan-400" aria-hidden />
-                  Designing for everyone
+                  Dizajn za sve
                 </span>
-                <h2 className="text-3xl font-semibold text-theme-primary sm:text-4xl">Accessibility & inclusive design</h2>
+                <h2 className="text-3xl font-semibold text-theme-primary sm:text-4xl">Pristupačnost i inkluzivni dizajn</h2>
                 <p className="text-base text-theme-muted">
-                  Accessibility is non-negotiable. We embed inclusive practices throughout research, design, and development so every user can participate fully, regardless of ability, context, or device.
+                  Pristupačnost nije stvar pregovora. Inkluzivne prakse ugrađujemo kroz istraživanje, dizajn i razvoj kako bi svaki korisnik mogao potpuno da učestvuje, bez obzira na sposobnost, kontekst ili uređaj.
                 </p>
               </div>
               <ul className="mt-6 grid gap-3 text-sm text-theme-muted sm:grid-cols-2">
@@ -394,7 +394,7 @@ const UiUxDesign = () => {
                   className="border-theme bg-transparent text-theme-primary transition-theme hover:bg-muted"
                 >
                   <Link href="/assets/downloads/uiux-accessibility-checklist.pdf" target="_blank" rel="noopener">
-                    Download accessibility checklist
+                    Preuzmite checklist-u pristupačnosti
                     <ArrowRight className="h-4 w-4" aria-hidden />
                   </Link>
                 </Button>
@@ -403,28 +403,28 @@ const UiUxDesign = () => {
             <div className="flex flex-col justify-between gap-6 rounded-[32px] border border-theme/40 theme-card p-8 shadow-theme/20">
               <div>
                 <span className="inline-flex items-center gap-2 rounded-full border border-theme bg-muted/60 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-theme-muted">
-                  Visual identity in UX
+                  Vizuelni identitet u UX-u
                 </span>
-                <h3 className="mt-4 text-2xl font-semibold text-theme-primary">Brand & visual identity integration</h3>
+                <h3 className="mt-4 text-2xl font-semibold text-theme-primary">Integracija brenda i vizuelnog identiteta</h3>
                 <p className="mt-3 text-sm text-theme-muted">
-                  We translate brand guidelines into flexible UI libraries so marketing, product, and engineering speak the same visual language. Every component and state extends your brand, not dilutes it.
+                  Brand smernice prevodimo u fleksibilne UI biblioteke kako bi marketing, product i engineering govorili istim vizuelnim jezikom. Svaka komponenta i stanje proširuju brend, ne razvodnjavaju ga.
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="rounded-3xl border border-theme/30 bg-card/70 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-theme-muted">Brand ingredients</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-theme-muted">Sastojci brenda</p>
                   <div className="mt-3 space-y-2 text-sm text-theme-muted">
-                    <p>- Logo lockups in light/dark</p>
-                    <p>- Typographic pairings & token scales</p>
-                    <p>- Motion & illustration references</p>
+                    <p>- Logo lockup-i za svetlu/tamnu temu</p>
+                    <p>- Tipografski parovi i skale tokena</p>
+                    <p>- Reference za motion i ilustraciju</p>
                   </div>
                 </div>
                 <div className="rounded-3xl border border-theme/30 bg-card p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-theme-primary">UI system output</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-theme-primary">Isporuka UI sistema</p>
                   <div className="mt-3 space-y-2 text-sm text-theme-primary/80">
-                    <p>- Component kit with tokenised themes</p>
-                    <p>- Interaction specs & developer docs</p>
-                    <p>- QA checklists for smooth handoff</p>
+                    <p>- Component kit sa tokenizovanim temama</p>
+                    <p>- Specifikacije interakcija i developer dokumentacija</p>
+                    <p>- QA checklist-e za glatku predaju</p>
                   </div>
                 </div>
               </div>
@@ -436,10 +436,10 @@ const UiUxDesign = () => {
           <div className="rounded-[32px] border border-theme/40 theme-card p-10 shadow-theme/20">
             <div className="flex flex-col gap-4">
               <span className="inline-flex items-center gap-2 rounded-full border border-theme bg-muted/60 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-theme-muted">
-                <Figma className="h-4 w-4 text-cyan-300" aria-hidden />
-                Prototyping & testing
+                <Frame className="h-4 w-4 text-cyan-300" aria-hidden />
+                Prototipovanje i testiranje
               </span>
-              <h2 className="text-3xl font-semibold text-theme-primary sm:text-4xl">From idea to validation in four steps</h2>
+              <h2 className="text-3xl font-semibold text-theme-primary sm:text-4xl">Od ideje do validacije u četiri koraka</h2>
             </div>
             <div className="mt-10 grid gap-6 md:grid-cols-4">
               {prototypeSteps.map((step, index) => (
@@ -452,7 +452,7 @@ const UiUxDesign = () => {
                   </div>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.24em] text-theme-muted">
-                      Step {index + 1}
+                      Korak {index + 1}
                     </p>
                     <h3 className="mt-2 text-lg font-semibold text-theme-primary">{step.title}</h3>
                     <p className="mt-3 text-sm text-theme-muted">{step.description}</p>
@@ -468,11 +468,11 @@ const UiUxDesign = () => {
             <div className="space-y-4">
               <span className="inline-flex items-center gap-2 rounded-full border border-theme bg-muted/60 px-4 py-1 text-xs font-semibold uppercase tracking-[0.32em] text-theme-muted">
                 <TrendingUp className="h-4 w-4 text-emerald-400" aria-hidden />
-                UX metrics & impact
+                UX metrike i uticaj
               </span>
-              <h2 className="text-3xl font-semibold text-theme-primary sm:text-4xl">What success looks like</h2>
+              <h2 className="text-3xl font-semibold text-theme-primary sm:text-4xl">Kako izgleda uspeh</h2>
               <p className="text-base text-theme-muted">
-                We pair design decisions with measurable outcomes. During every engagement we pin metrics to business goals, track them week-over-week, and share dashboards so you know where impact is happening.
+                Dizajn odluke povezujemo sa merljivim ishodima. Tokom svakog angažmana vezujemo metrike za poslovne ciljeve, pratimo ih iz nedelje u nedelju i delimo dashboard-e da znate gde se uticaj dešava.
               </p>
             </div>
             <div className="grid gap-6 sm:grid-cols-3">
@@ -495,13 +495,13 @@ const UiUxDesign = () => {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <span className="inline-flex items-center gap-2 rounded-full border border-theme bg-muted/60 px-4 py-1 text-xs font-semibold uppercase tracking-[0.32em] text-theme-muted">
-                  Industry-specific focus
+                  Fokus po industriji
                 </span>
                 <h2 className="mt-3 text-3xl font-semibold text-theme-primary sm:text-4xl">
-                  UI/UX tailored to your industry
+                  UI/UX prilagođen vašoj industriji
                 </h2>
                 <p className="mt-2 max-w-xl text-sm text-theme-muted">
-                  Every sector has its own trust signals and friction points. We rotate through the industries we serve so you can explore real scenarios, then click a card to dive deeper.
+                  Svaki sektor ima sopstvene signale poverenja i tačke trenja. Prikazujemo industrije koje opslužujemo da istražite realne scenarije, zatim kliknete karticu za detalje.
                 </p>
               </div>
               <div className="flex gap-3">
@@ -553,7 +553,7 @@ const UiUxDesign = () => {
                         active ? "text-theme-primary" : "text-cyan-500"
                       }`}
                     >
-                      View insight
+                      Pogledaj uvid
                       <ArrowRight className="h-4 w-4" aria-hidden />
                     </div>
                   </button>
@@ -579,11 +579,11 @@ const UiUxDesign = () => {
             <div className="space-y-4">
               <span className="inline-flex items-center gap-2 rounded-full border border-theme bg-muted/60 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-theme-muted">
                 <Users className="h-4 w-4 text-rose-400" aria-hidden />
-                We collaborate -- you're part of the team
+                Sarađujemo - vi ste deo tima
               </span>
-              <h2 className="text-3xl font-semibold text-theme-primary sm:text-4xl">Client workshops & co-creation</h2>
+              <h2 className="text-3xl font-semibold text-theme-primary sm:text-4xl">Klijentske radionice i zajedničko kreiranje</h2>
               <p className="text-base text-theme-muted">
-                Collaboration is built into our cadence. From discovery to launch, our design team facilitates workshops that bring product, marketing, and engineering together so decisions are co-owned, not handed over.
+                Saradnja je ugrađena u naš ritam. Od discovery faze do lansiranja, naš dizajn tim vodi radionice koje spajaju product, marketing i engineering kako bi odluke bile zajedničke, ne samo predate.
               </p>
               <ul className="space-y-3 text-sm text-theme-muted">
                 {workshopHighlights.map((highlight) => (
@@ -598,7 +598,7 @@ const UiUxDesign = () => {
               <div>
                 <div className="rounded-3xl border border-theme/30 bg-card p-4 text-sm text-theme-muted shadow-theme/10">
                   <p>
-                    <strong className="text-theme-primary">Workshop snapshot:</strong> Real-time FigJam board with journey mapping, voting dots, and copywriting layers. Remote participants collaborate asynchronously while we document decisions for handoff.
+                    <strong className="text-theme-primary">Snapshot radionice:</strong> FigJam board u realnom vremenu sa mapiranjem putovanja, voting dot-ovima i copywriting slojevima. Remote učesnici sarađuju asinhrono dok dokumentujemo odluke za predaju.
                   </p>
                 </div>
               </div>
@@ -618,13 +618,13 @@ const UiUxDesign = () => {
             <div className="relative z-10 flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-xl space-y-4">
                 <span className="inline-flex items-center gap-2 rounded-full border border-theme bg-muted/60 px-4 py-1 text-xs font-semibold uppercase tracking-[0.34em] text-theme-muted">
-                  Next steps & micro-engagement
+                  Sledeći koraci i mikroangažman
                 </span>
                 <h2 className="text-3xl font-semibold text-theme-primary sm:text-4xl">
-                  Ready to explore your next design move?
+                  Spremni da istražimo vaš sledeći dizajn potez?
                 </h2>
                 <p className="text-base text-theme-muted">
-                  Choose the way you'd like to engage. Whether you want a collaborative sprint, an audit, or a starter kit, we'll respond within 24 hours with next actions.
+                  Izaberite način angažovanja. Bilo da želite zajednički sprint, audit ili starter kit, odgovorićemo u roku od 24 sata sa sledećim koracima.
                 </p>
               </div>
               <div className="grid gap-4">
@@ -639,7 +639,7 @@ const UiUxDesign = () => {
                       className="mt-4 border-theme bg-transparent text-theme-primary transition-theme hover:bg-muted"
                     >
                       <Link href={option.href}>
-                        Let's do it
+                        Hajde da počnemo
                         <ArrowRight className="h-4 w-4" aria-hidden />
                       </Link>
                     </Button>

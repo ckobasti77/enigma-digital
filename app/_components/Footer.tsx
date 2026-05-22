@@ -16,10 +16,10 @@ export default function Footer() {
                 Enigma Digital
               </span>
               <h2 className="max-w-lg font-aeonik text-3xl font-medium text-theme-primary md:text-4xl">
-                Shipping brand-defining experiences with accountable engineering.
+                Isporučujemo iskustva koja definišu brend uz odgovoran inženjering.
               </h2>
               <p className="max-w-xl text-sm leading-relaxed text-theme-muted">
-                Strategy, design, and engineering move together so every launch lifts the metrics that matter. We embed squads that plug into your product team and keep momentum high from kickoff to iteration.
+                Strategija, dizajn i inženjering rade zajedno kako bi svako lansiranje podiglo metrike koje su važne. Uključujemo timove u vaš product tim i održavamo visok tempo od početka do iteracije.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -27,7 +27,7 @@ export default function Footer() {
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-theme hover:opacity-90"
               >
-                Start a project
+                Pokreni projekat
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </Link>
               <Link
@@ -42,7 +42,7 @@ export default function Footer() {
           <div className="grid gap-8 sm:grid-cols-2">
             <div className="space-y-4">
               <h3 className="text-sm font-semibold uppercase tracking-[0.4em] text-theme-muted">
-                Company
+                Kompanija
               </h3>
               <ul className="space-y-3 text-sm text-theme-muted">
                 {primaryLinks.map((link) => (
@@ -61,7 +61,7 @@ export default function Footer() {
 
             <div className="space-y-4">
               <h3 className="text-sm font-semibold uppercase tracking-[0.4em] text-theme-muted">
-                Services
+                Usluge
               </h3>
               <ul className="space-y-3 text-sm text-theme-muted">
                 {services.map((service) => (
@@ -79,20 +79,20 @@ export default function Footer() {
 
             <div className="space-y-4 sm:col-span-2">
               <h3 className="text-sm font-semibold uppercase tracking-[0.4em] text-theme-muted">
-                Visit & connect
+                Poseta i kontakt
               </h3>
               <div className="grid gap-3 sm:grid-cols-2">
                 <div className="flex items-start gap-3 rounded-2xl border border-theme theme-card p-4 transition-theme transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-theme">
                   <MapPin className="mt-0.5 h-5 w-5 text-cyan-400" aria-hidden="true" />
                   <div className="text-sm text-theme-muted">
-                    <p className="font-semibold text-theme-primary">Europe / Remote-first</p>
-                    <p>Partnering with teams across EMEA & North America.</p>
+                    <p className="font-semibold text-theme-primary">Evropa / prvo na daljinu</p>
+                    <p>Partnerstva sa timovima širom EMEA regiona i Severne Amerike.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 rounded-2xl border border-theme theme-card p-4 transition-theme transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-theme">
                   <Phone className="mt-0.5 h-5 w-5 text-cyan-400" aria-hidden="true" />
                   <div className="text-sm text-theme-muted">
-                    <p className="font-semibold text-theme-primary">Call</p>
+                    <p className="font-semibold text-theme-primary">Poziv</p>
                     <Link href="tel:+442045771943" className="transition-theme hover:text-theme-primary">
                       +44 20 4577 1943
                     </Link>
@@ -101,7 +101,7 @@ export default function Footer() {
                 <div className="flex items-start gap-3 rounded-2xl border border-theme theme-card p-4 transition-theme transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-theme">
                   <Mail className="mt-0.5 h-5 w-5 text-cyan-400" aria-hidden="true" />
                   <div className="text-sm text-theme-muted">
-                    <p className="font-semibold text-theme-primary">Email</p>
+                    <p className="font-semibold text-theme-primary">E-pošta</p>
                     <Link href="mailto:hello@enigma.digital" className="transition-theme hover:text-theme-primary">
                       hello@enigma.digital
                     </Link>
@@ -113,16 +113,16 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col gap-4 border-t border-theme pt-6 text-sm text-theme-muted md:flex-row md:items-center md:justify-between">
-          <p>&copy; {new Date().getFullYear()} Enigma Digital. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Enigma Digital. Sva prava zadržana.</p>
           <div className="flex flex-wrap items-center gap-4">
             <Link href="/privacy" className="transition-theme hover:text-theme-primary">
-              Privacy policy
+              Politika privatnosti
             </Link>
             <Link href="/terms" className="transition-theme hover:text-theme-primary">
-              Terms of service
+              Uslovi korišćenja
             </Link>
             <Link href="/brand" className="transition-theme hover:text-theme-primary">
-              Brand guidelines
+              Smernice brenda
             </Link>
           </div>
         </div>

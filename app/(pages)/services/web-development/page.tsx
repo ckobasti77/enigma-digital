@@ -22,171 +22,171 @@ const detail = serviceDetails["web-development"];
 
 const scopeItems = [
   {
-    title: "Websites & Marketing Platforms",
-    benefit: "Composable CMS foundations so growth teams publish without friction.",
+    title: "Sajtovi i marketing platforme",
+    benefit: "Composable CMS temelji koji growth timovima omogućavaju objavljivanje bez trenja.",
     icon: LayoutDashboard,
   },
   {
-    title: "SaaS Product & Architecture",
-    benefit: "TypeScript-first platforms that stay maintainable as customer journeys expand.",
+    title: "SaaS proizvod i arhitektura",
+    benefit: "TypeScript-first platforme koje ostaju održive dok se korisnička putovanja šire.",
     icon: Code2,
   },
   {
-    title: "Edge & Serverless Functions",
-    benefit: "Deploy fast, scale smart with latency-sensitive compute where it matters.",
+    title: "Edge i serverless funkcije",
+    benefit: "Brzo deploy-ujte i pametno skalirajte latency-sensitive compute tamo gde je važan.",
     icon: Network,
   },
   {
-    title: "Performance & Observability",
-    benefit: "Vitals, tracing, and alerts wired in so issues surface before users notice.",
+    title: "Performanse i observability",
+    benefit: "Vitals, tracing i alerti su povezani tako da problemi isplivaju pre nego što ih korisnici primete.",
     icon: GaugeCircle,
   },
   {
-    title: "Automation & CI/CD Tooling",
-    benefit: "Pipelines, QA guardrails, and DX upgrades that shorten every release cycle.",
+    title: "Automatizacija i CI/CD alati",
+    benefit: "Pipeline-i, QA zaštitni mehanizmi i DX unapređenja skraćuju svaki release ciklus.",
     icon: Workflow,
   },
   {
-    title: "Secure Data Integrations",
-    benefit: "Hardened APIs, zero-trust auth, and privacy-first analytics out of the box.",
+    title: "Bezbedne integracije podataka",
+    benefit: "Ojačani API-ji, zero-trust autentifikacija i privacy-first analitika odmah iz kutije.",
     icon: Shield,
   },
 ];
 
 const methodologyPillars = [
   {
-    title: "TypeScript-first delivery",
+    title: "TypeScript-first isporuka",
     points: [
-      "Next.js, Remix, Astro, and Edge runtimes tuned per workload.",
-      "Shared component libraries and Storybook-ready documentation.",
+      "Next.js, Remix, Astro i Edge runtime-i podešeni su prema opterećenju.",
+      "Deljene biblioteke komponenti i dokumentacija spremna za Storybook.",
     ],
   },
   {
-    title: "Performance obsessed",
+    title: "Opsesija performansama",
     points: [
-      "Core Web Vitals budgets with automated Lighthouse or Calibre runs.",
-      "Real user monitoring hooks and cost-aware edge caching.",
+      "Core Web Vitals budžeti sa automatizovanim Lighthouse ili Calibre proverama.",
+      "Real user monitoring hook-ovi i edge keširanje svesno troškova.",
     ],
   },
   {
-    title: "Observability wired in",
+    title: "Observability ugrađen",
     points: [
-      "Telemetry via OpenTelemetry, Logtail, Datadog, or your stack.",
-      "Incident runbooks and alert routing aligned to your on-call model.",
+      "Telemetrija kroz OpenTelemetry, Logtail, Datadog ili vaš stack.",
+      "Incident runbook-ovi i alert routing usklađeni su sa vašim on-call modelom.",
     ],
   },
 ];
 
 const deliveryRail = [
-  { phase: "Kickoff", caption: "Discovery workshops and architecture blueprint" },
-  { phase: "Design", caption: "Experience flows, component specs, developer alignment" },
-  { phase: "Build", caption: "Agile squads shipping weekly with CI/CD humming" },
-  { phase: "Iterate", caption: "Data-backed optimisations and roadmap grooming" },
-  { phase: "Scale", caption: "Production hardening, edge tuning, cost controls" },
+  { phase: "Kickoff", caption: "Discovery radionice i arhitektonski blueprint" },
+  { phase: "Dizajn", caption: "Tokovi iskustva, specifikacije komponenti, usklađivanje developera" },
+  { phase: "Izrada", caption: "Agilni timovi isporučuju nedeljno uz stabilan CI/CD" },
+  { phase: "Iteracija", caption: "Optimizacije zasnovane na podacima i roadmap grooming" },
+  { phase: "Skaliranje", caption: "Production hardening, edge podešavanja, kontrola troškova" },
 ];
 
 const differentiators = [
   {
-    title: "Built for growth",
-    body: "Engineering-led squads partner with product from roadmap to release, keeping acquisition, activation, and retention metrics in view.",
+    title: "Građeno za rast",
+    body: "Engineering-led timovi sarađuju sa product-om od roadmap-a do release-a, držeći akviziciju, aktivaciju i retenciju u fokusu.",
   },
   {
-    title: "Maintainable from sprint one",
-    body: "Clean architecture, typed APIs, and golden paths for contributors mean every new feature lands without accruing debt.",
+    title: "Održivo od prvog sprinta",
+    body: "Čista arhitektura, tipizovani API-ji i jasni putevi za contributore znače da svaka nova funkcija stiže bez gomilanja duga.",
   },
   {
-    title: "Performance baked in",
-    body: "Caching strategies, CDN rules, and profiling happen during development, so you hit 99% plus first-paint reliability.",
+    title: "Performanse ugrađene",
+    body: "Strategije keširanja, CDN pravila i profiling rade se tokom razvoja, kako biste pogodili 99%+ pouzdanosti prvog prikaza.",
   },
   {
-    title: "Remote-first, timezone aligned",
-    body: "Distributed engineers across EMEA and North America embed with your team, covering critical hours without hand-off gaps.",
+    title: "Remote-first, usklađeno kroz vremenske zone",
+    body: "Distribuirani inženjeri širom EMEA regiona i Severne Amerike rade uz vaš tim, pokrivajući ključne sate bez praznina u predaji.",
   },
 ];
 
 const trustSignals = [
-  { value: "99%+", label: "First paint hit rate across launches" },
-  { value: "4 weeks", label: "Fastest growth-stage MVP to production" },
-  { value: "EMEA / NA", label: "Remote engineering squads embedded" },
-  { value: "40%", label: "Average conversion lift post engagement" },
+  { value: "99%+", label: "Stopa uspešnog prvog prikaza kroz lansiranja" },
+  { value: "4 weeks", label: "Najbrži growth-stage MVP do produkcije" },
+  { value: "EMEA / NA", label: "Ugrađeni remote engineering timovi" },
+  { value: "40%", label: "Prosečan rast konverzije posle angažmana" },
 ];
 
 const journeyPhases = [
   {
-    label: "1. Discovery & roadmap",
-    description: "Audit current stack, map KPIs, and align on measurable outcomes.",
-    deliverable: "Architecture briefing and prioritised backlog",
+    label: "1. Discovery i roadmap",
+    description: "Auditujemo trenutni stack, mapiramo KPI-jeve i usklađujemo merljive ishode.",
+    deliverable: "Arhitektonski brief i prioritizovani backlog",
   },
   {
-    label: "2. Design & prototyping",
-    description: "Wire UX flows, systemise UI, and validate journeys with product owners.",
-    deliverable: "Component kit with prototype feedback loops",
+    label: "2. Dizajn i prototipovanje",
+    description: "Postavljamo UX tokove, sistematizujemo UI i validiramo putanje sa product owner-ima.",
+    deliverable: "Komponentni kit sa loop-ovima povratnih informacija na prototip",
   },
   {
-    label: "3. Engineering & build",
-    description: "Implement features in weekly increments with CI/CD and QA guardrails.",
-    deliverable: "Production-ready increments plus release notes",
+    label: "3. Inženjering i izrada",
+    description: "Implementiramo funkcije u nedeljnim inkrementima uz CI/CD i QA zaštitne mehanizme.",
+    deliverable: "Production-ready inkrementi i release notes",
   },
   {
-    label: "4. Launch & iterate",
-    description: "Coordinate releases, instrument analytics, and activate marketing automation.",
-    deliverable: "Go-live checklist and tracking dashboards",
+    label: "4. Lansiranje i iteracija",
+    description: "Koordiniramo release-e, instrumentujemo analitiku i aktiviramo marketing automatizaciju.",
+    deliverable: "Go-live checklist-a i tracking dashboard-i",
   },
   {
-    label: "5. Monitor & scale",
-    description: "Observe vitals, tune infrastructure, and ship enhancements based on data.",
-    deliverable: "Monthly performance review and optimisation backlog",
+    label: "5. Monitoring i skaliranje",
+    description: "Pratimo vitals, podešavamo infrastrukturu i isporučujemo unapređenja na osnovu podataka.",
+    deliverable: "Mesečni pregled performansi i backlog optimizacije",
   },
 ];
 
 const maintenanceHighlights = [
-  "Monthly performance and Core Web Vitals review with action items.",
-  "Observability dashboards, synthetic tests, and alert routing upkeep.",
-  "Continuous backlog grooming aligned to GTM experiments and OKRs.",
-  "Edge function profiling and cost optimisation recommendations.",
-  "Security patches, dependency upgrades, and automated QA guardrails.",
+  "Mesečni pregled performansi i Core Web Vitals-a sa action item-ima.",
+  "Održavanje observability dashboard-a, sintetičkih testova i alert routinga.",
+  "Kontinuirani backlog grooming usklađen sa GTM eksperimentima i OKR-ovima.",
+  "Profilisanje Edge funkcija i preporuke za optimizaciju troškova.",
+  "Bezbednosne zakrpe, nadogradnje zavisnosti i automatizovani QA zaštitni mehanizmi.",
 ];
 
 const faqItems = [
   {
-    question: "What size web development squad will I work with?",
+    question: "Sa koliko velikim web development timom ću raditi?",
     answer:
-      "We embed a dedicated pod of 3-6 specialists (lead engineer, product designer, frontend/backend developers, QA) tailored to your roadmap and budget.",
+      "Uključujemo posvećen tim od 3-6 specijalista (lead engineer, product designer, frontend/backend developeri, QA) prilagođen vašem roadmap-u i budžetu.",
   },
   {
-    question: "Which tech stacks do you prefer?",
+    question: "Koje tech stack-ove preferirate?",
     answer:
-      "Next.js, Remix, and Astro on the frontend; serverless edge runtimes, Node.js, and GraphQL or REST APIs in the middle; and modern data stores like PlanetScale, Supabase, or DynamoDB where fit. Every build is TypeScript-first.",
+      "Next.js, Remix i Astro na frontendu; serverless edge runtime-i, Node.js i GraphQL ili REST API-ji u sredini; moderni data store-ovi poput PlanetScale, Supabase ili DynamoDB gde odgovara. Svaki build je TypeScript-first.",
   },
   {
-    question: "How do you handle maintenance after launch?",
+    question: "Kako rešavate održavanje posle lansiranja?",
     answer:
-      "We stay accountable with observability, monthly health reviews, automated QA, and rapid-response bug fixes so your platform keeps moving.",
+      "Ostajemo odgovorni kroz observability, mesečne health review-e, automatizovani QA i brzo rešavanje bug-ova kako bi platforma nastavila da napreduje.",
   },
   {
-    question: "Can you support aggressive performance targets?",
+    question: "Možete li podržati agresivne ciljeve performansi?",
     answer:
-      "Yes. We design toward sub-two-second first paint, instrument real user monitoring, and run regression tests on every deploy to keep vitals in the green.",
+      "Da. Dizajniramo ka prvom prikazu ispod dve sekunde, instrumentujemo real user monitoring i pokrećemo regresione testove pri svakom deploy-u kako bi vitals ostali u zelenom.",
   },
   {
-    question: "Will my product scale with increased demand?",
+    question: "Da li će moj proizvod skalirati sa rastom potražnje?",
     answer:
-      "We plan for growth from day one with multi-region deployments, infrastructure-as-code, and database sharding or read replica strategies as needed.",
+      "Planiramo rast od prvog dana kroz multi-region deploy-e, infrastructure-as-code i strategije database sharding-a ili read replica po potrebi.",
   },
   {
-    question: "Do you integrate with existing teams and vendors?",
+    question: "Da li se uklapate sa postojećim timovima i dobavljačima?",
     answer:
-      "Absolutely. We collaborate across marketing, product, and ops, plugging into your tooling such as Linear, Jira, GitHub, and Notion to stay transparent.",
+      "Apsolutno. Sarađujemo kroz marketing, product i ops, uključujući se u alate poput Linear-a, Jira-e, GitHub-a i Notion-a da sve ostane transparentno.",
   },
   {
-    question: "How fast can we kick off?",
+    question: "Koliko brzo možemo da počnemo?",
     answer:
-      "Discovery can begin within a week. We scope, agree on KPIs, and spin up your dedicated remote engineering squad aligned to EMEA or North America hours.",
+      "Discovery može početi u roku od nedelju dana. Definišemo opseg, KPI-jeve i pokrećemo posvećen remote engineering tim usklađen sa EMEA ili severnoameričkim satima.",
   },
   {
-    question: "What does engagement cost?",
+    question: "Koliko košta angažman?",
     answer:
-      "Pods start at flexible retainers with transparent weekly velocity metrics. We provide detailed proposals covering team composition, cadence, and outcomes.",
+      "Timovi kreću od fleksibilnih retainera sa transparentnim nedeljnim metrikama brzine. Dajemo detaljne ponude sa sastavom tima, ritmom i ishodima.",
   },
 ];
 
@@ -213,13 +213,12 @@ const WebDevelopment = () => {
       <section className="theme-section px-6 py-24 transition-theme">
         <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-12">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Scope at a glance</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Opseg ukratko</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              Web development coverage that meets every stage of your platform
+              Izrada weba koja pokriva svaku fazu vaše platforme
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              From marketing websites to mission-critical SaaS, we assemble the exact mix of frontend, backend,
-              and infrastructure expertise to keep your roadmap moving.
+              Od marketing sajtova do mission-critical SaaS rešenja, sastavljamo tačan miks frontend, backend i infrastructure ekspertize da vaša mapa puta nastavi da se kreće.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -245,12 +244,10 @@ const WebDevelopment = () => {
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1fr)] lg:items-start">
             <div className="space-y-5">
-              <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Technology &amp; methodology</span>
-              <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">How we build</h2>
+              <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Tehnologija i metodologija</span>
+              <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">Kako gradimo</h2>
               <p className="text-base leading-relaxed text-theme-muted">
-                We bring a scalable stack that balances developer experience, performance budgets, and stakeholder
-                visibility. The result is a remote engineering squad that ships confidently, even under high-growth
-                pressure.
+                Donosimo skalabilan stack koji balansira developer experience, budžete performansi i vidljivost za stakeholder-e. Rezultat je remote engineering tim koji isporučuje sigurno, čak i pod pritiskom brzog rasta.
               </p>
               <div className="flex flex-wrap gap-2">
                 {["Next.js", "Remix", "GraphQL", "Edge functions", "TypeScript first", "CI/CD automation"].map(
@@ -290,18 +287,17 @@ const WebDevelopment = () => {
           <div className="overflow-hidden rounded-3xl border border-theme theme-card p-6 shadow-theme">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div>
-                <h3 className="text-xl font-semibold text-theme-primary">Download our web development services brief</h3>
+                <h3 className="text-xl font-semibold text-theme-primary">Preuzmite brief za usluge izrade weba</h3>
                 <p className="mt-2 max-w-xl text-sm leading-relaxed text-theme-muted">
-                  Get the full architecture blueprint outline, sample roadmaps, and remote squad playbook. Ideal for
-                  stakeholders who want detail before a kickoff call.
+                  Dobijte kompletan okvir arhitektonskog blueprint-a, primer roadmap-a i remote squad playbook. Idealno za stakeholder-e koji žele detalje pre kickoff poziva.
                 </p>
               </div>
             </div>
             <div className="mt-10 space-y-6">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <span className="text-xs uppercase tracking-[0.6em] text-theme-muted">Our build rail</span>
+                <span className="text-xs uppercase tracking-[0.6em] text-theme-muted">Naš tok izrade</span>
                 <span className="text-xs uppercase tracking-[0.3em] text-theme-muted opacity-80 sm:text-right">
-                  Swipe to explore each delivery phase
+                  Prevucite da istražite svaku fazu isporuke
                 </span>
               </div>
               <div className="relative overflow-hidden rounded-3xl border border-theme/70 theme-card p-6 shadow-[inset_0_1px_0_rgba(148,163,184,0.1)] backdrop-blur-sm transition-theme md:p-8">
@@ -341,13 +337,12 @@ const WebDevelopment = () => {
       <section className="theme-section px-6 py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Why choose us</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Zašto izabrati nas</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              Remote web development squads engineered for scale
+              Remote timovi za izradu weba projektovani za skaliranje
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              We combine product strategy, engineering discipline, and continuous optimisation so your scalable web
-              platform stays ahead of demand.
+              Spajamo product strategiju, inženjersku disciplinu i kontinuiranu optimizaciju da vaša skalabilna web platforma ostane ispred potražnje.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
@@ -367,8 +362,8 @@ const WebDevelopment = () => {
       <section className="theme-section border-y border-theme/60 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-6 py-20 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
           <div className="flex flex-col gap-3">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Proof you can trust</span>
-            <h2 className="text-2xl font-semibold text-theme-primary md:text-3xl">Key metrics and social proof</h2>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Dokazi kojima možete verovati</span>
+            <h2 className="text-2xl font-semibold text-theme-primary md:text-3xl">Ključne metrike i društveni dokaz</h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {trustSignals.map(({ value, label }) => (
@@ -384,15 +379,15 @@ const WebDevelopment = () => {
           <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] text-theme-muted">
             <span className="inline-flex items-center gap-2 rounded-full border border-theme px-3 py-1">
               <Server className="h-4 w-4 text-cyan-400" aria-hidden />
-              Remote engineering squads
+              Remote engineering timovi
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-theme px-3 py-1">
               <Orbit className="h-4 w-4 text-cyan-400" aria-hidden />
-              Partnered with growth-stage teams
+              Partnerstva sa growth-stage timovima
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-theme px-3 py-1">
               <Sparkles className="h-4 w-4 text-cyan-400" aria-hidden />
-              Design and engineering in lockstep
+              Dizajn i inženjering u istom ritmu
             </span>
           </div>
         </div>
@@ -401,13 +396,12 @@ const WebDevelopment = () => {
       <section className="theme-section px-6 py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Process / journey</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Proces / putanja</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              The journey from idea to resilient platform
+              Put od ideje do otporne platforme
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              Transparent milestones keep stakeholders engaged and ensure your remote engineering squad stays aligned to
-              business outcomes.
+              Transparentne prekretnice drže stakeholder-e uključene i obezbeđuju da remote engineering tim ostane usklađen sa poslovnim ishodima.
             </p>
           </div>
           <ol className="relative grid gap-8 lg:grid-cols-5">
@@ -422,7 +416,7 @@ const WebDevelopment = () => {
                 </span>
                 <h3 className="mt-4 text-lg font-semibold text-theme-primary">{label}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-theme-muted">{description}</p>
-                <p className="mt-4 text-xs uppercase tracking-[0.3em] text-cyan-400">Deliverable: {deliverable}</p>
+                <p className="mt-4 text-xs uppercase tracking-[0.3em] text-cyan-400">Isporučujemo: {deliverable}</p>
               </li>
             ))}
           </ol>
@@ -432,24 +426,22 @@ const WebDevelopment = () => {
       <section className="theme-section border-y border-theme/60 bg-slate-950/50 px-6 py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Maintenance &amp; growth</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Održavanje i rast</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              We stay accountable long after launch day
+              Ostajemo odgovorni dugo posle lansiranja
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              Your scalable web platform needs care and iteration. We stay embedded to monitor, optimise, and evolve
-              features as your customer base expands.
+              Vaša skalabilna web platforma treba brigu i iteraciju. Ostajemo uključeni da pratimo, optimizujemo i razvijamo funkcije kako baza korisnika raste.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)] md:items-start">
             <div className="rounded-3xl border border-theme/70 theme-card p-6 shadow-theme transition-all duration-500 ease-out hover:-translate-y-2 hover:border-cyan-400/60 hover:shadow-[0_28px_80px_-48px_rgba(56,189,248,0.5)] translate-y-0">
               <h3 className="flex items-center gap-2 text-lg font-semibold text-theme-primary">
                 <GaugeCircle className="h-5 w-5 text-cyan-400" aria-hidden />
-                Ongoing engagement snapshot
+                Pregled stalnog angažmana
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-theme-muted">
-                We align retainers to your velocity targets, delivering measurable outcomes every sprint while keeping
-                budgets predictable.
+                Retainere usklađujemo sa ciljevima brzine, isporučujući merljive ishode svakog sprinta uz predvidive budžete.
               </p>
             </div>
             <ul className="space-y-3 rounded-3xl border border-theme/70 theme-card p-6 shadow-theme transition-all duration-500 ease-out hover:border-cyan-400/60">
@@ -470,13 +462,12 @@ const WebDevelopment = () => {
       <section className="theme-section px-6 py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
           <div className="max-w-3xl space-y-5 text-center md:text-left">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">FAQ</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Česta pitanja</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              Frequently asked questions about our web development services
+              Česta pitanja o našim uslugama izrade weba
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              Answers to the topics we cover most often with growth-stage founders, marketing leaders, and product
-              teams exploring remote web development partnerships.
+              Odgovori na teme koje najčešće prolazimo sa growth-stage osnivačima, marketing liderima i product timovima koji istražuju remote web development partnerstva.
             </p>
           </div>
           <div className="divide-y divide-theme rounded-3xl border border-theme theme-card">
@@ -523,11 +514,10 @@ const WebDevelopment = () => {
       <section className="theme-section border-t border-theme/60 px-6 py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 text-center md:text-left">
           <h2 className="text-3xl font-semibold text-theme-muted md:text-4xl">
-            Let&rsquo;s define your roadmap and ship a scalable web platform
+              Definišimo vašu mapu puta i isporučimo skalabilnu web platformu
           </h2>
           <p className="max-w-3xl text-base leading-relaxed text-theme-muted">
-            Share where you are today, the KPIs you need to move, and we&rsquo;ll assemble a remote web development squad that
-            embeds with your team, complete with performance targets and observability from the very first sprint.
+              Podelite gde ste danas i koje KPI-jeve treba pomeriti, a mi ćemo sastaviti tim za izradu weba na daljinu koji se uklapa u vaš tim, uz ciljeve performansi i praćenje sistema od prvog sprinta.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
@@ -535,14 +525,14 @@ const WebDevelopment = () => {
               className="inline-flex items-center gap-2 rounded-full bg-theme-primary px-7 py-3 text-sm font-semibold text-theme-primary transition hover:opacity-90"
             >
               <Sparkles className="h-4 w-4" aria-hidden />
-              Let&rsquo;s define your roadmap
+              Definišimo mapu puta
             </Link>
             <Link
               href="/projects"
               className="inline-flex items-center gap-2 rounded-full border border-theme px-7 py-3 text-sm font-semibold text-theme-primary transition hover:bg-theme-primary/10"
             >
               <BadgeCheck className="h-4 w-4 text-cyan-400" aria-hidden />
-              See recent builds
+              Pogledajte skorašnje projekte
             </Link>
           </div>
         </div>

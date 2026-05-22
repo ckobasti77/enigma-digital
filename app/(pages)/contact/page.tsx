@@ -9,21 +9,21 @@ const iconStrokeWidth = 1.8;
 const contactOptions = [
   {
     icon: Mail,
-    title: 'Email the partners',
-    description: 'hello@enigmadigital.studio — share a deck, Loom, or a quick outline of where you need momentum.',
-    action: 'Open email',
+    title: 'Pišite partnerima',
+    description: 'hello@enigmadigital.studio - pošaljite prezentaciju, Loom snimak ili kratak opis gde vam treba zamah.',
+    action: 'Otvori e-poštu',
   },
   {
     icon: CalendarClock,
-    title: 'Book a strategy call',
-    description: 'Pick a 30-minute slot to explore goals, constraints, and the metrics your exec team cares about.',
-    action: 'View calendar',
+    title: 'Zakažite strateški poziv',
+    description: 'Izaberite termin od 30 minuta da prođemo ciljeve, ograničenja i metrike važne vašem executive timu.',
+    action: 'Pogledaj kalendar',
   },
   {
     icon: MessageCircle,
-    title: 'Async voice memo',
-    description: 'Prefer async? Drop us a voice note or transcript and we’ll respond in the format you use internally.',
-    action: 'Share a memo',
+    title: 'Asinhrona glasovna poruka',
+    description: 'Više vam odgovara asinhrono? Pošaljite glasovnu poruku ili transkript, a mi ćemo odgovoriti u formatu koji koristite interno.',
+    action: 'Pošalji poruku',
   },
 ];
 
@@ -75,26 +75,26 @@ export default function ContactUs() {
         <div className="relative mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)]">
           <div className="space-y-6">
             <span className="inline-flex items-center gap-2 rounded-full border border-theme px-4 py-2 text-xs uppercase tracking-[0.4em] text-cyan-400/90">
-              Let's build together
+              Gradimo zajedno
             </span>
             <h1 className="font-aeonik text-4xl font-medium leading-tight text-theme-primary md:text-5xl">
-              Drop the brief. We'll bring the squad.
+              Pošaljite brief. Mi dovodimo tim.
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-theme-muted">
-              Tell us the outcome you need in the next two quarters. We'll assemble the right strategists, designers, and engineers, then stay embedded until the playbook lives inside your team.
+              Recite nam koji ishod vam treba u naredna dva kvartala. Sastavićemo pravi tim stratega, dizajnera i inženjera, zatim ostati uz vas dok playbook ne zaživi u vašem timu.
             </p>
             <div className="grid gap-4 sm:grid-cols-3">
               <div className="rounded-2xl border border-theme theme-card px-4 py-4 text-center">
                 <p className="text-2xl font-semibold text-theme-primary md:text-3xl">&lt;12h</p>
-                <span className="mt-2 block text-xs uppercase tracking-[0.3em] text-theme-muted">Avg response</span>
+                <span className="mt-2 block text-xs uppercase tracking-[0.3em] text-theme-muted">Prosečan odgovor</span>
               </div>
               <div className="rounded-2xl border border-theme theme-card px-4 py-4 text-center">
                 <p className="text-2xl font-semibold text-theme-primary md:text-3xl">24/5</p>
-                <span className="mt-2 block text-xs uppercase tracking-[0.3em] text-theme-muted">Coverage</span>
+                <span className="mt-2 block text-xs uppercase tracking-[0.3em] text-theme-muted">Pokrivenost</span>
               </div>
               <div className="rounded-2xl border border-theme theme-card px-4 py-4 text-center">
                 <p className="text-2xl font-semibold text-theme-primary md:text-3xl">5</p>
-                <span className="mt-2 block text-xs uppercase tracking-[0.3em] text-theme-muted">Time zones</span>
+                <span className="mt-2 block text-xs uppercase tracking-[0.3em] text-theme-muted">Vremenske zone</span>
               </div>
             </div>
             <div className="space-y-3">
@@ -125,15 +125,15 @@ export default function ContactUs() {
           <div className="rounded-3xl border border-theme theme-card p-6 shadow-theme sm:p-7">
             <div className="space-y-5">
               <div className="space-y-2 text-left">
-                <h2 className="text-xl font-semibold text-theme-primary">Start a project outline</h2>
+                <h2 className="text-xl font-semibold text-theme-primary">Započnite skicu projekta</h2>
                 <p className="text-sm text-theme-muted">
-                  Share as much context as you can. Your north star metric, blockers, timelines, or existing research will help us respond with a tailored plan.
+                  Podelite što više konteksta. North-star metrika, blokade, rokovi ili postojeće istraživanje pomoći će nam da odgovorimo prilagođenim planom.
                 </p>
               </div>
               <form ref={formRef} className="space-y-4" action={formAction}>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <label className="space-y-2 text-sm">
-                    <span className="text-slate-200">Name</span>
+                    <span className="text-slate-200">Ime</span>
                     <input
                       type="text"
                       name="name"
@@ -143,7 +143,7 @@ export default function ContactUs() {
                     />
                   </label>
                   <label className="space-y-2 text-sm">
-                    <span className="text-slate-200">Work email</span>
+                    <span className="text-slate-200">Poslovna e-pošta</span>
                     <input
                       type="email"
                       name="email"
@@ -154,35 +154,35 @@ export default function ContactUs() {
                   </label>
                 </div>
                 <label className="space-y-2 text-sm">
-                  <span className="text-slate-200">Company</span>
+                  <span className="text-slate-200">Kompanija</span>
                   <input
                     type="text"
                     name="company"
-                    placeholder="Company or collective"
+                    placeholder="Kompanija ili kolektiv"
                     className="w-full rounded-xl border border-theme theme-card px-4 py-3 text-sm text-theme-primary placeholder:text-theme-muted focus:border-cyan-400 focus:outline-none"
                   />
                 </label>
                 <label className="space-y-2 text-sm">
-                  <span className="text-slate-200">What should we tackle together?</span>
+                  <span className="text-slate-200">Čime treba zajedno da se pozabavimo?</span>
                   <textarea
                     rows={4}
                     name="message"
                     required
-                    placeholder="Share product goals, tech stack, deadlines, or anything that helps us prep."
+                    placeholder="Podelite proizvodne ciljeve, tehnološki okvir, rokove ili bilo šta što nam pomaže da se pripremimo."
                     className="w-full rounded-xl border border-theme theme-card px-4 py-3 text-sm text-theme-primary placeholder:text-theme-muted focus:border-cyan-400 focus:outline-none"
                   />
                 </label>
                 <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-end">
                   <label className="space-y-2 text-sm">
-                    <span className="text-slate-200">Preferred response style</span>
+                    <span className="text-slate-200">Željeni format odgovora</span>
                     <select
                       name="responseStyle"
                       className="w-full rounded-xl border border-theme theme-card px-4 py-3 text-sm text-theme-primary focus:border-cyan-400 focus:outline-none"
                     >
-                      <option>Email recap</option>
-                      <option>Deck with options</option>
-                      <option>Async Loom</option>
-                      <option>Live working session</option>
+                      <option>Sažetak e-poštom</option>
+                      <option>Deck sa opcijama</option>
+                      <option>Asinhroni Loom</option>
+                      <option>Radna sesija uživo</option>
                     </select>
                   </label>
                   <button
@@ -190,7 +190,7 @@ export default function ContactUs() {
                     disabled={isPending}
                     className="inline-flex h-[46px] items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-foreground px-5 text-sm font-medium text-background transition-theme hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-70"
                   >
-                    {isPending ? 'Sending...' : 'Send outline'}
+                    {isPending ? 'Šalje se...' : 'Pošalji skicu'}
                     <Send className="h-4 w-4" strokeWidth={iconStrokeWidth} />
                   </button>
                 </div>
@@ -213,10 +213,10 @@ export default function ContactUs() {
       <section className="bg-slate-900/35 px-6 py-20 md:py-24">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
           <div className="space-y-3 text-center">
-            <span className="text-xs uppercase tracking-[0.4em] text-cyan-400/85">Where we operate</span>
-            <h2 className="text-3xl font-medium text-theme-primary md:text-4xl">Global footprint, same operating rhythm</h2>
+            <span className="text-xs uppercase tracking-[0.4em] text-cyan-400/85">Gde radimo</span>
+            <h2 className="text-3xl font-medium text-theme-primary md:text-4xl">Globalno prisustvo, isti radni ritam</h2>
             <p className="mx-auto max-w-2xl text-sm leading-relaxed text-theme-muted">
-              Distributed by design. We overlap across EMEA and support North American mornings with async rituals, recorded stand-ups, and shared dashboards.
+              Distribuirani smo po dizajnu. Preklapamo se kroz EMEA i podržavamo severnoamerička jutra asinhronim ritualima, snimljenim stand-up-ovima i deljenim dashboard-ima.
             </p>
           </div>
           <div className="flex flex-col gap-6 lg:flex-row">
@@ -247,8 +247,8 @@ export default function ContactUs() {
               <span className="absolute right-[22%] top-[40%] h-2 w-2 rounded-full bg-cyan-400/80 shadow-[0_0_18px_rgba(56,189,248,0.5)]" aria-hidden />
               <span className="absolute left-[48%] bottom-[28%] h-2 w-2 rounded-full bg-cyan-400/70 shadow-[0_0_18px_rgba(56,189,248,0.45)]" aria-hidden />
               <div className="relative space-y-2">
-                <p className="text-xs uppercase tracking-[0.4em] text-cyan-400/85">Coverage map</p>
-                <p className="text-sm text-theme-muted">EMEA core hours with NA overlap windows.</p>
+                <p className="text-xs uppercase tracking-[0.4em] text-cyan-400/85">Mapa pokrivenosti</p>
+                <p className="text-sm text-theme-muted">EMEA core sati sa prozorima preklapanja za Severnu Ameriku.</p>
               </div>
             </div>
           </div>
@@ -257,22 +257,19 @@ export default function ContactUs() {
 
       <section className="px-6 py-20">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 rounded-3xl border border-theme theme-card px-8 py-10 text-center">
-          <h2 className="text-3xl font-medium text-theme-primary md:text-4xl">Ready when you are</h2>
+          <h2 className="text-3xl font-medium text-theme-primary md:text-4xl">Spremni smo kada ste i vi</h2>
           <p className="max-w-2xl text-sm leading-relaxed text-theme-muted">
-            Share funding stage, KPIs, or challenges and we'll tailor the first workshop agenda. If we're not the best partner, we'll point you to someone in our network who is.
+            Podelite fazu finansiranja, KPI-jeve ili izazove i prilagodićemo agendu prve radionice. Ako nismo najbolji partner, uputićemo vas na nekoga iz naše mreže ko jeste.
           </p>
           <button className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-theme hover:opacity-90">
-            Start the conversation <ArrowRight className="h-4 w-4" strokeWidth={iconStrokeWidth} />
+            Započnite razgovor <ArrowRight className="h-4 w-4" strokeWidth={iconStrokeWidth} />
           </button>
           <div className="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-theme-muted">
-            <PhoneCall className="h-4 w-4 text-cyan-400" strokeWidth={iconStrokeWidth} /> Optional phone introductions available on request
+            <PhoneCall className="h-4 w-4 text-cyan-400" strokeWidth={iconStrokeWidth} /> Uvodni telefonski razgovori dostupni su na zahtev
           </div>
         </div>
       </section>
     </div>
   );
 }
-
-
-
 

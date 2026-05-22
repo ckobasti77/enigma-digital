@@ -20,33 +20,33 @@ const detail = serviceDetails["mobile-app-development"];
 
 const scopeItems = [
   {
-    title: "Product strategy & scope",
-    benefit: "Feature definition and roadmap alignment so every release moves core KPIs.",
+    title: "Product strategija i opseg",
+    benefit: "Definisanje funkcija i usklađivanje roadmap-a kako bi svako izdanje pomeralo ključne KPI-jeve.",
     icon: Target,
   },
   {
-    title: "Cross-platform development",
-    benefit: "React Native or Flutter builds with shared logic and native polish.",
+    title: "Cross-platform razvoj",
+    benefit: "React Native ili Flutter build-ovi sa deljenom logikom i native završnicom.",
     icon: Smartphone,
   },
   {
-    title: "Native performance & device access",
-    benefit: "60 fps experiences with camera, location, and hardware integrations.",
+    title: "Native performanse i pristup uređaju",
+    benefit: "Iskustva od 60 fps uz integracije kamere, lokacije i hardvera.",
     icon: GaugeCircle,
   },
   {
-    title: "Backend APIs & integrations",
-    benefit: "Secure services, data sync, and third-party integrations built for scale.",
+    title: "Backend API-ji i integracije",
+    benefit: "Bezbedni servisi, sinhronizacija podataka i third-party integracije građene za skaliranje.",
     icon: Server,
   },
   {
-    title: "QA and release management",
-    benefit: "Test automation, device labs, and store submissions handled end-to-end.",
+    title: "QA i release management",
+    benefit: "Automatizacija testova, device lab-ovi i predaja u prodavnice rešeni od početka do kraja.",
     icon: Workflow,
   },
   {
-    title: "Analytics & lifecycle engagement",
-    benefit: "Event tracking, funnels, and push strategies to lift retention.",
+    title: "Analitika i lifecycle angažovanje",
+    benefit: "Praćenje događaja, funnel-i i push strategije za rast retencije.",
     icon: SignalHigh,
   },
 ];
@@ -55,136 +55,136 @@ const methodologyPillars = [
   {
     title: "Product discovery",
     points: [
-      "User journey mapping, feature prioritization, and release scoping.",
-      "Clickable prototypes and stakeholder validation before engineering begins.",
+      "Mapiranje korisničkog putovanja, prioritizacija funkcija i definisanje opsega izdanja.",
+      "Klikabilni prototipovi i validacija stakeholder-a pre početka inženjeringa.",
     ],
   },
   {
-    title: "Performance and stability",
+    title: "Performanse i stabilnost",
     points: [
-      "Profiling for 60 fps animations and efficient native bridges.",
-      "Crash monitoring and regression suites built into CI/CD.",
+      "Profilisanje za animacije od 60 fps i efikasne native bridge-eve.",
+      "Crash monitoring i regression suite-ovi ugrađeni u CI/CD.",
     ],
   },
   {
-    title: "Release automation",
+    title: "Automatizacija izdanja",
     points: [
-      "CI pipelines, beta channels, and release notes managed every sprint.",
-      "Store submissions, compliance checks, and rollout coordination.",
+      "CI pipeline-i, beta kanali i release notes vode se svakog sprinta.",
+      "Predaja u prodavnice, compliance provere i koordinacija rollout-a.",
     ],
   },
 ];
 
 const deliveryRail = [
-  { phase: "Define", caption: "Product brief, success metrics, and scope" },
-  { phase: "Prototype", caption: "UX flows, interaction design, and validation" },
-  { phase: "Build", caption: "Agile development with weekly builds" },
-  { phase: "Launch", caption: "Store submission, QA, and go-live" },
-  { phase: "Grow", caption: "Retention experiments and feature expansion" },
+  { phase: "Definisanje", caption: "Product brief, metrike uspeha i opseg" },
+  { phase: "Prototip", caption: "UX tokovi, dizajn interakcije i validacija" },
+  { phase: "Izrada", caption: "Agilni razvoj sa nedeljnim build-ovima" },
+  { phase: "Lansiranje", caption: "Predaja u prodavnicu, QA i go-live" },
+  { phase: "Rast", caption: "Eksperimenti retencije i širenje funkcija" },
 ];
 
 const differentiators = [
   {
-    title: "Native polish with shared velocity",
-    body: "We move fast with cross-platform foundations while keeping native UX standards intact.",
+    title: "Native završnica uz deljenu brzinu",
+    body: "Krećemo se brzo sa cross-platform temeljima, a native UX standardi ostaju netaknuti.",
   },
   {
-    title: "Store readiness built in",
-    body: "App Store and Play Store compliance is baked into every milestone, not left for the end.",
+    title: "Spremnost za prodavnice ugrađena",
+    body: "App Store i Play Store compliance ugrađen je u svaku prekretnicu, ne ostavlja se za kraj.",
   },
   {
-    title: "Retention-first analytics",
-    body: "Events, funnels, and lifecycle messaging are planned alongside feature development.",
+    title: "Analitika sa retencijom na prvom mestu",
+    body: "Događaji, funnel-i i lifecycle poruke planiraju se zajedno sa razvojem funkcija.",
   },
   {
-    title: "Security and compliance",
-    body: "Secure storage, auth flows, and privacy considerations are included from day one.",
+    title: "Bezbednost i usklađenost",
+    body: "Sigurno skladištenje, auth tokovi i privatnost uključeni su od prvog dana.",
   },
 ];
 
 const trustSignals = [
-  { value: "60 fps", label: "Performance target" },
-  { value: "99.5%", label: "Crash-free sessions" },
+  { value: "60 fps", label: "Cilj performansi" },
+  { value: "99.5%", label: "Sesije bez pada aplikacije" },
   { value: "8 wks", label: "MVP to store" },
-  { value: "4.8", label: "Average rating uplift" },
+  { value: "4.8", label: "Prosečan rast ocene" },
 ];
 
 const journeyPhases = [
   {
-    label: "1. Discovery & validation",
-    description: "Align on goals, validate workflows, and define the feature roadmap.",
-    deliverable: "Product brief and feature map",
+    label: "1. Discovery i validacija",
+    description: "Usklađujemo ciljeve, validiramo tokove rada i definišemo roadmap funkcija.",
+    deliverable: "Product brief i mapa funkcija",
   },
   {
-    label: "2. UX & prototyping",
-    description: "Design mobile-first flows with interactive prototypes and feedback loops.",
-    deliverable: "Clickable prototype and UI kit",
+    label: "2. UX i prototipovanje",
+    description: "Dizajniramo mobile-first tokove sa interaktivnim prototipovima i feedback loop-ovima.",
+    deliverable: "Klikabilni prototip i UI kit",
   },
   {
-    label: "3. Engineering & QA",
-    description: "Build, test, and iterate with device labs and automated regression tests.",
-    deliverable: "Release candidate builds and QA reports",
+    label: "3. Inženjering i QA",
+    description: "Gradimo, testiramo i iteriramo kroz device lab-ove i automatizovane regression testove.",
+    deliverable: "Release candidate build-ovi i QA izveštaji",
   },
   {
-    label: "4. Store launch",
-    description: "Prepare listings, privacy disclosures, and coordinate the go-live plan.",
-    deliverable: "Store listings and go-live checklist",
+    label: "4. Lansiranje u prodavnici",
+    description: "Pripremamo listing-e, privacy disclosure-e i koordiniramo go-live plan.",
+    deliverable: "Store listing-i i go-live checklist-a",
   },
   {
-    label: "5. Growth & iteration",
-    description: "Monitor retention, ship improvements, and plan expansion features.",
-    deliverable: "Retention roadmap and analytics dashboard",
+    label: "5. Rast i iteracija",
+    description: "Pratimo retenciju, isporučujemo unapređenja i planiramo proširenje funkcija.",
+    deliverable: "Roadmap retencije i analytics dashboard",
   },
 ];
 
 const maintenanceHighlights = [
-  "OS and device compatibility updates for every release.",
-  "Crash monitoring, performance profiling, and hotfix response.",
-  "Feature flags, staged rollouts, and A/B testing support.",
-  "Store listing optimization and review management.",
-  "Analytics reviews tied to activation and retention goals.",
+  "Ažuriranja kompatibilnosti OS-a i uređaja za svako izdanje.",
+  "Crash monitoring, profilisanje performansi i hotfix odgovor.",
+  "Feature flag-ovi, fazni rollout-i i podrška za A/B testiranje.",
+  "Optimizacija store listing-a i upravljanje recenzijama.",
+  "Pregledi analitike vezani za ciljeve aktivacije i retencije.",
 ];
 
 const faqItems = [
   {
-    question: "Do you build native or cross-platform apps?",
+    question: "Da li pravite native ili cross-platform aplikacije?",
     answer:
-      "We build both. React Native and Flutter are ideal for shared codebases, but we also deliver native iOS/Android when required.",
+      "Radimo oba. React Native i Flutter su idealni za deljene codebase-ove, ali isporučujemo i native iOS/Android kada je potrebno.",
   },
   {
-    question: "How do you handle App Store and Play Store submissions?",
+    question: "Kako rešavate predaju u App Store i Play Store?",
     answer:
-      "We manage listing assets, compliance checks, and submission workflows so launches are smooth and on time.",
+      "Vodimo listing asset-e, compliance provere i submission tokove kako bi lansiranja bila glatka i na vreme.",
   },
   {
-    question: "Can you integrate with our existing backend?",
+    question: "Možete li se integrisati sa našim postojećim backend-om?",
     answer:
-      "Yes. We work with your APIs, authentication, and data layers or build new services when needed.",
+      "Da. Radimo sa vašim API-jima, autentifikacijom i data layer-ima ili gradimo nove servise kada je potrebno.",
   },
   {
-    question: "Will the app support offline use?",
+    question: "Da li će aplikacija podržati offline korišćenje?",
     answer:
-      "We design offline states and data sync strategies for workflows that require access without connectivity.",
+      "Dizajniramo offline stanja i strategije sinhronizacije podataka za tokove koji traže pristup bez konekcije.",
   },
   {
-    question: "How do you ensure performance and stability?",
+    question: "Kako obezbeđujete performanse i stabilnost?",
     answer:
-      "We profile key flows, monitor crash rates, and run automated device tests every sprint.",
+      "Profilisemo ključne tokove, pratimo crash rate i pokrećemo automatizovane testove uređaja svakog sprinta.",
   },
   {
-    question: "What happens after launch?",
+    question: "Šta se dešava posle lansiranja?",
     answer:
-      "We stay on retainer for OS updates, feature enhancements, analytics reviews, and rapid fixes.",
+      "Ostajemo na retainer-u za OS update-e, unapređenja funkcija, preglede analitike i brze popravke.",
   },
   {
-    question: "What team will we work with?",
+    question: "Sa kojim timom ćemo raditi?",
     answer:
-      "A dedicated pod typically includes a mobile lead, product designer, engineers, and QA support.",
+      "Posvećen tim obično uključuje mobile lead-a, product dizajnera, inženjere i QA podršku.",
   },
   {
     question: "How fast can we start?",
     answer:
-      "Discovery can begin within a week, with an MVP plan and roadmap delivered shortly after kickoff.",
+      "Discovery može početi u roku od nedelju dana, a MVP plan i roadmap isporučujemo ubrzo posle kickoff-a.",
   },
 ];
 
@@ -211,13 +211,12 @@ const MobileAppDevelopment = () => {
       <section className="theme-section px-6 py-20 sm:py-24 transition-theme">
         <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-10 lg:gap-12">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Scope at a glance</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Opseg ukratko</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              Mobile delivery that keeps users coming back
+              Mobilna isporuka koja vraća korisnike
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              From product definition to store launch, we pair mobile UX with reliable engineering so your app earns
-              daily engagement.
+              Od definisanja proizvoda do lansiranja u prodavnici, spajamo mobilni UX sa pouzdanim inženjeringom da aplikacija zasluži svakodnevno angažovanje.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -243,11 +242,10 @@ const MobileAppDevelopment = () => {
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 lg:gap-12">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1fr)] lg:items-start">
             <div className="space-y-5">
-              <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Technology &amp; methodology</span>
-              <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">How we ship mobile apps</h2>
+              <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Tehnologija i metodologija</span>
+              <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">Kako isporučujemo mobilne aplikacije</h2>
               <p className="text-base leading-relaxed text-theme-muted">
-                We balance product discovery, performance targets, and release discipline so every sprint ends with a
-                stable, testable build.
+                Balansiramo product discovery, ciljeve performansi i release disciplinu kako bi se svaki sprint završio stabilnim build-om spremnim za testiranje.
               </p>
               <div className="flex flex-wrap gap-2">
                 {["React Native", "Flutter", "App Store", "Play Store", "CI/CD", "Analytics"].map((keyword) => (
@@ -285,17 +283,17 @@ const MobileAppDevelopment = () => {
           <div className="overflow-hidden rounded-3xl border border-theme theme-card p-6 shadow-theme">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div>
-                <h3 className="text-xl font-semibold text-theme-primary">Download our mobile launch brief</h3>
+                <h3 className="text-xl font-semibold text-theme-primary">Preuzmite brief za mobilno lansiranje</h3>
                 <p className="mt-2 max-w-xl text-sm leading-relaxed text-theme-muted">
-                  See the release checklist, QA framework, and analytics plan we use to move from concept to store.
+                  Pogledajte release checklist-u, QA framework i plan analitike koje koristimo za put od koncepta do prodavnice.
                 </p>
               </div>
             </div>
             <div className="mt-10 space-y-6">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <span className="text-xs uppercase tracking-[0.6em] text-theme-muted">Our mobile rail</span>
+                <span className="text-xs uppercase tracking-[0.6em] text-theme-muted">Naš mobilni tok</span>
                 <span className="text-xs uppercase tracking-[0.3em] text-theme-muted opacity-80 sm:text-right">
-                  Swipe to explore each delivery phase
+                  Prevucite da istražite svaku fazu isporuke
                 </span>
               </div>
               <div className="relative overflow-hidden rounded-3xl border border-theme/70 theme-card p-6 shadow-[inset_0_1px_0_rgba(148,163,184,0.1)] backdrop-blur-sm transition-theme md:p-8">
@@ -335,12 +333,12 @@ const MobileAppDevelopment = () => {
       <section className="theme-section px-6 py-20 sm:py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 lg:gap-12">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Why choose us</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Zašto izabrati nas</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              Mobile squads engineered for retention
+              Mobilni timovi projektovani za retenciju
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              We pair design, engineering, and release management so your mobile experience stays fast and dependable.
+              Spajamo dizajn, inženjering i release management kako bi mobilno iskustvo ostalo brzo i pouzdano.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
@@ -360,8 +358,8 @@ const MobileAppDevelopment = () => {
       <section className="theme-section border-y border-theme/60 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-6 py-20 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
           <div className="flex flex-col gap-3">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Proof you can trust</span>
-            <h2 className="text-2xl font-semibold text-theme-primary md:text-3xl">Mobile performance metrics</h2>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Dokazi kojima možete verovati</span>
+            <h2 className="text-2xl font-semibold text-theme-primary md:text-3xl">Metrike mobilnih performansi</h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {trustSignals.map(({ value, label }) => (
@@ -377,15 +375,15 @@ const MobileAppDevelopment = () => {
           <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] text-theme-muted">
             <span className="inline-flex items-center gap-2 rounded-full border border-theme px-3 py-1">
               <Smartphone className="h-4 w-4 text-cyan-400" aria-hidden />
-              iOS and Android delivery
+              iOS i Android isporuka
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-theme px-3 py-1">
               <Workflow className="h-4 w-4 text-cyan-400" aria-hidden />
-              Release automation
+              Automatizacija izdanja
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-theme px-3 py-1">
               <Sparkles className="h-4 w-4 text-cyan-400" aria-hidden />
-              Lifecycle analytics
+              Lifecycle analitika
             </span>
           </div>
         </div>
@@ -394,12 +392,12 @@ const MobileAppDevelopment = () => {
       <section className="theme-section px-6 py-20 sm:py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 lg:gap-12">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Process / journey</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Proces / putanja</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              The journey from idea to app store
+              Put od ideje do app store-a
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              Transparent milestones keep your team informed and your releases predictable.
+              Transparentne prekretnice drže tim informisanim, a izdanja predvidivim.
             </p>
           </div>
           <ol className="relative grid gap-6 md:gap-8 lg:grid-cols-3 xl:grid-cols-5">
@@ -414,7 +412,7 @@ const MobileAppDevelopment = () => {
                 </span>
                 <h3 className="mt-4 text-lg font-semibold text-theme-primary">{label}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-theme-muted">{description}</p>
-                <p className="mt-4 text-xs uppercase tracking-[0.3em] text-cyan-400">Deliverable: {deliverable}</p>
+                <p className="mt-4 text-xs uppercase tracking-[0.3em] text-cyan-400">Isporučujemo: {deliverable}</p>
               </li>
             ))}
           </ol>
@@ -424,22 +422,22 @@ const MobileAppDevelopment = () => {
       <section className="theme-section border-y border-theme/60 bg-slate-950/50 px-6 py-20 sm:py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
           <div className="max-w-3xl space-y-5">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Maintenance &amp; growth</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Održavanje i rast</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              We stay accountable after launch day
+              Ostajemo odgovorni posle lansiranja
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              Mobile products require steady iteration. We stay close to keep releases stable and performance strong.
+              Mobilni proizvodi zahtevaju stalnu iteraciju. Ostajemo blizu da izdanja budu stabilna, a performanse snažne.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)] md:items-start">
             <div className="rounded-3xl border border-theme/70 theme-card p-6 shadow-theme transition-all duration-500 ease-out hover:-translate-y-2 hover:border-cyan-400/60 hover:shadow-[0_28px_80px_-48px_rgba(56,189,248,0.5)] translate-y-0">
               <h3 className="flex items-center gap-2 text-lg font-semibold text-theme-primary">
                 <GaugeCircle className="h-5 w-5 text-cyan-400" aria-hidden />
-                Ongoing engagement snapshot
+                Pregled stalnog angažmana
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-theme-muted">
-                We align support to your release cadence, providing updates, analytics, and rapid fixes every sprint.
+                Podršku usklađujemo sa vašim ritmom izdanja, obezbeđujući update-e, analitiku i brze popravke svakog sprinta.
               </p>
             </div>
             <ul className="space-y-3 rounded-3xl border border-theme/70 theme-card p-6 shadow-theme transition-all duration-500 ease-out hover:border-cyan-400/60">
@@ -463,12 +461,12 @@ const MobileAppDevelopment = () => {
       <section className="theme-section px-6 py-20 sm:py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
           <div className="max-w-3xl space-y-5 text-center md:text-left">
-            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">FAQ</span>
+            <span className="text-xs uppercase tracking-[0.6em] text-cyan-400">Česta pitanja</span>
             <h2 className="text-3xl font-semibold text-theme-primary md:text-4xl">
-              Frequently asked questions about mobile app development
+              Česta pitanja o izradi mobilnih aplikacija
             </h2>
             <p className="text-base leading-relaxed text-theme-muted">
-              Answers to the topics we cover most often with founders and product leaders planning a mobile launch.
+              Odgovori na teme koje najčešće prolazimo sa osnivačima i product liderima koji planiraju mobilno lansiranje.
             </p>
           </div>
           <div className="divide-y divide-theme rounded-3xl border border-theme theme-card">
@@ -515,11 +513,10 @@ const MobileAppDevelopment = () => {
       <section className="theme-section border-t border-theme/60 px-6 py-20 sm:py-24 transition-theme">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 text-center md:text-left">
           <h2 className="text-3xl font-semibold text-theme-muted md:text-4xl">
-            Let&apos;s map your next mobile launch
+            Mapirajmo vaše sledeće mobilno lansiranje
           </h2>
           <p className="max-w-3xl text-base leading-relaxed text-theme-muted">
-            Share your product goals and timelines, and we will assemble a mobile squad that can deliver a stable,
-            engaging app on schedule.
+            Podelite product ciljeve i rokove, a mi ćemo sastaviti mobilni tim koji može da isporuči stabilnu, angažujuću aplikaciju na vreme.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
@@ -527,14 +524,14 @@ const MobileAppDevelopment = () => {
               className="inline-flex items-center gap-2 rounded-full bg-theme-primary px-7 py-3 text-sm font-semibold text-theme-primary transition hover:opacity-90"
             >
               <Sparkles className="h-4 w-4" aria-hidden />
-              Plan your mobile launch
+              Isplanirajte mobilno lansiranje
             </Link>
             <Link
               href="/projects"
               className="inline-flex items-center gap-2 rounded-full border border-theme px-7 py-3 text-sm font-semibold text-theme-primary transition hover:bg-theme-primary/10"
             >
               <BadgeCheck className="h-4 w-4 text-cyan-400" aria-hidden />
-              View mobile work
+              Pogledajte mobilne radove
             </Link>
           </div>
         </div>

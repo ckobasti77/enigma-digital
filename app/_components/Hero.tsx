@@ -1,137 +1,180 @@
-﻿"use client";
+"use client";
 
-import Link from "next/link";
-import AutoTypingConsole from "@/components/ui/auto-typing-console";
-import LaptopScene from "./LaptopScene";
-import type { LucideIcon } from "lucide-react";
-import { Compass, GaugeCircle, Layers } from "lucide-react";
+import { useMemo, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-type FeatureHighlight = {
-  title: string;
-  body: string;
-  icon: LucideIcon;
+import {
+  HERO_FRAME_PUBLIC_PATH,
+  HERO_SEQUENCE_CONFIG,
+  heroCheckpoints,
+} from "@/constants/heroScrollytelling";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import HeroCopy from "./HeroCopy";
+import HeroFrameSequence, {
+  type HeroFrameSequenceHandle,
+} from "./HeroFrameSequence";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
+type HeroProps = {
+  frameSources: string[];
 };
 
-const featureHighlights: FeatureHighlight[] = [
-  {
-    icon: Compass,
-    title: "Fractional product leadership",
-    body: "Plug our strategists into your roadmap to align stakeholders, prioritise impact, and keep delivery lean.",
-  },
-  {
-    icon: Layers,
-    title: "Design systems that scale",
-    body: "From first wireframe to atomic components, we craft experiences that feel effortless everywhere.",
-  },
-  {
-    icon: GaugeCircle,
-    title: "Engineering with measurable outcomes",
-    body: "Modern architecture, CI/CD, and observability baked in-so shipping faster never compromises reliability.",
-  },
-];
+const fallbackFrame = `${HERO_FRAME_PUBLIC_PATH}/001.webp`;
 
-export default function Hero() {
+export default function Hero({ frameSources = [] }: HeroProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const frameSequenceRef = useRef<HeroFrameSequenceHandle>(null);
+  const progressLineRef = useRef<HTMLDivElement>(null);
+  const playheadRef = useRef({ frame: 0 });
+  const [activeIndex, setActiveIndex] = useState(0);
+  const reducedMotion = usePrefersReducedMotion();
+
+  const frames = useMemo(
+    () => (frameSources.length ? frameSources : [fallbackFrame]),
+    [frameSources]
+  );
+
+  const checkpointFrameIndexes = useMemo(() => {
+    const lastFrameIndex = Math.max(frames.length - 1, 0);
+    const lastCheckpointIndex = Math.max(heroCheckpoints.length - 1, 1);
+
+    return heroCheckpoints.map((_, index) =>
+      Math.round((lastFrameIndex * index) / lastCheckpointIndex)
+    );
+  }, [frames.length]);
+
+  useGSAP(
+    () => {
+      if (!sectionRef.current) return;
+
+      const setStep = (nextIndex: number) => {
+        setActiveIndex((currentIndex) =>
+          currentIndex === nextIndex ? currentIndex : nextIndex
+        );
+      };
+
+      if (reducedMotion || frames.length <= 1) {
+        frameSequenceRef.current?.drawFrame(0);
+        setStep(0);
+
+        if (progressLineRef.current) {
+          gsap.set(progressLineRef.current, { scaleX: 0 });
+        }
+
+        return;
+      }
+
+      const lastFrameIndex = frames.length - 1;
+      const playhead = playheadRef.current;
+      playhead.frame = 0;
+
+      const tween = gsap.to(playhead, {
+        frame: lastFrameIndex,
+        ease: "none",
+        overwrite: true,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: HERO_SEQUENCE_CONFIG.scrub,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+        onUpdate: () => {
+          const frameIndex = Math.round(playhead.frame);
+          const progress =
+            lastFrameIndex > 0 ? playhead.frame / lastFrameIndex : 0;
+          const checkpointIndex = Math.min(
+            heroCheckpoints.length - 1,
+            Math.floor(progress * heroCheckpoints.length)
+          );
+
+          frameSequenceRef.current?.drawFrame(frameIndex);
+          setStep(checkpointIndex);
+
+          if (progressLineRef.current) {
+            gsap.set(progressLineRef.current, {
+              scaleX: progress,
+              transformOrigin: "left center",
+            });
+          }
+        },
+      });
+
+      frameSequenceRef.current?.drawFrame(0);
+      setStep(0);
+
+      return () => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
+      };
+    },
+    {
+      scope: sectionRef,
+      dependencies: [frames.length, reducedMotion],
+      revertOnUpdate: true,
+    }
+  );
+
   return (
-    <section className="relative flex min-h-screen flex-col items-center overflow-hidden theme-section px-4 py-24 transition-theme sm:px-6">
-      <div
-        className="pointer-events-none absolute left-1/2 top-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full glow-accent blur-[160px]"
-        aria-hidden
-      />
+    <section
+      ref={sectionRef}
+      aria-label="Enigma Code scrollytelling hero"
+      className="relative h-[500vh]"
+    >
+      <div className="sticky top-0 isolate h-screen min-h-[100svh] overflow-hidden bg-[#02050d] text-[#f8fbff]">
+        <HeroFrameSequence
+          ref={frameSequenceRef}
+          frameSources={frames}
+          priorityFrameIndexes={checkpointFrameIndexes}
+          reducedMotion={reducedMotion}
+          className="absolute inset-0 h-full w-full"
+        />
 
-      <div className="relative grid w-full max-w-6xl gap-16 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1fr)]">
-        <div className="flex flex-col gap-8 transition-theme">
-          <div className="space-y-6 transition-theme">
-            <div className="flex flex-wrap lg:flex-nowrap items-center gap-x-6 gap-y-4 border-b border-theme pb-6 text-sm text-theme-muted transition-theme">
-              <HeroMetric value="+140%" label="Average traffic growth" />
-              <HeroMetric value="24" label="Markets launched" />
-              <HeroMetric value="98%" label="Client retention" />
-            </div>
-            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.6em] text-cyan-400">
-              Enigma Digital
-            </span>
-            <AutoTypingConsole text="Obsess clients with your brand" className="text-left text-theme-primary" />
-            <p className="max-w-xl text-base leading-relaxed text-theme-muted transition-theme">
-              We design, build, and scale digital products that convert curiosity into loyal customers. Strategy, design, and engineering move together so your team can move faster.
-            </p>
-          </div>
+        <div
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(2,5,13,0.9)_0%,rgba(3,9,23,0.72)_20%,rgba(3,9,23,0.24)_43%,rgba(2,5,13,0.04)_72%,rgba(2,5,13,0)_100%)]"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(0deg,rgba(2,5,13,0.92)_0%,rgba(2,5,13,0.58)_32%,rgba(2,5,13,0.08)_68%),radial-gradient(circle_at_74%_44%,rgba(56,189,248,0.06)_0%,rgba(56,189,248,0)_35%)] lg:bg-[radial-gradient(circle_at_76%_48%,rgba(56,189,248,0.07)_0%,rgba(56,189,248,0)_40%)]"
+          aria-hidden="true"
+        />
 
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-theme hover:opacity-90"
-            >
-              Start a project
-            </Link>
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 rounded-full border border-theme px-6 py-3 text-sm font-medium text-theme-primary transition-theme hover:bg-muted"
-            >
-              See how we deliver
-            </Link>
-          </div>
-        </div>
-
-        <div className="relative flex items-center justify-center">
-          <div className="pointer-events-none absolute inset-0 rounded-[36px] glow-accent blur-[120px]" aria-hidden />
-          <div className="relative w-full max-w-2xl">
-            <div className="aspect-[4/3] w-full translate-x-16 md:translate-x-0">
-              <LaptopScene />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="relative mt-16 grid w-full max-w-6xl gap-4 md:grid-cols-3">
-        {featureHighlights.map(({ title, body, icon: Icon }) => (
-          <article
-            key={title}
-            className="group relative overflow-hidden rounded-3xl border border-theme theme-card px-6 py-5 card-lift transform-gpu translate-y-0 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-theme"
-          >
-            <div
-              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(56,189,248,0.18), rgba(168,85,247,0.18))",
-                mixBlendMode: "screen",
-              }}
-            />
-            <div className="relative flex items-start gap-4">
-              <span className="flex h-9 w-9 items-center justify-center text-xs font-semibold text-theme-primary">
-                <Icon className="h-7 w-7 text-cyan-400" aria-hidden="true" />
+        <div className="relative z-[45] flex h-full w-full items-end px-4 pb-[calc(env(safe-area-inset-bottom)+5.5rem)] pt-28 sm:px-5 md:px-6 lg:items-center lg:px-[clamp(1rem,2.4vw,2.75rem)] lg:pb-0 lg:pt-20">
+          <div className="flex w-full max-w-[30rem] flex-col gap-5 sm:max-w-[32rem] lg:max-w-[28rem] xl:max-w-[30rem]">
+            <div className="flex w-24 items-center gap-3" aria-hidden="true">
+              <span className="h-px flex-1 overflow-hidden rounded-full bg-[rgba(154,202,255,0.2)]">
+                <span
+                  ref={progressLineRef}
+                  className="block h-full origin-left scale-x-0 bg-[linear-gradient(90deg,#38bdf8,#2563eb,#a855f7)]"
+                />
               </span>
-              <div className="space-y-2">
-                <h3 className="text-base font-semibold text-theme-primary transition-theme">{title}</h3>
-                <p className="text-sm leading-relaxed text-theme-muted transition-theme">{body}</p>
-              </div>
             </div>
-          </article>
-        ))}
+
+            <span className="sr-only" aria-live="polite">
+              Hero scena {activeIndex + 1} od {heroCheckpoints.length}
+            </span>
+
+            <HeroCopy
+              checkpoints={heroCheckpoints}
+              activeIndex={activeIndex}
+              reducedMotion={reducedMotion}
+            />
+          </div>
+        </div>
+
+        <div
+          className="pointer-events-none absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 items-center gap-3 text-[0.62rem] uppercase tracking-[0.32em] text-[rgba(211,231,255,0.55)] lg:flex"
+          aria-hidden="true"
+        >
+          <span className="h-px w-10 bg-[rgba(104,215,255,0.38)]" />
+          <span>Skrolujte</span>
+          <span className="h-px w-10 bg-[rgba(104,215,255,0.38)]" />
+        </div>
       </div>
     </section>
   );
 }
-
-type MetricProps = {
-  value: string;
-  label: string;
-};
-
-function HeroMetric({ value, label }: MetricProps) {
-  return (
-    <div className="flex items-center gap-3 transition-theme">
-      <span className="text-2xl font-semibold text-theme-primary transition-theme">{value}</span>
-      <span className="max-w-[120px] text-xs uppercase tracking-[0.35em] text-theme-muted transition-theme">
-        {label}
-      </span>
-    </div>
-  );
-}
-
-
-
-
-
-
-
-
-

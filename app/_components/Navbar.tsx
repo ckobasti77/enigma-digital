@@ -7,16 +7,14 @@ import NavLinks from "./NavLinks";
 import NavLinksMobile from "./NavLinksMobile";
 import Link from "next/link";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { useTheme } from "./ThemeProvider";
 import Image from "next/image";
-import LogoMark3D from "./LogoMark3D";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(true);
   const [navOpen, setNavOpen] = useState(false);
   const [scrollPos, setScrollPos] = useState(0);
   const [currentDropdown, setCurrentDropdown] = useState(0);
-  const { theme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => {
@@ -29,6 +27,7 @@ const Navbar = () => {
       }
 
       setScrollPos(currentScrollPos);
+      setCurrentDropdown(0);
       setNavOpen(false);
     };
 
@@ -37,11 +36,10 @@ const Navbar = () => {
   }, [scrollPos]);
 
   const toggleNav = useCallback(() => {
+    if (navOpen) {
+      setCurrentDropdown(0);
+    }
     setNavOpen((prev) => !prev);
-  }, []);
-
-  useEffect(() => {
-    if (!navOpen) setCurrentDropdown(0);
   }, [navOpen]);
 
   return (
@@ -56,29 +54,27 @@ const Navbar = () => {
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
           <Link
             href="/"
-            style={{ fontFamily: "var(--font-deltha)" }}
-            className="relative inline-flex items-center gap-3 text-3xl font-deltha font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent"
+            className="relative inline-flex items-center"
+            aria-label="Enigma Code početna"
           >
-            {/* <EnigmaLogo /> */}
-            <LogoMark3D />
-            <Image
-              src={
-                theme === "dark"
-                  ? "/assets/logo-text-dark.png"
-                  : "/assets/logo-text-light.png"
-              }
-              alt="Enigma Digital logotype"
-              width={100}
-              height={100}
-              className="h-8 w-auto"
-            />
+            <span className="relative block h-9 w-[9.5rem] overflow-hidden sm:h-10 sm:w-[10.5rem]">
+              <Image
+                src="/logo-horizontal.png"
+                alt="Enigma Code"
+                fill
+                priority
+                sizes="168px"
+                className="object-contain scale-[2.45]"
+              />
+            </span>
           </Link>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2 sm:gap-4 lg:gap-6">
             <NavLinks
               setCurrentDropdown={setCurrentDropdown}
               currentDropdown={currentDropdown}
             />
+            <LanguageSwitcher />
             <ThemeSwitcher />
             <Burger toggleNav={toggleNav} navOpen={navOpen} />
           </div>

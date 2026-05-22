@@ -149,7 +149,7 @@ const NavLinksMobile = ({
       className="fixed inset-0 z-40 hidden flex-col overflow-hidden lg:hidden"
       style={{ pointerEvents: "none", clipPath: "inset(0 0 100% 0)" }}
       aria-modal="true"
-      aria-label="Navigation menu"
+      aria-label="Meni navigacije"
     >
       {/* Base background */}
       <div className="absolute inset-0 bg-[#07090d]" />
@@ -187,7 +187,7 @@ const NavLinksMobile = ({
       <div className="relative z-10 flex h-full flex-col overflow-y-auto px-7 pb-8 pt-[88px] sm:px-10">
 
         {/* Navigation links */}
-        <nav className="flex flex-1 flex-col justify-center" aria-label="Mobile navigation">
+        <nav className="flex flex-1 flex-col justify-center" aria-label="Mobilna navigacija">
           {mainLinks.map((link, i) => {
             const hasDropdown = !!link.dropdownLinks?.length;
             const isOpen = currentDropdown === link.id;
@@ -305,7 +305,7 @@ const NavLinksMobile = ({
         >
           <div>
             <p className="mb-3 text-[10px] uppercase tracking-[0.22em] text-white/30">
-              Start a project
+              Pokreni projekat
             </p>
             {ctaLink && (
               <Link

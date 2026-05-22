@@ -1,27 +1,27 @@
 export const challenges = [
   {
-    title: "Evolving customer expectations",
+    title: "Promenljiva očekivanja korisnika",
     content:
-      "Customers demand seamless, personalized, and fast digital experiences. Meeting these rising expectations requires cutting-edge solutions and consistent innovation.",
+      "Korisnici očekuju besprekorna, personalizovana i brza digitalna iskustva. Ispunjavanje tih očekivanja traži savremena rešenja i stalnu inovaciju.",
   },
   {
-    title: "Increased market competition",
+    title: "Jača tržišna konkurencija",
     content:
-      "With digital adoption at its peak, competition is fiercer than ever. Businesses need unique strategies to stand out and stay ahead.",
+      "Kako je digitalno usvajanje dostiglo vrhunac, konkurencija je snažnija nego ikada. Biznisima su potrebne jasne strategije da se istaknu i ostanu ispred.",
   },
   {
-    title: "Balancing costs and value",
+    title: "Balans troškova i vrednosti",
     content:
-      "Organizations must balance operational costs with delivering maximum customer value. Smart optimization and technology adoption are key.",
+      "Organizacije moraju da usklade operativne troškove sa maksimalnom vrednošću za korisnike. Pametna optimizacija i promišljeno uvođenje tehnologije su ključni.",
   },
   {
-    title: "Brick-and-Mortar obstacles",
+    title: "Izazovi fizičkih lokacija",
     content:
-      "Retailers face challenges bridging offline and online customer experiences. True success comes from hybrid solutions that blend both worlds.",
+      "Maloprodaja mora da poveže offline i online korisnička iskustva. Pravi uspeh dolazi iz hibridnih rešenja koja prirodno spajaju oba sveta.",
   },
   {
-    title: "Monetizing customer access",
+    title: "Monetizacija korisničke pažnje",
     content:
-      "Capturing customer attention is no longer enough—brands must monetize effectively through engagement, retention, and loyalty programs.",
+      "Privući pažnju korisnika više nije dovoljno - brendovi moraju efikasno da monetizuju angažovanje, zadržavanje i programe lojalnosti.",
   },
 ];

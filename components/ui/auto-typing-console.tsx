@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useLanguage } from "@/app/_components/LanguageProvider";
+import { translateText } from "@/lib/i18n";
 
 type AutoTypingConsoleType = {
     text: string;
@@ -11,6 +13,8 @@ type AutoTypingConsoleType = {
 export default function AutoTypingConsole({ text, className } : AutoTypingConsoleType) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const cursorRef = useRef<HTMLSpanElement>(null);
+  const { locale } = useLanguage();
+  const currentText = translateText(text, locale);
 
   useEffect(() => {
     if (!titleRef.current || !cursorRef.current) return;
@@ -44,7 +48,11 @@ export default function AutoTypingConsole({ text, className } : AutoTypingConsol
     });
 
     tl.to(cursorRef.current, { opacity: 0, duration: 0.1 });
-  }, []);
+
+    return () => {
+      tl.kill();
+    };
+  }, [currentText]);
 
   return (
     <h1
@@ -56,7 +64,7 @@ export default function AutoTypingConsole({ text, className } : AutoTypingConsol
         ${className}
       `}
     >
-      {text.split("").map((ch, i) => (
+      {currentText.split("").map((ch, i) => (
         <span key={i} className="letter inline">
           {ch}
         </span>

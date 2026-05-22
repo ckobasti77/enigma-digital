@@ -407,6 +407,43 @@ html[data-theme="dark"] .logo-theme {
   opacity: 0.9;
 }
 
+/* ── Alternate "Cyberpunk Green" mood palette ── */
+html[data-mood="alt"] {
+  --background: #0a0f0a;
+  --foreground: #c8ffc8;
+  --text-primary: #d4ffd4;
+  --text-secondary: rgba(100, 255, 100, 0.65);
+  --text-inverse: #0a0f0a;
+  --card: rgba(10, 25, 10, 0.92);
+  --card-foreground: #d4ffd4;
+  --surface-section: #0d1a0d;
+  --surface-card-muted: rgba(15, 40, 15, 0.8);
+  --surface-overlay: rgba(10, 15, 10, 0.85);
+  --wave-overlay: rgba(10, 15, 10, 0.65);
+  --glow-accent-1: rgba(0, 255, 65, 0.3);
+  --glow-accent-2: rgba(0, 200, 100, 0.2);
+  --border-soft: rgba(0, 255, 65, 0.2);
+  --border-strong: rgba(0, 255, 65, 0.4);
+  --shadow-elevated: rgba(0, 0, 0, 0.5);
+  --primary: #00ff41;
+  --primary-foreground: #0a0f0a;
+  --secondary: rgba(0, 40, 15, 0.82);
+  --secondary-foreground: #c8ffc8;
+  --muted: rgba(10, 30, 10, 0.7);
+  --muted-foreground: rgba(100, 255, 100, 0.6);
+  --accent: rgba(0, 255, 65, 0.35);
+  --accent-foreground: #0a0f0a;
+  --border: rgba(0, 255, 65, 0.22);
+  --input: rgba(0, 255, 65, 0.18);
+  --ring: rgba(0, 255, 65, 0.4);
+  --timeline-spotlight-highlight: rgba(0, 255, 65, 0.2);
+  --timeline-spotlight-mid: rgba(10, 25, 10, 0.75);
+  --timeline-spotlight-shadow: rgba(5, 10, 5, 0.95);
+  --timeline-line-idle: rgba(0, 255, 65, 0.15);
+  --timeline-line-active: rgba(0, 255, 65, 0.55);
+  --timeline-card-active: rgba(10, 25, 10, 0.96);
+}
+
 .card-lift {
   transition: translate 0.32s cubic-bezier(0.22, 1, 0.36, 1),
               transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),

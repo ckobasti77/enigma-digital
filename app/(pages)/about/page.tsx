@@ -12,62 +12,62 @@ import {
 } from 'lucide-react';
 
 const studioMetrics = [
-  { label: 'Launches guided', value: '48' },
-  { label: 'Senior specialists', value: '18' },
-  { label: 'Time zones covered', value: '5' },
+  { label: 'Vođena lansiranja', value: '48' },
+  { label: 'Senior specijalisti', value: '18' },
+  { label: 'Pokrivene vremenske zone', value: '5' },
 ];
 
 const principles = [
   {
     icon: Target,
-    title: 'Impact over output',
+    title: 'Uticaj ispred output-a',
     copy: 'Every sprint anchors to the commercial bet we’re helping you win. If it doesn’t move a metric, it doesn’t ship.',
   },
   {
     icon: Sparkles,
-    title: 'Craft with systems',
-    copy: 'Design languages, code standards, and rituals that scale with your team long after launch day.',
+    title: 'Craft kroz sisteme',
+    copy: 'Dizajn jezici, kod standardi i rituali koji se skaliraju sa vašim timom dugo posle lansiranja.',
   },
   {
     icon: Users,
-    title: 'Partnership, not handoff',
-    copy: 'We embed beside founders and product leaders, coaching internal teams while delivering momentum.',
+    title: 'Partnerstvo, ne samo predaja',
+    copy: 'Radimo uz osnivače i product lidere, obučavamo interne timove i istovremeno isporučujemo zamah.',
   },
 ];
 
 const studioMilestones = [
   {
     year: '2021',
-    heading: 'Studio founded in Manchester',
-    text: 'Enigma Digital launches as a distributed collective for early-stage venture teams searching for traction.',
+    heading: 'Studio osnovan u Mančesteru',
+    text: 'Enigma Digital počinje kao distribuirani kolektiv za rane venture timove koji traže traction.',
   },
   {
     year: '2022',
-    heading: 'Scaled squads for Series A brands',
-    text: 'Embedded hybrid pods ship growth loops and design systems for B2B SaaS and travel marketplaces.',
+    heading: 'Skalirani timovi za Series A brendove',
+    text: 'Ugrađeni hibridni timovi isporučuju growth loop-ove i dizajn sisteme za B2B SaaS i travel marketplace-e.',
   },
   {
     year: '2024',
-    heading: 'Global partnerships go live',
-    text: 'Cross-timezone delivery with satellite teams in Dubai and Barcelona brings 24/5 coverage for enterprise innovation labs.',
+    heading: 'Globalna partnerstva počinju',
+    text: 'Isporuka kroz vremenske zone, sa satelitskim timovima u Dubaiju i Barseloni, donosi 24/5 pokrivenost za enterprise innovation lab-ove.',
   },
 ];
 
 const leadership = [
   {
     name: 'Leah Mercer',
-    role: 'Partner, Product Strategy',
-    focus: 'Former VP Product at venture-backed SaaS, now architecting product bets and OKR operating models.',
+    role: 'Partner, product strategija',
+    focus: 'Bivša VP Product u venture-backed SaaS timu, sada arhitektuje product opklade i OKR operativne modele.',
   },
   {
     name: 'Ravi Khanna',
-    role: 'Partner, Engineering',
-    focus: '15 years across fintech and infra. Champions type-safe stacks, DevOps maturity, and measurable reliability.',
+    role: 'Partner, inženjering',
+    focus: '15 godina iskustva u fintech-u i infrastrukturi. Zastupa type-safe stack-ove, DevOps zrelost i merljivu pouzdanost.',
   },
   {
     name: 'Zoë Haddad',
-    role: 'Partner, Design & Research',
-    focus: 'Design leader behind award-winning multi-market launches. Obsessed with accessibility and inclusive craft.',
+    role: 'Partner, dizajn i istraživanje',
+    focus: 'Dizajn liderka iza nagrađivanih lansiranja na više tržišta. Fokusirana na pristupačnost i inkluzivnu izradu.',
   },
 ];
 
@@ -83,13 +83,13 @@ export default function About() {
           <div className="space-y-6 lg:w-3/5">
             <div className="inline-flex items-center gap-2 rounded-full border border-theme px-4 py-2 text-xs uppercase tracking-[0.45em] text-cyan-300">
               <Compass className="h-4 w-4" />
-              Our studio
+              Naš studio
             </div>
             <h1 className="font-aeonik text-4xl font-medium leading-tight text-theme-primary md:text-5xl">
-              We partner with teams who refuse to ship average
+              Partneri smo timovima koji odbijaju prosečnu isporuku
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-theme-muted">
-              Enigma Digital is a remote-first crew of strategists, designers, and engineers building products that turn curiosity into retention. We lead with discovery, prototype fast, and leave teams with playbooks they can run without us.
+              Enigma Digital je remote-first tim stratega, dizajnera i inženjera koji gradi proizvode koji radoznalost pretvaraju u zadržavanje korisnika. Vodimo discovery fazu, brzo prototipujemo i timovima ostavljamo playbook-e koje mogu da koriste bez nas.
             </p>
             <div className="grid gap-4 sm:grid-cols-3">
               {studioMetrics.map((metric) => (
@@ -108,23 +108,23 @@ export default function About() {
           <div className="relative flex-1 overflow-hidden rounded-3xl border border-theme theme-card p-6">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,0.32),rgba(15,23,42,0)_65%)] opacity-60" />
             <div className="relative space-y-5">
-              <h2 className="text-lg font-semibold text-theme-primary">What working with us feels like</h2>
+              <h2 className="text-lg font-semibold text-theme-primary">Kako izgleda rad sa nama</h2>
               <ul className="space-y-4 text-sm text-theme-muted">
                 <li className="flex items-start gap-3">
                   <Lightbulb className="mt-1 h-5 w-5 text-cyan-300" aria-hidden />
-                  Discovery workshops that surface your real constraints in week one.
+                  Discovery radionice koje već prve nedelje otkrivaju stvarna ograničenja.
                 </li>
                 <li className="flex items-start gap-3">
                   <Timer className="mt-1 h-5 w-5 text-cyan-300" aria-hidden />
-                  Weekly demos, async clips, and visibility across boards so momentum never stalls.
+                  Nedeljni demo prikazi, asinhroni snimci i vidljivost kroz board-ove održavaju zamah.
                 </li>
                 <li className="flex items-start gap-3">
                   <Award className="mt-1 h-5 w-5 text-cyan-300" aria-hidden />
-                  Crafted output—from pitch decks to production code—ready to scale without rework.
+                  Isporučeni materijali - od prezentacija do produkcionog koda - spremni su za skaliranje bez dorade.
                 </li>
               </ul>
               <button className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-theme hover:opacity-90">
-                Meet the partners <ArrowUpRight className="h-4 w-4" />
+                Upoznajte partnere <ArrowUpRight className="h-4 w-4" />
               </button>
             </div>
           </div>
@@ -134,12 +134,12 @@ export default function About() {
       <section className="relative px-6 py-24">
         <div className="relative mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.55fr)_minmax(0,1fr)]">
           <div className="space-y-6">
-            <span className="text-xs uppercase tracking-[0.5em] text-cyan-300">Principles</span>
+            <span className="text-xs uppercase tracking-[0.5em] text-cyan-300">Principi</span>
             <h2 className="text-3xl font-medium text-theme-primary md:text-4xl">
-              The guardrails that keep every partnership bold and measured
+              Principi koji svako partnerstvo drže smelim i merljivim
             </h2>
             <p className="max-w-md text-sm leading-relaxed text-theme-muted">
-              We bring product strategy, research, design, and engineering into one operating system. These principles are how we stay aligned with your leadership team from kick-off to handover.
+              Product strategiju, istraživanje, dizajn i inženjering spajamo u jedan operativni sistem. Ovi principi nas drže usklađenim sa vašim leadership timom od početka do predaje.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
@@ -168,12 +168,12 @@ export default function About() {
       <section className="theme-section px-6 py-24">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 lg:flex-row">
           <div className="max-w-md space-y-6">
-            <span className="text-xs uppercase tracking-[0.5em] text-cyan-300">Milestones</span>
+            <span className="text-xs uppercase tracking-[0.5em] text-cyan-300">Prekretnice</span>
             <h2 className="text-3xl font-medium text-theme-primary md:text-4xl">
-              Built for distributed ambition from day one
+              Od prvog dana građeni za distribuiranu ambiciju
             </h2>
             <p className="text-sm leading-relaxed text-theme-muted">
-              We operate as an extension of your product organisation. Remote rituals, async tooling, and co-location bursts keep decision makers aligned across regions.
+              Radimo kao produžetak vaše product organizacije. Remote rituali, asinhroni alati i povremena okupljanja drže donosioce odluka usklađenim kroz regione.
             </p>
           </div>
           <div className="flex-1 space-y-8">
@@ -197,10 +197,10 @@ export default function About() {
       <section className="px-6 py-24">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
           <div className="flex flex-col gap-4 text-center">
-            <span className="mx-auto text-xs uppercase tracking-[0.5em] text-cyan-300">Leadership circle</span>
-            <h2 className="text-3xl font-medium text-theme-primary md:text-4xl">Partners who stay close to the work</h2>
+            <span className="mx-auto text-xs uppercase tracking-[0.5em] text-cyan-300">Leadership krug</span>
+            <h2 className="text-3xl font-medium text-theme-primary md:text-4xl">Partneri koji ostaju blizu rada</h2>
             <p className="mx-auto max-w-2xl text-sm leading-relaxed text-theme-muted">
-              Every engagement is co-led by partners who have shipped products for venture-backed scaleups, global travel brands, and regulated fintech. We stay in the rituals, not just status calls.
+              Svaki angažman zajedno vode partneri koji su isporučivali proizvode za venture scaleup-e, globalne travel brendove i regulisani fintech. Ostajemo u ritualima, ne samo na status pozivima.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
@@ -210,7 +210,7 @@ export default function About() {
                 className="relative overflow-hidden rounded-3xl border border-theme theme-card p-6 text-left"
               >
                 <div className="flex h-32 items-center justify-center rounded-2xl border border-dashed border-theme theme-card-muted text-xs uppercase tracking-[0.4em] text-theme-muted">
-                  Team portrait placeholder
+                  Mesto za portret tima
                 </div>
                 <div className="mt-5 space-y-2">
                   <h3 className="text-lg font-semibold text-theme-primary">{leader.name}</h3>

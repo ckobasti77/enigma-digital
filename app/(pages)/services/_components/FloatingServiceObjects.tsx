@@ -42,10 +42,11 @@ function FloatingObject({ instance, children }: { instance: FloatingInstanceConf
   const basePosition = instance.position;
   const baseRotation = instance.rotation ?? [0, 0, 0];
   const rotationAmplitude = instance.float.rotationAmplitude ?? [0, 0, 0];
+  const [baseX, baseY, baseZ] = basePosition;
 
   useEffect(() => {
     driftPositionRef.current = null;
-  }, [instance.id, basePosition[0], basePosition[1], basePosition[2]]);
+  }, [instance.id, baseX, baseY, baseZ]);
 
   useFrame(({ clock }, delta) => {
     const group = groupRef.current;
