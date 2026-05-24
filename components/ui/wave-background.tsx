@@ -31,6 +31,7 @@ export function Waves({
 }: WavesProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const svgRef = useRef<SVGSVGElement>(null)
+  const isInteractive = pointerSize > 0
   const mouseRef = useRef({
     x: -10,
     y: 0,
@@ -47,6 +48,7 @@ export function Waves({
   const linesRef = useRef<Point[][]>([])
   const noiseRef = useRef<((x: number, y: number) => number) | null>(null)
   const rafRef = useRef<number | null>(null)
+  const lastFrameTimeRef = useRef(0)
   const boundingRef = useRef<DOMRect | null>(null)
 
   useEffect(() => {
@@ -70,13 +72,13 @@ export function Waves({
       pathsRef.current.forEach((path) => path.remove())
       pathsRef.current = []
 
-      const xGap = 8
-      const yGap = 8
+      const xGap = width < 768 ? 26 : 24
+      const yGap = width < 768 ? 24 : 20
       const oWidth = width + 200
       const oHeight = height + 30
 
-      const totalLines = Math.ceil(oWidth / xGap)
-      const totalPoints = Math.ceil(oHeight / yGap)
+      const totalLines = Math.min(Math.ceil(oWidth / xGap), width < 768 ? 52 : 96)
+      const totalPoints = Math.min(Math.ceil(oHeight / yGap), width < 768 ? 44 : 72)
       const xStart = (width - xGap * totalLines) / 2
       const yStart = (height - yGap * totalPoints) / 2
 
@@ -96,7 +98,7 @@ export function Waves({
         path.classList.add('a__line', 'js-line')
         path.setAttribute('fill', 'none')
         path.setAttribute('stroke', strokeColor)
-        path.setAttribute('stroke-width', '1')
+        path.setAttribute('stroke-width', '0.85')
 
         svgRef.current.appendChild(path)
         pathsRef.current.push(path)
@@ -119,7 +121,7 @@ export function Waves({
         mouse.set = true
       }
 
-      if (containerRef.current) {
+      if (isInteractive && containerRef.current) {
         containerRef.current.style.setProperty('--x', `${mouse.sx}px`)
         containerRef.current.style.setProperty('--y', `${mouse.sy}px`)
       }
@@ -148,30 +150,32 @@ export function Waves({
           p.wave.x = Math.cos(move) * 12
           p.wave.y = Math.sin(move) * 6
 
-          const dx = p.x - mouse.sx
-          const dy = p.y - mouse.sy
-          const d = Math.hypot(dx, dy)
-          const l = Math.max(175, mouse.vs)
+          if (isInteractive) {
+            const dx = p.x - mouse.sx
+            const dy = p.y - mouse.sy
+            const d = Math.hypot(dx, dy)
+            const l = Math.max(175, mouse.vs)
 
-          if (d < l) {
-            const s = 1 - d / l
-            const f = Math.cos(d * 0.001) * s
+            if (d < l) {
+              const s = 1 - d / l
+              const f = Math.cos(d * 0.001) * s
 
-            p.cursor.vx += Math.cos(mouse.a) * f * l * mouse.vs * 0.00035
-            p.cursor.vy += Math.sin(mouse.a) * f * l * mouse.vs * 0.00035
+              p.cursor.vx += Math.cos(mouse.a) * f * l * mouse.vs * 0.00035
+              p.cursor.vy += Math.sin(mouse.a) * f * l * mouse.vs * 0.00035
+            }
+
+            p.cursor.vx += (0 - p.cursor.x) * 0.01
+            p.cursor.vy += (0 - p.cursor.y) * 0.01
+
+            p.cursor.vx *= 0.95
+            p.cursor.vy *= 0.95
+
+            p.cursor.x += p.cursor.vx
+            p.cursor.y += p.cursor.vy
+
+            p.cursor.x = Math.min(50, Math.max(-50, p.cursor.x))
+            p.cursor.y = Math.min(50, Math.max(-50, p.cursor.y))
           }
-
-          p.cursor.vx += (0 - p.cursor.x) * 0.01
-          p.cursor.vy += (0 - p.cursor.y) * 0.01
-
-          p.cursor.vx *= 0.95
-          p.cursor.vy *= 0.95
-
-          p.cursor.x += p.cursor.vx
-          p.cursor.y += p.cursor.vy
-
-          p.cursor.x = Math.min(50, Math.max(-50, p.cursor.x))
-          p.cursor.y = Math.min(50, Math.max(-50, p.cursor.y))
         })
       })
     }
@@ -194,7 +198,7 @@ export function Waves({
         let d = `M ${firstPoint.x} ${firstPoint.y}`
 
         for (let i = 1; i < points.length; i++) {
-          const current = moved(points[i])
+          const current = moved(points[i], isInteractive)
           d += `L ${current.x} ${current.y}`
         }
 
@@ -203,26 +207,39 @@ export function Waves({
     }
 
     const tick = (time: number) => {
+      if (document.visibilityState === 'hidden') {
+        rafRef.current = requestAnimationFrame(tick)
+        return
+      }
+
+      if (time - lastFrameTimeRef.current < 1000 / 30) {
+        rafRef.current = requestAnimationFrame(tick)
+        return
+      }
+
+      lastFrameTimeRef.current = time
       const { current: mouse } = mouseRef
 
-      mouse.sx += (mouse.x - mouse.sx) * 0.1
-      mouse.sy += (mouse.y - mouse.sy) * 0.1
+      if (isInteractive) {
+        mouse.sx += (mouse.x - mouse.sx) * 0.1
+        mouse.sy += (mouse.y - mouse.sy) * 0.1
 
-      const dx = mouse.x - mouse.lx
-      const dy = mouse.y - mouse.ly
-      const d = Math.hypot(dx, dy)
+        const dx = mouse.x - mouse.lx
+        const dy = mouse.y - mouse.ly
+        const d = Math.hypot(dx, dy)
 
-      mouse.v = d
-      mouse.vs += (d - mouse.vs) * 0.1
-      mouse.vs = Math.min(100, mouse.vs)
+        mouse.v = d
+        mouse.vs += (d - mouse.vs) * 0.1
+        mouse.vs = Math.min(100, mouse.vs)
 
-      mouse.lx = mouse.x
-      mouse.ly = mouse.y
-      mouse.a = Math.atan2(dy, dx)
+        mouse.lx = mouse.x
+        mouse.ly = mouse.y
+        mouse.a = Math.atan2(dy, dx)
 
-      if (containerRef.current) {
-        containerRef.current.style.setProperty('--x', `${mouse.sx}px`)
-        containerRef.current.style.setProperty('--y', `${mouse.sy}px`)
+        if (containerRef.current) {
+          containerRef.current.style.setProperty('--x', `${mouse.sx}px`)
+          containerRef.current.style.setProperty('--y', `${mouse.sy}px`)
+        }
       }
 
       movePoints(time)
@@ -236,15 +253,19 @@ export function Waves({
     setLines()
 
     window.addEventListener('resize', onResize)
-    window.addEventListener('pointermove', onPointerMove, { passive: true })
+    if (isInteractive) {
+      window.addEventListener('pointermove', onPointerMove, { passive: true })
+    }
     rafRef.current = requestAnimationFrame(tick)
 
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
       window.removeEventListener('resize', onResize)
-      window.removeEventListener('pointermove', onPointerMove)
+      if (isInteractive) {
+        window.removeEventListener('pointermove', onPointerMove)
+      }
     }
-  }, [strokeColor])
+  }, [isInteractive, strokeColor])
 
   return (
     <div
@@ -269,20 +290,22 @@ export function Waves({
       }
     >
       <svg ref={svgRef} className="block h-full w-full js-svg" xmlns="http://www.w3.org/2000/svg" />
-      <div
-        className="pointer-dot"
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: `${pointerSize}rem`,
-          height: `${pointerSize}rem`,
-          background: strokeColor,
-          borderRadius: '50%',
-          transform: 'translate3d(calc(var(--x) - 50%), calc(var(--y) - 50%), 0)',
-          willChange: 'transform',
-        }}
-      />
+      {isInteractive ? (
+        <div
+          className="pointer-dot"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: `${pointerSize}rem`,
+            height: `${pointerSize}rem`,
+            background: strokeColor,
+            borderRadius: '50%',
+            transform: 'translate3d(calc(var(--x) - 50%), calc(var(--y) - 50%), 0)',
+            willChange: 'transform',
+          }}
+        />
+      ) : null}
     </div>
   )
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import clsx from "clsx";
-import { Languages } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
 import type { Locale } from "@/lib/i18n";
 
@@ -31,11 +30,10 @@ export default function LanguageSwitcher() {
 
   return (
     <div
-      className="inline-flex h-10 items-center gap-0.5 rounded-full border border-theme bg-card px-1 text-theme-primary shadow-theme transition-theme sm:h-11 sm:gap-1"
+      className="inline-flex h-10 items-center gap-0.5 rounded-full border border-theme bg-card/70 px-0.5 text-theme-primary transition-theme sm:h-11 sm:px-1"
       aria-label={switcherLabels[locale]}
       data-no-translate="true"
     >
-      <Languages className="ml-1 hidden h-4 w-4 text-cyan-400 sm:block" aria-hidden="true" />
       {localeOptions.map((option) => {
         const active = option.locale === locale;
 
@@ -47,9 +45,9 @@ export default function LanguageSwitcher() {
             aria-pressed={active}
             onClick={() => setLocale(option.locale)}
             className={clsx(
-              "min-w-8 rounded-full px-2 py-1.5 text-xs font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40 sm:min-w-9 sm:px-2.5",
+              "min-w-7 rounded-full px-1.5 py-1.5 text-[10px] font-semibold tracking-[0.08em] transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40 sm:min-w-9 sm:px-2.5 sm:text-[11px]",
               active
-                ? "bg-foreground text-background"
+                ? "bg-muted text-theme-primary"
                 : "text-theme-muted hover:bg-muted hover:text-theme-primary"
             )}
           >

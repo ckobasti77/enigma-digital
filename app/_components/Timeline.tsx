@@ -110,7 +110,7 @@ const Timeline = () => {
         const stepNumber = item.querySelector(".timeline-step-number");
         const bg = item.querySelector<HTMLElement>(".timeline-bg");
 
-        if (line && card && dot && bg) {
+        if (line && card && dot && title && subtitle && stepNumber && bg) {
           gsap.set(line, { background: "var(--timeline-line-idle)" });
           gsap.set(card, { borderColor: "var(--border-strong)" });
           gsap.set(bg, { backgroundColor: "var(--surface-card-muted)", backgroundImage: "none" });
@@ -217,7 +217,7 @@ const Timeline = () => {
         </header>
 
         <div className="relative">
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-white/0 via-white/20 to-white/0" />
+          <div className="timeline-spine absolute left-1/2 top-0 bottom-0 w-px origin-top bg-gradient-to-b from-white/0 via-white/20 to-white/0" />
 
           <div className="space-y-20">
             {steps.map((step: Step, index) => (

@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 
 import { navLinks } from "@/constants/navLinks";
@@ -15,6 +15,8 @@ const services =
 
 export default function ServiceCards() {
   const [highlighted, setHighlighted] = useState(true);
+  const highlightedRef = useRef(true);
+  const rafRef = useRef(0);
 
   useEffect(() => {
     const sentinel = document.getElementById(TIMELINE_SENTINEL_ID);
@@ -25,15 +27,32 @@ export default function ServiceCards() {
     const onScroll = () => {
       const rect = sentinel.getBoundingClientRect();
       const viewportCenter = window.innerHeight / 2;
-      setHighlighted(rect.top <= viewportCenter);
+      const nextHighlighted = rect.top <= viewportCenter;
+
+      if (highlightedRef.current !== nextHighlighted) {
+        highlightedRef.current = nextHighlighted;
+        setHighlighted(nextHighlighted);
+      }
+    };
+
+    const scheduleScrollCheck = () => {
+      if (rafRef.current) return;
+
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = 0;
+        onScroll();
+      });
     };
 
     onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("scroll", scheduleScrollCheck, { passive: true });
+    window.addEventListener("resize", scheduleScrollCheck);
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", scheduleScrollCheck);
+      window.removeEventListener("resize", scheduleScrollCheck);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
     };
   }, []);
 

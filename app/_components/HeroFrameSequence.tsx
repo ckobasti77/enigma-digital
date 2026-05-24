@@ -5,6 +5,7 @@ import {
   useCallback,
   useEffect,
   useImperativeHandle,
+  useMemo,
   useRef,
 } from "react";
 
@@ -39,6 +40,56 @@ type WindowWithIdleCallback = Window & {
 const clampIndex = (index: number, frameCount: number) =>
   Math.min(Math.max(Math.round(index), 0), Math.max(frameCount - 1, 0));
 
+const decodeImage = (image: HTMLImageElement) => {
+  if (typeof image.decode !== "function") {
+    return Promise.resolve();
+  }
+
+  return image.decode().catch(() => undefined);
+};
+
+const toPixels = (value: string, viewportWidth: number, remPx: number) => {
+  const trimmedValue = value.trim();
+  const numericValue = Number.parseFloat(trimmedValue);
+
+  if (!Number.isFinite(numericValue)) return 0;
+  if (trimmedValue.endsWith("rem")) return numericValue * remPx;
+  if (trimmedValue.endsWith("vw")) return (numericValue / 100) * viewportWidth;
+
+  return numericValue;
+};
+
+const resolveSiteEdgeGutterPx = (element: HTMLElement, viewportWidth: number) => {
+  const computedStyle = window.getComputedStyle(element);
+  const rawValue = computedStyle.getPropertyValue("--site-edge-gutter").trim();
+  const remPx =
+    Number.parseFloat(
+      window.getComputedStyle(document.documentElement).fontSize
+    ) || 16;
+
+  if (rawValue.startsWith("clamp(") && rawValue.endsWith(")")) {
+    const clampValues = rawValue.slice(6, -1).split(",");
+
+    if (clampValues.length === 3) {
+      const min = toPixels(clampValues[0], viewportWidth, remPx);
+      const preferred = toPixels(clampValues[1], viewportWidth, remPx);
+      const max = toPixels(clampValues[2], viewportWidth, remPx);
+
+      return Math.min(Math.max(preferred, min), max);
+    }
+  }
+
+  if (rawValue) {
+    return toPixels(rawValue, viewportWidth, remPx);
+  }
+
+  if (viewportWidth >= 1024) return Math.min(Math.max(viewportWidth * 0.024, 16), 44);
+  if (viewportWidth >= 768) return 24;
+  if (viewportWidth >= 640) return 20;
+
+  return 16;
+};
+
 function drawImageContain(
   canvas: HTMLCanvasElement,
   image: HTMLImageElement,
@@ -63,7 +114,7 @@ function drawImageContain(
   context.fillStyle = "#02050d";
   context.fillRect(0, 0, width, height);
   context.imageSmoothingEnabled = true;
-  context.imageSmoothingQuality = "high";
+  context.imageSmoothingQuality = "medium";
 
   const canvasRatio = width / height;
   const imageRatio = image.naturalWidth / image.naturalHeight;
@@ -84,6 +135,14 @@ function drawImageContain(
     drawWidth = height * imageRatio;
     drawX = (width - drawWidth) / 2;
   }
+
+  const guideX =
+    drawX + drawWidth * HERO_SEQUENCE_CONFIG.frameRightGuideAlignmentRatio;
+  const targetGuideX = width - resolveSiteEdgeGutterPx(canvas, width);
+  const rawGuideShiftX = targetGuideX - guideX;
+  const guideShiftX = width >= 1024 ? rawGuideShiftX : Math.max(rawGuideShiftX, 0);
+
+  drawX += guideShiftX;
 
   context.drawImage(image, drawX, drawY, drawWidth, drawHeight);
 }
@@ -112,6 +171,10 @@ const HeroFrameSequence = forwardRef<
   const idleHandleRef = useRef<number | null>(null);
   const resizeObserverRef = useRef<ResizeObserver | null>(null);
   const cancelledRef = useRef(false);
+  const priorityFrameIndexSet = useMemo(
+    () => new Set(priorityFrameIndexes),
+    [priorityFrameIndexes]
+  );
 
   const getDpr = useCallback(
     () =>
@@ -159,25 +222,46 @@ const HeroFrameSequence = forwardRef<
       loadingRef.current.add(frameIndex);
 
       const image = new Image();
-      image.decoding = "async";
-      image.fetchPriority =
-        frameIndex <= HERO_SEQUENCE_CONFIG.initialPreloadCount ? "high" : "low";
-      image.onload = () => {
+      let didStartDecode = false;
+      const finalizeLoad = () => {
         if (cancelledRef.current) return;
+        imagesRef.current[frameIndex] = image;
         loadingRef.current.delete(frameIndex);
         loadedRef.current.add(frameIndex);
 
-        if (requestedFrameRef.current === frameIndex) {
+        if (
+          requestedFrameRef.current === frameIndex ||
+          lastDrawnFrameRef.current < 0
+        ) {
           scheduleCanvasDraw(frameIndex);
         }
       };
+      const handleLoad = () => {
+        if (didStartDecode) return;
+
+        didStartDecode = true;
+        void decodeImage(image).then(finalizeLoad);
+      };
+
+      image.decoding = "async";
+      image.fetchPriority =
+        frameIndex < HERO_SEQUENCE_CONFIG.highPriorityFrameCount ||
+        priorityFrameIndexSet.has(frameIndex)
+          ? "high"
+          : "auto";
+      image.onload = handleLoad;
       image.onerror = () => {
         loadingRef.current.delete(frameIndex);
+        imagesRef.current[frameIndex] = null;
       };
       image.src = source;
       imagesRef.current[frameIndex] = image;
+
+      if (image.complete && image.naturalWidth > 0) {
+        queueMicrotask(handleLoad);
+      }
     },
-    [frameSources, scheduleCanvasDraw]
+    [frameSources, priorityFrameIndexSet, scheduleCanvasDraw]
   );
 
   const preloadNearbyFrames = useCallback(
@@ -200,6 +284,14 @@ const HeroFrameSequence = forwardRef<
   const drawFrame = useCallback(
     (index: number) => {
       const frameIndex = clampIndex(index, frameSources.length);
+      if (
+        frameIndex === requestedFrameRef.current &&
+        frameIndex === lastDrawnFrameRef.current &&
+        loadedRef.current.has(frameIndex)
+      ) {
+        return;
+      }
+
       requestedFrameRef.current = frameIndex;
       preloadNearbyFrames(frameIndex);
 

@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import Burger from "./Burger";
 import NavLinks from "./NavLinks";
@@ -9,31 +9,56 @@ import Link from "next/link";
 import ThemeSwitcher from "./ThemeSwitcher";
 import Image from "next/image";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { siteEdgeGutterClass } from "./siteEdgeGutter";
+import SocialDropdown from "./SocialDropdown";
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(true);
   const [navOpen, setNavOpen] = useState(false);
-  const [scrollPos, setScrollPos] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [currentDropdown, setCurrentDropdown] = useState(0);
+  const lastScrollYRef = useRef(0);
+  const tickingRef = useRef(false);
+  const rafRef = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => {
+    const updateNavigationState = () => {
       const currentScrollPos = window.scrollY;
+      const nextScrolled = currentScrollPos > 0;
+      const shouldShowNav =
+        currentScrollPos <= lastScrollYRef.current || currentScrollPos < 8;
 
-      if (currentScrollPos > scrollPos) {
-        setShowNav(false);
-      } else {
-        setShowNav(true);
+      setShowNav((current) =>
+        current === shouldShowNav ? current : shouldShowNav
+      );
+      setIsScrolled((current) =>
+        current === nextScrolled ? current : nextScrolled
+      );
+
+      if (currentScrollPos !== lastScrollYRef.current) {
+        setCurrentDropdown((current) => (current === 0 ? current : 0));
+        setNavOpen((current) => (current ? false : current));
       }
 
-      setScrollPos(currentScrollPos);
-      setCurrentDropdown(0);
-      setNavOpen(false);
+      lastScrollYRef.current = currentScrollPos;
+      tickingRef.current = false;
     };
 
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [scrollPos]);
+    const onScroll = () => {
+      if (tickingRef.current) return;
+      tickingRef.current = true;
+      rafRef.current = window.requestAnimationFrame(updateNavigationState);
+    };
+
+    updateNavigationState();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafRef.current) {
+        window.cancelAnimationFrame(rafRef.current);
+      }
+    };
+  }, []);
 
   const toggleNav = useCallback(() => {
     if (navOpen) {
@@ -47,33 +72,35 @@ const Navbar = () => {
       <div
         className={clsx(
           "fixed left-0 top-0 z-50 w-full transition-transform duration-300",
-          scrollPos <= 0 ? "bg-transparent" : "bg-blur",
+          siteEdgeGutterClass,
+          isScrolled ? "bg-blur" : "bg-transparent",
           showNav ? "translate-y-0" : "-translate-y-full"
         )}
       >
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+        <div className="mx-auto flex w-full items-center justify-between px-[var(--site-edge-gutter)] py-4">
           <Link
             href="/"
-            className="relative inline-flex items-center"
+            className="relative inline-flex items-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70"
             aria-label="Enigma Code početna"
           >
-            <span className="relative block h-9 w-[9.5rem] overflow-hidden sm:h-10 sm:w-[10.5rem]">
+            <span className="relative block h-9 w-[8.75rem] sm:h-10 sm:w-[9.5rem]">
               <Image
-                src="/logo-horizontal.png"
+                src="/logo-dark-horizontal.png"
                 alt="Enigma Code"
                 fill
                 priority
-                sizes="168px"
-                className="object-contain scale-[2.45]"
+                sizes="(min-width: 640px) 152px, 140px"
+                className="object-contain"
               />
             </span>
           </Link>
 
-          <div className="flex items-center gap-2 sm:gap-4 lg:gap-6">
+          <div className="flex items-center gap-1.5 sm:gap-4 lg:gap-6">
             <NavLinks
               setCurrentDropdown={setCurrentDropdown}
               currentDropdown={currentDropdown}
             />
+            <SocialDropdown />
             <LanguageSwitcher />
             <ThemeSwitcher />
             <Burger toggleNav={toggleNav} navOpen={navOpen} />

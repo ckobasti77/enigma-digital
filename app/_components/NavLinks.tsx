@@ -181,10 +181,10 @@ const NavLinks = ({ currentDropdown, setCurrentDropdown }: NavLinksProps) => {
       {navLinks.map((link: NavLink) => {
         const isCTA = Boolean(link.cta);
         const linkClasses = clsx(
-          "primary-link flex items-center gap-2 transition-colors",
+          "primary-link flex items-center gap-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70",
           isCTA
-            ? "rounded-full bg-foreground px-5 py-2 text-sm font-medium text-background transition-theme hover:opacity-90 shadow-theme"
-            : "text-xs uppercase tracking-[0.5em] font-extralight text-theme-muted hover:text-theme-primary"
+            ? "rounded-full bg-foreground px-5 py-2 text-sm font-medium text-background shadow-theme transition-theme hover:opacity-90"
+            : "text-xs font-extralight uppercase tracking-[0.5em] text-theme-muted hover:text-theme-primary"
         );
 
         return (

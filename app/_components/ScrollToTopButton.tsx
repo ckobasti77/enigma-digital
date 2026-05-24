@@ -1,23 +1,54 @@
 ﻿"use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
+import { ChevronUp } from "lucide-react";
+import { useSmoothScroll } from "./SmoothScrollProvider";
 
 const ScrollToTopButton = () => {
+  const smoothScrollRef = useSmoothScroll();
   const [isVisible, setIsVisible] = useState(false);
+  const isVisibleRef = useRef(false);
+  const tickingRef = useRef(false);
+  const rafRef = useRef(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsVisible(window.scrollY > 80);
+    const updateVisibility = () => {
+      const nextVisible = window.scrollY > 80;
+      if (isVisibleRef.current !== nextVisible) {
+        isVisibleRef.current = nextVisible;
+        setIsVisible(nextVisible);
+      }
+      tickingRef.current = false;
     };
 
-    handleScroll();
+    const handleScroll = () => {
+      if (tickingRef.current) return;
+      tickingRef.current = true;
+      rafRef.current = window.requestAnimationFrame(updateVisibility);
+    };
 
+    updateVisibility();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) {
+        window.cancelAnimationFrame(rafRef.current);
+      }
+    };
   }, []);
 
   const handleClick = () => {
+    const lenis = smoothScrollRef?.current;
+
+    if (lenis) {
+      lenis.scrollTo("top", {
+        duration: 0.9,
+        lock: true,
+      });
+      return;
+    }
+
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -34,21 +65,7 @@ const ScrollToTopButton = () => {
           : "pointer-events-none opacity-0 translate-y-2"
       )}
     >
-      <svg
-        aria-hidden="true"
-        className="h-5 w-5"
-        viewBox="0 0 20 20"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      >
-        <path
-          d="M6.25 11.25 10 7.5l3.75 3.75"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path d="M10 7.5V15" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
+      <ChevronUp aria-hidden="true" className="h-5 w-5" />
     </button>
   );
 };

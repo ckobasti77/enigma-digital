@@ -2,7 +2,7 @@
 
 import { useCallback } from "react";
 import { useTheme } from "./ThemeProvider";
-import { Moon, Sun } from "lucide-react";
+import { MoonStar, SunMedium } from "lucide-react";
 import clsx from "clsx";
 
 type ThemeSwitcherProps = {
@@ -27,13 +27,13 @@ const ThemeSwitcher = ({ variant = "solid", className }: ThemeSwitcherProps) => 
   );
 
   const baseClasses =
-    "relative group flex h-11 w-11 items-center justify-center rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40 disabled:cursor-not-allowed disabled:opacity-70";
+    "relative group flex h-10 w-10 items-center justify-center rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40 disabled:cursor-not-allowed disabled:opacity-70 sm:h-11 sm:w-11";
   const variantClasses =
     variant === "ghost"
       ? "border border-theme bg-transparent text-theme-primary transition-all duration-600 hover:bg-muted"
-      : "border border-theme bg-card text-theme-primary shadow-theme transition-all duration-600 hover:bg-muted";
+      : "border border-theme bg-card/70 text-theme-primary transition-all duration-600 hover:bg-muted";
 
-  const iconClasses = "h-5 w-5 transition-transform duration-300";
+  const iconClasses = "h-[18px] w-[18px] transition-all duration-300";
 
   return (
     <button
@@ -45,13 +45,15 @@ const ThemeSwitcher = ({ variant = "solid", className }: ThemeSwitcherProps) => 
       disabled={isTransitioning}
     >
       {theme === "dark" ? (
-        <Sun
-          className={clsx(iconClasses, "text-amber-300 scale-105")}
+        <SunMedium
+          className={clsx(iconClasses, "text-cyan-200 group-hover:text-white")}
+          strokeWidth={1.6}
           aria-hidden="true"
         />
       ) : (
-        <Moon
-          className={clsx(iconClasses, "text-theme-muted")}
+        <MoonStar
+          className={clsx(iconClasses, "text-theme-muted group-hover:text-theme-primary")}
+          strokeWidth={1.6}
           aria-hidden="true"
         />
       )}

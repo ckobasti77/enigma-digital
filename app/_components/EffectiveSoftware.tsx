@@ -46,11 +46,19 @@ const pillars: Pillar[] = [
 
 export default function EffectiveSoftware() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const activeIndexRef = useRef(0);
   const isPointerActive = useRef(false);
   const itemRefs = useRef<(HTMLElement | null)[]>([]);
   const scrollUpdateRef = useRef<() => void>(() => {});
+  const rafRef = useRef(0);
 
   useEffect(() => {
+    const setActivePillar = (nextIndex: number) => {
+      if (activeIndexRef.current === nextIndex) return;
+      activeIndexRef.current = nextIndex;
+      setActiveIndex(nextIndex);
+    };
+
     const evaluate = () => {
       if (isPointerActive.current) return;
       const elements = itemRefs.current.filter(Boolean) as HTMLElement[];
@@ -70,12 +78,19 @@ export default function EffectiveSoftware() {
         }
       });
 
-      setActiveIndex(closestIndex);
+      setActivePillar(closestIndex);
     };
 
     scrollUpdateRef.current = evaluate;
 
-    const handler = () => requestAnimationFrame(evaluate);
+    const handler = () => {
+      if (rafRef.current) return;
+
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = 0;
+        evaluate();
+      });
+    };
 
     evaluate();
     window.addEventListener("scroll", handler, { passive: true });
@@ -84,6 +99,9 @@ export default function EffectiveSoftware() {
     return () => {
       window.removeEventListener("scroll", handler);
       window.removeEventListener("resize", handler);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
     };
   }, []);
 
@@ -156,11 +174,13 @@ export default function EffectiveSoftware() {
                 )}
                 onPointerEnter={() => {
                   isPointerActive.current = true;
-                  setActiveIndex(index);
+                  activeIndexRef.current = index;
+                  setActiveIndex((current) => (current === index ? current : index));
                 }}
                 onFocus={() => {
                   isPointerActive.current = true;
-                  setActiveIndex(index);
+                  activeIndexRef.current = index;
+                  setActiveIndex((current) => (current === index ? current : index));
                 }}
                 onBlur={() => {
                   isPointerActive.current = false;

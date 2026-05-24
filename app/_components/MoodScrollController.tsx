@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useMood } from "./MoodProvider";
 import { MOOD_THRESHOLDS } from "@/constants/moodConfig";
+import { useSmoothScroll } from "./SmoothScrollProvider";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +15,7 @@ type Props = {
 
 export default function MoodScrollController({ heroRef }: Props) {
   const { moodActive, progressRef, setMoodEngaged } = useMood();
+  const smoothScrollRef = useSmoothScroll();
   const ctxRef = useRef<gsap.Context | null>(null);
   const savedScrollY = useRef(0);
 
@@ -26,7 +28,16 @@ export default function MoodScrollController({ heroRef }: Props) {
       // Scroll to hero top so the pin starts cleanly
       const heroTop =
         heroRef.current.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({ top: heroTop, behavior: "smooth" });
+      const lenis = smoothScrollRef?.current;
+
+      if (lenis) {
+        lenis.scrollTo(heroTop, {
+          duration: 0.8,
+          lock: true,
+        });
+      } else {
+        window.scrollTo({ top: heroTop, behavior: "smooth" });
+      }
 
       const ctx = gsap.context(() => {
         ScrollTrigger.create({
@@ -62,9 +73,18 @@ export default function MoodScrollController({ heroRef }: Props) {
       setMoodEngaged(false);
 
       // Restore scroll position
-      window.scrollTo({ top: savedScrollY.current, behavior: "instant" });
+      const lenis = smoothScrollRef?.current;
+
+      if (lenis) {
+        lenis.scrollTo(savedScrollY.current, {
+          force: true,
+          immediate: true,
+        });
+      } else {
+        window.scrollTo({ top: savedScrollY.current, behavior: "instant" });
+      }
     }
-  }, [moodActive, heroRef, progressRef, setMoodEngaged]);
+  }, [moodActive, heroRef, progressRef, setMoodEngaged, smoothScrollRef]);
 
   return null;
 }

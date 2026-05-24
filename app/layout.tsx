@@ -9,6 +9,7 @@ import { ThemeProvider } from "./_components/ThemeProvider";
 import { CookieConsentProvider } from "./_components/CookieConsentProvider";
 import CookieConsentBanner from "./_components/CookieConsentBanner";
 import { LanguageProvider } from "./_components/LanguageProvider";
+import SmoothScrollProvider from "./_components/SmoothScrollProvider";
 
 const deltha = localFont({
   src: [
@@ -101,15 +102,17 @@ export default function RootLayout({
         <CookieConsentProvider>
           <LanguageProvider>
             <ThemeProvider>
-              <div className="app-shell relative isolate min-h-screen">
-                <WaveBackgroundGlobal />
-                <div className="relative z-10">
-                  <Navbar />
-                  <div className="h-full w-full">{children}</div>
-                  <Footer />
-                  <ScrollToTopButton />
+              <SmoothScrollProvider>
+                <div className="app-shell relative isolate min-h-screen">
+                  <WaveBackgroundGlobal />
+                  <div className="relative z-10">
+                    <Navbar />
+                    <div className="h-full w-full">{children}</div>
+                    <Footer />
+                    <ScrollToTopButton />
+                  </div>
                 </div>
-              </div>
+              </SmoothScrollProvider>
               <CookieConsentBanner />
             </ThemeProvider>
           </LanguageProvider>

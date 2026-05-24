@@ -2,13 +2,16 @@ export const HERO_FRAME_DIRECTORY = "hero-frames";
 export const HERO_FRAME_PUBLIC_PATH = "/hero-frames";
 
 export const HERO_SEQUENCE_CONFIG = {
-  checkpointCount: 5,
-  initialPreloadCount: 18,
-  nearbyFrameRadius: 9,
-  idleChunkSize: 4,
+  initialPreloadCount: 61,
+  highPriorityFrameCount: 24,
+  nearbyFrameRadius: 12,
+  idleChunkSize: 6,
   idleDelayMs: 120,
-  dprLimit: 2,
-  scrub: 1.15,
+  dprLimit: 1.5,
+  frameRightGuideAlignmentRatio: 1880 / 1916,
+  textFrameCheckpoints: [0, 61, 122, 183, 243],
+  textCheckpointLeadFrames: 4,
+  textFillCompletionRatio: 0.52,
 };
 
 export type HeroCheckpoint = {
@@ -28,9 +31,9 @@ export type HeroCheckpoint = {
 export const heroCheckpoints: HeroCheckpoint[] = [
   {
     eyebrow: "01 / Prisustvo",
-    headline: "Vaš sajt može više.",
+    headline: "Sajt koji stvara poverenje.",
     subtitle:
-      "Ne treba vam samo lep ekran. Treba vam digitalno prisustvo koje gradi poverenje i pokreće interesovanje.",
+      "Jasna poruka, premium izgled i put koji posetioca vodi ka upitu.",
     primaryCta: {
       label: "Zakažite konsultaciju",
       href: "/contact",
@@ -42,9 +45,9 @@ export const heroCheckpoints: HeroCheckpoint[] = [
   },
   {
     eyebrow: "02 / Signali",
-    headline: "Pravi klijenti počinju da se javljaju.",
+    headline: "Pravi klijenti se javljaju.",
     subtitle:
-      "Kada su poruka, dizajn i struktura jasni, posetioci lakše postaju upiti, pozivi i zakazani razgovori.",
+      "Kada je iskustvo precizno, interesovanje brže postaje razgovor.",
     primaryCta: {
       label: "Pokrenite rast",
       href: "/contact",
@@ -58,7 +61,7 @@ export const heroCheckpoints: HeroCheckpoint[] = [
     eyebrow: "03 / Potražnja",
     headline: "Više pažnje. Bolji upiti.",
     subtitle:
-      "Snažno digitalno prisustvo ne donosi samo više klikova. Donosi više relevantnih prilika za vaš biznis.",
+      "Ne jurimo klikove. Gradimo prisustvo koje privlači ozbiljne prilike.",
     primaryCta: {
       label: "Privucite bolje klijente",
       href: "/contact",
@@ -70,9 +73,9 @@ export const heroCheckpoints: HeroCheckpoint[] = [
   },
   {
     eyebrow: "04 / Sistem",
-    headline: "Pažnja bez sistema je haos.",
+    headline: "Bez sistema, pažnja curi.",
     subtitle:
-      "Enigma Code povezuje strategiju, dizajn, razvoj i tokove upita u sistem koji vodi korisnika od interesovanja do akcije.",
+      "Strategija, dizajn i razvoj rade zajedno da korisnika vode do akcije.",
     primaryCta: {
       label: "Izgradite sistem",
       href: "/contact",
@@ -84,9 +87,9 @@ export const heroCheckpoints: HeroCheckpoint[] = [
   },
   {
     eyebrow: "05 / Rast",
-    headline: "Digitalni sistem koji prodaje poverenje.",
+    headline: "Sistem koji prodaje poverenje.",
     subtitle:
-      "Pravimo premium sajtove, web aplikacije i digitalne sisteme za firme koje žele ozbiljniji nastup, bolje klijente i merljiv rast.",
+      "Premium sajtovi i web sistemi za ozbiljniji nastup i merljiv rast.",
     primaryCta: {
       label: "Zatražite analizu sajta",
       href: "/contact",
