@@ -68,11 +68,6 @@ export const navLinks = [
     text: 'Projekti'
   },
   {
-    id: 4,
-    to: "/about",
-    text: 'O nama'
-  },
-  {
     id: 5,
     to: "/contact",
     text: 'Kontakt',

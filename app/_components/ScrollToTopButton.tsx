@@ -14,7 +14,13 @@ const ScrollToTopButton = () => {
 
   useEffect(() => {
     const updateVisibility = () => {
-      const nextVisible = window.scrollY > 80;
+      const hero = document.querySelector<HTMLElement>(
+        "[data-scroll-story-hero]"
+      );
+      const visibilityThreshold = hero
+        ? hero.offsetTop + hero.offsetHeight
+        : 80;
+      const nextVisible = window.scrollY > visibilityThreshold;
       if (isVisibleRef.current !== nextVisible) {
         isVisibleRef.current = nextVisible;
         setIsVisible(nextVisible);
