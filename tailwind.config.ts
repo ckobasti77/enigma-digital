@@ -1,4 +1,4 @@
-﻿import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
@@ -13,6 +13,10 @@ const config: Config = {
         deltha: ["var(--font-deltha)", ...defaultTheme.fontFamily.sans],
         aeonik: ["var(--font-aeonik)", ...defaultTheme.fontFamily.sans],
         brokenConsole: [
+          "var(--font-broken-console)",
+          ...defaultTheme.fontFamily.sans,
+        ],
+        accent: [
           "var(--font-broken-console)",
           ...defaultTheme.fontFamily.sans,
         ],

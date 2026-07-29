@@ -2,19 +2,17 @@ import Hero from "./_components/Hero";
 import Timeline from "./_components/Timeline";
 import EffectiveSoftware from "./_components/EffectiveSoftware";
 import ServiceCards from "./_components/ServiceCards";
-import LogoMarquee from "./_components/LogoMarquee";
-import { getHeroFrameSources } from "@/lib/heroFrames";
+import { TechSection } from "@/components/logo-marquee";
 
-export default async function Home() {
-  const heroFrameSources = await getHeroFrameSources();
-
+export default function Home() {
   return (
     <>
-      <Hero frameSources={heroFrameSources} />
-      <LogoMarquee />
+      <Hero />
+      <TechSection />
       <Timeline />
       <EffectiveSoftware />
       <ServiceCards />
     </>
   );
 }
+

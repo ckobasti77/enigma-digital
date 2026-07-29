@@ -51,8 +51,33 @@ export default function SmoothScrollProvider({
 
     let isActive = true;
     let resizeFrame = 0;
+    let refreshTimeout = 0;
     const refreshMeasurements = () => {
       if (!isActive) return;
+
+      if (refreshTimeout) {
+        window.clearTimeout(refreshTimeout);
+      }
+
+      refreshTimeout = window.setTimeout(() => {
+        if (!isActive) return;
+
+        if (resizeFrame) {
+          window.cancelAnimationFrame(resizeFrame);
+        }
+
+        resizeFrame = window.requestAnimationFrame(() => {
+          if (!isActive) return;
+
+          resizeFrame = 0;
+          refreshTimeout = 0;
+          lenis.resize();
+          ScrollTrigger.refresh();
+        });
+      }, 120);
+    };
+    const refreshMeasurementsSoon = () => {
+      if (!isActive || refreshTimeout || resizeFrame) return;
 
       if (resizeFrame) {
         window.cancelAnimationFrame(resizeFrame);
@@ -76,22 +101,15 @@ export default function SmoothScrollProvider({
     gsap.ticker.add(updateLenis);
     gsap.ticker.lagSmoothing(0);
 
-    const refreshTimeouts: number[] = [];
-    const resizeObserver =
-      "ResizeObserver" in window
-        ? new ResizeObserver(refreshMeasurements)
-        : null;
-
-    resizeObserver?.observe(document.documentElement);
-    resizeObserver?.observe(document.body);
-
     window.addEventListener("load", refreshMeasurements);
     window.addEventListener("resize", refreshMeasurements);
 
     void document.fonts?.ready.then(refreshMeasurements);
-    refreshMeasurements();
-    refreshTimeouts.push(window.setTimeout(refreshMeasurements, 250));
-    refreshTimeouts.push(window.setTimeout(refreshMeasurements, 1000));
+    refreshMeasurementsSoon();
+    const refreshTimeouts = [
+      window.setTimeout(refreshMeasurements, 250),
+      window.setTimeout(refreshMeasurements, 1000),
+    ];
 
     return () => {
       isActive = false;
@@ -99,9 +117,11 @@ export default function SmoothScrollProvider({
       if (resizeFrame) {
         window.cancelAnimationFrame(resizeFrame);
       }
+      if (refreshTimeout) {
+        window.clearTimeout(refreshTimeout);
+      }
 
       refreshTimeouts.forEach((timeout) => window.clearTimeout(timeout));
-      resizeObserver?.disconnect();
       window.removeEventListener("load", refreshMeasurements);
       window.removeEventListener("resize", refreshMeasurements);
       lenis.off("scroll", updateScrollTrigger);

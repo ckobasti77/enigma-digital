@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import clsx from "clsx";
@@ -80,19 +80,19 @@ const Navbar = () => {
         <div className="mx-auto flex w-full items-center justify-between px-[var(--site-edge-gutter)] py-4">
           <Link
             href="/"
-            className="relative inline-flex items-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70"
-            aria-label="Enigma Code početna"
+            className="relative inline-flex items-center gap-2.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70"
+            aria-label="Enigma IT početna"
           >
-            <span className="relative block h-9 w-[8.75rem] sm:h-10 sm:w-[9.5rem]">
-              <Image
-                src="/logo-dark-horizontal.png"
-                alt="Enigma Code"
-                fill
-                priority
-                sizes="(min-width: 640px) 152px, 140px"
-                className="object-contain"
-              />
-            </span>
+            <Image
+              src="/logos/logo-emblem.png"
+              alt="Enigma IT emblem"
+              className="h-auto w-[40px] drop-shadow-[0_0_16px_rgba(0,183,255,0.26)] sm:w-[46px] lg:w-[52px]"
+              width={1024}
+              height={1024}
+              priority
+              sizes="(min-width: 1024px) 52px, (min-width: 640px) 46px, 40px"
+              style={{ height: "auto" }}
+            />
           </Link>
 
           <div className="flex items-center gap-1.5 sm:gap-4 lg:gap-6">

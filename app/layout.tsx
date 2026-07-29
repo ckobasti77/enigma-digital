@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./_components/Navbar";
 import ScrollToTopButton from "./_components/ScrollToTopButton";
@@ -21,6 +21,7 @@ const deltha = localFont({
   ],
   variable: "--font-deltha",
 });
+
 const terminal = localFont({
   src: [
     {
@@ -84,6 +85,18 @@ const brokenConsole = localFont({
   variable: "--font-broken-console",
 });
 
+const microgramma = localFont({
+  src: [
+    {
+      path: "../public/assets/fonts/microgramma-d-extended-bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-microgramma",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Enigma Digital",
   description: "Digitalni proizvodi koji pretvaraju radoznalost u lojalne klijente.",
@@ -97,7 +110,7 @@ export default function RootLayout({
   return (
     <html lang="sr-Latn-RS" suppressHydrationWarning>
       <body
-        className={`${deltha.variable} ${terminal.variable} ${aeonik.variable} ${brokenConsole.variable} font-aeonik antialiased`}
+        className={`${deltha.variable} ${terminal.variable} ${aeonik.variable} ${brokenConsole.variable} ${microgramma.variable} font-aeonik antialiased`}
       >
         <CookieConsentProvider>
           <LanguageProvider>
@@ -121,5 +134,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-

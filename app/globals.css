@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 @import "tw-animate-css";
 @config "../tailwind.config.ts";
 
@@ -9,6 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-microgramma);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -42,6 +43,10 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+}
+
+.font-display {
+  font-family: var(--font-microgramma), var(--font-aeonik), sans-serif;
 }
 
 :root {
@@ -280,16 +285,6 @@ html.lenis body {
   }
 }
 
-@keyframes hero-skip-float {
-  from {
-    transform: translateY(-4px);
-  }
-  to {
-    transform: translateY(4px);
-  }
-}
-
-
 @layer components {
   .app-shell {
     min-height: 100vh;
@@ -488,9 +483,134 @@ html[data-mood="alt"] {
   will-change: translate, transform, box-shadow;
 }
 
+/* ── Scroll Story Hero ── */
+.scroll-story-hero {
+  --scroll-story-side-gap: 0px;
+}
 
+.scroll-story-canvas {
+  display: block;
+  background: #02030a;
+}
 
+.scroll-story-edge-fade {
+  pointer-events: none;
+}
 
+.scroll-story-edge-fade::before,
+.scroll-story-edge-fade::after {
+  bottom: 0;
+  content: "";
+  opacity: 0.95;
+  position: absolute;
+  top: 0;
+  width: max(42px, calc(var(--scroll-story-side-gap, 0px) + 48px));
+}
 
+.scroll-story-edge-fade::before {
+  background: linear-gradient(
+    90deg,
+    #02030a 0%,
+    rgba(2, 3, 10, 0.82) 58%,
+    rgba(2, 3, 10, 0) 100%
+  );
+  left: 0;
+}
+
+.scroll-story-edge-fade::after {
+  background: linear-gradient(
+    270deg,
+    #02030a 0%,
+    rgba(2, 3, 10, 0.82) 58%,
+    rgba(2, 3, 10, 0) 100%
+  );
+  right: 0;
+}
+
+@media (max-width: 767px) {
+  .scroll-story-edge-fade {
+    display: none;
+  }
+}
+
+.scroll-story-copy {
+  animation: scrollStoryCopyIn 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform, filter;
+}
+
+@keyframes scrollStoryCopyIn {
+  0% {
+    filter: blur(8px);
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+
+  100% {
+    filter: blur(0);
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.hero-reveal {
+  --reveal-delay: 0ms;
+  animation: heroReveal 450ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay) both;
+  will-change: opacity, transform, filter;
+}
+
+.hero-reveal-navbar {
+  animation-name: heroNavbarReveal;
+}
+
+.hero-reveal-delay-0 {
+  --reveal-delay: 0ms;
+}
+
+.cta-pulse {
+  animation: ctaPulse 4.8s ease-in-out infinite;
+}
+
+@keyframes heroReveal {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(0, 18px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heroNavbarReveal {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translate3d(0, -14px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ctaPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 24px rgba(0, 183, 255, 0.2),
+      0 0 62px rgba(107, 55, 255, 0.18);
+  }
+
+  50% {
+    box-shadow:
+      0 0 30px rgba(0, 183, 255, 0.28),
+      0 0 76px rgba(139, 53, 255, 0.24);
+  }
+}
 
 
