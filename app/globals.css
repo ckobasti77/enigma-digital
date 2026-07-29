@@ -517,14 +517,16 @@ html[data-mood="alt"] {
   backface-visibility: hidden;
   display: block;
   height: 100%;
-  inset: 0;
+  left: 50%;
+  max-width: none;
   object-fit: cover;
   object-position: center;
   opacity: 0;
   pointer-events: none;
   position: absolute;
-  transform: translateZ(0);
-  width: 100%;
+  top: 0;
+  transform: translateX(-50%) translateZ(0);
+  width: auto;
   will-change: opacity;
   z-index: 0;
 }
@@ -543,6 +545,30 @@ html[data-mood="alt"] {
       rgba(2, 3, 10, 0) 24%,
       rgba(2, 3, 10, 0) 74%,
       rgba(2, 3, 10, 0.48) 100%
+    );
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+/* Blends the left/right edges of the (height-fitted) frame into the page
+   background. `--frame-side-gap` is the px distance the frame stops short of
+   each screen edge on wide viewports; the solid part fully covers that gap,
+   then feathers ~4.5vw inward so the seam is imperceptible. */
+.scroll-story-edge-fade {
+  background:
+    linear-gradient(
+      to right,
+      #02030a 0,
+      #02030a var(--frame-side-gap, 0px),
+      rgba(2, 3, 10, 0) calc(var(--frame-side-gap, 0px) + 4.5vw)
+    ),
+    linear-gradient(
+      to left,
+      #02030a 0,
+      #02030a var(--frame-side-gap, 0px),
+      rgba(2, 3, 10, 0) calc(var(--frame-side-gap, 0px) + 4.5vw)
     );
   inset: 0;
   pointer-events: none;
@@ -572,7 +598,9 @@ html[data-mood="alt"] {
   row-gap: clamp(0.75rem, 1.25vw, 1.1rem);
   visibility: hidden;
   width: var(--copy-safe-width);
-  will-change: opacity, transform, filter;
+  /* No permanent `will-change` here: keeping this subtree on a GPU layer at
+     rest rasterizes the copy to a texture and drops sub-pixel glyph detail
+     (e.g. the dot on "i"). The reveal promotes/clears the hint per-run. */
 }
 
 .scroll-story-copy[data-copy-scrim="true"] {
@@ -602,11 +630,11 @@ html[data-mood="alt"] {
 
 .scroll-story-copy-title {
   display: block;
-  font-family: var(--font-microgramma), var(--font-aeonik), sans-serif;
-  font-size: clamp(2rem, 3.05vw, 3.9rem);
+  font-family: var(--font-aeonik), var(--font-geist-sans), sans-serif;
+  font-size: clamp(1.9rem, 2.7vw, 3.3rem);
   font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 1.08;
+  letter-spacing: -0.028em;
+  line-height: 1.06;
   text-shadow:
     0 8px 28px rgba(0, 0, 0, 0.9),
     0 1px 10px rgba(0, 0, 0, 0.8);

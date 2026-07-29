@@ -89,12 +89,12 @@ export const scrollStorySlides = [
           desktop: {
             left: "clamp(2rem, 4vw, 5rem)",
             maxWidth: {
-              cap: 520,
-              viewportPercent: 32,
+              cap: 430,
+              viewportPercent: 30,
             },
             scrim: true,
             textAlign: "left",
-            top: "clamp(7.5rem, 16svh, 10rem)",
+            top: "clamp(4.5rem, 8svh, 6.25rem)",
           },
           mobile: {
             left: "50%",
@@ -119,13 +119,13 @@ export const scrollStorySlides = [
         placement: {
           desktop: {
             maxWidth: {
-              cap: 560,
-              viewportPercent: 34,
+              cap: 500,
+              viewportPercent: 33,
             },
             right: "clamp(2rem, 4vw, 5rem)",
             scrim: true,
             textAlign: "right",
-            top: "clamp(7.5rem, 16svh, 10rem)",
+            top: "clamp(4.5rem, 8svh, 6.25rem)",
           },
           mobile: {
             bottom: "clamp(2rem, 4svh, 3rem)",
@@ -139,7 +139,7 @@ export const scrollStorySlides = [
             translateX: "-50%",
           },
         },
-        revealDelay: 0.18,
+        revealDelay: 0.24,
         title: "Mi pravimo kompletan digitalni nastup:",
       },
     ],
@@ -161,12 +161,12 @@ export const scrollStorySlides = [
           desktop: {
             left: "clamp(2rem, 4vw, 5rem)",
             maxWidth: {
-              cap: 570,
-              viewportPercent: 34,
+              cap: 470,
+              viewportPercent: 32,
             },
             scrim: true,
             textAlign: "left",
-            top: "clamp(7.25rem, 14svh, 9rem)",
+            top: "clamp(4.5rem, 8svh, 6.25rem)",
           },
           mobile: {
             left: "50%",
@@ -191,13 +191,13 @@ export const scrollStorySlides = [
         placement: {
           desktop: {
             maxWidth: {
-              cap: 600,
-              viewportPercent: 36,
+              cap: 560,
+              viewportPercent: 37,
             },
             right: "clamp(2rem, 4vw, 5rem)",
             scrim: true,
             textAlign: "right",
-            top: "clamp(7.25rem, 14svh, 9rem)",
+            top: "clamp(4.5rem, 8svh, 6.25rem)",
           },
           mobile: {
             bottom: "clamp(1.75rem, 3svh, 2.5rem)",
@@ -211,7 +211,7 @@ export const scrollStorySlides = [
             translateX: "-50%",
           },
         },
-        revealDelay: 0.18,
+        revealDelay: 0.24,
         title: "Vi vodite biznis. Mi vodimo digitalni deo.",
       },
     ],

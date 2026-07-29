@@ -251,6 +251,7 @@ export function ScrollStoryHero() {
   const pumpImageQueueRef = useRef<() => void>(() => undefined);
   const paintRequestRef = useRef(0);
   const canvasSizeRef = useRef({ height: 0, width: 0 });
+  const lastSideGapRef = useRef(-1);
   const sequenceRef = useRef<FrameSequence>(DESKTOP_SEQUENCE);
   const currentFrameRef = useRef(DESKTOP_SEQUENCE.firstFrame);
   const currentDirectionRef = useRef(1);
@@ -487,14 +488,22 @@ export function ScrollStoryHero() {
         return;
       }
 
-      const scale = Math.max(
-        width / image.naturalWidth,
-        height / image.naturalHeight,
-      );
+      // Fit by height: every frame's full height fills the viewport height
+      // (the primary framing requirement). On viewports wider than the frame
+      // this leaves the sides short of the screen edges — the resulting gap
+      // is exposed via `--frame-side-gap` and blended away by the edge-fade
+      // overlay. On narrower viewports the sides overflow and are clipped.
+      const scale = height / image.naturalHeight;
       const drawWidth = image.naturalWidth * scale;
-      const drawHeight = image.naturalHeight * scale;
+      const drawHeight = height;
       const drawX = (width - drawWidth) / 2;
-      const drawY = (height - drawHeight) / 2;
+      const drawY = 0;
+
+      const sideGap = Math.max(0, Math.round(drawX));
+      if (sideGap !== lastSideGapRef.current) {
+        lastSideGapRef.current = sideGap;
+        section.style.setProperty("--frame-side-gap", `${sideGap}px`);
+      }
 
       context.setTransform(
         canvas.width / width,
@@ -1897,9 +1906,38 @@ export function ScrollStoryHero() {
         },
       });
 
+      // Anthropic-style reveal: words fade up (blur + rise) in a *random*
+      // order rather than left-to-right, fast enough to overlap heavily. The
+      // heading resolves first, its body follows a fraction of a beat later,
+      // and a panel with `revealDelay` (the second block on a checkpoint)
+      // starts its whole reveal slightly after the first.
+      const revealFrom = {
+        filter: "blur(6px)",
+        opacity: 0,
+        willChange: "transform, filter",
+        y: "0.6em",
+      };
+      const revealTo = (count: number) => ({
+        duration: 0.52,
+        ease: "power2.out",
+        filter: "blur(0px)",
+        opacity: 1,
+        stagger: {
+          amount: clamp(count * 0.045, 0.16, 0.4),
+          from: "random" as const,
+        },
+        y: 0,
+      });
+
+      const revealedWords: HTMLElement[] = [];
+
       activePanels.forEach((panel, panelIndex) => {
-        const words = gsap.utils.toArray<HTMLElement>(
-          "[data-scroll-story-word]",
+        const titleWords = gsap.utils.toArray<HTMLElement>(
+          "[data-scroll-story-title] [data-scroll-story-word]",
+          panel,
+        );
+        const bodyWords = gsap.utils.toArray<HTMLElement>(
+          "[data-scroll-story-paragraph] [data-scroll-story-word]",
           panel,
         );
         const revealDelay =
@@ -1909,28 +1947,31 @@ export function ScrollStoryHero() {
                 .revealDelay
             : 0;
 
-        gsap.set(words, {
-          filter: "blur(5px)",
-          opacity: 0,
-          y: "0.55em",
-        });
+        revealedWords.push(...titleWords, ...bodyWords);
+        gsap.set([...titleWords, ...bodyWords], revealFrom);
 
-        timeline
-          .set(panel, { autoAlpha: 1 }, revealDelay)
-          .to(
-            words,
-            {
-              duration: 0.5,
-              ease: "power3.out",
-              filter: "blur(0px)",
-              opacity: 1,
-              stagger: {
-                amount: Math.min(0.32, words.length * 0.02),
-              },
-              y: 0,
-            },
-            revealDelay,
+        timeline.set(panel, { autoAlpha: 1 }, revealDelay);
+
+        if (titleWords.length > 0) {
+          timeline.to(titleWords, revealTo(titleWords.length), revealDelay);
+        }
+
+        if (bodyWords.length > 0) {
+          timeline.to(
+            bodyWords,
+            revealTo(bodyWords.length),
+            revealDelay + 0.12,
           );
+        }
+      });
+
+      // Once revealed, drop the transform/filter/will-change so the resting
+      // text leaves its GPU layer and renders with full sub-pixel hinting
+      // (otherwise the rasterised texture can swallow the dot on "i").
+      timeline.eventCallback("onComplete", () => {
+        gsap.set(revealedWords, {
+          clearProps: "filter,transform,translate,rotate,scale,willChange",
+        });
       });
 
       wordTimelineRef.current = timeline;
@@ -2007,6 +2048,7 @@ export function ScrollStoryHero() {
           src={sequence.reverseVideoPath}
         />
         <div aria-hidden="true" className="scroll-story-vignette" />
+        <div aria-hidden="true" className="scroll-story-edge-fade" />
 
         <div className="scroll-story-copy-layer">
           {scrollStorySlides.map((slide, slideIndex) => {
